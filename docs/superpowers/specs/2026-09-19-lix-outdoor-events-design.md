@@ -263,7 +263,7 @@ A high-confidence duplicate is merged when the records represent the same occurr
 - keeps field-level confidence
 - records the merge decision for diagnostics
 
-Multi-day festivals become daily occurrences or a clearly defined span without producing overlapping duplicate markers. Separate sessions or games at the same venue remain distinct.
+A multi-day festival remains one occurrence spanning its verified start and end datetimes. The frontend displays that occurrence on every selected day it overlaps, without creating duplicate markers. Separate sessions or games at the same venue remain distinct.
 
 Ambiguous cases are not silently merged. They remain separate and are written to diagnostics for later rule or manual-override improvement.
 
