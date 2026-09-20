@@ -104,41 +104,35 @@ function eventSymbolType(event) {
   return "other";
 }
 
-function eventIconSvg(event, className = "event-icon") {
+function eventIconGlyph(event) {
   const type = eventSymbolType(event);
-  const attrs = `class="${className}" viewBox="0 0 24 24" aria-hidden="true" focusable="false"`;
+  const text = `${event.name || ""} ${event.venue || ""}`.toLowerCase();
 
-  const paths = {
-    football: `<svg ${attrs}><path fill="currentColor" d="M4.5 15.8c0-1.7.7-3.4 2-4.7L11.1 6.5c1.3-1.3 3-2 4.7-2 1.3 0 2.6.4 3.8 1.1l-2.1 2.1-1.6-.5-.5 1.6-3.7 3.7 1.6 1.6 3.7-3.7 1.6-.5-.5-1.6 2.1-2.1c.7 1.2 1.1 2.5 1.1 3.8 0 1.7-.7 3.4-2 4.7l-4.6 4.6c-1.3 1.3-3 2-4.7 2-1.3 0-2.6-.4-3.8-1.1l2.1-2.1 1.6.5.5-1.6 3.7-3.7-1.6-1.6-3.7 3.7-1.6.5.5 1.6-2.1 2.1c-.7-1.2-1.1-2.5-1.1-3.8Z"/></svg>`,
-    parade: `<svg ${attrs}><path fill="currentColor" d="M12 2c1 2.8 2.8 4.5 5.5 5-2 1.3-2.9 3.2-2.6 5.6 1.5-.9 3.1-.9 4.8 0-.8 3-2.8 4.8-5.8 5.5.7 2.1.1 4.1-1.9 6-2-1.9-2.6-3.9-1.9-6-3-.7-5-2.5-5.8-5.5 1.7-.9 3.3-.9 4.8 0 .3-2.4-.6-4.3-2.6-5.6 2.7-.5 4.5-2.2 5.5-5Z"/></svg>`,
-    race: `<svg ${attrs}><path fill="currentColor" d="M15.2 5.2a2.2 2.2 0 1 1 0-4.4 2.2 2.2 0 0 1 0 4.4ZM8.2 22l2.8-5.8-2.6-2.1-3.3 1 .6-2 3.5-1.1 2.2-3.2 2.8 1.1 2.9 2.1 2-.6-.5 1.8-2.6.8-2.8-1.8-1.4 2 1.1 3.2 1.3 3.6h-2.2l-1.5-4.1-1.8 2.4L10.4 22H8.2Z"/></svg>`,
-    festival: `<svg ${attrs}><path fill="currentColor" d="M10 4v10.6A3.4 3.4 0 1 1 8 11.5V6.1l8-1.9v9.4a3.4 3.4 0 1 1-2-3.1V4.7L10 5.6V4Z"/></svg>`,
-    marine: `<svg ${attrs}><path fill="currentColor" d="M11 3a2 2 0 1 1 2 0v7h4v2h-4v6.2l2.8-1.7 1 1.7-4.8 2.9-4.8-2.9 1-1.7 2.8 1.7V12H7v-2h4V3Z"/></svg>`,
-    sports: `<svg ${attrs}><path fill="currentColor" d="M12 2a10 10 0 1 1 0 20 10 10 0 0 1 0-20Zm-1 2.3A8 8 0 0 0 5 8l2.2.5L8.4 6l2.6-1.7Zm2 0 2.6 1.7 1.2 2.5L19 8a8 8 0 0 0-6-3.7ZM4.3 10a8 8 0 0 0 1.2 6l1.9-1.6-.3-2.4L4.3 10Zm15.4 0-2.8 2 .3 2.4 1.9 1.6a8 8 0 0 0 1.2-6ZM9.2 18.7a8 8 0 0 0 5.6 0l-2.8-2.1-2.8 2.1Z"/></svg>`,
-    other: `<svg ${attrs}><path fill="currentColor" d="M7 2h2v2h6V2h2v2h2a2 2 0 0 1 2 2v13a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V6a2 2 0 0 1 2-2h2V2Zm12 8H5v9a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-9Z"/></svg>`
-  };
+  if (type === "football") return "🏈";
+  if (type === "parade") return "⚜️";
+  if (type === "race") return "🏃";
+  if (type === "festival") return "🎵";
+  if (type === "marine") return "⚓";
 
-  return paths[type] || paths.other;
+  if (type === "sports") {
+    if (/baseball/.test(text)) return "⚾";
+    if (/softball/.test(text)) return "🥎";
+    if (/soccer/.test(text)) return "⚽";
+    if (/golf/.test(text)) return "⛳";
+    if (/rugby/.test(text)) return "🏉";
+    return "🏟️";
+  }
+
+  return "📅";
 }
 
-function markerColorBySymbol(type) {
-  return ({
-    football: "#7c2d12",
-    sports: "#14532d",
-    parade: "#7c3aed",
-    race: "#0f766e",
-    festival: "#b45309",
-    marine: "#1d4ed8",
-    other: "#475569"
-  })[type] || "#475569";
-}
 
 function popupHtml(event) {
   const source = event.source_url
     ? `<div class="popup-source"><a href="${escapeHtml(event.source_url)}" target="_blank" rel="noopener">Open source ↗</a></div>`
     : "";
   return `
-    <div class="popup-title"><span class="popup-title-icon">${eventIconSvg(event, "event-icon popup-icon")}</span><span>${escapeHtml(event.name)}</span></div>
+    <div class="popup-title"><span class="event-glyph popup-glyph" aria-hidden="true">${eventIconGlyph(event)}</span><span>${escapeHtml(event.name)}</span></div>
     <div class="popup-line"><strong>${escapeHtml(event.importance.toUpperCase())}</strong> · ${escapeHtml(categoryLabel(event.category))}</div>
     <div class="popup-line">${escapeHtml(prettyDate(state.dayKey))} · ${escapeHtml(formatTime(event))}</div>
     <div class="popup-line">${escapeHtml(event.venue || "Location")}, ${escapeHtml(event.city || "")}</div>
@@ -150,19 +144,12 @@ function popupHtml(event) {
 }
 
 function markerIcon(event) {
-  const type = eventSymbolType(event);
-  const color = markerColorBySymbol(type);
-
   return L.divIcon({
-    className: "",
-    html: `
-      <div class="marker-badge" style="background:${color}">
-        ${eventIconSvg(event, "event-icon marker-icon")}
-      </div>
-    `,
-    iconSize: [30,30],
-    iconAnchor: [15,15],
-    popupAnchor: [0,-14]
+    className: "event-marker-icon",
+    html: `<div class="map-event-glyph" aria-hidden="true">${eventIconGlyph(event)}</div>`,
+    iconSize: [38,38],
+    iconAnchor: [19,19],
+    popupAnchor: [0,-17]
   });
 }
 
@@ -268,7 +255,7 @@ function renderEvents() {
     const card = document.createElement("article");
     card.className = `event-card ${event.importance}`;
     card.innerHTML = `
-      <h2><span class="event-title-icon">${eventIconSvg(event)}</span><span>${escapeHtml(event.name)}</span></h2>
+      <h2><span class="event-glyph card-glyph" aria-hidden="true">${eventIconGlyph(event)}</span><span>${escapeHtml(event.name)}</span></h2>
       <div class="meta">${escapeHtml(formatTime(event))}<br>${escapeHtml(event.venue || "")}${event.city ? " · " + escapeHtml(event.city) : ""}${event.idss_area ? "<br>" + escapeHtml(event.idss_area) : ""}${event.parish_county ? " · " + escapeHtml(event.parish_county) : ""}<br>Source: ${escapeHtml(event.source_name || "Unknown")}</div>
       <div class="badges">
         <span class="badge ${escapeHtml(event.importance)}">${escapeHtml(event.importance)}</span>
