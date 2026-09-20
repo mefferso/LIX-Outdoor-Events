@@ -158,12 +158,6 @@ function popupHtml(event) {
             <span class="popup-detail-value">${escapeHtml(event.city)}</span>
           </div>
         ` : ""}
-        ${event.idss_area ? `
-          <div class="popup-detail-row">
-            <span class="popup-detail-label">Area</span>
-            <span class="popup-detail-value">${escapeHtml(event.idss_area)}</span>
-          </div>
-        ` : ""}
         ${event.parish_county ? `
           <div class="popup-detail-row">
             <span class="popup-detail-label">Parish/County</span>
@@ -180,7 +174,11 @@ function popupHtml(event) {
         </div>
         <div class="popup-detail-row">
           <span class="popup-detail-label">Source</span>
-          <span class="popup-detail-value">${escapeHtml(event.source_name || "Unknown")}</span>
+          <span class="popup-detail-value">
+            ${event.source_url
+              ? `<a class="popup-source-value-link" href="${escapeHtml(event.source_url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(event.source_name || "Source")} ↗</a>`
+              : escapeHtml(event.source_name || "Unknown")}
+          </span>
         </div>
       </div>
 
@@ -188,7 +186,6 @@ function popupHtml(event) {
         <div class="popup-note">${escapeHtml(event.weather_exposure_notes)}</div>
       ` : ""}
 
-      ${event.source_url ? `<a class="popup-source-link" href="${escapeHtml(event.source_url)}" target="_blank" rel="noopener noreferrer">Open source ↗</a>` : ""}
     </div>
   `;
 }
