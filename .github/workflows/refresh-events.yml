@@ -1,6 +1,13 @@
 name: Refresh Outdoor Events
 
 on:
+  push:
+    paths:
+      - "scripts/refresh_events.py"
+      - "config/**"
+      - "data/manual-events.json"
+      - "tests/test_refresh_events.py"
+      - ".github/workflows/refresh-events.yml"
   schedule:
     - cron: "17 */6 * * *"
   workflow_dispatch:
