@@ -961,6 +961,7 @@ def main() -> int:
     window_start = now.date()
     window_end = window_start + timedelta(days=7)
     config = load_json(SOURCE_CONFIG, {"sources": []})
+    source_health_modes = {src.get("key"): src.get("health_mode", "records") for src in config.get("sources", [])}
     venues = venue_index()
     geocode_cache = load_json(GEOCODE_CACHE, {})
     boundary = load_boundary()
@@ -1052,6 +1053,7 @@ def main() -> int:
                 "key": r.key, "name": r.name, "success": r.success,
                 "health": (
                     "failed" if not r.success else
+                    "healthy" if source_health_modes.get(r.key) == "fetch" else
                     "degraded" if r.discovered == 0 else
                     "healthy"
                 ),
@@ -1061,8 +1063,14 @@ def main() -> int:
             for r in results
         ],
         "source_health": {
-            "healthy": sum(1 for r in results if r.success and r.discovered > 0),
-            "degraded": sum(1 for r in results if r.success and r.discovered == 0),
+            "healthy": sum(
+                1 for r in results
+                if r.success and (r.discovered > 0 or source_health_modes.get(r.key) == "fetch")
+            ),
+            "degraded": sum(
+                1 for r in results
+                if r.success and r.discovered == 0 and source_health_modes.get(r.key) != "fetch"
+            ),
             "failed": sum(1 for r in results if not r.success),
             "total": len(results),
         },
