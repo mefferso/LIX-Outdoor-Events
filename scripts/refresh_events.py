@@ -188,6 +188,123 @@ class SourceResult:
     error: str | None = None
 
 
+
+class SidearmScheduleParser(HTMLParser):
+    VOID_TAGS = {"area", "base", "br", "col", "embed", "hr", "img", "input", "link", "meta", "param", "source", "track", "wbr"}
+
+    def __init__(self) -> None:
+        super().__init__()
+        self.games: list[dict[str, Any]] = []
+        self._depth = 0
+        self._attrs: dict[str, str] | None = None
+        self._parts: list[str] = []
+
+    def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        attr = {k: (v or "") for k, v in attrs}
+        classes = attr.get("class", "")
+        if self._depth == 0 and "sidearm-schedule-game" in classes:
+            self._depth = 1
+            self._attrs = attr
+            self._parts = []
+            return
+        if self._depth:
+            if tag.lower() not in self.VOID_TAGS:
+                self._depth += 1
+            if tag.lower() == "br":
+                self._parts.append("\n")
+
+    def handle_data(self, data: str) -> None:
+        if self._depth:
+            text = clean_text(data)
+            if text:
+                self._parts.append(text)
+                self._parts.append("\n")
+
+    def handle_endtag(self, tag: str) -> None:
+        if not self._depth:
+            return
+        if tag.lower() not in self.VOID_TAGS:
+            self._depth -= 1
+        if self._depth == 0:
+            lines = [clean_text(x) for x in "".join(self._parts).splitlines() if clean_text(x)]
+            self.games.append({"attrs": self._attrs or {}, "lines": lines})
+            self._attrs = None
+            self._parts = []
+
+MONTH_ABBR = {
+    "jan": 1, "feb": 2, "mar": 3, "apr": 4, "may": 5, "jun": 6,
+    "jul": 7, "aug": 8, "sep": 9, "sept": 9, "oct": 10, "nov": 11, "dec": 12,
+}
+
+def parse_sidearm_football(text: str, source: dict[str, Any]) -> list[dict[str, Any]]:
+    parser = SidearmScheduleParser()
+    parser.feed(text)
+    output: list[dict[str, Any]] = []
+    year = int(source.get("season", now_local().year))
+    team = clean_text(source.get("team_name") or source.get("name") or "College")
+    venue = clean_text(source.get("home_venue"))
+    city = clean_text(source.get("home_city"))
+    state = clean_text(source.get("home_state") or "LA")
+
+    for block in parser.games:
+        lines = block["lines"]
+        joined = " ".join(lines)
+        classes = block["attrs"].get("class", "").lower()
+        is_home = "sidearm-schedule-home-game" in classes or any(line.lower().strip(".") == "vs" for line in lines)
+        if not is_home:
+            continue
+
+        date_match = re.search(r"\b(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Sept|Oct|Nov|Dec)\.?\s+(\d{1,2})\b", joined, re.I)
+        if not date_match:
+            continue
+        month = MONTH_ABBR[date_match.group(1).lower()]
+        day = int(date_match.group(2))
+        event_date = date(year, month, day)
+
+        opponent = ""
+        for i, line in enumerate(lines):
+            if line.lower().strip(".") == "vs":
+                for candidate in lines[i + 1:i + 5]:
+                    low = candidate.lower()
+                    if low in {"tickets", "history", "watch", "listen", "live stats"}:
+                        continue
+                    if re.search(r"\b[A-Z]{2}\b", candidate) and "," in candidate:
+                        continue
+                    opponent = candidate
+                    break
+                if opponent:
+                    break
+        if not opponent:
+            inline = re.search(r"\bvs\.?\s+(.+?)(?:\s{2,}|$)", joined, re.I)
+            if inline:
+                opponent = clean_text(inline.group(1))
+        if not opponent:
+            opponent = "Opponent TBA"
+
+        clock = parse_clock(joined.replace("a.m.", "AM").replace("p.m.", "PM").replace("a.m", "AM").replace("p.m", "PM"))
+        if clock:
+            start = datetime(event_date.year, event_date.month, event_date.day, clock[0], clock[1], tzinfo=TZ).isoformat()
+        else:
+            start = event_date.isoformat()
+
+        output.append({
+            "@type": "Event",
+            "name": f"{team} Football vs. {opponent}",
+            "startDate": start,
+            "description": f"Outdoor home football game at {venue}.",
+            "location": {
+                "@type": "Place",
+                "name": venue,
+                "address": {
+                    "@type": "PostalAddress",
+                    "addressLocality": city,
+                    "addressRegion": state,
+                }
+            },
+            "url": source["url"],
+        })
+    return output
+
 class VisibleTextParser(HTMLParser):
     BLOCK_TAGS = {"p", "div", "section", "article", "h1", "h2", "h3", "li", "br", "dt", "dd"}
 
@@ -354,6 +471,8 @@ def collect_source(source: dict[str, Any]) -> tuple[list[dict[str, Any]], Source
         listing_url = source["url"]
         listing_text = fetch_text(listing_url)
         raw.extend(extract_jsonld_events(listing_text))
+        if source.get("collector") == "sidearm_football":
+            raw.extend(parse_sidearm_football(listing_text, source))
 
         if source.get("collector") in {"listing_jsonld", "listing_houma"}:
             parser = parse_html(listing_text)
