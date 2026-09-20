@@ -1,0 +1,46 @@
+name: Probe Sun Herald Calendar
+
+on:
+  push:
+    paths:
+      - ".github/workflows/probe-sunherald.yml"
+  workflow_dispatch:
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: browser-actions/setup-chrome@v1
+      - name: Probe rendered calendar and network
+        shell: bash
+        run: |
+          set +e
+          CHROME="$(command -v chrome || command -v google-chrome || command -v chromium || command -v chromium-browser)"
+          echo "Chrome: $CHROME"
+          "$CHROME"             --headless=new             --no-sandbox             --disable-gpu             --disable-dev-shm-usage             --virtual-time-budget=15000             --log-net-log=/tmp/netlog.json             --net-log-capture-mode=Everything             --dump-dom "https://www.sunherald.com/events/#/" > /tmp/sunherald.html 2>/tmp/chrome.err
+
+          echo "=== CHROME STDERR ==="
+          tail -n 80 /tmp/chrome.err || true
+
+          echo "=== DOM CLUES ==="
+          grep -Eio '.{0,100}(evvnt|publisher_id|publisherId|calendar-widget|api\.[A-Za-z0-9._/-]+).{0,180}' /tmp/sunherald.html | head -n 120 || true
+
+          echo "=== NETWORK URL CLUES ==="
+          python3 - <<'PY'
+          import json, re
+          from pathlib import Path
+          p=Path("/tmp/netlog.json")
+          if not p.exists():
+              print("No netlog produced")
+              raise SystemExit
+          text=p.read_text(errors="replace")
+          urls=sorted(set(re.findall(r'https?://[^"\\ ]+', text)))
+          wanted=[u for u in urls if any(k in u.lower() for k in ("evvnt","event","calendar","api"))]
+          for u in wanted[:250]:
+              print(u)
+          print("TOTAL_URLS", len(urls), "MATCHED", len(wanted))
+          PY
+
+          echo "=== PUBLISHER IDS ==="
+          grep -Eio 'publisher[_-]?(id)?[^0-9]{0,8}[0-9]{2,10}' /tmp/sunherald.html /tmp/netlog.json | head -n 80 || true
