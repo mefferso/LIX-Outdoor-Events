@@ -125,6 +125,37 @@ class PipelineTests(unittest.TestCase):
         self.assertEqual(event["parish_county"], "Lafourche Parish")
         self.assertEqual(event["idss_area"], "Bayou Parishes")
 
+    def test_evvnt_event_to_schema(self):
+        source = {
+            "name": "Sun Herald Events",
+            "calendar_url": "https://www.sunherald.com/events/#/",
+            "publisher_id": 12345,
+        }
+        raw = {
+            "objectID": "abc123",
+            "title": "Gulf Coast Outdoor Festival",
+            "start_time": "2026-09-26T17:00:00-05:00",
+            "end_time": "2026-09-26T21:00:00-05:00",
+            "summary": "Outdoor festival with live music.",
+            "venue": {
+                "name": "Jones Park",
+                "address_1": "2250 Jones Park Dr",
+                "town": "Gulfport",
+                "region": "MS",
+                "postcode": "39501",
+                "latitude": 30.367,
+                "longitude": -89.094,
+            },
+            "source_broadcast_url": "https://example.com/event/abc123",
+        }
+        event = mod.evvnt_event_to_schema(raw, source)
+        self.assertIsNotNone(event)
+        self.assertEqual(event["name"], "Gulf Coast Outdoor Festival")
+        self.assertEqual(event["location"]["name"], "Jones Park")
+        self.assertEqual(event["location"]["address"]["addressLocality"], "Gulfport")
+        self.assertEqual(event["location"]["geo"]["latitude"], 30.367)
+        self.assertEqual(event["url"], "https://example.com/event/abc123")
+
     def test_duplicate_requires_overlap_and_proximity(self):
         a = {"name":"BlackAmericana Fest", "dates":["2026-09-26"], "latitude":29.9693, "longitude":-90.0853}
         b = {"name":"BlackAmericana Fest Day 2", "dates":["2026-09-26"], "latitude":29.9694, "longitude":-90.0854}
