@@ -66,6 +66,23 @@ class PipelineTests(unittest.TestCase):
         self.assertEqual(event["endDate"][:10], "2026-09-20")
         self.assertEqual(event["location"]["name"], "Barry P. Bonvillain Civic Center")
 
+    def test_sidearm_text_home_football_parser(self):
+        text = """<table>
+        <tr><th>Date</th><th>Time</th><th>At</th><th>Opponent</th><th>Location</th></tr>
+        <tr><td>Sep 26 (Sat)</td><td>6 p.m.</td><td>Home</td><td>Southern Miss (Hall of Fame)</td><td>NEW ORLEANS (Yulman Stadium)</td></tr>
+        <tr><td>Oct 10 (Sat)</td><td>11:00 AM</td><td>Away</td><td>Army</td><td>West Point, NY</td></tr>
+        </table>"""
+        source = {
+            "name":"Tulane Athletics",
+            "url":"https://tulanegreenwave.com/sports/football/schedule/text",
+            "season":2026, "team_name":"Tulane", "home_venue":"Yulman Stadium",
+            "home_city":"New Orleans", "home_state":"LA"
+        }
+        events = mod.parse_sidearm_text_football(text, source)
+        self.assertEqual(len(events), 1)
+        self.assertEqual(events[0]["name"], "Tulane Football vs. Southern Miss")
+        self.assertTrue(events[0]["startDate"].startswith("2026-09-26T18:00"))
+
     def test_sidearm_home_football_parser(self):
         text = """<ul>
         <li class="sidearm-schedule-game sidearm-schedule-home-game">
