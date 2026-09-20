@@ -107,16 +107,30 @@ function eventSymbolType(event) {
 function eventIconSvg(event, className = "event-icon") {
   const type = eventSymbolType(event);
   const attrs = `class="${className}" viewBox="0 0 24 24" aria-hidden="true" focusable="false"`;
+
   const paths = {
-    football: `<svg ${attrs}><path d="M5.2 18.8c-3.2-3.2-2.5-8.9 1.5-12.9s9.7-4.7 12.9-1.5 2.5 8.9-1.5 12.9-9.7 4.7-12.9 1.5Z"/><path d="m7.1 16.9 9.8-9.8M9.3 10.6l4.1 4.1M11 8.9l4.1 4.1M8.2 12.2l1.7 1.7M14.1 8.1l1.7 1.7"/></svg>`,
-    parade: `<svg ${attrs}><path d="M12 2c.4 3 1.9 4.7 4.6 5.1-1.8 1.1-2.5 2.7-2.2 4.9 1.4-.8 2.8-.8 4.2 0-.7 2.6-2.4 4.2-5.1 4.8.6 1.8.1 3.5-1.5 5.2-1.6-1.7-2.1-3.4-1.5-5.2-2.7-.6-4.4-2.2-5.1-4.8 1.4-.8 2.8-.8 4.2 0 .3-2.2-.4-3.8-2.2-4.9C10.1 6.7 11.6 5 12 2Z"/></svg>`,
-    race: `<svg ${attrs}><circle cx="14.5" cy="4.5" r="2"/><path d="m12.8 7.4-2.9 4.1 3.1 2.1 1.8 5.3M9.9 11.5l-4.5 1.1M13 13.6l-3.9 5.1M12.3 8.1l4.2 2.7 2.1-.7"/></svg>`,
-    festival: `<svg ${attrs}><path d="M9 18V6l9-2v12"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="15.5" cy="16" r="2.5"/></svg>`,
-    marine: `<svg ${attrs}><circle cx="12" cy="5" r="2"/><path d="M12 7v12M7 10h10M5 14c1.6 3.5 4 5 7 5s5.4-1.5 7-5M8 19l4 3 4-3"/></svg>`,
-    sports: `<svg ${attrs}><circle cx="12" cy="12" r="8"/><path d="M12 4v16M4 12h16"/></svg>`,
-    other: `<svg ${attrs}><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M8 3v4M16 3v4M4 9h16"/></svg>`
+    football: `<svg ${attrs}><path fill="currentColor" d="M4.5 15.8c0-1.7.7-3.4 2-4.7L11.1 6.5c1.3-1.3 3-2 4.7-2 1.3 0 2.6.4 3.8 1.1l-2.1 2.1-1.6-.5-.5 1.6-3.7 3.7 1.6 1.6 3.7-3.7 1.6-.5-.5-1.6 2.1-2.1c.7 1.2 1.1 2.5 1.1 3.8 0 1.7-.7 3.4-2 4.7l-4.6 4.6c-1.3 1.3-3 2-4.7 2-1.3 0-2.6-.4-3.8-1.1l2.1-2.1 1.6.5.5-1.6 3.7-3.7-1.6-1.6-3.7 3.7-1.6.5.5 1.6-2.1 2.1c-.7-1.2-1.1-2.5-1.1-3.8Z"/></svg>`,
+    parade: `<svg ${attrs}><path fill="currentColor" d="M12 2c1 2.8 2.8 4.5 5.5 5-2 1.3-2.9 3.2-2.6 5.6 1.5-.9 3.1-.9 4.8 0-.8 3-2.8 4.8-5.8 5.5.7 2.1.1 4.1-1.9 6-2-1.9-2.6-3.9-1.9-6-3-.7-5-2.5-5.8-5.5 1.7-.9 3.3-.9 4.8 0 .3-2.4-.6-4.3-2.6-5.6 2.7-.5 4.5-2.2 5.5-5Z"/></svg>`,
+    race: `<svg ${attrs}><path fill="currentColor" d="M15.2 5.2a2.2 2.2 0 1 1 0-4.4 2.2 2.2 0 0 1 0 4.4ZM8.2 22l2.8-5.8-2.6-2.1-3.3 1 .6-2 3.5-1.1 2.2-3.2 2.8 1.1 2.9 2.1 2-.6-.5 1.8-2.6.8-2.8-1.8-1.4 2 1.1 3.2 1.3 3.6h-2.2l-1.5-4.1-1.8 2.4L10.4 22H8.2Z"/></svg>`,
+    festival: `<svg ${attrs}><path fill="currentColor" d="M10 4v10.6A3.4 3.4 0 1 1 8 11.5V6.1l8-1.9v9.4a3.4 3.4 0 1 1-2-3.1V4.7L10 5.6V4Z"/></svg>`,
+    marine: `<svg ${attrs}><path fill="currentColor" d="M11 3a2 2 0 1 1 2 0v7h4v2h-4v6.2l2.8-1.7 1 1.7-4.8 2.9-4.8-2.9 1-1.7 2.8 1.7V12H7v-2h4V3Z"/></svg>`,
+    sports: `<svg ${attrs}><path fill="currentColor" d="M12 2a10 10 0 1 1 0 20 10 10 0 0 1 0-20Zm-1 2.3A8 8 0 0 0 5 8l2.2.5L8.4 6l2.6-1.7Zm2 0 2.6 1.7 1.2 2.5L19 8a8 8 0 0 0-6-3.7ZM4.3 10a8 8 0 0 0 1.2 6l1.9-1.6-.3-2.4L4.3 10Zm15.4 0-2.8 2 .3 2.4 1.9 1.6a8 8 0 0 0 1.2-6ZM9.2 18.7a8 8 0 0 0 5.6 0l-2.8-2.1-2.8 2.1Z"/></svg>`,
+    other: `<svg ${attrs}><path fill="currentColor" d="M7 2h2v2h6V2h2v2h2a2 2 0 0 1 2 2v13a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V6a2 2 0 0 1 2-2h2V2Zm12 8H5v9a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-9Z"/></svg>`
   };
+
   return paths[type] || paths.other;
+}
+
+function markerColorBySymbol(type) {
+  return ({
+    football: "#7c2d12",
+    sports: "#14532d",
+    parade: "#7c3aed",
+    race: "#0f766e",
+    festival: "#b45309",
+    marine: "#1d4ed8",
+    other: "#475569"
+  })[type] || "#475569";
 }
 
 function popupHtml(event) {
@@ -136,12 +150,19 @@ function popupHtml(event) {
 }
 
 function markerIcon(event) {
+  const type = eventSymbolType(event);
+  const color = markerColorBySymbol(type);
+
   return L.divIcon({
     className: "",
-    html: `<div class="marker-pin ${escapeHtml(event.importance)}"><span class="marker-symbol">${eventIconSvg(event, "event-icon marker-icon")}</span></div>`,
-    iconSize: [26,26],
-    iconAnchor: [13,24],
-    popupAnchor: [0,-21]
+    html: `
+      <div class="marker-badge" style="background:${color}">
+        ${eventIconSvg(event, "event-icon marker-icon")}
+      </div>
+    `,
+    iconSize: [30,30],
+    iconAnchor: [15,15],
+    popupAnchor: [0,-14]
   });
 }
 
