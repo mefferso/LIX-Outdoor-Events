@@ -35,6 +35,27 @@ class PipelineTests(unittest.TestCase):
         mod.classify_event(event)
         self.assertFalse(mod.is_idss_relevant(event))
 
+    def test_houma_html_fallback(self):
+        text = """<html><body>
+        <h1>Hero Fest</h1>
+        <div>SEPTEMBER 18–20, 2026</div>
+        <p>Outdoor and indoor venues with live music, rides, food, and a 5K run.</p>
+        <h3>calendar_month DATE</h3>
+        <div>September 18–20, 2026</div>
+        <h3>location_on LOCATION</h3>
+        <div>Barry P. Bonvillain Civic Center</div>
+        <div>346 Civic Center Blvd</div>
+        <div>Houma, LA</div>
+        <div>70360</div>
+        <h3>attach_money PRICE</h3>
+        </body></html>"""
+        event = mod.parse_houma_event(text, "https://explorehouma.com/events/hero-fest/")
+        self.assertIsNotNone(event)
+        self.assertEqual(event["name"], "Hero Fest")
+        self.assertEqual(event["startDate"][:10], "2026-09-18")
+        self.assertEqual(event["endDate"][:10], "2026-09-20")
+        self.assertEqual(event["location"]["name"], "Barry P. Bonvillain Civic Center")
+
     def test_duplicate_requires_overlap_and_proximity(self):
         a = {"name":"BlackAmericana Fest", "dates":["2026-09-26"], "latitude":29.9693, "longitude":-90.0853}
         b = {"name":"BlackAmericana Fest Day 2", "dates":["2026-09-26"], "latitude":29.9694, "longitude":-90.0854}
