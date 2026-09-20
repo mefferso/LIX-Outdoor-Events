@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-09-20T09:26:41-05:00",
-  "event_count": 8,
+  "generated_at": "2026-09-20T09:29:19-05:00",
+  "event_count": 7,
   "manual_event_count": 6,
-  "automated_candidate_count": 3,
+  "automated_candidate_count": 2,
   "collection_window_start": "2026-09-20",
   "collection_window_end": "2026-09-27",
   "timezone": "America/Chicago",
@@ -42,7 +42,7 @@
       "success": true,
       "detail_links": 35,
       "discovered": 24,
-      "accepted": 2,
+      "accepted": 1,
       "error": null
     },
     {
