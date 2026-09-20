@@ -11,36 +11,27 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - uses: browser-actions/setup-chrome@v1
-      - name: Probe rendered calendar and network
+      - name: Render Sun Herald calendar through external reader
         shell: bash
         run: |
           set +e
-          CHROME="$(command -v chrome || command -v google-chrome || command -v chromium || command -v chromium-browser)"
-          echo "Chrome: $CHROME"
-          "$CHROME"             --headless=new             --no-sandbox             --disable-gpu             --disable-dev-shm-usage             --virtual-time-budget=15000             --log-net-log=/tmp/netlog.json             --net-log-capture-mode=Everything             --dump-dom "https://www.sunherald.com/events/#/" > /tmp/sunherald.html 2>/tmp/chrome.err
+          curl -L --connect-timeout 10 --max-time 90 \
+            -H 'X-With-Iframe: true' \
+            -H 'X-With-Shadow-Dom: true' \
+            -H 'X-Respond-Timing: mutation-idle' \
+            -H 'X-Engine: browser' \
+            -H 'X-Timeout: 60' \
+            -o /tmp/rendered.txt \
+            'https://r.jina.ai/https://www.sunherald.com/events/'
 
-          echo "=== CHROME STDERR ==="
-          tail -n 80 /tmp/chrome.err || true
+          echo "=== SIZE ==="
+          wc -c /tmp/rendered.txt || true
 
-          echo "=== DOM CLUES ==="
-          grep -Eio '.{0,100}(evvnt|publisher_id|publisherId|calendar-widget|api\.[A-Za-z0-9._/-]+).{0,180}' /tmp/sunherald.html | head -n 120 || true
+          echo "=== EVVNT / API CLUES ==="
+          grep -Eio '.{0,120}(evvnt|publisher[_-]?id|home_page_events|_evDiscoveryPath|discovery\.evvnt\.com|api[_-]?key).{0,240}' /tmp/rendered.txt | head -n 200 || true
 
-          echo "=== NETWORK URL CLUES ==="
-          python3 - <<'PY'
-          import json, re
-          from pathlib import Path
-          p=Path("/tmp/netlog.json")
-          if not p.exists():
-              print("No netlog produced")
-              raise SystemExit
-          text=p.read_text(errors="replace")
-          urls=sorted(set(re.findall(r'https?://[^"\\ ]+', text)))
-          wanted=[u for u in urls if any(k in u.lower() for k in ("evvnt","event","calendar","api"))]
-          for u in wanted[:250]:
-              print(u)
-          print("TOTAL_URLS", len(urls), "MATCHED", len(wanted))
-          PY
+          echo "=== POSSIBLE PUBLISHER IDS ==="
+          grep -Eio '(publisher[_-]?id|api/publisher/)[^0-9]{0,12}[0-9]{2,10}' /tmp/rendered.txt | sort -u | head -n 100 || true
 
-          echo "=== PUBLISHER IDS ==="
-          grep -Eio 'publisher[_-]?(id)?[^0-9]{0,8}[0-9]{2,10}' /tmp/sunherald.html /tmp/netlog.json | head -n 80 || true
+          echo "=== FIRST 120 LINES ==="
+          sed -n '1,120p' /tmp/rendered.txt || true
