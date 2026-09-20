@@ -11,25 +11,24 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - name: Probe CitySpark escaped-fragment date routing through renderer
+      - name: Probe encoded CitySpark hash routes
         shell: bash
         run: |
           set +e
           urls=(
-            "https://www.sunherald.com/events/"
-            "https://www.sunherald.com/events/?_escaped_fragment_=!/show?start=2026-09-25"
-            "https://www.sunherald.com/events/?_escaped_fragment_=/show?start=2026-09-25"
+            "https://r.jina.ai/https://www.sunherald.com/events/%23/show?start=2026-09-25"
+            "https://r.jina.ai/https://www.sunherald.com/events/%23%2Fshow%3Fstart%3D2026-09-25"
+            "https://r.jina.ai/http://www.sunherald.com/events/%23/show?start=2026-09-25"
           )
-          for target in "${urls[@]}"; do
-            echo "=== TARGET $target ==="
-            enc_target="${target// /%20}"
+          for u in "${urls[@]}"; do
+            echo "=== $u ==="
             curl -sS -L --connect-timeout 10 --max-time 90 \
               -H 'X-Respond-Timing: mutation-idle' \
               -H 'X-Engine: browser' \
               -H 'X-Timeout: 60' \
-              -o /tmp/rendered.txt \
-              "https://r.jina.ai/$enc_target"
+              -o /tmp/rendered.txt "$u"
             echo "SIZE $(wc -c < /tmp/rendered.txt)"
-            grep -E '^(Sunday|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday), Sep|https://www\.sunherald\.com/events/#/details/' /tmp/rendered.txt | head -n 80 || true
+            sed -n '1,20p' /tmp/rendered.txt
+            grep -E '^(Sunday|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday), Sep|https://www\.sunherald\.com/events/#/details/' /tmp/rendered.txt | head -n 100 || true
             echo
           done
