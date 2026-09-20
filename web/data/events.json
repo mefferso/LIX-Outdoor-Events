@@ -1,13 +1,39 @@
 [
   {
+    "id": "westbank-heritage-festival-2026-09-20-184d111",
+    "name": "Westbank Heritage Festival",
+    "dates": [
+      "2026-09-20"
+    ],
+    "start": "2026-09-20T00:00:00-05:00",
+    "end": "2026-09-20T00:00:00-05:00",
+    "all_day": true,
+    "latitude": 29.905441,
+    "longitude": -90.16318,
+    "venue": "The Alario Center",
+    "address": "2000 Segnette Blvd, Westwego, LA, LA 70094",
+    "city": "Westwego, LA",
+    "state": "LA",
+    "category": "festival",
+    "outdoor_status": "outdoor",
+    "importance": "moderate",
+    "location_confidence": 0.96,
+    "outdoor_confidence": 0.78,
+    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
+    "source_name": "NewOrleans.com",
+    "source_url": "https://www.neworleans.com/event/westbank-heritage-festival/200560/"
+  },
+  {
     "id": "audubon-celebracion-latina-2026-09-20",
     "name": "Celebración Latina",
-    "dates": ["2026-09-20"],
+    "dates": [
+      "2026-09-20"
+    ],
     "start": "2026-09-20T10:00:00-05:00",
     "end": "2026-09-20T17:00:00-05:00",
     "all_day": false,
     "latitude": 29.9233,
-    "longitude": -90.1310,
+    "longitude": -90.131,
     "venue": "Audubon Zoo",
     "address": "6500 Magazine St, New Orleans, LA 70118",
     "city": "New Orleans",
@@ -24,12 +50,17 @@
   {
     "id": "international-arts-festival-nola-2026",
     "name": "International Arts Festival: NOLA 2026",
-    "dates": ["2026-09-24","2026-09-25","2026-09-26","2026-09-27"],
+    "dates": [
+      "2026-09-24",
+      "2026-09-25",
+      "2026-09-26",
+      "2026-09-27"
+    ],
     "start": "2026-09-24T09:00:00-05:00",
     "end": "2026-09-27T22:00:00-05:00",
     "all_day": true,
     "latitude": 30.0389,
-    "longitude": -90.0200,
+    "longitude": -90.02,
     "venue": "Public Market at South Shore Harbor",
     "address": "South Shore Harbor, New Orleans, LA",
     "city": "New Orleans",
@@ -46,7 +77,9 @@
   {
     "id": "blackamericana-fest-2026-09-25",
     "name": "BlackAmericana Fest — Opening Night",
-    "dates": ["2026-09-25"],
+    "dates": [
+      "2026-09-25"
+    ],
     "start": "2026-09-25T16:30:00-05:00",
     "end": "2026-09-25T22:00:00-05:00",
     "all_day": false,
@@ -66,31 +99,11 @@
     "source_url": "https://www.eventbrite.com/e/blackamericana-fest-2026-still-we-sing-tickets-1992837207734"
   },
   {
-    "id": "blackamericana-fest-2026-09-26",
-    "name": "BlackAmericana Fest — Day 2",
-    "dates": ["2026-09-26"],
-    "start": "2026-09-26T14:00:00-05:00",
-    "end": "2026-09-26T23:00:00-05:00",
-    "all_day": false,
-    "latitude": 29.9693,
-    "longitude": -90.0853,
-    "venue": "The Broadside",
-    "address": "600 N Broad St, New Orleans, LA 70119",
-    "city": "New Orleans",
-    "state": "LA",
-    "category": "festival",
-    "outdoor_status": "partial",
-    "importance": "moderate",
-    "location_confidence": 0.98,
-    "outdoor_confidence": 0.96,
-    "weather_exposure_notes": "Multi-stage festival with a major outdoor component at The Broadside.",
-    "source_name": "BlackAmericana Fest",
-    "source_url": "https://www.eventbrite.com/e/blackamericana-fest-2026-still-we-sing-tickets-1992837207734"
-  },
-  {
     "id": "locals-fest-2026-09-26",
     "name": "L.O.C.A.L.S. Fest",
-    "dates": ["2026-09-26"],
+    "dates": [
+      "2026-09-26"
+    ],
     "start": "2026-09-26T11:00:00-05:00",
     "end": null,
     "all_day": false,
@@ -110,13 +123,39 @@
     "source_url": "https://localsfestnola.com/"
   },
   {
+    "id": "blackamericana-fest-2026-09-26",
+    "name": "BlackAmericana Fest — Day 2",
+    "dates": [
+      "2026-09-26"
+    ],
+    "start": "2026-09-26T14:00:00-05:00",
+    "end": "2026-09-26T23:00:00-05:00",
+    "all_day": false,
+    "latitude": 29.9693,
+    "longitude": -90.0853,
+    "venue": "The Broadside",
+    "address": "600 N Broad St, New Orleans, LA 70119",
+    "city": "New Orleans",
+    "state": "LA",
+    "category": "festival",
+    "outdoor_status": "partial",
+    "importance": "moderate",
+    "location_confidence": 0.98,
+    "outdoor_confidence": 0.96,
+    "weather_exposure_notes": "Multi-stage festival with a major outdoor component at The Broadside.",
+    "source_name": "BlackAmericana Fest",
+    "source_url": "https://www.eventbrite.com/e/blackamericana-fest-2026-still-we-sing-tickets-1992837207734"
+  },
+  {
     "id": "lsu-texas-am-football-2026-09-26",
     "name": "LSU Football vs. Texas A&M",
-    "dates": ["2026-09-26"],
+    "dates": [
+      "2026-09-26"
+    ],
     "start": "2026-09-26T18:30:00-05:00",
     "end": null,
     "all_day": false,
-    "latitude": 30.4120,
+    "latitude": 30.412,
     "longitude": -91.1838,
     "venue": "Tiger Stadium",
     "address": "North Stadium Rd, Baton Rouge, LA 70803",

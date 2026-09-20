@@ -1,11 +1,54 @@
 {
-  "generated_at": "2026-09-20T08:55:00-05:00",
-  "event_count": 6,
+  "generated_at": "2026-09-20T09:18:04-05:00",
+  "event_count": 7,
+  "manual_event_count": 6,
+  "automated_candidate_count": 1,
   "collection_window_start": "2026-09-20",
   "collection_window_end": "2026-09-27",
   "timezone": "America/Chicago",
   "boundary_source": "NOAA/NWS reference map FeatureServer",
-  "boundary_dataset_valid_date": "2026-04-16",
-  "pipeline_state": "seeded-manual-mvp",
-  "notes": "Initial operational MVP. Automated multi-source collection is the next implementation stage."
+  "pipeline_state": "automated-multi-source-v1",
+  "sources": [
+    {
+      "key": "neworleans",
+      "name": "NewOrleans.com",
+      "success": true,
+      "discovered": 30,
+      "accepted": 1,
+      "error": null
+    },
+    {
+      "key": "visitbatonrouge",
+      "name": "Visit Baton Rouge",
+      "success": true,
+      "discovered": 0,
+      "accepted": 0,
+      "error": null
+    },
+    {
+      "key": "northshore",
+      "name": "Louisiana Northshore",
+      "success": true,
+      "discovered": 0,
+      "accepted": 0,
+      "error": null
+    },
+    {
+      "key": "houma",
+      "name": "Explore Houma",
+      "success": true,
+      "discovered": 0,
+      "accepted": 0,
+      "error": null
+    },
+    {
+      "key": "msgulfcoast",
+      "name": "Coastal Mississippi",
+      "success": true,
+      "discovered": 0,
+      "accepted": 0,
+      "error": null
+    }
+  ],
+  "notes": "Automated source collection is merged with a curated safety-net file. Unknown indoor/outdoor events and points outside the LIX CWA are excluded."
 }
