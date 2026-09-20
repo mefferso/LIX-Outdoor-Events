@@ -65,8 +65,8 @@
     {
       "key": "tulane_football",
       "name": "Tulane Athletics",
-      "url": "https://tulanegreenwave.com/sports/football/schedule",
-      "collector": "sidearm_football",
+      "url": "https://tulanegreenwave.com/sports/football/schedule/text",
+      "collector": "sidearm_text_football",
       "season": 2026,
       "team_name": "Tulane",
       "home_venue": "Yulman Stadium",
@@ -106,6 +106,18 @@
       "season": 2026,
       "team_name": "Southern",
       "home_venue": "A.W. Mumford Stadium",
+      "home_city": "Baton Rouge",
+      "home_state": "LA",
+      "enabled": true
+    },
+    {
+      "key": "lsu_football",
+      "name": "LSU Athletics",
+      "url": "https://lsusports.net/sports/fb/schedule",
+      "collector": "page_jsonld",
+      "season": 2026,
+      "team_name": "LSU",
+      "home_venue": "Tiger Stadium",
       "home_city": "Baton Rouge",
       "home_state": "LA",
       "enabled": true
