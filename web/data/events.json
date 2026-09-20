@@ -149,6 +149,30 @@
     "source_url": "https://www.eventbrite.com/e/blackamericana-fest-2026-still-we-sing-tickets-1992837207734"
   },
   {
+    "id": "nicholls-state-university-vs-lamar-2026-09-26-8f6fdc8",
+    "name": "Nicholls State University Vs Lamar",
+    "dates": [
+      "2026-09-26"
+    ],
+    "start": "2026-09-26T15:00:00-05:00",
+    "end": "2026-09-26T15:00:00-05:00",
+    "all_day": false,
+    "latitude": 29.7958,
+    "longitude": -90.802,
+    "venue": "John L. Guidry Stadium",
+    "address": "Thibodaux, La.",
+    "city": "Thibodaux",
+    "state": "LA",
+    "category": "other",
+    "outdoor_status": "outdoor",
+    "importance": "major",
+    "location_confidence": 0.99,
+    "outdoor_confidence": 0.99,
+    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
+    "source_name": "Nicholls Athletics",
+    "source_url": "https://geauxcolonels.com/sports/football/schedule/2026"
+  },
+  {
     "id": "lsu-texas-am-football-2026-09-26",
     "name": "LSU Football vs. Texas A&M",
     "dates": [

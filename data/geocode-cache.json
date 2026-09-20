@@ -24,5 +24,15 @@
     "latitude": 29.4466133,
     "longitude": -90.5983495,
     "display_name": "Chauvin, Terrebonne Parish, Louisiana, 70344, United States"
+  },
+  "natchitoches, la": {
+    "latitude": 31.7606732,
+    "longitude": -93.0860209,
+    "display_name": "Natchitoches, Natchitoches Parish, Louisiana, United States"
+  },
+  "jackson, ms": {
+    "latitude": 32.2998686,
+    "longitude": -90.1830408,
+    "display_name": "Jackson, Hinds County, Mississippi, United States"
   }
 }
