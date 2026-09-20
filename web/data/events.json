@@ -173,6 +173,30 @@
     "source_url": "https://geauxcolonels.com/sports/football/schedule/2026"
   },
   {
+    "id": "tulane-football-vs-southern-miss-2026-09-26-a467815",
+    "name": "Tulane Football vs. Southern Miss",
+    "dates": [
+      "2026-09-26"
+    ],
+    "start": "2026-09-26T18:00:00-05:00",
+    "end": null,
+    "all_day": false,
+    "latitude": 29.9445,
+    "longitude": -90.1179,
+    "venue": "Yulman Stadium",
+    "address": "New Orleans, LA",
+    "city": "New Orleans",
+    "state": "LA",
+    "category": "sports",
+    "outdoor_status": "outdoor",
+    "importance": "major",
+    "location_confidence": 0.99,
+    "outdoor_confidence": 0.99,
+    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
+    "source_name": "Tulane Athletics",
+    "source_url": "https://tulanegreenwave.com/sports/football/schedule/text"
+  },
+  {
     "id": "lsu-texas-am-football-2026-09-26",
     "name": "LSU Football vs. Texas A&M",
     "dates": [
