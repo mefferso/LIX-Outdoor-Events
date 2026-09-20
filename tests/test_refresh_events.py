@@ -184,6 +184,31 @@ class PipelineTests(unittest.TestCase):
         self.assertAlmostEqual(event["location"]["geo"]["latitude"], 30.3949046)
         self.assertIn("18:35:00", event["startDate"])
 
+    def test_cityspark_jsonp_wrapper_is_accepted(self):
+        outer = {
+            "Content": (
+                '<script>window.csCard("#x", '
+                '{"Event":{"Name":"Test Event","Venue":"Test Park"},'
+                '"Slug":"SunHerald","allowUserSubmission":true});</script>'
+            )
+        }
+        wrapped = "/**/ typeof cb === 'function' && cb(" + json.dumps(outer) + ");"
+        card = mod.parse_cityspark_widget_payload(wrapped)
+        self.assertIsNotNone(card)
+        self.assertEqual(card["Event"]["Name"], "Test Event")
+
+    def test_indoor_exhibit_walk_word_does_not_imply_outdoor_race(self):
+        event = {
+            "name": "Jurassic Quest",
+            "description": "Walk among giant dinosaurs in an immersive exhibit.",
+            "venue": "Mississippi Coast Convention Center",
+            "address": "2350 Beach Blvd, Biloxi, MS",
+        }
+        mod.classify_event(event)
+        self.assertNotEqual(event["category"], "race_parade")
+        self.assertEqual(event["outdoor_status"], "unknown")
+        self.assertFalse(mod.is_idss_relevant(event))
+
     def test_cityspark_all_day_occurrence_uses_calendar_date(self):
         card = {
             "Event": {
