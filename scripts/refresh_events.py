@@ -38,13 +38,14 @@ OUTPUT_META = ROOT / "web" / "data" / "build-metadata.json"
 
 OUTDOOR_POSITIVE = (
     "outdoor", "outside", "open-air", "open air", "park", "parade", "race", "5k", "10k",
-    "marathon", "festival", "street fest", "block party", "tailgate", "stadium", "fair",
+    "marathon", "street fest", "block party", "tailgate", "stadium",
     "waterfront", "lakefront", "beach", "pier", "marina", "boat", "fishing", "golf",
-    "farmers market", "market", "walk", "run", "bike", "cycling", "field"
+    "walk", "run", "bike", "cycling", "field"
 )
 INDOOR_NEGATIVE = (
     "museum", "theater", "theatre", "ballroom", "conference room", "auditorium",
-    "indoor", "gallery", "library", "cinema", "arena", "convention center"
+    "indoor", "gallery", "library", "cinema", "arena", "convention center",
+    "event center", "events center", "alario center"
 )
 SIGNIFICANT_POSITIVE = (
     "festival", "fest", "parade", "marathon", "half marathon", "10k", "5k", "race",
