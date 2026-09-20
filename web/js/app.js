@@ -6,7 +6,6 @@ const CWA_URL = "https://mapservices.weather.noaa.gov/static/rest/services/nws_r
 const state = {
   dayKey: null,
   category: "all",
-  majorOnly: false,
   events: [],
   metadata: null,
   markersById: new Map(),
@@ -59,7 +58,6 @@ function filteredEvents() {
   return state.events
     .filter(e => eventOccursOn(e, state.dayKey))
     .filter(e => state.category === "all" || e.category === state.category)
-    .filter(e => !state.majorOnly || e.importance === "major")
     .sort((a,b) => (a.start || "").localeCompare(b.start || "") || a.name.localeCompare(b.name));
 }
 
@@ -326,12 +324,6 @@ function renderEvents() {
             <span class="event-detail-value">${escapeHtml(event.city)}</span>
           </div>
         ` : ""}
-        ${event.idss_area ? `
-          <div class="event-detail-row">
-            <span class="event-detail-label">Area:</span>
-            <span class="event-detail-value">${escapeHtml(event.idss_area)}</span>
-          </div>
-        ` : ""}
         ${event.parish_county ? `
           <div class="event-detail-row">
             <span class="event-detail-label">Parish / County:</span>
@@ -401,10 +393,6 @@ function bindFilters() {
       state.category = btn.dataset.category;
       renderEvents();
     });
-  });
-  document.getElementById("majorOnly").addEventListener("change", e => {
-    state.majorOnly = e.target.checked;
-    renderEvents();
   });
 }
 
