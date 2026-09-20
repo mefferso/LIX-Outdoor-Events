@@ -667,7 +667,18 @@ CITYSPARK_DETAIL_RE = re.compile(
 
 def parse_cityspark_widget_payload(text: str) -> dict[str, Any] | None:
     """Extract the JSON object passed to window.csCard() from CitySpark widget HTML."""
-    payload = json.loads(text)
+    try:
+        payload = json.loads(text)
+    except json.JSONDecodeError:
+        # CitySpark's CDN sometimes serves the same response JSONP-wrapped,
+        # even when no callback was requested. Decode the first JSON object.
+        brace = text.find("{")
+        if brace < 0:
+            return None
+        try:
+            payload, _ = json.JSONDecoder().raw_decode(text[brace:])
+        except json.JSONDecodeError:
+            return None
     content = payload.get("Content")
     if not isinstance(content, str):
         return None
@@ -1112,20 +1123,37 @@ def derive_operational_context(event: dict[str, Any]) -> None:
 def classify_event(event: dict[str, Any]) -> None:
     text = " ".join(clean_text(event.get(k)) for k in ("name", "description", "venue", "address")).lower()
     name_text = clean_text(event.get("name")).lower()
+    location_text = " ".join(clean_text(event.get(k)) for k in ("name", "venue", "address")).lower()
     category = "other"
     if str(event.get("_source_key", "")).endswith("_football"):
         category = "sports"
     elif any(contains_term(name_text, word) for word in ("festival", "fest", "fair", "carnival")):
         category = "festival"
+    elif any(
+        contains_term(name_text, word)
+        for word in ("parade", "marathon", "half marathon", "5k", "10k", "race", "run", "walk", "cycling", "bike")
+    ):
+        # Race/walk/run terms are intentionally name-based. Generic prose such
+        # as "walk among the dinosaurs" must not turn an exhibit into a race.
+        category = "race_parade"
     else:
         for label, words in CATEGORY_RULES:
+            if label == "race_parade":
+                continue
             if any(contains_term(text, word) for word in words):
                 category = label
                 break
     event["category"] = category
 
     venue_status = event.pop("_venue_outdoor_status", None)
-    has_outdoor = any(contains_term(text, word) for word in OUTDOOR_POSITIVE)
+    strong_outdoor_terms = tuple(
+        word for word in OUTDOOR_POSITIVE
+        if word not in {"park", "walk", "run", "field"}
+    )
+    has_outdoor = (
+        any(contains_term(text, word) for word in strong_outdoor_terms)
+        or any(contains_term(location_text, word) for word in ("park", "walk", "run", "field"))
+    )
     has_indoor = any(contains_term(text, word) for word in INDOOR_NEGATIVE)
     if venue_status:
         outdoor = venue_status
