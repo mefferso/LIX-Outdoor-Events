@@ -184,7 +184,168 @@ class SourceResult:
     success: bool
     discovered: int = 0
     accepted: int = 0
+    detail_links: int = 0
     error: str | None = None
+
+
+class VisibleTextParser(HTMLParser):
+    BLOCK_TAGS = {"p", "div", "section", "article", "h1", "h2", "h3", "li", "br", "dt", "dd"}
+
+    def __init__(self) -> None:
+        super().__init__()
+        self.parts: list[str] = []
+        self.h1: list[str] = []
+        self._h1_depth = 0
+
+    def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        tag = tag.lower()
+        if tag == "h1":
+            self._h1_depth += 1
+        if tag in self.BLOCK_TAGS:
+            self.parts.append("\n")
+
+    def handle_endtag(self, tag: str) -> None:
+        tag = tag.lower()
+        if tag == "h1" and self._h1_depth:
+            self._h1_depth -= 1
+        if tag in self.BLOCK_TAGS:
+            self.parts.append("\n")
+
+    def handle_data(self, data: str) -> None:
+        text = clean_text(data)
+        if not text:
+            return
+        self.parts.append(text)
+        if self._h1_depth:
+            self.h1.append(text)
+
+    def lines(self) -> list[str]:
+        text = " ".join(self.parts)
+        text = re.sub(r"\s*\n\s*", "\n", text)
+        return [clean_text(x) for x in text.splitlines() if clean_text(x)]
+
+MONTHS = {
+    name.lower(): number for number, name in enumerate(
+        ["", "January", "February", "March", "April", "May", "June",
+         "July", "August", "September", "October", "November", "December"]
+    ) if number
+}
+
+def parse_human_date_range(text: str) -> tuple[str | None, str | None]:
+    text = clean_text(text).replace("–", "-").replace("—", "-")
+    # September 26, 2026
+    single = re.search(
+        r"\b(" + "|".join(MONTHS) + r")\s+(\d{1,2}),\s*(20\d{2})\b",
+        text, re.I
+    )
+    if not single:
+        return None, None
+    month = MONTHS[single.group(1).lower()]
+    day1 = int(single.group(2))
+    year = int(single.group(3))
+
+    # September 18-20, 2026
+    range_match = re.search(
+        r"\b(" + "|".join(MONTHS) + r")\s+(\d{1,2})\s*-\s*(\d{1,2}),\s*(20\d{2})\b",
+        text, re.I
+    )
+    if range_match:
+        month = MONTHS[range_match.group(1).lower()]
+        start = date(int(range_match.group(4)), month, int(range_match.group(2)))
+        end = date(int(range_match.group(4)), month, int(range_match.group(3)))
+        return start.isoformat(), end.isoformat()
+
+    d = date(year, month, day1)
+    return d.isoformat(), d.isoformat()
+
+def parse_clock(text: str) -> tuple[int, int] | None:
+    m = re.search(r"\b(\d{1,2})(?::(\d{2}))?\s*(AM|PM)\b", text, re.I)
+    if not m:
+        return None
+    hour = int(m.group(1))
+    minute = int(m.group(2) or 0)
+    if m.group(3).upper() == "PM" and hour != 12:
+        hour += 12
+    if m.group(3).upper() == "AM" and hour == 12:
+        hour = 0
+    return hour, minute
+
+def parse_houma_event(text: str, detail_url: str) -> dict[str, Any] | None:
+    parser = VisibleTextParser()
+    parser.feed(text)
+    lines = parser.lines()
+    name = clean_text(" ".join(parser.h1))
+    if not name:
+        return None
+
+    name_index = next((i for i, line in enumerate(lines) if normalized_name(line) == normalized_name(name)), 0)
+    body = lines[name_index + 1:]
+
+    start_date = end_date = None
+    date_index = None
+    for i, line in enumerate(body[:20]):
+        start_date, end_date = parse_human_date_range(line)
+        if start_date:
+            date_index = i
+            break
+    if not start_date:
+        return None
+
+    # Prefer a clock shown in the DATE section.
+    start_clock = None
+    for line in body[(date_index or 0): (date_index or 0) + 15]:
+        start_clock = parse_clock(line)
+        if start_clock:
+            break
+
+    start_dt = datetime.fromisoformat(start_date).replace(tzinfo=TZ)
+    if start_clock:
+        start_dt = start_dt.replace(hour=start_clock[0], minute=start_clock[1])
+    end_dt = datetime.fromisoformat(end_date or start_date).replace(tzinfo=TZ)
+    if end_date == start_date and start_clock:
+        end_dt = start_dt
+
+    location_index = next((i for i, line in enumerate(body) if line.upper() == "LOCATION" or line.upper().endswith(" LOCATION")), None)
+    location_lines: list[str] = []
+    if location_index is not None:
+        for line in body[location_index + 1: location_index + 8]:
+            upper = line.upper()
+            if upper in {"PRICE", "INFO", "REGISTRATION"} or upper.endswith(" PRICE") or upper.endswith(" INFO") or line.lower().startswith("view all events"):
+                break
+            location_lines.append(line)
+
+    venue = location_lines[0] if location_lines else ""
+    address_lines = location_lines[1:] if len(location_lines) > 1 else []
+    city = state = ""
+    for line in address_lines:
+        m = re.search(r"^(.+?),\s*(LA|MS)\b", line, re.I)
+        if m:
+            city = clean_text(m.group(1))
+            state = m.group(2).upper()
+
+    description_stop = location_index if location_index is not None else min(len(body), 35)
+    description = " ".join(body[:description_stop])
+    address = ", ".join(address_lines)
+
+    return {
+        "@type": "Event",
+        "name": name,
+        "startDate": start_dt.isoformat(),
+        "endDate": end_dt.isoformat(),
+        "description": description,
+        "location": {
+            "@type": "Place",
+            "name": venue,
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": address_lines[0] if address_lines else "",
+                "addressLocality": city,
+                "addressRegion": state,
+                "postalCode": next((x for x in address_lines if re.fullmatch(r"\d{5}", x)), ""),
+            }
+        },
+        "url": detail_url,
+    }
 
 def collect_source(source: dict[str, Any]) -> tuple[list[dict[str, Any]], SourceResult]:
     key = source["key"]
@@ -196,7 +357,7 @@ def collect_source(source: dict[str, Any]) -> tuple[list[dict[str, Any]], Source
         listing_text = fetch_text(listing_url)
         raw.extend(extract_jsonld_events(listing_text))
 
-        if source.get("collector") == "listing_jsonld":
+        if source.get("collector") in {"listing_jsonld", "listing_houma"}:
             parser = parse_html(listing_text)
             contains_any = source.get("href_contains_any")
             if not contains_any:
@@ -215,10 +376,16 @@ def collect_source(source: dict[str, Any]) -> tuple[list[dict[str, Any]], Source
                     continue
                 seen.add(canonical)
                 links.append(canonical)
+            result.detail_links = len(links)
             for detail_url in links[: int(source.get("max_detail_pages", 30))]:
                 try:
                     detail_text = fetch_text(detail_url)
-                    for event in extract_jsonld_events(detail_text):
+                    detail_events = extract_jsonld_events(detail_text)
+                    if not detail_events and source.get("collector") == "listing_houma":
+                        fallback = parse_houma_event(detail_text, detail_url)
+                        if fallback:
+                            detail_events = [fallback]
+                    for event in detail_events:
                         event.setdefault("url", detail_url)
                         raw.append(event)
                 except Exception as exc:
@@ -563,7 +730,7 @@ def main() -> int:
             accepted_auto.append(finalize(event))
             status.accepted += 1
         results.append(status)
-        print(f'[source:{status.key}] success={status.success} discovered={status.discovered} accepted={status.accepted} error={status.error or "-"}')
+        print(f'[source:{status.key}] success={status.success} detail_links={status.detail_links} discovered={status.discovered} accepted={status.accepted} error={status.error or "-"}')
 
     write_json(GEOCODE_CACHE, geocode_cache)
 
@@ -596,7 +763,8 @@ def main() -> int:
         "sources": [
             {
                 "key": r.key, "name": r.name, "success": r.success,
-                "discovered": r.discovered, "accepted": r.accepted, "error": r.error,
+                "detail_links": r.detail_links, "discovered": r.discovered,
+                "accepted": r.accepted, "error": r.error,
             }
             for r in results
         ],
