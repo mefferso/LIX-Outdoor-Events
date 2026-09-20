@@ -89,13 +89,42 @@ function categoryLabel(category) {
     other: "Other"
   })[category] || category;
 }
+function eventSymbolType(event) {
+  const text = `${event.name || ""} ${event.venue || ""}`.toLowerCase();
+  if (event.category === "sports") {
+    if (/football|tiger stadium|yulman|guidry stadium|strawberry stadium|mumford stadium/.test(text)) return "football";
+    return "sports";
+  }
+  if (event.category === "race_parade") {
+    if (/parade|mardi gras|krewe|carnival/.test(text)) return "parade";
+    return "race";
+  }
+  if (event.category === "festival") return "festival";
+  if (event.category === "coastal_marine") return "marine";
+  return "other";
+}
+
+function eventIconSvg(event, className = "event-icon") {
+  const type = eventSymbolType(event);
+  const attrs = `class="${className}" viewBox="0 0 24 24" aria-hidden="true" focusable="false"`;
+  const paths = {
+    football: `<svg ${attrs}><path d="M5.2 18.8c-3.2-3.2-2.5-8.9 1.5-12.9s9.7-4.7 12.9-1.5 2.5 8.9-1.5 12.9-9.7 4.7-12.9 1.5Z"/><path d="m7.1 16.9 9.8-9.8M9.3 10.6l4.1 4.1M11 8.9l4.1 4.1M8.2 12.2l1.7 1.7M14.1 8.1l1.7 1.7"/></svg>`,
+    parade: `<svg ${attrs}><path d="M12 2c.4 3 1.9 4.7 4.6 5.1-1.8 1.1-2.5 2.7-2.2 4.9 1.4-.8 2.8-.8 4.2 0-.7 2.6-2.4 4.2-5.1 4.8.6 1.8.1 3.5-1.5 5.2-1.6-1.7-2.1-3.4-1.5-5.2-2.7-.6-4.4-2.2-5.1-4.8 1.4-.8 2.8-.8 4.2 0 .3-2.2-.4-3.8-2.2-4.9C10.1 6.7 11.6 5 12 2Z"/></svg>`,
+    race: `<svg ${attrs}><circle cx="14.5" cy="4.5" r="2"/><path d="m12.8 7.4-2.9 4.1 3.1 2.1 1.8 5.3M9.9 11.5l-4.5 1.1M13 13.6l-3.9 5.1M12.3 8.1l4.2 2.7 2.1-.7"/></svg>`,
+    festival: `<svg ${attrs}><path d="M9 18V6l9-2v12"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="15.5" cy="16" r="2.5"/></svg>`,
+    marine: `<svg ${attrs}><circle cx="12" cy="5" r="2"/><path d="M12 7v12M7 10h10M5 14c1.6 3.5 4 5 7 5s5.4-1.5 7-5M8 19l4 3 4-3"/></svg>`,
+    sports: `<svg ${attrs}><circle cx="12" cy="12" r="8"/><path d="M12 4v16M4 12h16"/></svg>`,
+    other: `<svg ${attrs}><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M8 3v4M16 3v4M4 9h16"/></svg>`
+  };
+  return paths[type] || paths.other;
+}
 
 function popupHtml(event) {
   const source = event.source_url
     ? `<div class="popup-source"><a href="${escapeHtml(event.source_url)}" target="_blank" rel="noopener">Open source ↗</a></div>`
     : "";
   return `
-    <div class="popup-title">${escapeHtml(event.name)}</div>
+    <div class="popup-title"><span class="popup-title-icon">${eventIconSvg(event, "event-icon popup-icon")}</span><span>${escapeHtml(event.name)}</span></div>
     <div class="popup-line"><strong>${escapeHtml(event.importance.toUpperCase())}</strong> · ${escapeHtml(categoryLabel(event.category))}</div>
     <div class="popup-line">${escapeHtml(prettyDate(state.dayKey))} · ${escapeHtml(formatTime(event))}</div>
     <div class="popup-line">${escapeHtml(event.venue || "Location")}, ${escapeHtml(event.city || "")}</div>
@@ -106,13 +135,13 @@ function popupHtml(event) {
   `;
 }
 
-function markerIcon(importance) {
+function markerIcon(event) {
   return L.divIcon({
     className: "",
-    html: `<div class="marker-pin ${escapeHtml(importance)}"></div>`,
-    iconSize: [22,22],
-    iconAnchor: [11,20],
-    popupAnchor: [0,-18]
+    html: `<div class="marker-pin ${escapeHtml(event.importance)}"><span class="marker-symbol">${eventIconSvg(event, "event-icon marker-icon")}</span></div>`,
+    iconSize: [26,26],
+    iconAnchor: [13,24],
+    popupAnchor: [0,-21]
   });
 }
 
@@ -195,7 +224,7 @@ function renderEvents() {
   state.cardsById.clear();
 
   for (const event of events) {
-    const marker = L.marker([event.latitude, event.longitude], { icon: markerIcon(event.importance) })
+    const marker = L.marker([event.latitude, event.longitude], { icon: markerIcon(event) })
       .bindPopup(popupHtml(event), { maxWidth: 340 });
     marker.on("click", () => focusEvent(event.id, { scroll: true }));
     marker.on("mouseover", () => focusEvent(event.id));
@@ -218,7 +247,7 @@ function renderEvents() {
     const card = document.createElement("article");
     card.className = `event-card ${event.importance}`;
     card.innerHTML = `
-      <h2>${escapeHtml(event.name)}</h2>
+      <h2><span class="event-title-icon">${eventIconSvg(event)}</span><span>${escapeHtml(event.name)}</span></h2>
       <div class="meta">${escapeHtml(formatTime(event))}<br>${escapeHtml(event.venue || "")}${event.city ? " · " + escapeHtml(event.city) : ""}${event.idss_area ? "<br>" + escapeHtml(event.idss_area) : ""}${event.parish_county ? " · " + escapeHtml(event.parish_county) : ""}<br>Source: ${escapeHtml(event.source_name || "Unknown")}</div>
       <div class="badges">
         <span class="badge ${escapeHtml(event.importance)}">${escapeHtml(event.importance)}</span>
