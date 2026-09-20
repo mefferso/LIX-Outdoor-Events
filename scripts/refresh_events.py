@@ -539,12 +539,132 @@ def parse_houma_event(text: str, detail_url: str) -> dict[str, Any] | None:
         "url": detail_url,
     }
 
+def evvnt_event_to_schema(event: dict[str, Any], source: dict[str, Any]) -> dict[str, Any] | None:
+    title = clean_text(event.get("title"))
+    start = event.get("start_time") or event.get("start_date")
+    if not title or not start:
+        return None
+
+    venue = event.get("venue") if isinstance(event.get("venue"), dict) else {}
+    geoloc = event.get("_geoloc") if isinstance(event.get("_geoloc"), dict) else {}
+
+    lat = venue.get("latitude")
+    lon = venue.get("longitude")
+    if lat is None:
+        lat = geoloc.get("lat")
+    if lon is None:
+        lon = geoloc.get("lng")
+
+    address = {
+        "@type": "PostalAddress",
+        "streetAddress": clean_text(venue.get("address_1") or venue.get("address")),
+        "addressLocality": clean_text(venue.get("town") or venue.get("city")),
+        "addressRegion": clean_text(venue.get("region") or venue.get("state")),
+        "postalCode": clean_text(venue.get("postcode") or venue.get("postal_code")),
+    }
+    location: dict[str, Any] = {
+        "@type": "Place",
+        "name": clean_text(venue.get("name") or venue.get("title")),
+        "address": address,
+    }
+    if lat is not None and lon is not None:
+        location["geo"] = {
+            "@type": "GeoCoordinates",
+            "latitude": lat,
+            "longitude": lon,
+        }
+
+    source_url = clean_text(event.get("source_broadcast_url"))
+    if not source_url:
+        links = event.get("links") or event.get("original_links") or {}
+        if isinstance(links, dict):
+            for key in ("Website", "More Info", "Tickets"):
+                value = links.get(key)
+                if isinstance(value, dict):
+                    value = value.get("url")
+                if isinstance(value, str) and value.startswith("http"):
+                    source_url = value
+                    break
+        elif isinstance(links, list):
+            for item in links:
+                if not isinstance(item, dict):
+                    continue
+                value = item.get("url")
+                if isinstance(value, str) and value.startswith("http"):
+                    source_url = value
+                    break
+
+    return {
+        "@type": "Event",
+        "name": title,
+        "startDate": start,
+        "endDate": event.get("end_time"),
+        "description": clean_text(event.get("summary") or event.get("description")),
+        "location": location,
+        "url": source_url or source.get("calendar_url") or source.get("url"),
+    }
+
+
+def collect_evvnt_discovery(source: dict[str, Any]) -> list[dict[str, Any]]:
+    publisher_id = source.get("publisher_id")
+    if publisher_id in (None, ""):
+        raise RuntimeError("Evvnt source missing publisher_id")
+
+    hits = int(source.get("hits_per_page", 100))
+    max_pages = int(source.get("max_pages", 5))
+    api_base = source.get("api_base", "https://discovery.evvnt.com")
+    endpoint = f"{api_base.rstrip('/')}/api/publisher/{publisher_id}/home_page_events"
+
+    output: list[dict[str, Any]] = []
+    seen: set[str] = set()
+
+    for page in range(max_pages):
+        params = {
+            "hitsPerPage": hits,
+            "multipleEventInstances": "true",
+            "page": page,
+            "publisher_id": publisher_id,
+        }
+        if source.get("api_key"):
+            params["api_key"] = source["api_key"]
+
+        payload = json.loads(fetch_text(f"{endpoint}?{urlencode(params)}"))
+        featured = payload.get("rawFeaturedEvents") or []
+        events = payload.get("rawEvents") or []
+
+        for event in [*featured, *events]:
+            if not isinstance(event, dict):
+                continue
+            stable = str(
+                event.get("objectID")
+                or event.get("source_id")
+                or f'{event.get("title", "")}|{event.get("start_time") or event.get("start_date") or ""}'
+            )
+            if stable in seen:
+                continue
+            seen.add(stable)
+            normalized = evvnt_event_to_schema(event, source)
+            if normalized:
+                output.append(normalized)
+
+        if len(events) < hits:
+            break
+
+    return output
+
+
 def collect_source(source: dict[str, Any]) -> tuple[list[dict[str, Any]], SourceResult]:
     key = source["key"]
     name = source["name"]
     result = SourceResult(key=key, name=name, success=False)
     raw: list[dict[str, Any]] = []
     try:
+        if source.get("collector") == "evvnt_discovery":
+            raw.extend(collect_evvnt_discovery(source))
+            result.success = True
+            result.discovered = len(raw)
+            return raw, result
+
         listing_url = source["url"]
         listing_text = fetch_text(listing_url)
         raw.extend(extract_jsonld_events(listing_text))
