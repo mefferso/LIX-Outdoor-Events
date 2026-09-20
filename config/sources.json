@@ -169,9 +169,8 @@
       "name": "Sun Herald Local Events",
       "url": "https://www.sunherald.com/entertainment/local-events/",
       "collector": "page_jsonld",
-      "enabled": true,
-      "notes": "Secondary Mississippi Gulf Coast discovery source. The former /events endpoint times out; use the current Local Events section. Fetch success is treated as source health because this is discovery-only until a dedicated article/event adapter is added.",
-      "health_mode": "fetch"
+      "enabled": false,
+      "notes": "Secondary Mississippi Gulf Coast discovery source only. Disabled from automated collection because SunHerald/McClatchy pages consistently time out from GitHub Actions runners. Re-enable only if a stable feed/API or reliable fetch path is found."
     }
   ]
 }
