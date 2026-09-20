@@ -128,18 +128,68 @@ function eventIconGlyph(event) {
 
 
 function popupHtml(event) {
-  const source = event.source_url
-    ? `<div class="popup-source"><a href="${escapeHtml(event.source_url)}" target="_blank" rel="noopener">Open source ↗</a></div>`
-    : "";
   return `
-    <div class="popup-title"><span class="event-glyph popup-glyph" aria-hidden="true">${eventIconGlyph(event)}</span><span>${escapeHtml(event.name)}</span></div>
-    <div class="popup-line"><strong>${escapeHtml(event.importance.toUpperCase())}</strong> · ${escapeHtml(categoryLabel(event.category))}</div>
-    <div class="popup-line">${escapeHtml(prettyDate(state.dayKey))} · ${escapeHtml(formatTime(event))}</div>
-    <div class="popup-line">${escapeHtml(event.venue || "Location")}, ${escapeHtml(event.city || "")}</div>
-    ${event.idss_area || event.parish_county ? `<div class="popup-line">${escapeHtml([event.idss_area, event.parish_county].filter(Boolean).join(" · "))}</div>` : ""}
-    <div class="popup-line">${escapeHtml(event.outdoor_status === "partial" ? "Partly outdoors" : "Outdoors")} · location confidence ${Math.round((event.location_confidence || 0) * 100)}%</div>
-    ${event.weather_exposure_notes ? `<div class="popup-notes">${escapeHtml(event.weather_exposure_notes)}</div>` : ""}
-    ${source}
+    <div class="popup-card">
+      <div class="popup-title">
+        <span class="event-glyph popup-glyph" aria-hidden="true">${eventIconGlyph(event)}</span>
+        <span>${escapeHtml(event.name)}</span>
+      </div>
+
+      <div class="popup-detail-list">
+        <div class="popup-detail-row">
+          <span class="popup-detail-label">Event Type</span>
+          <span class="popup-detail-value">${escapeHtml(categoryLabel(event.category))}</span>
+        </div>
+        <div class="popup-detail-row">
+          <span class="popup-detail-label">Date</span>
+          <span class="popup-detail-value">${escapeHtml(prettyDate(state.dayKey))}</span>
+        </div>
+        <div class="popup-detail-row">
+          <span class="popup-detail-label">Time</span>
+          <span class="popup-detail-value">${escapeHtml(formatTime(event))}</span>
+        </div>
+        <div class="popup-detail-row">
+          <span class="popup-detail-label">Venue</span>
+          <span class="popup-detail-value">${escapeHtml(event.venue || "Not listed")}</span>
+        </div>
+        ${event.city ? `
+          <div class="popup-detail-row">
+            <span class="popup-detail-label">City</span>
+            <span class="popup-detail-value">${escapeHtml(event.city)}</span>
+          </div>
+        ` : ""}
+        ${event.idss_area ? `
+          <div class="popup-detail-row">
+            <span class="popup-detail-label">Area</span>
+            <span class="popup-detail-value">${escapeHtml(event.idss_area)}</span>
+          </div>
+        ` : ""}
+        ${event.parish_county ? `
+          <div class="popup-detail-row">
+            <span class="popup-detail-label">Parish/County</span>
+            <span class="popup-detail-value">${escapeHtml(event.parish_county)}</span>
+          </div>
+        ` : ""}
+        <div class="popup-detail-row">
+          <span class="popup-detail-label">Outdoor Status</span>
+          <span class="popup-detail-value">${escapeHtml(event.outdoor_status === "partial" ? "Partial" : "Outdoors")}</span>
+        </div>
+        <div class="popup-detail-row">
+          <span class="popup-detail-label">Location Confidence</span>
+          <span class="popup-detail-value">${Math.round((event.location_confidence || 0) * 100)}%</span>
+        </div>
+        <div class="popup-detail-row">
+          <span class="popup-detail-label">Source</span>
+          <span class="popup-detail-value">${escapeHtml(event.source_name || "Unknown")}</span>
+        </div>
+      </div>
+
+      ${event.weather_exposure_notes ? `
+        <div class="popup-note">${escapeHtml(event.weather_exposure_notes)}</div>
+      ` : ""}
+
+      ${event.source_url ? `<a class="popup-source-link" href="${escapeHtml(event.source_url)}" target="_blank" rel="noopener noreferrer">Open source ↗</a>` : ""}
+    </div>
   `;
 }
 
@@ -256,9 +306,43 @@ function renderEvents() {
     card.className = `event-card ${event.importance}`;
     card.innerHTML = `
       <h2><span class="event-glyph card-glyph" aria-hidden="true">${eventIconGlyph(event)}</span><span>${escapeHtml(event.name)}</span></h2>
-      <div class="meta">${escapeHtml(formatTime(event))}<br>${escapeHtml(event.venue || "")}${event.city ? " · " + escapeHtml(event.city) : ""}${event.idss_area ? "<br>" + escapeHtml(event.idss_area) : ""}${event.parish_county ? " · " + escapeHtml(event.parish_county) : ""}<br>Source: ${escapeHtml(event.source_name || "Unknown")}</div>
+      <div class="event-detail-list">
+        <div class="event-detail-row">
+          <span class="event-detail-label">Date:</span>
+          <span class="event-detail-value">${escapeHtml(prettyDate(state.dayKey))}</span>
+        </div>
+        <div class="event-detail-row">
+          <span class="event-detail-label">Time:</span>
+          <span class="event-detail-value">${escapeHtml(formatTime(event))}</span>
+        </div>
+        <div class="event-detail-row">
+          <span class="event-detail-label">Venue:</span>
+          <span class="event-detail-value">${escapeHtml(event.venue || "Not listed")}</span>
+        </div>
+        ${event.city ? `
+          <div class="event-detail-row">
+            <span class="event-detail-label">City:</span>
+            <span class="event-detail-value">${escapeHtml(event.city)}</span>
+          </div>
+        ` : ""}
+        ${event.idss_area ? `
+          <div class="event-detail-row">
+            <span class="event-detail-label">Area:</span>
+            <span class="event-detail-value">${escapeHtml(event.idss_area)}</span>
+          </div>
+        ` : ""}
+        ${event.parish_county ? `
+          <div class="event-detail-row">
+            <span class="event-detail-label">Parish/County:</span>
+            <span class="event-detail-value">${escapeHtml(event.parish_county)}</span>
+          </div>
+        ` : ""}
+        <div class="event-detail-row">
+          <span class="event-detail-label">Source:</span>
+          <span class="event-detail-value">${escapeHtml(event.source_name || "Unknown")}</span>
+        </div>
+      </div>
       <div class="badges">
-        <span class="badge ${escapeHtml(event.importance)}">${escapeHtml(event.importance)}</span>
         <span class="badge">${escapeHtml(categoryLabel(event.category))}</span>
         <span class="badge">${escapeHtml(event.outdoor_status)}</span>
       </div>
