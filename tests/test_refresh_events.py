@@ -156,6 +156,56 @@ class PipelineTests(unittest.TestCase):
         self.assertEqual(event["location"]["geo"]["latitude"], 30.367)
         self.assertEqual(event["url"], "https://example.com/event/abc123")
 
+    def test_cityspark_widget_payload_and_schema(self):
+        outer = {
+            "Content": (
+                '<script>window.csCard("#x", '
+                '{"Event":{"PId":19440135,"Name":"SL Championship Series",'
+                '"Description":"Outdoor baseball championship game.",'
+                '"Venue":"Keesler Federal Park","CityState":"Biloxi, MS",'
+                '"DateStart":"2026-09-20T18:35:00Z","DateEnd":null,'
+                '"AllDay":false,"HasTime":true,"longitude":-88.8926117,'
+                '"latitude":30.3949046,"Address":"105 Caillavet St",'
+                '"Zip":"39530"},"Slug":"SunHerald","allowUserSubmission":true});</script>'
+            )
+        }
+        card = mod.parse_cityspark_widget_payload(json.dumps(outer))
+        self.assertIsNotNone(card)
+        event = mod.cityspark_card_to_schema(
+            card,
+            "2026-09-20T18",
+            "https://www.sunherald.com/events/#/details/test/19440135/2026-09-20T18",
+        )
+        self.assertEqual(event["name"], "SL Championship Series")
+        self.assertEqual(event["location"]["name"], "Keesler Federal Park")
+        self.assertEqual(event["location"]["address"]["addressLocality"], "Biloxi")
+        self.assertEqual(event["location"]["address"]["addressRegion"], "MS")
+        self.assertAlmostEqual(event["location"]["geo"]["latitude"], 30.3949046)
+        self.assertIn("18:35:00", event["startDate"])
+
+    def test_cityspark_all_day_occurrence_uses_calendar_date(self):
+        card = {
+            "Event": {
+                "Name": "Outdoor Festival",
+                "Description": "Outdoor festival in a park.",
+                "Venue": "Test Park",
+                "CityState": "Biloxi, MS",
+                "DateStart": "2026-09-26T00:00:00Z",
+                "AllDay": True,
+                "HasTime": False,
+                "latitude": 30.4,
+                "longitude": -88.9,
+                "Address": "1 Main St",
+                "Zip": "39530",
+            }
+        }
+        event = mod.cityspark_card_to_schema(
+            card,
+            "2026-09-27T00",
+            "https://www.sunherald.com/events/#/details/test/123/2026-09-27T00",
+        )
+        self.assertEqual(event["startDate"], "2026-09-27")
+
     def test_duplicate_requires_overlap_and_proximity(self):
         a = {"name":"BlackAmericana Fest", "dates":["2026-09-26"], "latitude":29.9693, "longitude":-90.0853}
         b = {"name":"BlackAmericana Fest Day 2", "dates":["2026-09-26"], "latitude":29.9694, "longitude":-90.0854}
