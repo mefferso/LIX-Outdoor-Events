@@ -448,3 +448,13 @@ main { height: calc(100% - 76px); display: flex; flex-direction: column; }
 .event-detail-row:nth-child(even) .event-detail-value {
   background: #edf2f6;
 }
+
+
+/* Allow long field labels to wrap instead of clipping. */
+.popup-detail-label,
+.event-detail-label {
+  white-space: normal;
+  overflow-wrap: normal;
+  word-break: normal;
+  line-height: 1.15;
+}
