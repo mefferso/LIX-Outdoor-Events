@@ -16,8 +16,6 @@ jobs:
         run: |
           set +e
           curl -L --connect-timeout 10 --max-time 90 \
-            -H 'X-With-Iframe: true' \
-            -H 'X-With-Shadow-Dom: true' \
             -H 'X-Respond-Timing: mutation-idle' \
             -H 'X-Engine: browser' \
             -H 'X-Timeout: 60' \
