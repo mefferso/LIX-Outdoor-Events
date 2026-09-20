@@ -548,7 +548,7 @@ def in_window(event: dict[str, Any], window_start: date, window_end: date) -> bo
     return start.date() <= window_end and end.date() >= window_start
 
 def contains_term(text: str, term: str) -> bool:
-    return re.search(r"(?<!\\w)" + re.escape(term.lower()) + r"(?!\\w)", text.lower()) is not None
+    return re.search(r"(?<!\w)" + re.escape(term.lower()) + r"(?!\w)", text.lower()) is not None
 
 def classify_event(event: dict[str, Any]) -> None:
     text = " ".join(clean_text(event.get(k)) for k in ("name", "description", "venue", "address")).lower()
