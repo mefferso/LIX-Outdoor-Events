@@ -11,30 +11,24 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - name: Probe CitySpark API endpoints
+      - name: Probe public CitySpark portal routes
         shell: bash
         run: |
           set +e
-          for base in "https://api.cityspark.com" "https://apio.cityspark.com" "https://core.cityspark.net"; do
-            echo "=== $base ==="
-            curl -sS -L --connect-timeout 10 --max-time 30 \
-              -D /tmp/h.txt \
-              -o /tmp/b.txt \
-              -w 'HTTP=%{http_code} SIZE=%{size_download}\n' \
-              "$base/v1/events?portal=SunHerald&startDate=2026-09-20&endDate=2026-09-27&limit=100&page=1"
-            head -n 25 /tmp/h.txt || true
-            echo "--- BODY ---"
-            head -c 1200 /tmp/b.txt || true
+          urls=(
+            "https://portal.cityspark.com/SunHerald"
+            "https://p.cityspark.com/SunHerald"
+            "https://p.cityspark.com/Portal/SunHerald"
+            "https://p.cityspark.com/Test/Portal/SunHerald"
+            "https://p.cityspark.com/Test/Portal/SunHerald/"
+            "https://p.cityspark.com/Portal.aspx?portal=SunHerald"
+          )
+          for u in "${urls[@]}"; do
+            echo "=== $u ==="
+            curl -sS -L --connect-timeout 10 --max-time 25 \
+              -D /tmp/h.txt -o /tmp/b.txt \
+              -w 'HTTP=%{http_code} SIZE=%{size_download} FINAL=%{url_effective}\n' "$u"
+            grep -Ei '^(HTTP/|location:|content-type:)' /tmp/h.txt | tail -n 8 || true
+            head -c 800 /tmp/b.txt | tr '\n' ' ' || true
             echo
           done
-
-          echo "=== Direct CitySpark detail sanity check ==="
-          curl -sS -L --connect-timeout 10 --max-time 30 \
-            -D /tmp/h2.txt \
-            -o /tmp/b2.txt \
-            -w 'HTTP=%{http_code} SIZE=%{size_download}\n' \
-            "https://api.cityspark.com/v1/event/19440132?portal=SunHerald"
-          head -n 20 /tmp/h2.txt || true
-          echo "--- BODY ---"
-          head -c 1200 /tmp/b2.txt || true
-          echo
