@@ -11,18 +11,20 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - name: Inspect CitySpark public widget loader
+      - name: Probe CitySpark public widget event endpoint
         shell: bash
         run: |
           set +e
-          curl -sS -L --connect-timeout 10 --max-time 30 \
-            -D /tmp/h.txt -o /tmp/widget.js \
-            'https://cdn.cityspark.com/wid/get.js'
-          echo "=== HEADERS ==="
-          grep -Ei '^(HTTP/|content-type:|location:)' /tmp/h.txt || true
-          echo "=== SIZE ==="
-          wc -c /tmp/widget.js || true
-          echo "=== URL/API CLUES ==="
-          grep -Eo 'https?[^"'"'"' ]+|/[A-Za-z0-9._/?=&%-]*(event|widget|wid)[A-Za-z0-9._/?=&%-]*' /tmp/widget.js | head -n 150 || true
-          echo "=== SCRIPT ==="
-          cat /tmp/widget.js
+          urls=(
+            "https://cdn-p.cityspark.com/wid/SunHerald_17969802.jsx"
+            "https://cdn-p.cityspark.com/wid/SunHerald_17969802.jsx?callback=testcb"
+            "https://cdn-p.cityspark.com/wid/SunHerald_19440135.jsx?callback=testcb"
+          )
+          for u in "${urls[@]}"; do
+            echo "=== $u ==="
+            curl -sS -L --connect-timeout 10 --max-time 30 -D /tmp/h.txt -o /tmp/b.txt "$u"
+            grep -Ei '^(HTTP/|content-type:|location:)' /tmp/h.txt | tail -n 10 || true
+            echo "SIZE $(wc -c < /tmp/b.txt)"
+            head -c 5000 /tmp/b.txt
+            echo
+          done
