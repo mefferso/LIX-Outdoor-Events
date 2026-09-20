@@ -198,14 +198,16 @@ def collect_source(source: dict[str, Any]) -> tuple[list[dict[str, Any]], Source
 
         if source.get("collector") == "listing_jsonld":
             parser = parse_html(listing_text)
-            contains = source.get("href_contains", "/event/")
+            contains_any = source.get("href_contains_any")
+            if not contains_any:
+                contains_any = [source.get("href_contains", "/event/")]
             domain = urlparse(listing_url).netloc
             links: list[str] = []
             seen: set[str] = set()
             for href in parser.links:
                 absolute = urljoin(listing_url, href)
                 parsed = urlparse(absolute)
-                if parsed.netloc != domain or contains not in parsed.path:
+                if parsed.netloc != domain or not any(token in parsed.path for token in contains_any):
                     continue
                 canonical = absolute.split("#", 1)[0]
                 if canonical in seen:
@@ -292,8 +294,10 @@ def resolve_known_venue(event: dict[str, Any], venues: dict[str, dict[str, Any]]
             event["address"] = event.get("address") or venue.get("address", "")
             event["city"] = event.get("city") or venue.get("city", "")
             event["state"] = event.get("state") or venue.get("state", "")
-            event["latitude"] = venue["latitude"]
-            event["longitude"] = venue["longitude"]
+            if event.get("latitude") is None:
+                event["latitude"] = venue["latitude"]
+            if event.get("longitude") is None:
+                event["longitude"] = venue["longitude"]
             event["location_confidence"] = max(float(event.get("location_confidence", 0)), 0.99)
             if venue.get("outdoor_status"):
                 event["_venue_outdoor_status"] = venue["outdoor_status"]
@@ -538,10 +542,13 @@ def main() -> int:
 
             if event.get("latitude") is not None and event.get("longitude") is not None:
                 event["location_confidence"] = 0.96
-            else:
-                resolve_known_venue(event, venues)
-                if event.get("latitude") is None and config.get("geocoding", {}).get("enabled", True):
-                    geocode(event, geocode_cache)
+
+            # Trusted venue records enrich outdoor status/importance even when
+            # the source already supplies accurate coordinates.
+            resolve_known_venue(event, venues)
+
+            if event.get("latitude") is None and config.get("geocoding", {}).get("enabled", True):
+                geocode(event, geocode_cache)
 
             if event.get("latitude") is None or event.get("longitude") is None:
                 continue
