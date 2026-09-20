@@ -1,0 +1,89 @@
+name: Probe Sun Herald Evvnt
+
+on:
+  push:
+    paths:
+      - ".github/workflows/probe-sunherald-evvnt.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Playwright
+        run: |
+          python -m pip install --upgrade pip
+          pip install playwright
+          python -m playwright install --with-deps chromium
+
+      - name: Probe rendered calendar and Evvnt network
+        run: |
+          python - <<'PY'
+          import re
+          from playwright.sync_api import sync_playwright
+
+          url = "https://www.sunherald.com/events/#/"
+          seen = []
+
+          with sync_playwright() as p:
+              browser = p.chromium.launch(headless=True)
+              page = browser.new_page(
+                  viewport={"width": 1440, "height": 1000},
+                  user_agent=(
+                      "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+                      "AppleWebKit/537.36 (KHTML, like Gecko) "
+                      "Chrome/153.0.0.0 Safari/537.36"
+                  ),
+              )
+
+              def capture(req):
+                  u = req.url
+                  if "evvnt" in u.lower() or "event" in u.lower():
+                      if u not in seen:
+                          seen.append(u)
+                          print("REQUEST", u)
+
+              page.on("request", capture)
+
+              try:
+                  page.goto(url, wait_until="domcontentloaded", timeout=90000)
+              except Exception as exc:
+                  print("GOTO_ERROR", repr(exc))
+
+              page.wait_for_timeout(30000)
+
+              print("FINAL_URL", page.url)
+              print("TITLE", page.title())
+
+              html = page.content()
+              print("HTML_LENGTH", len(html))
+
+              patterns = {
+                  "publisher_id": r"publisher_id\s*[:=]\s*[\"']?(\d+)",
+                  "api_key": r"api_key\s*[:=]\s*[\"']([^\"']+)",
+                  "publisher_path": r"/api/publisher/(\d+)/",
+              }
+              for label, pattern in patterns.items():
+                  vals = sorted(set(re.findall(pattern, html, flags=re.I)))
+                  print(label.upper(), vals)
+
+              evvnt_lines = [
+                  line.strip() for line in html.splitlines()
+                  if "evvnt" in line.lower() or "publisher_id" in line.lower() or "api_key" in line.lower()
+              ]
+              for line in evvnt_lines[:100]:
+                  print("HTML_MATCH", line[:1000])
+
+              print("EVVNT_REQUESTS", [u for u in seen if "evvnt" in u.lower()])
+              browser.close()
+          PY
