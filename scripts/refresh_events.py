@@ -189,6 +189,82 @@ class SourceResult:
 
 
 
+
+class HTMLTableParser(HTMLParser):
+    def __init__(self) -> None:
+        super().__init__()
+        self.rows: list[list[str]] = []
+        self._row: list[str] | None = None
+        self._cell: list[str] | None = None
+
+    def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        tag = tag.lower()
+        if tag == "tr":
+            self._row = []
+        elif tag in {"td", "th"} and self._row is not None:
+            self._cell = []
+
+    def handle_data(self, data: str) -> None:
+        if self._cell is not None:
+            text = clean_text(data)
+            if text:
+                self._cell.append(text)
+
+    def handle_endtag(self, tag: str) -> None:
+        tag = tag.lower()
+        if tag in {"td", "th"} and self._cell is not None and self._row is not None:
+            self._row.append(clean_text(" ".join(self._cell)))
+            self._cell = None
+        elif tag == "tr" and self._row is not None:
+            if self._row:
+                self.rows.append(self._row)
+            self._row = None
+
+def parse_sidearm_text_football(text: str, source: dict[str, Any]) -> list[dict[str, Any]]:
+    parser = HTMLTableParser()
+    parser.feed(text)
+    output: list[dict[str, Any]] = []
+    year = int(source.get("season", now_local().year))
+    team = clean_text(source.get("team_name") or source.get("name") or "College")
+    venue = clean_text(source.get("home_venue"))
+    city = clean_text(source.get("home_city"))
+    state = clean_text(source.get("home_state") or "LA")
+
+    for row in parser.rows:
+        if len(row) < 5:
+            continue
+        date_cell, time_cell, at_cell, opponent_cell, location_cell = row[:5]
+        if at_cell.lower() != "home":
+            continue
+        dm = re.search(r"\b(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Sept|Oct|Nov|Dec)\.?\s+(\d{1,2})\b", date_cell, re.I)
+        if not dm:
+            continue
+        event_date = date(year, MONTH_ABBR[dm.group(1).lower()], int(dm.group(2)))
+        opponent = re.sub(r"\s*\([^)]*\)\s*$", "", clean_text(opponent_cell)).strip() or "Opponent TBA"
+        clock_text = time_cell.replace("a.m.", "AM").replace("p.m.", "PM").replace("a.m", "AM").replace("p.m", "PM")
+        clock = parse_clock(clock_text)
+        start = (
+            datetime(event_date.year, event_date.month, event_date.day, clock[0], clock[1], tzinfo=TZ).isoformat()
+            if clock else event_date.isoformat()
+        )
+        output.append({
+            "@type": "Event",
+            "name": f"{team} Football vs. {opponent}",
+            "startDate": start,
+            "description": f"Outdoor home football game at {venue}.",
+            "location": {
+                "@type": "Place",
+                "name": venue,
+                "address": {
+                    "@type": "PostalAddress",
+                    "addressLocality": city,
+                    "addressRegion": state,
+                }
+            },
+            "url": source["url"],
+        })
+    return output
+
 class SidearmScheduleParser(HTMLParser):
     VOID_TAGS = {"area", "base", "br", "col", "embed", "hr", "img", "input", "link", "meta", "param", "source", "track", "wbr"}
 
@@ -473,6 +549,8 @@ def collect_source(source: dict[str, Any]) -> tuple[list[dict[str, Any]], Source
         raw.extend(extract_jsonld_events(listing_text))
         if source.get("collector") == "sidearm_football":
             raw.extend(parse_sidearm_football(listing_text, source))
+        elif source.get("collector") == "sidearm_text_football":
+            raw.extend(parse_sidearm_text_football(listing_text, source))
 
         if source.get("collector") in {"listing_jsonld", "listing_houma"}:
             parser = parse_html(listing_text)
