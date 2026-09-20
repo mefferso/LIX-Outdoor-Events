@@ -207,6 +207,7 @@ main { height: calc(100% - 76px); display: flex; flex-direction: column; }
   .filter-row { align-items: flex-start; flex-wrap: wrap; }
   .event-count { margin-left: auto; }
 }
+
 .event-card h2,
 .popup-title {
   display: flex;
@@ -225,11 +226,9 @@ main { height: calc(100% - 76px); display: flex; flex-direction: column; }
 .event-icon {
   width: 18px;
   height: 18px;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 1.8;
-  stroke-linecap: round;
-  stroke-linejoin: round;
+  color: currentColor;
+  fill: currentColor;
+  stroke: none;
 }
 
 .popup-icon {
@@ -238,24 +237,21 @@ main { height: calc(100% - 76px); display: flex; flex-direction: column; }
   color: var(--accent-dark);
 }
 
-.marker-pin {
-  position: relative;
-  width: 22px;
-  height: 22px;
-}
-
-.marker-symbol {
-  position: absolute;
-  inset: 2px;
+.marker-badge {
+  width: 30px;
+  height: 30px;
+  border-radius: 999px;
+  border: 2px solid white;
+  box-shadow: 0 2px 6px rgba(0,0,0,.35);
   display: flex;
   align-items: center;
   justify-content: center;
-  transform: rotate(45deg);
-  color: white;
 }
 
 .marker-icon {
-  width: 13px;
-  height: 13px;
-  stroke-width: 2.1;
+  width: 18px;
+  height: 18px;
+  color: white;
+  fill: currentColor;
+  stroke: none;
 }
