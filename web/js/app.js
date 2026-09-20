@@ -9,7 +9,8 @@ const state = {
   majorOnly: false,
   events: [],
   metadata: null,
-  markersById: new Map()
+  markersById: new Map(),
+  cardsById: new Map()
 };
 
 const map = L.map("map", { zoomControl: true, preferCanvas: true }).setView([30.15, -90.55], 8);
@@ -98,6 +99,7 @@ function popupHtml(event) {
     <div class="popup-line"><strong>${escapeHtml(event.importance.toUpperCase())}</strong> · ${escapeHtml(categoryLabel(event.category))}</div>
     <div class="popup-line">${escapeHtml(prettyDate(state.dayKey))} · ${escapeHtml(formatTime(event))}</div>
     <div class="popup-line">${escapeHtml(event.venue || "Location")}, ${escapeHtml(event.city || "")}</div>
+    ${event.idss_area || event.parish_county ? `<div class="popup-line">${escapeHtml([event.idss_area, event.parish_county].filter(Boolean).join(" · "))}</div>` : ""}
     <div class="popup-line">${escapeHtml(event.outdoor_status === "partial" ? "Partly outdoors" : "Outdoors")} · location confidence ${Math.round((event.location_confidence || 0) * 100)}%</div>
     ${event.weather_exposure_notes ? `<div class="popup-notes">${escapeHtml(event.weather_exposure_notes)}</div>` : ""}
     ${source}
@@ -120,10 +122,11 @@ function renderDates() {
   const today = centralDateKey();
   for (let i = 0; i < 8; i++) {
     const key = addDays(today, i);
+    const dayCount = state.events.filter(e => eventOccursOn(e, key)).length;
     const btn = document.createElement("button");
-    btn.className = "day-button" + (state.dayKey === key ? " active" : "");
+    btn.className = "day-button" + (state.dayKey === key ? " active" : "") + (dayCount === 0 ? " zero" : "");
     btn.dataset.date = key;
-    btn.innerHTML = `<span class="day-label">${shortDayLabel(i)}</span><span class="day-date">${prettyDate(key)}</span>`;
+    btn.innerHTML = `<span class="day-label">${shortDayLabel(i)} <span class="day-count">${dayCount}</span></span><span class="day-date">${prettyDate(key)}</span>`;
     btn.addEventListener("click", () => {
       state.dayKey = key;
       renderDates();
@@ -133,14 +136,70 @@ function renderDates() {
   }
 }
 
+function clearFocusedEvent() {
+  document.querySelectorAll(".event-card.active").forEach(el => el.classList.remove("active"));
+  for (const marker of state.markersById.values()) marker.setZIndexOffset(0);
+}
+
+function focusEvent(eventId, { scroll = false } = {}) {
+  clearFocusedEvent();
+  const card = state.cardsById.get(eventId);
+  const marker = state.markersById.get(eventId);
+  if (card) {
+    card.classList.add("active");
+    if (scroll) card.scrollIntoView({ block: "nearest", behavior: "smooth" });
+  }
+  if (marker) marker.setZIndexOffset(1000);
+}
+
+function renderSourceHealth() {
+  const btn = document.getElementById("sourceHealth");
+  const panel = document.getElementById("sourceHealthPanel");
+  if (!btn || !panel) return;
+  const sources = state.metadata?.sources || [];
+  if (!sources.length) {
+    btn.textContent = "Source health unavailable";
+    return;
+  }
+  const health = state.metadata?.source_health || {
+    healthy: sources.filter(s => s.health === "healthy" || (s.success && s.discovered > 0)).length,
+    degraded: sources.filter(s => s.health === "degraded" || (s.success && s.discovered === 0)).length,
+    failed: sources.filter(s => s.health === "failed" || !s.success).length,
+    total: sources.length
+  };
+  const problemCount = health.degraded + health.failed;
+  btn.className = "source-health " + (health.failed ? "bad" : problemCount ? "warn" : "good");
+  btn.textContent = `Sources: ${health.healthy}/${health.total} healthy`;
+  panel.innerHTML = sources.map(src => {
+    const status = src.health || (!src.success ? "failed" : src.discovered > 0 ? "healthy" : "degraded");
+    const detail = src.error ? "failed" : `${src.discovered ?? 0} found · ${src.accepted ?? 0} mapped`;
+    return `<div class="source-health-row"><span class="health-dot ${escapeHtml(status)}"></span><span>${escapeHtml(src.name)}</span><span class="health-detail">${escapeHtml(detail)}</span></div>`;
+  }).join("");
+  btn.addEventListener("click", () => {
+    const opening = panel.hidden;
+    panel.hidden = !opening;
+    btn.setAttribute("aria-expanded", String(opening));
+  });
+  document.addEventListener("click", e => {
+    if (!panel.hidden && !panel.contains(e.target) && e.target !== btn) {
+      panel.hidden = true;
+      btn.setAttribute("aria-expanded", "false");
+    }
+  });
+}
+
 function renderEvents() {
   const events = filteredEvents();
   clusters.clearLayers();
   state.markersById.clear();
+  state.cardsById.clear();
 
   for (const event of events) {
     const marker = L.marker([event.latitude, event.longitude], { icon: markerIcon(event.importance) })
       .bindPopup(popupHtml(event), { maxWidth: 340 });
+    marker.on("click", () => focusEvent(event.id, { scroll: true }));
+    marker.on("mouseover", () => focusEvent(event.id));
+    marker.on("mouseout", () => clearFocusedEvent());
     clusters.addLayer(marker);
     state.markersById.set(event.id, marker);
   }
@@ -160,19 +219,23 @@ function renderEvents() {
     card.className = `event-card ${event.importance}`;
     card.innerHTML = `
       <h2>${escapeHtml(event.name)}</h2>
-      <div class="meta">${escapeHtml(formatTime(event))}<br>${escapeHtml(event.venue || "")}${event.city ? " · " + escapeHtml(event.city) : ""}</div>
+      <div class="meta">${escapeHtml(formatTime(event))}<br>${escapeHtml(event.venue || "")}${event.city ? " · " + escapeHtml(event.city) : ""}${event.idss_area ? "<br>" + escapeHtml(event.idss_area) : ""}${event.parish_county ? " · " + escapeHtml(event.parish_county) : ""}<br>Source: ${escapeHtml(event.source_name || "Unknown")}</div>
       <div class="badges">
         <span class="badge ${escapeHtml(event.importance)}">${escapeHtml(event.importance)}</span>
         <span class="badge">${escapeHtml(categoryLabel(event.category))}</span>
         <span class="badge">${escapeHtml(event.outdoor_status)}</span>
       </div>
     `;
+    card.addEventListener("mouseenter", () => focusEvent(event.id));
+    card.addEventListener("mouseleave", () => clearFocusedEvent());
     card.addEventListener("click", () => {
       const marker = state.markersById.get(event.id);
       if (!marker) return;
+      focusEvent(event.id);
       map.setView(marker.getLatLng(), Math.max(map.getZoom(), 13), { animate: true });
       marker.openPopup();
     });
+    state.cardsById.set(event.id, card);
     list.appendChild(card);
   }
 }
@@ -234,6 +297,8 @@ async function boot() {
   if (metaRes.ok) state.metadata = await metaRes.json();
 
   renderFreshness();
+  renderSourceHealth();
+  renderDates();
   renderEvents();
   await loadCwa();
 }
