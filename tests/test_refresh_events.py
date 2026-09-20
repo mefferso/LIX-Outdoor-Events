@@ -66,6 +66,29 @@ class PipelineTests(unittest.TestCase):
         self.assertEqual(event["endDate"][:10], "2026-09-20")
         self.assertEqual(event["location"]["name"], "Barry P. Bonvillain Civic Center")
 
+    def test_sidearm_home_football_parser(self):
+        text = """<ul>
+        <li class="sidearm-schedule-game sidearm-schedule-home-game">
+          <span>Sep 26 (Sat)</span><span>6 p.m.</span>
+          <span>vs</span><span>Southern Miss</span>
+          <span>NEW ORLEANS (Yulman Stadium)</span>
+        </li>
+        <li class="sidearm-schedule-game sidearm-schedule-away-game">
+          <span>Oct 10 (Sat)</span><span>11:00 AM</span>
+          <span>at</span><span>Army</span><span>West Point, NY</span>
+        </li>
+        </ul>"""
+        source = {
+            "name":"Tulane Athletics",
+            "url":"https://tulanegreenwave.com/sports/football/schedule",
+            "season":2026, "team_name":"Tulane", "home_venue":"Yulman Stadium",
+            "home_city":"New Orleans", "home_state":"LA"
+        }
+        events = mod.parse_sidearm_football(text, source)
+        self.assertEqual(len(events), 1)
+        self.assertEqual(events[0]["name"], "Tulane Football vs. Southern Miss")
+        self.assertTrue(events[0]["startDate"].startswith("2026-09-26T18:00"))
+
     def test_duplicate_requires_overlap_and_proximity(self):
         a = {"name":"BlackAmericana Fest", "dates":["2026-09-26"], "latitude":29.9693, "longitude":-90.0853}
         b = {"name":"BlackAmericana Fest Day 2", "dates":["2026-09-26"], "latitude":29.9694, "longitude":-90.0854}
