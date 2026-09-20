@@ -108,7 +108,11 @@ def normalized_name(value: str) -> str:
 
 def fetch_text(url: str, timeout: int = 25, attempts: int = 2) -> str:
     last: Exception | None = None
-    safe_url = quote(url, safe=":/?&=%#[]@!            with urlopen(req, timeout=timeout) as response:
+    safe_url = quote(url, safe=":/?&=%#[]@!()*+,;-._~")
+    for attempt in range(attempts):
+        try:
+            req = Request(safe_url, headers={"User-Agent": USER_AGENT, "Accept": "text/html,application/json;q=0.9,*/*;q=0.8"})
+            with urlopen(req, timeout=timeout) as response:
                 charset = response.headers.get_content_charset() or "utf-8"
                 return response.read().decode(charset, errors="replace")
         except (HTTPError, URLError, TimeoutError) as exc:
