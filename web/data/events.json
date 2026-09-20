@@ -16,8 +16,11 @@
     "address": "346 Civic Center Blvd, Houma, LA",
     "city": "Houma",
     "state": "LA",
+    "parish_county": "Terrebonne Parish",
+    "idss_area": "Bayou Parishes",
     "category": "festival",
     "outdoor_status": "partial",
+    "origin": "automated",
     "importance": "moderate",
     "location_confidence": 0.78,
     "outdoor_confidence": 0.72,
@@ -47,7 +50,10 @@
     "outdoor_confidence": 0.98,
     "weather_exposure_notes": "Zoo-wide cultural event with live music, dancing, food, and activities; substantial outdoor exposure.",
     "source_name": "Audubon Nature Institute",
-    "source_url": "https://audubonnatureinstitute.org/celebracion"
+    "source_url": "https://audubonnatureinstitute.org/celebracion",
+    "origin": "manual",
+    "parish_county": "Orleans Parish",
+    "idss_area": "New Orleans Metro"
   },
   {
     "id": "international-arts-festival-nola-2026",
@@ -74,31 +80,38 @@
     "outdoor_confidence": 0.99,
     "weather_exposure_notes": "Four-day cultural festival at an open-air waterfront venue on Lake Pontchartrain; exact daily hours should be checked with the organizer.",
     "source_name": "International Arts Foundation / NewOrleans.com",
-    "source_url": "https://www.neworleans.com/articles/post/international-arts-foundation-announces-international-arts-festival-nola-2026/"
+    "source_url": "https://www.neworleans.com/articles/post/international-arts-foundation-announces-international-arts-festival-nola-2026/",
+    "origin": "manual",
+    "parish_county": "Orleans Parish",
+    "idss_area": "New Orleans Metro"
   },
   {
-    "id": "blackamericana-fest-2026-09-25",
-    "name": "BlackAmericana Fest — Opening Night",
+    "id": "blackamericana-fest-2026-09-25-0de01d2",
+    "name": "BlackAmericana Fest",
     "dates": [
-      "2026-09-25"
+      "2026-09-25",
+      "2026-09-26"
     ],
-    "start": "2026-09-25T16:30:00-05:00",
-    "end": "2026-09-25T22:00:00-05:00",
-    "all_day": false,
-    "latitude": 29.9693,
-    "longitude": -90.0853,
+    "start": "2026-09-25T00:00:00-05:00",
+    "end": "2026-09-26T00:00:00-05:00",
+    "all_day": true,
+    "latitude": 29.96916,
+    "longitude": -90.083564,
     "venue": "The Broadside",
-    "address": "600 N Broad St, New Orleans, LA 70119",
+    "address": "600 North Broad Street, New Orleans, LA 70119",
     "city": "New Orleans",
     "state": "LA",
+    "parish_county": "Orleans Parish",
+    "idss_area": "New Orleans Metro",
     "category": "festival",
     "outdoor_status": "partial",
+    "origin": "automated",
     "importance": "moderate",
-    "location_confidence": 0.98,
-    "outdoor_confidence": 0.96,
-    "weather_exposure_notes": "Live-music festival using The Broadside outdoor stage plus adjacent indoor space.",
-    "source_name": "BlackAmericana Fest",
-    "source_url": "https://www.eventbrite.com/e/blackamericana-fest-2026-still-we-sing-tickets-1992837207734"
+    "location_confidence": 0.99,
+    "outdoor_confidence": 0.99,
+    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
+    "source_name": "NewOrleans.com",
+    "source_url": "https://www.neworleans.com/event/blackamericana-fest/164991/"
   },
   {
     "id": "locals-fest-2026-09-26",
@@ -122,31 +135,10 @@
     "outdoor_confidence": 1.0,
     "weather_exposure_notes": "Outdoor community festival in Armstrong Park with music, vendors, food, and family activities.",
     "source_name": "L.O.C.A.L.S. Fest",
-    "source_url": "https://localsfestnola.com/"
-  },
-  {
-    "id": "blackamericana-fest-2026-09-26",
-    "name": "BlackAmericana Fest — Day 2",
-    "dates": [
-      "2026-09-26"
-    ],
-    "start": "2026-09-26T14:00:00-05:00",
-    "end": "2026-09-26T23:00:00-05:00",
-    "all_day": false,
-    "latitude": 29.9693,
-    "longitude": -90.0853,
-    "venue": "The Broadside",
-    "address": "600 N Broad St, New Orleans, LA 70119",
-    "city": "New Orleans",
-    "state": "LA",
-    "category": "festival",
-    "outdoor_status": "partial",
-    "importance": "moderate",
-    "location_confidence": 0.98,
-    "outdoor_confidence": 0.96,
-    "weather_exposure_notes": "Multi-stage festival with a major outdoor component at The Broadside.",
-    "source_name": "BlackAmericana Fest",
-    "source_url": "https://www.eventbrite.com/e/blackamericana-fest-2026-still-we-sing-tickets-1992837207734"
+    "source_url": "https://localsfestnola.com/",
+    "origin": "manual",
+    "parish_county": "Orleans Parish",
+    "idss_area": "New Orleans Metro"
   },
   {
     "id": "nicholls-state-university-vs-lamar-2026-09-26-8f6fdc8",
@@ -163,8 +155,11 @@
     "address": "Thibodaux, La.",
     "city": "Thibodaux",
     "state": "LA",
-    "category": "other",
+    "parish_county": "Lafourche Parish",
+    "idss_area": "Bayou Parishes",
+    "category": "sports",
     "outdoor_status": "outdoor",
+    "origin": "automated",
     "importance": "major",
     "location_confidence": 0.99,
     "outdoor_confidence": 0.99,
@@ -187,8 +182,11 @@
     "address": "New Orleans, LA",
     "city": "New Orleans",
     "state": "LA",
+    "parish_county": "Orleans Parish",
+    "idss_area": "New Orleans Metro",
     "category": "sports",
     "outdoor_status": "outdoor",
+    "origin": "automated",
     "importance": "major",
     "location_confidence": 0.99,
     "outdoor_confidence": 0.99,
@@ -218,6 +216,9 @@
     "outdoor_confidence": 1.0,
     "weather_exposure_notes": "Major outdoor stadium event with substantial pregame and postgame pedestrian and traffic exposure.",
     "source_name": "LSU Athletics",
-    "source_url": "https://lsusports.net/sports/fb/schedule"
+    "source_url": "https://lsusports.net/sports/fb/schedule",
+    "origin": "manual",
+    "parish_county": "East Baton Rouge Parish",
+    "idss_area": "Baton Rouge Metro"
   }
 ]
