@@ -1,0 +1,139 @@
+[
+  {
+    "name": "Tiger Stadium",
+    "aliases": ["LSU Tiger Stadium", "Death Valley"],
+    "address": "North Stadium Rd, Baton Rouge, LA 70803",
+    "city": "Baton Rouge",
+    "state": "LA",
+    "latitude": 30.412,
+    "longitude": -91.1838,
+    "outdoor_status": "outdoor",
+    "importance": "major"
+  },
+  {
+    "name": "A.W. Mumford Stadium",
+    "aliases": ["Mumford Stadium"],
+    "address": "Swan Ave, Baton Rouge, LA 70813",
+    "city": "Baton Rouge",
+    "state": "LA",
+    "latitude": 30.5232,
+    "longitude": -91.1904,
+    "outdoor_status": "outdoor",
+    "importance": "major"
+  },
+  {
+    "name": "Yulman Stadium",
+    "address": "2900 Ben Weiner Dr, New Orleans, LA 70118",
+    "city": "New Orleans",
+    "state": "LA",
+    "latitude": 29.9445,
+    "longitude": -90.1179,
+    "outdoor_status": "outdoor",
+    "importance": "major"
+  },
+  {
+    "name": "Strawberry Stadium",
+    "address": "500 W University Ave, Hammond, LA 70402",
+    "city": "Hammond",
+    "state": "LA",
+    "latitude": 30.5181,
+    "longitude": -90.4697,
+    "outdoor_status": "outdoor",
+    "importance": "major"
+  },
+  {
+    "name": "John L. Guidry Stadium",
+    "aliases": ["Guidry Stadium"],
+    "address": "906 E 1st St, Thibodaux, LA 70301",
+    "city": "Thibodaux",
+    "state": "LA",
+    "latitude": 29.7958,
+    "longitude": -90.802,
+    "outdoor_status": "outdoor",
+    "importance": "major"
+  },
+  {
+    "name": "Audubon Zoo",
+    "address": "6500 Magazine St, New Orleans, LA 70118",
+    "city": "New Orleans",
+    "state": "LA",
+    "latitude": 29.9233,
+    "longitude": -90.131,
+    "outdoor_status": "outdoor",
+    "importance": "moderate"
+  },
+  {
+    "name": "The Broadside",
+    "address": "600 N Broad St, New Orleans, LA 70119",
+    "city": "New Orleans",
+    "state": "LA",
+    "latitude": 29.9693,
+    "longitude": -90.0853,
+    "outdoor_status": "partial",
+    "importance": "moderate"
+  },
+  {
+    "name": "Louis Armstrong Park",
+    "aliases": ["Armstrong Park"],
+    "address": "701 N Rampart St, New Orleans, LA 70116",
+    "city": "New Orleans",
+    "state": "LA",
+    "latitude": 29.9628,
+    "longitude": -90.0675,
+    "outdoor_status": "outdoor",
+    "importance": "moderate"
+  },
+  {
+    "name": "New Orleans Lakefront",
+    "aliases": ["Lakefront"],
+    "address": "New Orleans Lakefront, New Orleans, LA",
+    "city": "New Orleans",
+    "state": "LA",
+    "latitude": 30.033,
+    "longitude": -90.06,
+    "outdoor_status": "outdoor",
+    "importance": "major"
+  },
+  {
+    "name": "City Park",
+    "aliases": ["New Orleans City Park"],
+    "address": "1 Palm Dr, New Orleans, LA 70124",
+    "city": "New Orleans",
+    "state": "LA",
+    "latitude": 29.9934,
+    "longitude": -90.0982,
+    "outdoor_status": "outdoor",
+    "importance": "moderate"
+  },
+  {
+    "name": "Lafreniere Park",
+    "address": "3000 Downs Blvd, Metairie, LA 70003",
+    "city": "Metairie",
+    "state": "LA",
+    "latitude": 29.998,
+    "longitude": -90.2144,
+    "outdoor_status": "outdoor",
+    "importance": "moderate"
+  },
+  {
+    "name": "Fontainebleau State Park",
+    "address": "62883 LA-1089, Mandeville, LA 70448",
+    "city": "Mandeville",
+    "state": "LA",
+    "latitude": 30.3368,
+    "longitude": -90.0374,
+    "outdoor_status": "outdoor",
+    "importance": "moderate"
+  },
+  {
+    "name": "Bogue Falaya Wayside Park",
+    "aliases": ["Bogue Falaya Park"],
+    "address": "213 Park Dr, Covington, LA 70433",
+    "city": "Covington",
+    "state": "LA",
+    "latitude": 30.4721,
+    "longitude": -90.0969,
+    "outdoor_status": "outdoor",
+    "importance": "moderate"
+  }
+]
