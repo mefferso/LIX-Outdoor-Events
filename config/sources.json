@@ -61,6 +61,54 @@
         "/event/",
         "/events/"
       ]
+    },
+    {
+      "key": "tulane_football",
+      "name": "Tulane Athletics",
+      "url": "https://tulanegreenwave.com/sports/football/schedule",
+      "collector": "sidearm_football",
+      "season": 2026,
+      "team_name": "Tulane",
+      "home_venue": "Yulman Stadium",
+      "home_city": "New Orleans",
+      "home_state": "LA",
+      "enabled": true
+    },
+    {
+      "key": "nicholls_football",
+      "name": "Nicholls Athletics",
+      "url": "https://geauxcolonels.com/sports/football/schedule/2026",
+      "collector": "sidearm_football",
+      "season": 2026,
+      "team_name": "Nicholls",
+      "home_venue": "John L. Guidry Stadium",
+      "home_city": "Thibodaux",
+      "home_state": "LA",
+      "enabled": true
+    },
+    {
+      "key": "southeastern_football",
+      "name": "Southeastern Louisiana Athletics",
+      "url": "https://lionsports.net/sports/football/schedule/2026",
+      "collector": "sidearm_football",
+      "season": 2026,
+      "team_name": "Southeastern Louisiana",
+      "home_venue": "Strawberry Stadium",
+      "home_city": "Hammond",
+      "home_state": "LA",
+      "enabled": true
+    },
+    {
+      "key": "southern_football",
+      "name": "Southern University Athletics",
+      "url": "https://gojagsports.com/sports/football/schedule",
+      "collector": "sidearm_football",
+      "season": 2026,
+      "team_name": "Southern",
+      "home_venue": "A.W. Mumford Stadium",
+      "home_city": "Baton Rouge",
+      "home_state": "LA",
+      "enabled": true
     }
   ]
 }
