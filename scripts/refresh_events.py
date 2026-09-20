@@ -1028,7 +1028,7 @@ def main() -> int:
     # responses. A severe automated-yield drop preserves the last-good data.
     previous_meta = load_json(OUTPUT_META, {})
     previous_auto = int(previous_meta.get("automated_candidate_count") or 0)
-    if previous_auto >= 3 and len(accepted_auto) < max(1, math.floor(previous_auto * 0.4)):
+    if previous_auto >= 3 and len(accepted_auto) < max(1, math.ceil(previous_auto * 0.4)):
         raise RuntimeError(
             f"Automated candidate yield collapsed from {previous_auto} to {len(accepted_auto)}; "
             "preserving last-known-good published dataset"
