@@ -10,45 +10,57 @@
       "name": "NewOrleans.com",
       "url": "https://www.neworleans.com/events/",
       "collector": "listing_jsonld",
-      "href_contains": "/event/",
       "max_detail_pages": 35,
-      "enabled": true
+      "enabled": true,
+      "href_contains_any": [
+        "/event/"
+      ]
     },
     {
       "key": "visitbatonrouge",
       "name": "Visit Baton Rouge",
       "url": "https://www.visitbatonrouge.com/events/",
       "collector": "listing_jsonld",
-      "href_contains": "/event/",
       "max_detail_pages": 30,
-      "enabled": true
+      "enabled": true,
+      "href_contains_any": [
+        "/events/"
+      ]
     },
     {
       "key": "northshore",
       "name": "Louisiana Northshore",
       "url": "https://www.louisiananorthshore.com/events/",
       "collector": "listing_jsonld",
-      "href_contains": "/event/",
       "max_detail_pages": 30,
-      "enabled": true
+      "enabled": true,
+      "href_contains_any": [
+        "/event/",
+        "/events/"
+      ]
     },
     {
       "key": "houma",
       "name": "Explore Houma",
       "url": "https://explorehouma.com/events/",
       "collector": "listing_jsonld",
-      "href_contains": "/event/",
       "max_detail_pages": 25,
-      "enabled": true
+      "enabled": true,
+      "href_contains_any": [
+        "/events/"
+      ]
     },
     {
       "key": "msgulfcoast",
       "name": "Coastal Mississippi",
       "url": "https://www.gulfcoast.org/events/",
       "collector": "listing_jsonld",
-      "href_contains": "/event/",
       "max_detail_pages": 25,
-      "enabled": true
+      "enabled": true,
+      "href_contains_any": [
+        "/event/",
+        "/events/"
+      ]
     }
   ]
 }
