@@ -164,7 +164,7 @@ function popupHtml(event) {
         ` : ""}
         ${event.parish_county ? `
           <div class="popup-detail-row">
-            <span class="popup-detail-label">Parish/County</span>
+            <span class="popup-detail-label">Parish / County</span>
             <span class="popup-detail-value">${escapeHtml(event.parish_county)}</span>
           </div>
         ` : ""}
@@ -334,7 +334,7 @@ function renderEvents() {
         ` : ""}
         ${event.parish_county ? `
           <div class="event-detail-row">
-            <span class="event-detail-label">Parish/County:</span>
+            <span class="event-detail-label">Parish / County:</span>
             <span class="event-detail-value">${escapeHtml(event.parish_county)}</span>
           </div>
         ` : ""}
