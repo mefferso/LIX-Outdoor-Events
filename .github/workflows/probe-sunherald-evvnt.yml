@@ -12,116 +12,42 @@ permissions:
 jobs:
   probe:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 3
     steps:
-      - uses: actions/checkout@v4
-
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
-
-      - name: Probe page over HTTP 1.1
+      - name: Fetch Sun Herald events shell over HTTP 1.1
         shell: bash
         run: |
           set +e
-          curl --http1.1 -L --compressed --max-time 60 \
+          curl --http1.1 -L --compressed --connect-timeout 10 --max-time 45 \
             -A 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36' \
             -H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8' \
             -H 'Accept-Language: en-US,en;q=0.9' \
-            -D /tmp/sunherald.headers \
-            -o /tmp/sunherald.html \
+            -D /tmp/headers.txt \
+            -o /tmp/page.html \
             'https://www.sunherald.com/events/'
-          echo '=== CURL HEADERS ==='
-          cat /tmp/sunherald.headers || true
-          echo '=== CURL SIZE ==='
-          wc -c /tmp/sunherald.html || true
-          echo '=== CALENDAR/VENDOR MATCHES ==='
-          grep -Eio '.{0,180}(evvnt|discovery|publisher_id|api_key|westworld|calendar|event[s]?[-_/]api|iframe).{0,300}' /tmp/sunherald.html | head -200 || true
-          echo '=== SCRIPT SRCS ==='
-          grep -Eo '<script[^>]+src=["'\'' ][^"'\'' ]+' /tmp/sunherald.html | head -100 || true
-
-      - name: Install Playwright Chromium
-        run: |
-          python -m pip install --upgrade pip
-          pip install playwright
-          python -m playwright install --with-deps chromium
-
-      - name: Probe rendered page and network over HTTP 1.1
-        run: |
+          code=$?
+          echo "CURL_EXIT=$code"
+          echo '=== HEADERS ==='
+          cat /tmp/headers.txt || true
+          echo '=== SIZE ==='
+          wc -c /tmp/page.html || true
+          echo '=== TITLE ==='
+          grep -Eio '<title[^>]*>[^<]+' /tmp/page.html | head -5 || true
+          echo '=== VENDOR/API MARKERS ==='
           python - <<'PY'
+          from pathlib import Path
           import re
-          from playwright.sync_api import sync_playwright
-
-          url = "https://www.sunherald.com/events/#/"
-          seen = []
-
-          with sync_playwright() as p:
-              browser = p.chromium.launch(
-                  headless=True,
-                  args=[
-                      "--disable-http2",
-                      "--disable-quic",
-                      "--disable-features=UseDnsHttpsSvcbAlpn",
-                  ],
-              )
-              context = browser.new_context(
-                  viewport={"width": 1440, "height": 1000},
-                  ignore_https_errors=True,
-                  user_agent=(
-                      "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-                      "AppleWebKit/537.36 (KHTML, like Gecko) "
-                      "Chrome/153.0.0.0 Safari/537.36"
-                  ),
-                  extra_http_headers={
-                      "Accept-Language": "en-US,en;q=0.9",
-                  },
-              )
-              page = context.new_page()
-
-              def capture(req):
-                  u = req.url
-                  if u not in seen:
-                      seen.append(u)
-                  low = u.lower()
-                  if any(token in low for token in (
-                      "evvnt", "event", "calendar", "westworld", "api"
-                  )):
-                      print("REQUEST", u)
-
-              page.on("request", capture)
-
-              for target in [
-                  url,
-                  "https://www.sunherald.com/events/",
-                  "https://www.sunherald.com/events/?_evDiscoveryPath=/",
-              ]:
-                  try:
-                      print("NAVIGATE", target)
-                      page.goto(target, wait_until="domcontentloaded", timeout=60000)
-                      page.wait_for_timeout(15000)
-                      if not page.url.startswith("chrome-error"):
-                          break
-                  except Exception as exc:
-                      print("GOTO_ERROR", target, repr(exc))
-
-              print("FINAL_URL", page.url)
-              print("TITLE", page.title())
-              html = page.content()
-              print("HTML_LENGTH", len(html))
-
-              for label, pattern in {
-                  "publisher_id": r"publisher_id\s*[:=]\s*[\"']?(\d+)",
-                  "api_key": r"api_key\s*[:=]\s*[\"']([^\"']+)",
-                  "publisher_path": r"/api/publisher/(\d+)/",
-              }.items():
-                  print(label.upper(), sorted(set(re.findall(pattern, html, re.I))))
-
-              print("INTERESTING_REQUESTS")
-              for u in seen:
-                  low = u.lower()
-                  if any(token in low for token in (
-                      "evvnt", "event", "calendar", "westworld", "/api/"
-                  )):
-                      print(u)
-              browser.close()
+          p=Path('/tmp/page.html')
+          text=p.read_text(errors='replace') if p.exists() else ''
+          keys=('evvnt','discovery','publisher_id','api_key','westworld','calendar','iframe','eventbrite','events')
+          for line in text.splitlines():
+              low=line.lower()
+              if any(k in low for k in keys):
+                  print(line[:3000])
+          print('=== SCRIPT SRCS ===')
+          for src in re.findall(r'<script[^>]+src=["\']([^"\']+)', text, re.I):
+              print(src)
+          print('=== IFRAMES ===')
+          for src in re.findall(r'<iframe[^>]+src=["\']([^"\']+)', text, re.I):
+              print(src)
           PY
