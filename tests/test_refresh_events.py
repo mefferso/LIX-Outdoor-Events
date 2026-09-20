@@ -106,6 +106,25 @@ class PipelineTests(unittest.TestCase):
         self.assertEqual(events[0]["name"], "Tulane Football vs. Southern Miss")
         self.assertTrue(events[0]["startDate"].startswith("2026-09-26T18:00"))
 
+    def test_official_football_forces_sports_category(self):
+        event = {
+            "name": "Nicholls State University Vs Lamar",
+            "description": "",
+            "venue": "John L. Guidry Stadium",
+            "_source_key": "nicholls_football",
+            "_venue_outdoor_status": "outdoor",
+            "_venue_importance": "major",
+        }
+        mod.classify_event(event)
+        self.assertEqual(event["category"], "sports")
+        self.assertTrue(mod.is_idss_relevant(event))
+
+    def test_operational_context_from_city(self):
+        event = {"city": "Thibodaux", "state": "LA", "latitude": 29.7958, "longitude": -90.802}
+        mod.derive_operational_context(event)
+        self.assertEqual(event["parish_county"], "Lafourche Parish")
+        self.assertEqual(event["idss_area"], "Bayou Parishes")
+
     def test_duplicate_requires_overlap_and_proximity(self):
         a = {"name":"BlackAmericana Fest", "dates":["2026-09-26"], "latitude":29.9693, "longitude":-90.0853}
         b = {"name":"BlackAmericana Fest Day 2", "dates":["2026-09-26"], "latitude":29.9694, "longitude":-90.0854}
