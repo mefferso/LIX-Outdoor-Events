@@ -11,24 +11,25 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - name: Probe public CitySpark portal routes
+      - name: Probe CitySpark escaped-fragment date routing through renderer
         shell: bash
         run: |
           set +e
           urls=(
-            "https://portal.cityspark.com/SunHerald"
-            "https://p.cityspark.com/SunHerald"
-            "https://p.cityspark.com/Portal/SunHerald"
-            "https://p.cityspark.com/Test/Portal/SunHerald"
-            "https://p.cityspark.com/Test/Portal/SunHerald/"
-            "https://p.cityspark.com/Portal.aspx?portal=SunHerald"
+            "https://www.sunherald.com/events/"
+            "https://www.sunherald.com/events/?_escaped_fragment_=!/show?start=2026-09-25"
+            "https://www.sunherald.com/events/?_escaped_fragment_=/show?start=2026-09-25"
           )
-          for u in "${urls[@]}"; do
-            echo "=== $u ==="
-            curl -sS -L --connect-timeout 10 --max-time 25 \
-              -D /tmp/h.txt -o /tmp/b.txt \
-              -w 'HTTP=%{http_code} SIZE=%{size_download} FINAL=%{url_effective}\n' "$u"
-            grep -Ei '^(HTTP/|location:|content-type:)' /tmp/h.txt | tail -n 8 || true
-            head -c 800 /tmp/b.txt | tr '\n' ' ' || true
+          for target in "${urls[@]}"; do
+            echo "=== TARGET $target ==="
+            enc_target="${target// /%20}"
+            curl -sS -L --connect-timeout 10 --max-time 90 \
+              -H 'X-Respond-Timing: mutation-idle' \
+              -H 'X-Engine: browser' \
+              -H 'X-Timeout: 60' \
+              -o /tmp/rendered.txt \
+              "https://r.jina.ai/$enc_target"
+            echo "SIZE $(wc -c < /tmp/rendered.txt)"
+            grep -E '^(Sunday|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday), Sep|https://www\.sunherald\.com/events/#/details/' /tmp/rendered.txt | head -n 80 || true
             echo
           done
