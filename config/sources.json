@@ -121,6 +121,56 @@
       "home_city": "Baton Rouge",
       "home_state": "LA",
       "enabled": true
+    },
+    {
+      "key": "mardigras_neworleans",
+      "name": "Mardi Gras New Orleans",
+      "url": "https://www.mardigrasneworleans.com/parades/",
+      "collector": "page_jsonld",
+      "enabled": true,
+      "notes": "High-priority parade schedule source. Static page is useful even when no JSON-LD is present; dedicated parade parser is the next adapter."
+    },
+    {
+      "key": "downtown_baton_rouge",
+      "name": "Downtown Baton Rouge",
+      "url": "https://downtownbatonrouge.org/events",
+      "collector": "listing_jsonld",
+      "max_detail_pages": 30,
+      "enabled": true,
+      "href_contains_any": [
+        "/events/",
+        "/event/"
+      ],
+      "notes": "Broad downtown calendar; outdoor/IDSS relevance filter is intentionally strict because many listings are indoor."
+    },
+    {
+      "key": "tangi_tourism_fairs",
+      "name": "Tangipahoa Parish Convention & Visitors Bureau",
+      "url": "https://www.tangitourism.com/Events/Fairs-Festivals",
+      "collector": "page_jsonld",
+      "enabled": true,
+      "notes": "High-value fairs/festivals source for Tangipahoa Parish. Dedicated static-page parser is planned for full yield."
+    },
+    {
+      "key": "coastal_mississippi",
+      "name": "Coastal Mississippi",
+      "url": "https://www.coastalmississippi.com/events",
+      "collector": "listing_jsonld",
+      "max_detail_pages": 30,
+      "enabled": true,
+      "href_contains_any": [
+        "/event/",
+        "/events/"
+      ],
+      "notes": "Official Mississippi Gulf Coast tourism calendar. JS-driven listing may require a dedicated adapter."
+    },
+    {
+      "key": "sunherald_events",
+      "name": "Sun Herald Events",
+      "url": "https://www.sunherald.com/events",
+      "collector": "page_jsonld",
+      "enabled": true,
+      "notes": "Secondary discovery source for Mississippi Gulf Coast events; may require a dedicated adapter because direct fetches can be restricted/dynamic."
     }
   ]
 }
