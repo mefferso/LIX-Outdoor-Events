@@ -201,13 +201,14 @@ def collect_source(source: dict[str, Any]) -> tuple[list[dict[str, Any]], Source
             contains_any = source.get("href_contains_any")
             if not contains_any:
                 contains_any = [source.get("href_contains", "/event/")]
-            domain = urlparse(listing_url).netloc
+            domain = urlparse(listing_url).netloc.lower().removeprefix("www.")
             links: list[str] = []
             seen: set[str] = set()
             for href in parser.links:
                 absolute = urljoin(listing_url, href)
                 parsed = urlparse(absolute)
-                if parsed.netloc != domain or not any(token in parsed.path for token in contains_any):
+                link_domain = parsed.netloc.lower().removeprefix("www.")
+                if link_domain != domain or not any(token in parsed.path for token in contains_any):
                     continue
                 canonical = absolute.split("#", 1)[0]
                 if canonical in seen:
