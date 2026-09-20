@@ -11,15 +11,18 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - name: Probe rendered CitySpark detail route
+      - name: Inspect CitySpark public widget loader
         shell: bash
         run: |
           set +e
-          u="https://r.jina.ai/https://www.sunherald.com/events/%23/details/the-firefighters-at-loco-beach-coconuts/17969802/2026-09-26T00"
-          curl -sS -L --connect-timeout 10 --max-time 90 \
-            -H 'X-Respond-Timing: mutation-idle' \
-            -H 'X-Engine: browser' \
-            -H 'X-Timeout: 60' \
-            -o /tmp/detail.txt "$u"
-          echo "SIZE $(wc -c < /tmp/detail.txt)"
-          cat /tmp/detail.txt
+          curl -sS -L --connect-timeout 10 --max-time 30 \
+            -D /tmp/h.txt -o /tmp/widget.js \
+            'https://cdn.cityspark.com/wid/get.js'
+          echo "=== HEADERS ==="
+          grep -Ei '^(HTTP/|content-type:|location:)' /tmp/h.txt || true
+          echo "=== SIZE ==="
+          wc -c /tmp/widget.js || true
+          echo "=== URL/API CLUES ==="
+          grep -Eo 'https?[^"'"'"' ]+|/[A-Za-z0-9._/?=&%-]*(event|widget|wid)[A-Za-z0-9._/?=&%-]*' /tmp/widget.js | head -n 150 || true
+          echo "=== SCRIPT ==="
+          cat /tmp/widget.js
