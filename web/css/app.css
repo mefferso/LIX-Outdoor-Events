@@ -458,3 +458,21 @@ main { height: calc(100% - 76px); display: flex; flex-direction: column; }
   word-break: normal;
   line-height: 1.15;
 }
+
+
+/* Make long field labels reliably readable without enlarging the popup. */
+.popup-detail-row {
+  grid-template-columns: 132px minmax(0, 1fr);
+}
+
+.event-detail-row {
+  grid-template-columns: 124px minmax(0, 1fr);
+}
+
+.popup-detail-label,
+.event-detail-label {
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: normal;
+  hyphens: none;
+}
