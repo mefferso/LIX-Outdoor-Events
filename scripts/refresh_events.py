@@ -328,8 +328,8 @@ def parse_houma_event(text: str, detail_url: str) -> dict[str, Any] | None:
     return {
         "@type": "Event",
         "name": name,
-        "startDate": start_dt.isoformat(),
-        "endDate": end_dt.isoformat(),
+        "startDate": start_dt.isoformat() if start_clock else start_date,
+        "endDate": end_dt.isoformat() if start_clock else (end_date or start_date),
         "description": description,
         "location": {
             "@type": "Place",
@@ -547,18 +547,25 @@ def in_window(event: dict[str, Any], window_start: date, window_end: date) -> bo
         return False
     return start.date() <= window_end and end.date() >= window_start
 
+def contains_term(text: str, term: str) -> bool:
+    return re.search(r"(?<!\\w)" + re.escape(term.lower()) + r"(?!\\w)", text.lower()) is not None
+
 def classify_event(event: dict[str, Any]) -> None:
     text = " ".join(clean_text(event.get(k)) for k in ("name", "description", "venue", "address")).lower()
+    name_text = clean_text(event.get("name")).lower()
     category = "other"
-    for label, words in CATEGORY_RULES:
-        if any(word in text for word in words):
-            category = label
-            break
+    if any(contains_term(name_text, word) for word in ("festival", "fest", "fair", "carnival")):
+        category = "festival"
+    else:
+        for label, words in CATEGORY_RULES:
+            if any(contains_term(text, word) for word in words):
+                category = label
+                break
     event["category"] = category
 
     venue_status = event.pop("_venue_outdoor_status", None)
-    has_outdoor = any(word in text for word in OUTDOOR_POSITIVE)
-    has_indoor = any(word in text for word in INDOOR_NEGATIVE)
+    has_outdoor = any(contains_term(text, word) for word in OUTDOOR_POSITIVE)
+    has_indoor = any(contains_term(text, word) for word in INDOOR_NEGATIVE)
     if venue_status:
         outdoor = venue_status
         confidence = 0.99
@@ -574,7 +581,7 @@ def classify_event(event: dict[str, Any]) -> None:
     venue_importance = event.pop("_venue_importance", None)
     if venue_importance:
         importance = venue_importance
-    elif any(hint in text for hint in MAJOR_HINTS):
+    elif any(contains_term(text, hint) for hint in MAJOR_HINTS):
         importance = "major"
     else:
         importance = "moderate"
@@ -584,11 +591,11 @@ def is_idss_relevant(event: dict[str, Any]) -> bool:
     if event.get("outdoor_status") not in {"outdoor", "partial"}:
         return False
     text = " ".join(clean_text(event.get(k)) for k in ("name", "description", "venue")).lower()
-    if any(term in text for term in LOW_VALUE) and not any(term in text for term in SIGNIFICANT_POSITIVE):
+    if any(contains_term(text, term) for term in LOW_VALUE) and not any(contains_term(text, term) for term in SIGNIFICANT_POSITIVE):
         return False
     if event.get("importance") == "major":
         return True
-    return any(term in text for term in SIGNIFICANT_POSITIVE)
+    return any(contains_term(text, term) for term in SIGNIFICANT_POSITIVE)
 
 def load_boundary() -> dict[str, Any]:
     try:
