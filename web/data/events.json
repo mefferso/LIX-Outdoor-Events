@@ -1,5 +1,31 @@
 [
   {
+    "id": "hero-fest-2026-09-18-5c21061",
+    "name": "Hero Fest",
+    "dates": [
+      "2026-09-18",
+      "2026-09-19",
+      "2026-09-20"
+    ],
+    "start": "2026-09-18T00:00:00-05:00",
+    "end": "2026-09-20T00:00:00-05:00",
+    "all_day": false,
+    "latitude": 29.578376,
+    "longitude": -90.726791,
+    "venue": "Barry P. Bonvillain Civic Center",
+    "address": "346 Civic Center Blvd, Houma, LA",
+    "city": "Houma",
+    "state": "LA",
+    "category": "race_parade",
+    "outdoor_status": "partial",
+    "importance": "moderate",
+    "location_confidence": 0.72,
+    "outdoor_confidence": 0.72,
+    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
+    "source_name": "Explore Houma",
+    "source_url": "https://explorehouma.com/events/hero-fest/"
+  },
+  {
     "id": "audubon-celebracion-latina-2026-09-20",
     "name": "Celebración Latina",
     "dates": [
@@ -73,6 +99,30 @@
     "weather_exposure_notes": "Live-music festival using The Broadside outdoor stage plus adjacent indoor space.",
     "source_name": "BlackAmericana Fest",
     "source_url": "https://www.eventbrite.com/e/blackamericana-fest-2026-still-we-sing-tickets-1992837207734"
+  },
+  {
+    "id": "craftin-cajuns-craft-show-marketplace-2026-09-26-b8a796c",
+    "name": "Craftin’ Cajuns Craft Show & Marketplace",
+    "dates": [
+      "2026-09-26"
+    ],
+    "start": "2026-09-26T09:00:00-05:00",
+    "end": "2026-09-26T09:00:00-05:00",
+    "all_day": false,
+    "latitude": 29.578376,
+    "longitude": -90.726791,
+    "venue": "Barry P. Bonvillain Civic Center",
+    "address": "346 Civic Center Blvd., Houma, LA 70360",
+    "city": "Houma",
+    "state": "LA",
+    "category": "festival",
+    "outdoor_status": "partial",
+    "importance": "moderate",
+    "location_confidence": 0.72,
+    "outdoor_confidence": 0.72,
+    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
+    "source_name": "Explore Houma",
+    "source_url": "https://explorehouma.com/events/craftin-cajuns-craft-show-marketplace/"
   },
   {
     "id": "locals-fest-2026-09-26",
