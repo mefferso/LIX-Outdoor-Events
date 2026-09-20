@@ -17,7 +17,7 @@ permissions:
 
 concurrency:
   group: refresh-outdoor-events
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   refresh:
