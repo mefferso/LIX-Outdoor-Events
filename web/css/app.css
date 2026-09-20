@@ -386,3 +386,65 @@ main { height: calc(100% - 76px); display: flex; flex-direction: column; }
 .popup-source-value-link:hover {
   text-decoration: underline;
 }
+
+
+/* Final detail-table refinements. */
+.popup-detail-row {
+  grid-template-columns: 118px minmax(0, 1fr);
+}
+
+.popup-detail-label {
+  white-space: nowrap;
+}
+
+/* Match the popup's table-like field shading in the right-side event cards. */
+.event-detail-list {
+  gap: 0;
+  margin-top: 7px;
+  border: 1px solid #cbd6df;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.event-detail-row {
+  display: grid;
+  grid-template-columns: 112px minmax(0, 1fr);
+  gap: 0;
+  align-items: stretch;
+  border-bottom: 1px solid #cbd6df;
+}
+
+.event-detail-row:last-child {
+  border-bottom: 0;
+}
+
+.event-detail-label,
+.event-detail-value {
+  padding: 4px 6px;
+}
+
+.event-detail-label {
+  font-size: 0.70rem;
+  font-weight: 800;
+  color: #425568;
+  background: #dbe6ef;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  border-right: 1px solid #c1cfda;
+  white-space: nowrap;
+}
+
+.event-detail-value {
+  font-size: 0.76rem;
+  color: #1f2c36;
+  line-height: 1.25;
+  background: #f7f9fb;
+}
+
+.event-detail-row:nth-child(even) .event-detail-label {
+  background: #cfdde8;
+}
+
+.event-detail-row:nth-child(even) .event-detail-value {
+  background: #edf2f6;
+}
