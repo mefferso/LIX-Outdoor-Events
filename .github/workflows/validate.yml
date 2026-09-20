@@ -1,0 +1,39 @@
+name: Validate Static App
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "web/**"
+      - ".github/workflows/validate.yml"
+  pull_request:
+    paths:
+      - "web/**"
+      - ".github/workflows/validate.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Validate JSON
+        run: |
+          python -m json.tool web/data/events.json >/dev/null
+          python -m json.tool web/data/build-metadata.json >/dev/null
+
+      - name: Validate JavaScript syntax
+        run: node --check web/js/app.js
+
+      - name: Verify required app files
+        run: |
+          test -f web/index.html
+          test -f web/css/app.css
+          test -f web/js/app.js
+          test -f web/data/events.json
+          test -f web/data/build-metadata.json
