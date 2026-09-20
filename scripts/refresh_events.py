@@ -1121,9 +1121,12 @@ def derive_operational_context(event: dict[str, Any]) -> None:
     event["idss_area"] = area
 
 def classify_event(event: dict[str, Any]) -> None:
-    text = " ".join(clean_text(event.get(k)) for k in ("name", "description", "venue", "address")).lower()
+    # Street addresses are excluded from semantic classification. A venue on
+    # "Beach Blvd" is not automatically a beach/outdoor event.
+    text = " ".join(clean_text(event.get(k)) for k in ("name", "description", "venue")).lower()
+    indoor_text = " ".join(clean_text(event.get(k)) for k in ("name", "description", "venue", "address")).lower()
     name_text = clean_text(event.get("name")).lower()
-    location_text = " ".join(clean_text(event.get(k)) for k in ("name", "venue", "address")).lower()
+    location_text = " ".join(clean_text(event.get(k)) for k in ("name", "venue")).lower()
     category = "other"
     if str(event.get("_source_key", "")).endswith("_football"):
         category = "sports"
@@ -1154,7 +1157,7 @@ def classify_event(event: dict[str, Any]) -> None:
         any(contains_term(text, word) for word in strong_outdoor_terms)
         or any(contains_term(location_text, word) for word in ("park", "walk", "run", "field"))
     )
-    has_indoor = any(contains_term(text, word) for word in INDOOR_NEGATIVE)
+    has_indoor = any(contains_term(indoor_text, word) for word in INDOOR_NEGATIVE)
     if venue_status:
         outdoor = venue_status
         confidence = 0.99
