@@ -166,11 +166,12 @@
     },
     {
       "key": "sunherald_events",
-      "name": "Sun Herald Events",
-      "url": "https://www.sunherald.com/events",
+      "name": "Sun Herald Local Events",
+      "url": "https://www.sunherald.com/entertainment/local-events/",
       "collector": "page_jsonld",
       "enabled": true,
-      "notes": "Secondary discovery source for Mississippi Gulf Coast events; may require a dedicated adapter because direct fetches can be restricted/dynamic."
+      "notes": "Secondary Mississippi Gulf Coast discovery source. The former /events endpoint times out; use the current Local Events section. Fetch success is treated as source health because this is discovery-only until a dedicated article/event adapter is added.",
+      "health_mode": "fetch"
     }
   ]
 }
