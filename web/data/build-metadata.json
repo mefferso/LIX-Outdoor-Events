@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-20T10:23:19-05:00",
+  "generated_at": "2026-09-20T12:15:01-05:00",
   "event_count": 8,
   "manual_event_count": 4,
   "automated_event_count": 4,
@@ -152,13 +152,13 @@
     },
     {
       "key": "sunherald_events",
-      "name": "Sun Herald Events",
+      "name": "Sun Herald Local Events",
       "success": false,
       "health": "failed",
       "detail_links": 0,
       "discovered": 0,
       "accepted": 0,
-      "error": "fetch failed for https://www.sunherald.com/events: The read operation timed out"
+      "error": "fetch failed for https://www.sunherald.com/entertainment/local-events/: The read operation timed out"
     }
   ],
   "source_health": {
