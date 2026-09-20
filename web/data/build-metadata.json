@@ -1,0 +1,11 @@
+{
+  "generated_at": "2026-09-20T08:55:00-05:00",
+  "event_count": 6,
+  "collection_window_start": "2026-09-20",
+  "collection_window_end": "2026-09-27",
+  "timezone": "America/Chicago",
+  "boundary_source": "NOAA/NWS reference map FeatureServer",
+  "boundary_dataset_valid_date": "2026-04-16",
+  "pipeline_state": "seeded-manual-mvp",
+  "notes": "Initial operational MVP. Automated multi-source collection is the next implementation stage."
+}
