@@ -35,6 +35,16 @@ class PipelineTests(unittest.TestCase):
         mod.classify_event(event)
         self.assertFalse(mod.is_idss_relevant(event))
 
+    def test_parking_does_not_count_as_park(self):
+        event = {
+            "name":"Craftin Cajuns Craft Show & Marketplace",
+            "description":"This indoor shopping event has free admission and free parking.",
+            "venue":"Civic Center"
+        }
+        mod.classify_event(event)
+        self.assertEqual(event["outdoor_status"], "unknown")
+        self.assertFalse(mod.is_idss_relevant(event))
+
     def test_houma_html_fallback(self):
         text = """<html><body>
         <h1>Hero Fest</h1>
