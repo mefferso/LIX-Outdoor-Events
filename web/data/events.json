@@ -1,29 +1,5 @@
 [
   {
-    "id": "westbank-heritage-festival-2026-09-20-184d111",
-    "name": "Westbank Heritage Festival",
-    "dates": [
-      "2026-09-20"
-    ],
-    "start": "2026-09-20T00:00:00-05:00",
-    "end": "2026-09-20T00:00:00-05:00",
-    "all_day": true,
-    "latitude": 29.905441,
-    "longitude": -90.16318,
-    "venue": "The Alario Center",
-    "address": "2000 Segnette Blvd, Westwego, LA, LA 70094",
-    "city": "Westwego, LA",
-    "state": "LA",
-    "category": "festival",
-    "outdoor_status": "outdoor",
-    "importance": "moderate",
-    "location_confidence": 0.96,
-    "outdoor_confidence": 0.78,
-    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
-    "source_name": "NewOrleans.com",
-    "source_url": "https://www.neworleans.com/event/westbank-heritage-festival/200560/"
-  },
-  {
     "id": "audubon-celebracion-latina-2026-09-20",
     "name": "Celebración Latina",
     "dates": [
