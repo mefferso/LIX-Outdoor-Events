@@ -168,13 +168,14 @@
       "key": "sunherald_events",
       "name": "Sun Herald Events",
       "url": "https://www.sunherald.com/events/#/",
-      "collector": "evvnt_discovery",
-      "enabled": false,
-      "notes": "Sun Herald's browser calendar is client-side. Direct Evvnt discovery API collector is implemented; source remains disabled only until the public calendar publisher_id (and api_key if required) is captured from the browser widget/network.",
+      "collector": "cityspark_rendered",
+      "enabled": true,
+      "notes": "Sun Herald calendar is powered by CitySpark. Discovery uses a browser-rendered calendar view and event detail hydration uses CitySpark's public widget endpoint.",
       "calendar_url": "https://www.sunherald.com/events/#/",
-      "publisher_id": null,
-      "hits_per_page": 100,
-      "max_pages": 5
+      "portal": "SunHerald",
+      "renderer_base": "https://r.jina.ai/",
+      "render_timeout": 75,
+      "max_detail_pages": 100
     }
   ]
 }
