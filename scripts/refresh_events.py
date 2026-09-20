@@ -747,11 +747,73 @@ def in_window(event: dict[str, Any], window_start: date, window_end: date) -> bo
 def contains_term(text: str, term: str) -> bool:
     return re.search(r"(?<!\w)" + re.escape(term.lower()) + r"(?!\w)", text.lower()) is not None
 
+CITY_CONTEXT = {
+    "new orleans": ("Orleans Parish", "New Orleans Metro"),
+    "metairie": ("Jefferson Parish", "New Orleans Metro"),
+    "kenner": ("Jefferson Parish", "New Orleans Metro"),
+    "jefferson": ("Jefferson Parish", "New Orleans Metro"),
+    "gretna": ("Jefferson Parish", "New Orleans Metro"),
+    "harvey": ("Jefferson Parish", "New Orleans Metro"),
+    "marrero": ("Jefferson Parish", "New Orleans Metro"),
+    "westwego": ("Jefferson Parish", "New Orleans Metro"),
+    "baton rouge": ("East Baton Rouge Parish", "Baton Rouge Metro"),
+    "zachary": ("East Baton Rouge Parish", "Baton Rouge Metro"),
+    "baker": ("East Baton Rouge Parish", "Baton Rouge Metro"),
+    "mandeville": ("St. Tammany Parish", "Northshore"),
+    "covington": ("St. Tammany Parish", "Northshore"),
+    "slidell": ("St. Tammany Parish", "Northshore"),
+    "madisonville": ("St. Tammany Parish", "Northshore"),
+    "hammond": ("Tangipahoa Parish", "Northshore"),
+    "ponchatoula": ("Tangipahoa Parish", "Northshore"),
+    "amite": ("Tangipahoa Parish", "Northshore"),
+    "houma": ("Terrebonne Parish", "Bayou Parishes"),
+    "thibodaux": ("Lafourche Parish", "Bayou Parishes"),
+    "cut off": ("Lafourche Parish", "Bayou Parishes"),
+    "galliano": ("Lafourche Parish", "Bayou Parishes"),
+    "raceland": ("Lafourche Parish", "Bayou Parishes"),
+    "laplace": ("St. John the Baptist Parish", "River Parishes"),
+    "reserve": ("St. John the Baptist Parish", "River Parishes"),
+    "destrehan": ("St. Charles Parish", "River Parishes"),
+    "luling": ("St. Charles Parish", "River Parishes"),
+    "gramercy": ("St. James Parish", "River Parishes"),
+    "gulfport": ("Harrison County", "Mississippi Coast"),
+    "biloxi": ("Harrison County", "Mississippi Coast"),
+    "long beach": ("Harrison County", "Mississippi Coast"),
+    "pass christian": ("Harrison County", "Mississippi Coast"),
+    "bay st. louis": ("Hancock County", "Mississippi Coast"),
+    "bay saint louis": ("Hancock County", "Mississippi Coast"),
+    "waveland": ("Hancock County", "Mississippi Coast"),
+    "picayune": ("Pearl River County", "Southwest Mississippi"),
+}
+
+def derive_operational_context(event: dict[str, Any]) -> None:
+    city = clean_text(event.get("city")).lower()
+    parish_county, area = CITY_CONTEXT.get(city, ("", ""))
+    if not area:
+        try:
+            lat, lon = float(event["latitude"]), float(event["longitude"])
+            if lat < 30.15 and lon > -90.45:
+                area = "New Orleans Metro"
+            elif lat >= 30.25 and lon < -90.85:
+                area = "Baton Rouge Metro"
+            elif lat >= 30.2 and -90.85 <= lon <= -89.65:
+                area = "Northshore"
+            elif lat < 30.2 and lon <= -90.45:
+                area = "Bayou Parishes"
+            elif event.get("state") == "MS":
+                area = "Mississippi Coast"
+        except (KeyError, TypeError, ValueError):
+            pass
+    event["parish_county"] = parish_county
+    event["idss_area"] = area
+
 def classify_event(event: dict[str, Any]) -> None:
     text = " ".join(clean_text(event.get(k)) for k in ("name", "description", "venue", "address")).lower()
     name_text = clean_text(event.get("name")).lower()
     category = "other"
-    if any(contains_term(name_text, word) for word in ("festival", "fest", "fair", "carnival")):
+    if str(event.get("_source_key", "")).endswith("_football"):
+        category = "sports"
+    elif any(contains_term(name_text, word) for word in ("festival", "fest", "fair", "carnival")):
         category = "festival"
     else:
         for label, words in CATEGORY_RULES:
@@ -859,6 +921,8 @@ def finalize(event: dict[str, Any]) -> dict[str, Any]:
     stable = f'{normalized_name(event["name"])}|{event["dates"][0]}|{round(float(event["latitude"]), 3)}|{round(float(event["longitude"]), 3)}'
     event["id"] = f'{slugify(event["name"])}-{event["dates"][0]}-{hashlib.sha1(stable.encode()).hexdigest()[:7]}'
     event.setdefault("weather_exposure_notes", "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.")
+    derive_operational_context(event)
+    event.setdefault("origin", "automated")
     event.pop("description", None)
     event.pop("_source_key", None)
     ordered = {
@@ -867,7 +931,9 @@ def finalize(event: dict[str, Any]) -> dict[str, Any]:
         "latitude": round(float(event["latitude"]), 6), "longitude": round(float(event["longitude"]), 6),
         "venue": event.get("venue") or "Location not listed", "address": event.get("address") or "",
         "city": event.get("city") or "", "state": event.get("state") or "",
+        "parish_county": event.get("parish_county") or "", "idss_area": event.get("idss_area") or "",
         "category": event.get("category") or "other", "outdoor_status": event.get("outdoor_status") or "unknown",
+        "origin": event.get("origin") or "automated",
         "importance": event.get("importance") or "moderate",
         "location_confidence": round(float(event.get("location_confidence", 0.5)), 2),
         "outdoor_confidence": round(float(event.get("outdoor_confidence", 0.5)), 2),
@@ -939,23 +1005,41 @@ def main() -> int:
     if results and not any(r.success for r in results):
         raise RuntimeError("All enabled automated sources failed; preserving last-known-good published dataset")
 
+    # Automated records are authoritative when available. Manual records are
+    # fallback/override safety-net entries and are retired automatically when
+    # the same event is collected successfully.
     merged: list[dict[str, Any]] = []
-    manual_source_names = {m.get("source_name") for m in load_json(MANUAL_EVENTS, [])}
-    for event in manual_in_window(window_start, window_end, boundary):
-        merged.append(event)
-
     for event in sorted(accepted_auto, key=lambda e: (e["dates"][0], e["name"].lower())):
         if any(is_duplicate(event, current) for current in merged):
             continue
         merged.append(event)
 
+    for event in manual_in_window(window_start, window_end, boundary):
+        manual = dict(event)
+        manual["origin"] = "manual"
+        derive_operational_context(manual)
+        if any(is_duplicate(manual, current) for current in merged):
+            continue
+        merged.append(manual)
+
     merged.sort(key=lambda e: (e["dates"][0] if e.get("dates") else "9999-99-99", e.get("start") or "", e["name"].lower()))
+
+    # Protect against a parser collapse that still returns successful HTTP
+    # responses. A severe automated-yield drop preserves the last-good data.
+    previous_meta = load_json(OUTPUT_META, {})
+    previous_auto = int(previous_meta.get("automated_candidate_count") or 0)
+    if previous_auto >= 3 and len(accepted_auto) < max(1, math.floor(previous_auto * 0.4)):
+        raise RuntimeError(
+            f"Automated candidate yield collapsed from {previous_auto} to {len(accepted_auto)}; "
+            "preserving last-known-good published dataset"
+        )
 
     write_json(OUTPUT_EVENTS, merged)
     meta = {
         "generated_at": now.isoformat(timespec="seconds"),
         "event_count": len(merged),
-        "manual_event_count": sum(1 for e in merged if e.get("source_name") in manual_source_names),
+        "manual_event_count": sum(1 for e in merged if e.get("origin") == "manual"),
+        "automated_event_count": sum(1 for e in merged if e.get("origin") == "automated"),
         "automated_candidate_count": len(accepted_auto),
         "collection_window_start": window_start.isoformat(),
         "collection_window_end": window_end.isoformat(),
@@ -965,11 +1049,22 @@ def main() -> int:
         "sources": [
             {
                 "key": r.key, "name": r.name, "success": r.success,
+                "health": (
+                    "failed" if not r.success else
+                    "degraded" if r.discovered == 0 else
+                    "healthy"
+                ),
                 "detail_links": r.detail_links, "discovered": r.discovered,
                 "accepted": r.accepted, "error": r.error,
             }
             for r in results
         ],
+        "source_health": {
+            "healthy": sum(1 for r in results if r.success and r.discovered > 0),
+            "degraded": sum(1 for r in results if r.success and r.discovered == 0),
+            "failed": sum(1 for r in results if not r.success),
+            "total": len(results),
+        },
         "notes": "Automated source collection is merged with a curated safety-net file. Unknown indoor/outdoor events and points outside the LIX CWA are excluded.",
     }
     write_json(OUTPUT_META, meta)
