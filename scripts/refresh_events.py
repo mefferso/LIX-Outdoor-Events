@@ -233,16 +233,6 @@ MONTHS = {
 
 def parse_human_date_range(text: str) -> tuple[str | None, str | None]:
     text = clean_text(text).replace("–", "-").replace("—", "-")
-    # September 26, 2026
-    single = re.search(
-        r"\b(" + "|".join(MONTHS) + r")\s+(\d{1,2}),\s*(20\d{2})\b",
-        text, re.I
-    )
-    if not single:
-        return None, None
-    month = MONTHS[single.group(1).lower()]
-    day1 = int(single.group(2))
-    year = int(single.group(3))
 
     # September 18-20, 2026
     range_match = re.search(
@@ -255,7 +245,15 @@ def parse_human_date_range(text: str) -> tuple[str | None, str | None]:
         end = date(int(range_match.group(4)), month, int(range_match.group(3)))
         return start.isoformat(), end.isoformat()
 
-    d = date(year, month, day1)
+    # September 26, 2026
+    single = re.search(
+        r"\b(" + "|".join(MONTHS) + r")\s+(\d{1,2}),\s*(20\d{2})\b",
+        text, re.I
+    )
+    if not single:
+        return None, None
+    month = MONTHS[single.group(1).lower()]
+    d = date(int(single.group(3)), month, int(single.group(2)))
     return d.isoformat(), d.isoformat()
 
 def parse_clock(text: str) -> tuple[int, int] | None:
