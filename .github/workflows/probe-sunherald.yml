@@ -11,24 +11,15 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - name: Probe encoded CitySpark hash routes
+      - name: Probe rendered CitySpark detail route
         shell: bash
         run: |
           set +e
-          urls=(
-            "https://r.jina.ai/https://www.sunherald.com/events/%23/show?start=2026-09-25"
-            "https://r.jina.ai/https://www.sunherald.com/events/%23%2Fshow%3Fstart%3D2026-09-25"
-            "https://r.jina.ai/http://www.sunherald.com/events/%23/show?start=2026-09-25"
-          )
-          for u in "${urls[@]}"; do
-            echo "=== $u ==="
-            curl -sS -L --connect-timeout 10 --max-time 90 \
-              -H 'X-Respond-Timing: mutation-idle' \
-              -H 'X-Engine: browser' \
-              -H 'X-Timeout: 60' \
-              -o /tmp/rendered.txt "$u"
-            echo "SIZE $(wc -c < /tmp/rendered.txt)"
-            sed -n '1,20p' /tmp/rendered.txt
-            grep -E '^(Sunday|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday), Sep|https://www\.sunherald\.com/events/#/details/' /tmp/rendered.txt | head -n 100 || true
-            echo
-          done
+          u="https://r.jina.ai/https://www.sunherald.com/events/%23/details/the-firefighters-at-loco-beach-coconuts/17969802/2026-09-26T00"
+          curl -sS -L --connect-timeout 10 --max-time 90 \
+            -H 'X-Respond-Timing: mutation-idle' \
+            -H 'X-Engine: browser' \
+            -H 'X-Timeout: 60' \
+            -o /tmp/detail.txt "$u"
+          echo "SIZE $(wc -c < /tmp/detail.txt)"
+          cat /tmp/detail.txt
