@@ -476,3 +476,32 @@ main { height: calc(100% - 76px); display: flex; flex-direction: column; }
   word-break: normal;
   hyphens: none;
 }
+
+
+/* Header + control typography refinements. */
+.topbar h1 {
+  font-size: 2rem;
+  line-height: 1.05;
+  letter-spacing: .005em;
+}
+
+.day-button .day-label {
+  font-size: .88rem;
+}
+
+.day-button .day-date {
+  font-size: .82rem;
+}
+
+.day-button .day-count {
+  font-size: .75rem;
+}
+
+.filter {
+  font-size: .86rem;
+  font-weight: 650;
+}
+
+.event-count {
+  font-size: .9rem;
+}
