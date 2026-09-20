@@ -43,7 +43,7 @@
       "key": "houma",
       "name": "Explore Houma",
       "url": "https://explorehouma.com/events/",
-      "collector": "listing_jsonld",
+      "collector": "listing_houma",
       "max_detail_pages": 25,
       "enabled": true,
       "href_contains_any": [
