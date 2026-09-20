@@ -106,12 +106,20 @@ def normalized_name(value: str) -> str:
     value = re.sub(r"[^a-z0-9]+", " ", value)
     return re.sub(r"\s+", " ", value).strip()
 
-def fetch_text(url: str, timeout: int = 25, attempts: int = 2) -> str:
+def fetch_text(
+    url: str,
+    timeout: int = 25,
+    attempts: int = 2,
+    extra_headers: dict[str, str] | None = None,
+) -> str:
     last: Exception | None = None
     safe_url = quote(url, safe=":/?&=%#[]@!()*+,;-._~")
+    headers = {"User-Agent": USER_AGENT, "Accept": "text/html,application/json;q=0.9,*/*;q=0.8"}
+    if extra_headers:
+        headers.update(extra_headers)
     for attempt in range(attempts):
         try:
-            req = Request(safe_url, headers={"User-Agent": USER_AGENT, "Accept": "text/html,application/json;q=0.9,*/*;q=0.8"})
+            req = Request(safe_url, headers=headers)
             with urlopen(req, timeout=timeout) as response:
                 charset = response.headers.get_content_charset() or "utf-8"
                 return response.read().decode(charset, errors="replace")
@@ -653,12 +661,185 @@ def collect_evvnt_discovery(source: dict[str, Any]) -> list[dict[str, Any]]:
     return output
 
 
+CITYSPARK_DETAIL_RE = re.compile(
+    r"https?://(?:www\.)?sunherald\.com/events/#/details/[^)\s]+/(\d+)/(\d{4}-\d{2}-\d{2}T\d{2})"
+)
+
+def parse_cityspark_widget_payload(text: str) -> dict[str, Any] | None:
+    """Extract the JSON object passed to window.csCard() from CitySpark widget HTML."""
+    payload = json.loads(text)
+    content = payload.get("Content")
+    if not isinstance(content, str):
+        return None
+    marker = "window.csCard("
+    pos = content.find(marker)
+    if pos < 0:
+        return None
+    comma = content.find(",", pos + len(marker))
+    if comma < 0:
+        return None
+    brace = content.find("{", comma)
+    if brace < 0:
+        return None
+    try:
+        card, _ = json.JSONDecoder().raw_decode(content[brace:])
+    except json.JSONDecodeError:
+        return None
+    return card if isinstance(card, dict) else None
+
+def cityspark_card_to_schema(
+    card: dict[str, Any],
+    occurrence: str,
+    detail_url: str,
+) -> dict[str, Any] | None:
+    event = card.get("Event")
+    if not isinstance(event, dict):
+        return None
+    name = clean_text(event.get("Name"))
+    if not name:
+        return None
+
+    city_state = clean_text(event.get("CityState"))
+    city, state = city_state, ""
+    if "," in city_state:
+        city, state = [clean_text(x) for x in city_state.rsplit(",", 1)]
+
+    # CitySpark's widget payload labels local wall-clock values with Z. The
+    # calendar route itself carries the intended local occurrence hour, so
+    # build a timezone-aware local timestamp instead of interpreting that Z
+    # as true UTC.
+    occ_match = re.fullmatch(r"(\d{4}-\d{2}-\d{2})T(\d{2})", occurrence)
+    all_day = bool(event.get("AllDay")) or not bool(event.get("HasTime"))
+    start_date: str
+    if all_day:
+        start_date = occ_match.group(1) if occ_match else occurrence[:10]
+    else:
+        base = event.get("DateStart") or ""
+        minute_match = re.search(r"T\d{2}:(\d{2})", str(base))
+        minute = int(minute_match.group(1)) if minute_match else 0
+        if occ_match:
+            d = date.fromisoformat(occ_match.group(1))
+            start_date = datetime(
+                d.year, d.month, d.day, int(occ_match.group(2)), minute, tzinfo=TZ
+            ).isoformat()
+        else:
+            parsed = parse_dt(base)
+            if not parsed:
+                return None
+            start_date = parsed.isoformat()
+
+    end_date = None
+    raw_end = event.get("DateEnd")
+    if raw_end and not all_day:
+        try:
+            naive = datetime.fromisoformat(str(raw_end).replace("Z", ""))
+            end_date = naive.replace(tzinfo=TZ).isoformat()
+        except ValueError:
+            end_date = None
+
+    location: dict[str, Any] = {
+        "@type": "Place",
+        "name": clean_text(event.get("Venue")),
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": clean_text(event.get("Address")),
+            "addressLocality": city,
+            "addressRegion": state,
+            "postalCode": clean_text(event.get("Zip")),
+        },
+    }
+    try:
+        lat = float(event.get("latitude"))
+        lon = float(event.get("longitude"))
+        location["geo"] = {
+            "@type": "GeoCoordinates",
+            "latitude": lat,
+            "longitude": lon,
+        }
+    except (TypeError, ValueError):
+        pass
+
+    return {
+        "@type": "Event",
+        "name": name,
+        "startDate": start_date,
+        "endDate": end_date,
+        "description": clean_text(event.get("Description")),
+        "location": location,
+        "url": detail_url,
+    }
+
+def collect_cityspark_rendered(
+    source: dict[str, Any],
+) -> tuple[list[dict[str, Any]], int]:
+    """Discover Sun Herald CitySpark events, then hydrate via public widget JSON."""
+    calendar_url = source.get("calendar_url") or source.get("url")
+    portal = clean_text(source.get("portal") or "SunHerald")
+    if not calendar_url:
+        raise RuntimeError("CitySpark source missing calendar_url")
+
+    start = now_local().date()
+    render_headers = {
+        "X-Respond-Timing": "mutation-idle",
+        "X-Engine": "browser",
+        "X-Timeout": "60",
+    }
+    renderer = str(source.get("renderer_base") or "https://r.jina.ai/").rstrip("/") + "/"
+
+    targets = [
+        renderer + "https://www.sunherald.com/events/",
+        renderer
+        + "https://www.sunherald.com/events/%23/show?start="
+        + (start + timedelta(days=5)).isoformat(),
+    ]
+
+    occurrences: dict[tuple[str, str], str] = {}
+    for target in targets:
+        rendered = fetch_text(
+            target,
+            timeout=int(source.get("render_timeout", 75)),
+            attempts=2,
+            extra_headers=render_headers,
+        )
+        for match in CITYSPARK_DETAIL_RE.finditer(rendered):
+            event_id, occurrence = match.group(1), match.group(2)
+            occurrences[(event_id, occurrence)] = match.group(0)
+
+    max_details = int(source.get("max_detail_pages", 100))
+    output: list[dict[str, Any]] = []
+    hydrated = 0
+    for (event_id, occurrence), detail_url in list(occurrences.items())[:max_details]:
+        widget_url = f"https://cdn-p.cityspark.com/wid/{portal}_{event_id}.jsx"
+        try:
+            widget_text = fetch_text(widget_url, timeout=20, attempts=2)
+            card = parse_cityspark_widget_payload(widget_text)
+            if not card:
+                continue
+            normalized = cityspark_card_to_schema(card, occurrence, detail_url)
+            if normalized:
+                output.append(normalized)
+                hydrated += 1
+        except Exception as exc:
+            print(
+                f"[source:{source.get('key')}] CitySpark detail skipped {event_id}: {exc}",
+                file=sys.stderr,
+            )
+    return output, len(occurrences)
+
 def collect_source(source: dict[str, Any]) -> tuple[list[dict[str, Any]], SourceResult]:
     key = source["key"]
     name = source["name"]
     result = SourceResult(key=key, name=name, success=False)
     raw: list[dict[str, Any]] = []
     try:
+        if source.get("collector") == "cityspark_rendered":
+            events, detail_links = collect_cityspark_rendered(source)
+            raw.extend(events)
+            result.success = True
+            result.detail_links = detail_links
+            result.discovered = len(raw)
+            return raw, result
+
         if source.get("collector") == "evvnt_discovery":
             raw.extend(collect_evvnt_discovery(source))
             result.success = True
