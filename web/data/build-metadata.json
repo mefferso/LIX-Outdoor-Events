@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-09-20T12:57:49-05:00",
-  "event_count": 8,
+  "generated_at": "2026-09-20T13:21:57-05:00",
+  "event_count": 9,
   "manual_event_count": 4,
-  "automated_event_count": 4,
-  "automated_candidate_count": 4,
+  "automated_event_count": 5,
+  "automated_candidate_count": 5,
   "collection_window_start": "2026-09-20",
   "collection_window_end": "2026-09-27",
   "timezone": "America/Chicago",
@@ -149,13 +149,23 @@
       "discovered": 0,
       "accepted": 0,
       "error": null
+    },
+    {
+      "key": "sunherald_events",
+      "name": "Sun Herald Events",
+      "success": true,
+      "health": "healthy",
+      "detail_links": 51,
+      "discovered": 50,
+      "accepted": 1,
+      "error": null
     }
   ],
   "source_health": {
-    "healthy": 6,
+    "healthy": 7,
     "degraded": 8,
     "failed": 0,
-    "total": 14
+    "total": 15
   },
   "notes": "Automated source collection is merged with a curated safety-net file. Unknown indoor/outdoor events and points outside the LIX CWA are excluded."
 }
