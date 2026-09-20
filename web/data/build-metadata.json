@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-20T12:29:47-05:00",
+  "generated_at": "2026-09-20T12:34:04-05:00",
   "event_count": 8,
   "manual_event_count": 4,
   "automated_event_count": 4,
@@ -149,23 +149,13 @@
       "discovered": 0,
       "accepted": 0,
       "error": null
-    },
-    {
-      "key": "sunherald_events",
-      "name": "Sun Herald Local Events",
-      "success": false,
-      "health": "failed",
-      "detail_links": 0,
-      "discovered": 0,
-      "accepted": 0,
-      "error": "fetch failed for https://www.sunherald.com/entertainment/local-events/: The read operation timed out"
     }
   ],
   "source_health": {
     "healthy": 6,
     "degraded": 8,
-    "failed": 1,
-    "total": 15
+    "failed": 0,
+    "total": 14
   },
   "notes": "Automated source collection is merged with a curated safety-net file. Unknown indoor/outdoor events and points outside the LIX CWA are excluded."
 }
