@@ -69,6 +69,10 @@ function escapeHtml(value) {
     .replaceAll('"',"&quot;").replaceAll("'","&#039;");
 }
 
+function displayEventName(event) {
+  return String(event?.name || "").replace(/\bvs\.?\b/gi, "vs");
+}
+
 function formatTime(event) {
   if (event.all_day) return "All day / time not specified";
   const start = new Date(event.start);
@@ -132,7 +136,7 @@ function popupHtml(event) {
     <div class="popup-card">
       <div class="popup-title">
         <span class="event-glyph popup-glyph" aria-hidden="true">${eventIconGlyph(event)}</span>
-        <span>${escapeHtml(event.name)}</span>
+        <span>${escapeHtml(displayEventName(event))}</span>
       </div>
 
       <div class="popup-detail-list">
@@ -302,7 +306,7 @@ function renderEvents() {
     const card = document.createElement("article");
     card.className = `event-card ${event.importance}`;
     card.innerHTML = `
-      <h2><span class="event-glyph card-glyph" aria-hidden="true">${eventIconGlyph(event)}</span><span>${escapeHtml(event.name)}</span></h2>
+      <h2><span class="event-glyph card-glyph" aria-hidden="true">${eventIconGlyph(event)}</span><span>${escapeHtml(displayEventName(event))}</span></h2>
       <div class="event-detail-list">
         <div class="event-detail-row">
           <span class="event-detail-label">Date:</span>
