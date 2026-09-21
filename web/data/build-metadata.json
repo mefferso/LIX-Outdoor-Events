@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-09-21T07:47:16-05:00",
-  "event_count": 6,
-  "manual_event_count": 3,
-  "automated_event_count": 3,
-  "automated_candidate_count": 3,
+  "generated_at": "2026-09-21T16:58:31-05:00",
+  "event_count": 7,
+  "manual_event_count": 5,
+  "automated_event_count": 2,
+  "automated_candidate_count": 2,
   "collection_window_start": "2026-09-21",
   "collection_window_end": "2026-09-28",
   "timezone": "America/Chicago",
@@ -15,9 +15,9 @@
       "name": "NewOrleans.com",
       "success": true,
       "health": "healthy",
-      "detail_links": 32,
-      "discovered": 31,
-      "accepted": 1,
+      "detail_links": 33,
+      "discovered": 27,
+      "accepted": 0,
       "error": null
     },
     {
@@ -155,8 +155,8 @@
       "name": "Sun Herald Events",
       "success": true,
       "health": "healthy",
-      "detail_links": 53,
-      "discovered": 53,
+      "detail_links": 52,
+      "discovered": 52,
       "accepted": 0,
       "error": null
     }
