@@ -1,34 +1,5 @@
 [
   {
-    "id": "hero-fest-2026-09-18-5c21061",
-    "name": "Hero Fest",
-    "dates": [
-      "2026-09-18",
-      "2026-09-19",
-      "2026-09-20"
-    ],
-    "start": "2026-09-18T00:00:00-05:00",
-    "end": "2026-09-20T00:00:00-05:00",
-    "all_day": true,
-    "latitude": 29.578376,
-    "longitude": -90.726791,
-    "venue": "Barry P. Bonvillain Civic Center",
-    "address": "346 Civic Center Blvd, Houma, LA",
-    "city": "Houma",
-    "state": "LA",
-    "parish_county": "Terrebonne Parish",
-    "idss_area": "Bayou Parishes",
-    "category": "festival",
-    "outdoor_status": "partial",
-    "origin": "automated",
-    "importance": "moderate",
-    "location_confidence": 0.78,
-    "outdoor_confidence": 0.72,
-    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
-    "source_name": "Explore Houma",
-    "source_url": "https://explorehouma.com/events/hero-fest/"
-  },
-  {
     "id": "jurassic-quest-mississippi-coast-convention-center-biloxi-ms-2026-2026-09-20-6d8cee8",
     "name": "Jurassic Quest | Mississippi Coast Convention Center | Biloxi, MS 2026",
     "dates": [
