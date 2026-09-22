@@ -1,5 +1,32 @@
 [
   {
+    "id": "arrowhead-jazz-band-with-raph-zee-2026-09-22-d23db5c",
+    "name": "Arrowhead Jazz Band with Raph Zee",
+    "dates": [
+      "2026-09-22"
+    ],
+    "start": "2026-09-22T00:00:00-05:00",
+    "end": "2026-09-22T00:00:00-05:00",
+    "all_day": true,
+    "latitude": 29.95484,
+    "longitude": -90.064787,
+    "venue": "The New Orleans Jazz National Historical Park",
+    "address": "419 Decatur St., New Orleans, LA 70130",
+    "city": "New Orleans",
+    "state": "LA",
+    "parish_county": "Orleans Parish",
+    "idss_area": "New Orleans Metro",
+    "category": "other",
+    "outdoor_status": "outdoor",
+    "origin": "automated",
+    "importance": "major",
+    "location_confidence": 0.96,
+    "outdoor_confidence": 0.78,
+    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
+    "source_name": "NewOrleans.com",
+    "source_url": "https://www.neworleans.com/event/arrowhead-jazz-band-with-raph-zee/201678/"
+  },
+  {
     "id": "international-arts-festival-nola-2026",
     "name": "International Arts Festival: NOLA 2026",
     "dates": [
@@ -111,8 +138,8 @@
     "idss_area": "New Orleans Metro"
   },
   {
-    "id": "nicholls-state-university-vs-lamar-2026-09-26-8f6fdc8",
-    "name": "Nicholls State University Vs Lamar",
+    "id": "nicholls-state-university-vs-no-1515-lamar-2026-09-26-8acc0be",
+    "name": "Nicholls State University Vs No. 15/15 Lamar",
     "dates": [
       "2026-09-26"
     ],
