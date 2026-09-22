@@ -34,5 +34,11 @@
     "latitude": 32.2998686,
     "longitude": -90.1830408,
     "display_name": "Jackson, Hinds County, Mississippi, United States"
+  },
+  "venues citywide": null,
+  "new orleans": {
+    "latitude": 29.9561422,
+    "longitude": -90.0733934,
+    "display_name": "New Orleans, Orleans Parish, Louisiana, United States"
   }
 }

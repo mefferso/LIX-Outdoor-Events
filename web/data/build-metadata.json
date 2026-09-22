@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-09-22T11:57:07-05:00",
+  "generated_at": "2026-09-22T16:18:12-05:00",
   "event_count": 8,
   "manual_event_count": 5,
   "automated_event_count": 3,
-  "automated_candidate_count": 3,
+  "automated_candidate_count": 4,
   "collection_window_start": "2026-09-22",
   "collection_window_end": "2026-09-29",
   "timezone": "America/Chicago",
@@ -16,8 +16,8 @@
       "success": true,
       "health": "healthy",
       "detail_links": 32,
-      "discovered": 27,
-      "accepted": 1,
+      "discovered": 54,
+      "accepted": 2,
       "error": null
     },
     {
@@ -125,7 +125,7 @@
       "name": "Downtown Baton Rouge",
       "success": true,
       "health": "degraded",
-      "detail_links": 13,
+      "detail_links": 15,
       "discovered": 0,
       "accepted": 0,
       "error": null
@@ -155,8 +155,8 @@
       "name": "Sun Herald Events",
       "success": true,
       "health": "healthy",
-      "detail_links": 52,
-      "discovered": 52,
+      "detail_links": 51,
+      "discovered": 51,
       "accepted": 0,
       "error": null
     }
