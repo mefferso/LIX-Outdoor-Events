@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-21T16:58:31-05:00",
+  "generated_at": "2026-09-21T23:55:04-05:00",
   "event_count": 7,
   "manual_event_count": 5,
   "automated_event_count": 2,
@@ -155,8 +155,8 @@
       "name": "Sun Herald Events",
       "success": true,
       "health": "healthy",
-      "detail_links": 52,
-      "discovered": 52,
+      "detail_links": 53,
+      "discovered": 53,
       "accepted": 0,
       "error": null
     }
