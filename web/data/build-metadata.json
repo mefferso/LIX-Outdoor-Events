@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-09-22T23:44:30-05:00",
+  "generated_at": "2026-09-23T06:35:26-05:00",
   "event_count": 8,
   "manual_event_count": 5,
   "automated_event_count": 3,
   "automated_candidate_count": 4,
-  "collection_window_start": "2026-09-22",
-  "collection_window_end": "2026-09-29",
+  "collection_window_start": "2026-09-23",
+  "collection_window_end": "2026-09-30",
   "timezone": "America/Chicago",
   "boundary_source": "NOAA/NWS reference map FeatureServer",
   "pipeline_state": "automated-multi-source-v1",
@@ -125,7 +125,7 @@
       "name": "Downtown Baton Rouge",
       "success": true,
       "health": "degraded",
-      "detail_links": 16,
+      "detail_links": 15,
       "discovered": 0,
       "accepted": 0,
       "error": null
@@ -155,8 +155,8 @@
       "name": "Sun Herald Events",
       "success": true,
       "health": "healthy",
-      "detail_links": 51,
-      "discovered": 51,
+      "detail_links": 53,
+      "discovered": 53,
       "accepted": 0,
       "error": null
     }
