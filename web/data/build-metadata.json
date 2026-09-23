@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-23T11:57:30-05:00",
+  "generated_at": "2026-09-23T16:29:39-05:00",
   "event_count": 8,
   "manual_event_count": 5,
   "automated_event_count": 3,
@@ -45,7 +45,7 @@
       "name": "Explore Houma",
       "success": true,
       "health": "healthy",
-      "detail_links": 36,
+      "detail_links": 37,
       "discovered": 24,
       "accepted": 0,
       "error": null
@@ -155,8 +155,8 @@
       "name": "Sun Herald Events",
       "success": true,
       "health": "healthy",
-      "detail_links": 52,
-      "discovered": 52,
+      "detail_links": 53,
+      "discovered": 53,
       "accepted": 0,
       "error": null
     }
