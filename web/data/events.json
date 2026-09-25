@@ -1,32 +1,5 @@
 [
   {
-    "id": "tom-worrell-kerry-brown-2026-09-24-e779fd2",
-    "name": "Tom Worrell & Kerry Brown",
-    "dates": [
-      "2026-09-24"
-    ],
-    "start": "2026-09-24T00:00:00-05:00",
-    "end": "2026-09-24T00:00:00-05:00",
-    "all_day": true,
-    "latitude": 29.956142,
-    "longitude": -90.073393,
-    "venue": "The New Orleans Jazz National Historical Park",
-    "address": "New Orleans",
-    "city": "New Orleans",
-    "state": "",
-    "parish_county": "Orleans Parish",
-    "idss_area": "New Orleans Metro",
-    "category": "other",
-    "outdoor_status": "outdoor",
-    "origin": "automated",
-    "importance": "major",
-    "location_confidence": 0.78,
-    "outdoor_confidence": 0.78,
-    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
-    "source_name": "NewOrleans.com",
-    "source_url": "https://www.neworleans.com/event/tom-worrell-%26-kerry-brown/201685/"
-  },
-  {
     "id": "international-arts-festival-nola-2026",
     "name": "International Arts Festival: NOLA 2026",
     "dates": [
@@ -217,5 +190,32 @@
     "origin": "manual",
     "parish_county": "East Baton Rouge Parish",
     "idss_area": "Baton Rouge Metro"
+  },
+  {
+    "id": "cattails-and-cocktails-on-krebs-lake-2026-10-02-de3f393",
+    "name": "Cattails and Cocktails on Krebs Lake",
+    "dates": [
+      "2026-10-02"
+    ],
+    "start": "2026-10-02T16:00:00-05:00",
+    "end": "2026-10-02T19:00:00-05:00",
+    "all_day": false,
+    "latitude": 30.38019,
+    "longitude": -88.55821,
+    "venue": "La Pointe-Krebs House and Museum",
+    "address": "4602 Fort Street, Pascagoula, MS 39567",
+    "city": "Pascagoula",
+    "state": "MS",
+    "parish_county": "",
+    "idss_area": "Mississippi Coast",
+    "category": "coastal_marine",
+    "outdoor_status": "partial",
+    "origin": "automated",
+    "importance": "moderate",
+    "location_confidence": 0.96,
+    "outdoor_confidence": 0.72,
+    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
+    "source_name": "Sun Herald Events",
+    "source_url": "https://www.sunherald.com/events/#/details/cattails-and-cocktails-on-krebs-lake/19895280/2026-10-02T16"
   }
 ]
