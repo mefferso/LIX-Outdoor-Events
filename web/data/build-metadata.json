@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-09-25T23:57:14-05:00",
-  "event_count": 8,
-  "manual_event_count": 5,
-  "automated_event_count": 3,
-  "automated_candidate_count": 3,
-  "collection_window_start": "2026-09-25",
-  "collection_window_end": "2026-10-02",
+  "generated_at": "2026-09-26T06:24:12-05:00",
+  "event_count": 13,
+  "manual_event_count": 4,
+  "automated_event_count": 9,
+  "automated_candidate_count": 11,
+  "collection_window_start": "2026-09-26",
+  "collection_window_end": "2026-10-03",
   "timezone": "America/Chicago",
   "boundary_source": "NOAA/NWS reference map FeatureServer",
   "pipeline_state": "automated-multi-source-v1",
@@ -17,7 +17,7 @@
       "health": "healthy",
       "detail_links": 31,
       "discovered": 50,
-      "accepted": 0,
+      "accepted": 4,
       "error": null
     },
     {
@@ -47,7 +47,7 @@
       "health": "healthy",
       "detail_links": 37,
       "discovered": 24,
-      "accepted": 0,
+      "accepted": 1,
       "error": null
     },
     {
@@ -97,7 +97,7 @@
       "health": "healthy",
       "detail_links": 0,
       "discovered": 13,
-      "accepted": 0,
+      "accepted": 1,
       "error": null
     },
     {
@@ -155,9 +155,9 @@
       "name": "Sun Herald Events",
       "success": true,
       "health": "healthy",
-      "detail_links": 52,
-      "discovered": 52,
-      "accepted": 1,
+      "detail_links": 53,
+      "discovered": 53,
+      "accepted": 3,
       "error": null
     }
   ],

@@ -40,5 +40,20 @@
     "latitude": 29.9561422,
     "longitude": -90.0733934,
     "display_name": "New Orleans, Orleans Parish, Louisiana, United States"
+  },
+  "magazine street": {
+    "latitude": 42.3266943,
+    "longitude": -71.071459,
+    "display_name": "Magazine Street, Roxbury, Boston, Suffolk County, Massachusetts, 02118, United States"
+  },
+  "7856 main street, houma, la": {
+    "latitude": 29.5957987,
+    "longitude": -90.6857559,
+    "display_name": "Main Street, Houma, Terrebonne Parish, Louisiana, 70363, United States"
+  },
+  "houston, texas": {
+    "latitude": 29.7589382,
+    "longitude": -95.3676974,
+    "display_name": "Houston, Harris County, Texas, United States"
   }
 }
