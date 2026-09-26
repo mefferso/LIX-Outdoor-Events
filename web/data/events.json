@@ -266,7 +266,7 @@
     "outdoor_status": "outdoor",
     "origin": "automated",
     "importance": "moderate",
-    "location_confidence": 0.72,
+    "location_confidence": 0.78,
     "outdoor_confidence": 0.78,
     "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
     "source_name": "Explore Houma",
