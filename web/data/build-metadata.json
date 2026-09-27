@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-27T00:17:47-05:00",
+  "generated_at": "2026-09-27T07:01:16-05:00",
   "event_count": 6,
   "manual_event_count": 1,
   "automated_event_count": 5,
@@ -15,8 +15,8 @@
       "name": "NewOrleans.com",
       "success": true,
       "health": "healthy",
-      "detail_links": 31,
-      "discovered": 50,
+      "detail_links": 30,
+      "discovered": 51,
       "accepted": 0,
       "error": null
     },
@@ -155,8 +155,8 @@
       "name": "Sun Herald Events",
       "success": true,
       "health": "healthy",
-      "detail_links": 52,
-      "discovered": 52,
+      "detail_links": 47,
+      "discovered": 47,
       "accepted": 3,
       "error": null
     }
