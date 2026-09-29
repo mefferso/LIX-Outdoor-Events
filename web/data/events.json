@@ -1,5 +1,32 @@
 [
   {
+    "id": "arrowhead-jazz-band-with-raph-zee-2026-09-29-1bf38c0",
+    "name": "Arrowhead Jazz Band with Raph Zee",
+    "dates": [
+      "2026-09-29"
+    ],
+    "start": "2026-09-29T00:00:00-05:00",
+    "end": "2026-09-29T00:00:00-05:00",
+    "all_day": true,
+    "latitude": 29.956142,
+    "longitude": -90.073393,
+    "venue": "The New Orleans Jazz National Historical Park",
+    "address": "New Orleans",
+    "city": "New Orleans",
+    "state": "",
+    "parish_county": "Orleans Parish",
+    "idss_area": "New Orleans Metro",
+    "category": "other",
+    "outdoor_status": "outdoor",
+    "origin": "automated",
+    "importance": "major",
+    "location_confidence": 0.78,
+    "outdoor_confidence": 0.78,
+    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
+    "source_name": "NewOrleans.com",
+    "source_url": "https://www.neworleans.com/event/arrowhead-jazz-band-with-raph-zee/201710/"
+  },
+  {
     "id": "cattails-and-cocktails-on-krebs-lake-2026-10-02-de3f393",
     "name": "Cattails and Cocktails on Krebs Lake",
     "dates": [
