@@ -56,5 +56,10 @@
     "longitude": -95.3676974,
     "display_name": "Houston, Harris County, Texas, United States"
   },
-  "1560 bayou gardens ext., houma, la 70364": null
+  "1560 bayou gardens ext., houma, la 70364": null,
+  "1208 museum dr., houma, la 70360": {
+    "latitude": 29.5887083,
+    "longitude": -90.7402854,
+    "display_name": "Southdown Plantation, 1208, Museum Drive, Houma, Terrebonne Parish, Louisiana, 70360, United States"
+  }
 }

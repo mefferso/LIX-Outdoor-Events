@@ -54,60 +54,6 @@
     "source_url": "https://explorehouma.com/events/maw-maw-walker/"
   },
   {
-    "id": "pascagoula-river-paddle-battle-2026-10-03-2ae133e",
-    "name": "Pascagoula River Paddle Battle",
-    "dates": [
-      "2026-10-03"
-    ],
-    "start": "2026-10-03T06:00:00-05:00",
-    "end": "2026-10-03T14:00:00-05:00",
-    "all_day": false,
-    "latitude": 30.38019,
-    "longitude": -88.55821,
-    "venue": "La Pointe-Krebs House and Museum",
-    "address": "4602 Fort Street, Pascagoula, MS 39567",
-    "city": "Pascagoula",
-    "state": "MS",
-    "parish_county": "",
-    "idss_area": "Mississippi Coast",
-    "category": "coastal_marine",
-    "outdoor_status": "partial",
-    "origin": "automated",
-    "importance": "moderate",
-    "location_confidence": 0.96,
-    "outdoor_confidence": 0.72,
-    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
-    "source_name": "Sun Herald Events",
-    "source_url": "https://www.sunherald.com/events/#/details/pascagoula-river-paddle-battle/19895298/2026-10-03T06"
-  },
-  {
-    "id": "butterflies-in-the-pass-monarch-festival-2026-10-03-b27145f",
-    "name": "Butterflies In the Pass Monarch Festival",
-    "dates": [
-      "2026-10-03"
-    ],
-    "start": "2026-10-03T10:00:00-05:00",
-    "end": "2026-10-03T13:00:00-05:00",
-    "all_day": false,
-    "latitude": 30.316822,
-    "longitude": -89.239279,
-    "venue": "War Memorial Park",
-    "address": "101 Fleitas, Pass Christian, MS",
-    "city": "Pass Christian",
-    "state": "MS",
-    "parish_county": "Harrison County",
-    "idss_area": "Mississippi Coast",
-    "category": "festival",
-    "outdoor_status": "partial",
-    "origin": "automated",
-    "importance": "moderate",
-    "location_confidence": 0.96,
-    "outdoor_confidence": 0.72,
-    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
-    "source_name": "Sun Herald Events",
-    "source_url": "https://www.sunherald.com/events/#/details/butterflies-in-the-pass-monarch-festival/19476211/2026-10-03T10"
-  },
-  {
     "id": "southern-university-vs-university-of-arkansas-pine-bluff-2026-10-03-45b708b",
     "name": "Southern University Vs University of Arkansas - Pine Bluff",
     "dates": [
