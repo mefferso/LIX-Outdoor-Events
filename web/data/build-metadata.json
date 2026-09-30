@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-09-30T00:31:42-05:00",
-  "event_count": 3,
+  "generated_at": "2026-09-30T07:33:59-05:00",
+  "event_count": 5,
   "manual_event_count": 0,
-  "automated_event_count": 3,
-  "automated_candidate_count": 3,
+  "automated_event_count": 5,
+  "automated_candidate_count": 6,
   "collection_window_start": "2026-09-30",
   "collection_window_end": "2026-10-07",
   "timezone": "America/Chicago",
@@ -17,7 +17,7 @@
       "health": "healthy",
       "detail_links": 26,
       "discovered": 46,
-      "accepted": 0,
+      "accepted": 2,
       "error": null
     },
     {
@@ -155,9 +155,9 @@
       "name": "Sun Herald Events",
       "success": true,
       "health": "healthy",
-      "detail_links": 51,
-      "discovered": 51,
-      "accepted": 1,
+      "detail_links": 52,
+      "discovered": 52,
+      "accepted": 2,
       "error": null
     }
   ],
