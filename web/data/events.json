@@ -1,7 +1,7 @@
 [
   {
-    "id": "the-10th-anniversary-new-orleans-ragtime-festival-ft-kyle-roussel-el-puente-with-2026-10-01-64699d4",
-    "name": "The 10th Anniversary New Orleans Ragtime Festival ft. Kyle Roussel, El Puente with Margie Perez + More!",
+    "id": "the-new-orleans-ragtime-festival-ft-kyle-roussel-el-puente-with-margie-perez-mor-2026-10-01-659c8b9",
+    "name": "The New Orleans Ragtime Festival ft. Kyle Roussel, El Puente with Margie Perez + More!",
     "dates": [
       "2026-10-01"
     ],
@@ -24,7 +24,7 @@
     "outdoor_confidence": 0.78,
     "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
     "source_name": "NewOrleans.com",
-    "source_url": "https://www.neworleans.com/event/the-10th-anniversary-new-orleans-ragtime-festival-ft-kyle-roussel-el-puente-with-margie-perez-%2b-more!/202851/"
+    "source_url": "https://www.neworleans.com/event/the-new-orleans-ragtime-festival-ft-kyle-roussel-el-puente-with-margie-perez-%2b-more!/202851/"
   },
   {
     "id": "cattails-and-cocktails-on-krebs-lake-2026-10-02-de3f393",
@@ -52,6 +52,33 @@
     "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
     "source_name": "Sun Herald Events",
     "source_url": "https://www.sunherald.com/events/#/details/cattails-and-cocktails-on-krebs-lake/19895280/2026-10-02T16"
+  },
+  {
+    "id": "maw-maw-walker-2026-10-03-5fc4c6e",
+    "name": "Maw Maw Walker",
+    "dates": [
+      "2026-10-03"
+    ],
+    "start": "2026-10-03T00:00:00-05:00",
+    "end": "2026-10-03T00:00:00-05:00",
+    "all_day": true,
+    "latitude": 29.595799,
+    "longitude": -90.685756,
+    "venue": "Courthouse Square in Downtown Houma",
+    "address": "7856 Main Street, Houma, LA",
+    "city": "Houma",
+    "state": "LA",
+    "parish_county": "Terrebonne Parish",
+    "idss_area": "Bayou Parishes",
+    "category": "festival",
+    "outdoor_status": "outdoor",
+    "origin": "automated",
+    "importance": "moderate",
+    "location_confidence": 0.78,
+    "outdoor_confidence": 0.78,
+    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
+    "source_name": "Explore Houma",
+    "source_url": "https://explorehouma.com/events/maw-maw-walker/"
   },
   {
     "id": "pascagoula-river-paddle-battle-2026-10-03-2ae133e",
