@@ -1,12 +1,12 @@
 [
   {
-    "id": "dylan-deckert-quartet-2026-09-30-fb0a6c8",
-    "name": "Dylan Deckert Quartet",
+    "id": "the-10th-anniversary-new-orleans-ragtime-festival-ft-kyle-roussel-el-puente-with-2026-10-01-64699d4",
+    "name": "The 10th Anniversary New Orleans Ragtime Festival ft. Kyle Roussel, El Puente with Margie Perez + More!",
     "dates": [
-      "2026-09-30"
+      "2026-10-01"
     ],
-    "start": "2026-09-30T00:00:00-05:00",
-    "end": "2026-09-30T00:00:00-05:00",
+    "start": "2026-10-01T00:00:00-05:00",
+    "end": "2026-10-01T00:00:00-05:00",
     "all_day": true,
     "latitude": 29.956142,
     "longitude": -90.073393,
@@ -16,7 +16,7 @@
     "state": "",
     "parish_county": "Orleans Parish",
     "idss_area": "New Orleans Metro",
-    "category": "other",
+    "category": "festival",
     "outdoor_status": "outdoor",
     "origin": "automated",
     "importance": "major",
@@ -24,7 +24,7 @@
     "outdoor_confidence": 0.78,
     "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
     "source_name": "NewOrleans.com",
-    "source_url": "https://www.neworleans.com/event/dylan-deckert-quartet/201713/"
+    "source_url": "https://www.neworleans.com/event/the-10th-anniversary-new-orleans-ragtime-festival-ft-kyle-roussel-el-puente-with-margie-perez-%2b-more!/202851/"
   },
   {
     "id": "cattails-and-cocktails-on-krebs-lake-2026-10-02-de3f393",
@@ -54,33 +54,6 @@
     "source_url": "https://www.sunherald.com/events/#/details/cattails-and-cocktails-on-krebs-lake/19895280/2026-10-02T16"
   },
   {
-    "id": "maw-maw-walker-2026-10-03-5fc4c6e",
-    "name": "Maw Maw Walker",
-    "dates": [
-      "2026-10-03"
-    ],
-    "start": "2026-10-03T00:00:00-05:00",
-    "end": "2026-10-03T00:00:00-05:00",
-    "all_day": true,
-    "latitude": 29.595799,
-    "longitude": -90.685756,
-    "venue": "Courthouse Square in Downtown Houma",
-    "address": "7856 Main Street, Houma, LA",
-    "city": "Houma",
-    "state": "LA",
-    "parish_county": "Terrebonne Parish",
-    "idss_area": "Bayou Parishes",
-    "category": "festival",
-    "outdoor_status": "outdoor",
-    "origin": "automated",
-    "importance": "moderate",
-    "location_confidence": 0.78,
-    "outdoor_confidence": 0.78,
-    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
-    "source_name": "Explore Houma",
-    "source_url": "https://explorehouma.com/events/maw-maw-walker/"
-  },
-  {
     "id": "pascagoula-river-paddle-battle-2026-10-03-2ae133e",
     "name": "Pascagoula River Paddle Battle",
     "dates": [
@@ -106,6 +79,33 @@
     "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
     "source_name": "Sun Herald Events",
     "source_url": "https://www.sunherald.com/events/#/details/pascagoula-river-paddle-battle/19895298/2026-10-03T06"
+  },
+  {
+    "id": "butterflies-in-the-pass-monarch-festival-2026-10-03-b27145f",
+    "name": "Butterflies In the Pass Monarch Festival",
+    "dates": [
+      "2026-10-03"
+    ],
+    "start": "2026-10-03T10:00:00-05:00",
+    "end": "2026-10-03T13:00:00-05:00",
+    "all_day": false,
+    "latitude": 30.316822,
+    "longitude": -89.239279,
+    "venue": "War Memorial Park",
+    "address": "101 Fleitas, Pass Christian, MS",
+    "city": "Pass Christian",
+    "state": "MS",
+    "parish_county": "Harrison County",
+    "idss_area": "Mississippi Coast",
+    "category": "festival",
+    "outdoor_status": "partial",
+    "origin": "automated",
+    "importance": "moderate",
+    "location_confidence": 0.96,
+    "outdoor_confidence": 0.72,
+    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
+    "source_name": "Sun Herald Events",
+    "source_url": "https://www.sunherald.com/events/#/details/butterflies-in-the-pass-monarch-festival/19476211/2026-10-03T10"
   },
   {
     "id": "southern-university-vs-university-of-arkansas-pine-bluff-2026-10-03-45b708b",

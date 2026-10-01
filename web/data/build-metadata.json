@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-09-30T17:15:22-05:00",
+  "generated_at": "2026-10-01T00:52:21-05:00",
   "event_count": 5,
   "manual_event_count": 0,
   "automated_event_count": 5,
   "automated_candidate_count": 6,
-  "collection_window_start": "2026-09-30",
-  "collection_window_end": "2026-10-07",
+  "collection_window_start": "2026-10-01",
+  "collection_window_end": "2026-10-08",
   "timezone": "America/Chicago",
   "boundary_source": "NOAA/NWS reference map FeatureServer",
   "pipeline_state": "automated-multi-source-v1",
@@ -43,12 +43,12 @@
     {
       "key": "houma",
       "name": "Explore Houma",
-      "success": true,
-      "health": "healthy",
-      "detail_links": 33,
-      "discovered": 24,
-      "accepted": 1,
-      "error": null
+      "success": false,
+      "health": "failed",
+      "detail_links": 0,
+      "discovered": 0,
+      "accepted": 0,
+      "error": "fetch failed for https://explorehouma.com/events/: HTTP Error 503: Service Unavailable"
     },
     {
       "key": "msgulfcoast",
@@ -155,16 +155,16 @@
       "name": "Sun Herald Events",
       "success": true,
       "health": "healthy",
-      "detail_links": 52,
-      "discovered": 52,
-      "accepted": 2,
+      "detail_links": 51,
+      "discovered": 51,
+      "accepted": 3,
       "error": null
     }
   ],
   "source_health": {
-    "healthy": 7,
+    "healthy": 6,
     "degraded": 8,
-    "failed": 0,
+    "failed": 1,
     "total": 15
   },
   "notes": "Automated source collection is merged with a curated safety-net file. Unknown indoor/outdoor events and points outside the LIX CWA are excluded."
