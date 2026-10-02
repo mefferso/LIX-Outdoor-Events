@@ -318,35 +318,47 @@ def collect_enhanced_listing(source: dict):
 def parse_lsu_football(text: str, source: dict):
     parser = VisibleTextParser()
     parser.feed(text)
-    clean = parser.text
+    lines = [legacy.clean_text(x) for x in parser.text.splitlines() if legacy.clean_text(x)]
     rows = []
-    date_pat = re.compile(
-        r"(?:Mon|Tue|Wed|Thu|Fri|Sat|Sun)?\\s*(Sep(?:t(?:ember)?)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)\\.?\\s*(\\d{1,2})",
+    season = int(source.get("season", legacy.now_local().year))
+    date_re = re.compile(
+        r"^(?:Mon|Tue|Wed|Thu|Fri|Sat|Sun)?\s*"
+        r"(Sep(?:t(?:ember)?)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)\.?\s*(\d{1,2})$",
         re.I,
     )
-    matches = list(date_pat.finditer(clean))
-    for idx, m in enumerate(matches):
-        month = MONTHS[m.group(1).lower().rstrip(".")]
-        start = datetime(int(source.get("season", 2026)), month, int(m.group(2)), tzinfo=legacy.TZ)
-        endpos = matches[idx + 1].start() if idx + 1 < len(matches) else min(len(clean), m.end() + 1200)
-        body = legacy.clean_text(clean[m.end():endpos])
-        if not re.search(r"Tiger Stadium|Baton Rouge", body, re.I):
+
+    for i, line in enumerate(lines):
+        dm = date_re.match(line)
+        if not dm:
             continue
-        if re.search(r"^\\s*at\\b|\\bat\\s+[A-Z]", body, re.I) and not re.search(r"\\bvs\\.?", body, re.I):
+        month = MONTHS[dm.group(1).lower().rstrip(".")]
+        start = datetime(season, month, int(dm.group(2)), tzinfo=legacy.TZ)
+        block_lines = lines[i + 1:i + 18]
+        block = " ".join(block_lines)
+
+        # A home game must explicitly resolve to Tiger Stadium / Baton Rouge.
+        if not re.search(r"Tiger Stadium|Baton Rouge", block, re.I):
             continue
-        om = re.search(
-            r"vs\\.?\\s*(?:(?:Mon|Tue|Wed|Thu|Fri|Sat|Sun)?\\s*(?:Sep|Sept|Oct|Nov|Dec)\\.?\\s*\\d{1,2}\\s*)?"
-            r"vs\\.?\\s*(?:#\\d+\\s*)?([A-Za-z][A-Za-z0-9 .&'\\-]+?)\\s+Baton Rouge",
-            body, re.I,
-        )
-        if not om:
-            om = re.search(r"vs\\.?\\s*(?:#\\d+\\s*)?([A-Za-z][A-Za-z0-9 .&'\\-]+?)\\s+Baton Rouge", body, re.I)
-        if not om:
+
+        opponent = ""
+        for candidate in block_lines:
+            om = re.match(r"^vs\.?\s*(?:#\d+\s*)?(.+?)$", candidate, re.I)
+            if om:
+                value = legacy.clean_text(om.group(1))
+                if value and not date_re.match(value):
+                    opponent = value
+                    break
+        if not opponent:
             continue
-        opp = legacy.clean_text(om.group(1))
+
+        tm = re.search(r"\b(\d{1,2})(?::(\d{2}))?\s*(AM|PM)\s*CT\b", block, re.I)
+        if tm:
+            hour = int(tm.group(1)) % 12 + (12 if tm.group(3).upper() == "PM" else 0)
+            start = start.replace(hour=hour, minute=int(tm.group(2) or 0))
+
         rows.append({
-            "name": f"LSU Football vs {opp}",
-            "startDate": start.date().isoformat(),
+            "name": f"LSU Football vs {opponent}",
+            "startDate": start.isoformat(),
             "location": {
                 "name": "Tiger Stadium",
                 "address": {"addressLocality": "Baton Rouge", "addressRegion": "LA"},
@@ -354,9 +366,10 @@ def parse_lsu_football(text: str, source: dict):
             "description": "LSU home football game at outdoor Tiger Stadium.",
             "url": source["url"],
         })
+
     dedup = {}
-    for r in rows:
-        dedup[(r["name"], r["startDate"])] = r
+    for row in rows:
+        dedup[(row["name"].lower(), row["startDate"])] = row
     return list(dedup.values())
 
 def parse_tangipahoa_fairs(text: str, source: dict):
