@@ -262,12 +262,12 @@ def discover_sitemap_links(source: dict):
         root = f"{p.scheme}://{p.netloc}/sitemap.xml"
     pages: list[str] = []
     try:
-        text = legacy.fetch_text(root, timeout=30, attempts=1)
+        text = legacy.fetch_text(root, timeout=10, attempts=1)
         first_pages, maps = _sitemap_urls(text)
         pages.extend(first_pages)
-        for child in maps[: int(source.get("max_sitemaps", 12))]:
+        for child in maps[: int(source.get("max_sitemaps", 4))]:
             try:
-                child_text = legacy.fetch_text(child, timeout=30, attempts=1)
+                child_text = legacy.fetch_text(child, timeout=10, attempts=1)
                 p2, _ = _sitemap_urls(child_text)
                 pages.extend(p2)
             except Exception:
