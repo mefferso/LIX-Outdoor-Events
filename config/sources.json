@@ -21,7 +21,7 @@
       "name": "Visit Baton Rouge",
       "url": "https://www.visitbatonrouge.com/events/?displaycount=100&sort=date&view=list",
       "collector": "rendered_listing",
-      "max_detail_pages": 100,
+      "max_detail_pages": 40,
       "enabled": true,
       "href_contains_any": [
         "/event/",
@@ -36,7 +36,7 @@
       "name": "Visit The Northshore",
       "url": "https://www.visitthenorthshore.com/events/?displaycount=100&sort=date&view=list",
       "collector": "rendered_listing",
-      "max_detail_pages": 100,
+      "max_detail_pages": 40,
       "enabled": true,
       "href_contains_any": [
         "/event/",
@@ -157,7 +157,7 @@
       "name": "Coastal Mississippi",
       "url": "https://www.coastalmississippi.com/events/?displaycount=100&sort=date&view=list",
       "collector": "rendered_listing",
-      "max_detail_pages": 100,
+      "max_detail_pages": 40,
       "enabled": true,
       "href_contains_any": [
         "/event/",
