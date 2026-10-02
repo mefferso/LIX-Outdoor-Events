@@ -1054,6 +1054,37 @@ def _markdown_to_event(text: str, detail_url: str) -> dict[str, Any] | None:
     }
 
 
+def enrich_event_object(primary: dict[str, Any], fallback: dict[str, Any] | None) -> dict[str, Any]:
+    """Fill sparse structured event data from the visible detail page."""
+    event = dict(primary)
+    if not fallback:
+        return event
+    for key in ("name", "startDate", "endDate", "description", "url"):
+        if not clean_text(event.get(key)) and fallback.get(key):
+            event[key] = fallback[key]
+
+    location = event.get("location")
+    fallback_location = fallback.get("location")
+    if not location and fallback_location:
+        event["location"] = fallback_location
+    elif isinstance(location, dict) and isinstance(fallback_location, dict):
+        merged_location = dict(location)
+        if not clean_text(merged_location.get("name")) and fallback_location.get("name"):
+            merged_location["name"] = fallback_location["name"]
+        address = merged_location.get("address")
+        fallback_address = fallback_location.get("address")
+        if not address and fallback_address:
+            merged_location["address"] = fallback_address
+        elif isinstance(address, dict) and isinstance(fallback_address, dict):
+            merged_address = dict(address)
+            for key, value in fallback_address.items():
+                if not clean_text(merged_address.get(key)) and value:
+                    merged_address[key] = value
+            merged_location["address"] = merged_address
+        event["location"] = merged_location
+    return event
+
+
 def collect_rendered_listing(source: dict[str, Any]) -> tuple[list[dict[str, Any]], int]:
     """Browser-render JS-heavy tourism calendars through Jina, then hydrate detail pages."""
     renderer = str(source.get("renderer_base") or "https://r.jina.ai/").rstrip("/") + "/"
@@ -1084,11 +1115,11 @@ def collect_rendered_listing(source: dict[str, Any]) -> tuple[list[dict[str, Any
                 attempts=2,
             )
             events = extract_jsonld_events(detail)
+            fallback = parse_generic_event_detail(detail, detail_url)
             if events:
-                event = events[0]
+                event = enrich_event_object(events[0], fallback)
                 event.setdefault("url", detail_url)
                 return event
-            fallback = parse_generic_event_detail(detail, detail_url)
             if fallback:
                 return fallback
         except Exception as direct_exc:
@@ -1315,14 +1346,15 @@ def collect_source(source: dict[str, Any]) -> tuple[list[dict[str, Any]], Source
                     try:
                         detail_text = fetch_text(detail_url)
                         detail_events = extract_jsonld_events(detail_text)
-                        if not detail_events:
-                            fallback = (
-                                parse_houma_event(detail_text, detail_url)
-                                if collector == "listing_houma"
-                                else parse_generic_event_detail(detail_text, detail_url)
-                            )
-                            if fallback:
-                                detail_events = [fallback]
+                        fallback = (
+                            parse_houma_event(detail_text, detail_url)
+                            if collector == "listing_houma"
+                            else parse_generic_event_detail(detail_text, detail_url)
+                        )
+                        if detail_events:
+                            detail_events = [enrich_event_object(event, fallback) for event in detail_events]
+                        elif fallback:
+                            detail_events = [fallback]
                         for event in detail_events:
                             event.setdefault("url", detail_url)
                             raw.append(event)
