@@ -1057,8 +1057,8 @@ def collect_rendered_listing(source: dict[str, Any]) -> tuple[list[dict[str, Any
     def hydrate(detail_url: str) -> dict[str, Any] | None:
         detail = fetch_text(
             renderer + detail_url,
-            timeout=int(source.get("render_timeout", 75)),
-            attempts=2,
+            timeout=int(source.get("detail_timeout", 30)),
+            attempts=1,
             extra_headers=render_headers,
         )
         return _markdown_to_event(detail, detail_url)
