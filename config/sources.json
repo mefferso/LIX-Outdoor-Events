@@ -19,31 +19,40 @@
     {
       "key": "visitbatonrouge",
       "name": "Visit Baton Rouge",
-      "url": "https://www.visitbatonrouge.com/events/?displaycount=100&sort=date&view=list",
-      "collector": "rendered_listing",
-      "max_detail_pages": 40,
+      "url": "https://www.visitbatonrouge.com/",
+      "collector": "listing_jsonld",
+      "max_detail_pages": 80,
       "enabled": true,
       "href_contains_any": [
-        "/event/",
         "/events/"
       ],
-      "renderer_base": "https://r.jina.ai/",
-      "render_timeout": 75,
-      "zero_is_failure": true
+      "zero_is_failure": true,
+      "notes": "Homepage provides server-rendered upcoming-event links; detail pages are hydrated directly with JSON-LD plus visible-text fallback."
     },
     {
       "key": "northshore",
       "name": "Visit The Northshore",
-      "url": "https://www.visitthenorthshore.com/events/?displaycount=100&sort=date&view=list",
-      "collector": "rendered_listing",
-      "max_detail_pages": 40,
+      "url": "https://www.visitthenorthshore.com/",
+      "collector": "listing_jsonld",
+      "max_detail_pages": 80,
       "enabled": true,
       "href_contains_any": [
         "/event/"
       ],
-      "renderer_base": "https://r.jina.ai/",
-      "render_timeout": 75,
-      "zero_is_failure": true
+      "zero_is_failure": true,
+      "notes": "Homepage exposes server-rendered upcoming-event links; official high-value fairs are supplemented by organizer sources."
+    },
+    {
+      "key": "st_tammany_parish_fair",
+      "name": "St. Tammany Parish Fair Association",
+      "url": "https://sttammanyparishfair.info/",
+      "collector": "static_calendar",
+      "default_city": "Covington",
+      "default_state": "LA",
+      "assume_outdoor": true,
+      "zero_is_failure": true,
+      "enabled": true,
+      "notes": "Authoritative organizer source for the high-impact annual St. Tammany Parish Fair."
     },
     {
       "key": "houma",
@@ -124,7 +133,8 @@
       "collector": "static_calendar",
       "enabled": true,
       "notes": "Dedicated visible-text parade parser; no longer depends on Event JSON-LD.",
-      "default_state": "LA"
+      "default_state": "LA",
+      "assume_outdoor": true
     },
     {
       "key": "downtown_baton_rouge",
@@ -148,22 +158,20 @@
       "enabled": true,
       "notes": "Dedicated visible-text fairs/festivals parser; no longer depends on Event JSON-LD.",
       "default_state": "LA",
-      "zero_is_failure": true
+      "zero_is_failure": true,
+      "assume_outdoor": true
     },
     {
       "key": "coastal_mississippi",
       "name": "Coastal Mississippi",
-      "url": "https://www.coastalmississippi.com/events/?displaycount=100&sort=date&view=list",
-      "collector": "rendered_listing",
-      "max_detail_pages": 40,
+      "url": "https://www.coastalmississippi.com/",
+      "collector": "listing_jsonld",
+      "max_detail_pages": 80,
       "enabled": true,
       "href_contains_any": [
-        "/event/",
         "/events/"
       ],
-      "notes": "Official Mississippi Gulf Coast tourism calendar; browser-rendered through Jina because the listing is JS-driven.",
-      "renderer_base": "https://r.jina.ai/",
-      "render_timeout": 75,
+      "notes": "Homepage provides server-rendered upcoming-event links; direct detail hydration avoids JS-only event-listing failures.",
       "zero_is_failure": true
     },
     {
