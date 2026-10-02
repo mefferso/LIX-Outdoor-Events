@@ -374,7 +374,7 @@ def parse_lsu_football(text: str, source: dict):
             om = re.match(r"^vs\.?\s*(?:#\d+\s*)?(.+?)$", candidate, re.I)
             if om:
                 value = legacy.clean_text(om.group(1))
-                if value and not date_re.match(value):
+                if value and value not in {".", "-", "vs", "vs."} and not date_re.match(value):
                     opponent = value
                     break
         if not opponent:
