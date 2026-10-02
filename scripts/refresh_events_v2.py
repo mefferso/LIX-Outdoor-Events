@@ -244,16 +244,39 @@ def _sitemap_urls(xml_text: str):
         root = ET.fromstring(xml_text)
     except ET.ParseError:
         return [], []
-    pages, child_maps = [], []
-    for node in root.iter():
-        if node.tag.lower().endswith("loc") and node.text:
-            u = node.text.strip()
-            if u.endswith(".xml"):
-                child_maps.append(u)
-            else:
-                pages.append(u)
-    return pages, child_maps
 
+    pages_with_dates: list[tuple[str, str]] = []
+    child_maps: list[str] = []
+
+    # Preserve sitemap-index children, but for URL sets prefer recently
+    # modified pages. Tourism sites often keep thousands of historical event
+    # URLs, so blindly taking the first/last N pages misses current events.
+    for entry in list(root):
+        loc = ""
+        lastmod = ""
+        for node in list(entry):
+            tag = node.tag.lower()
+            if tag.endswith("loc") and node.text:
+                loc = node.text.strip()
+            elif tag.endswith("lastmod") and node.text:
+                lastmod = node.text.strip()
+        if not loc:
+            continue
+        if loc.endswith(".xml"):
+            child_maps.append(loc)
+        else:
+            pages_with_dates.append((loc, lastmod))
+
+    if pages_with_dates:
+        # ISO-formatted lastmod values sort correctly lexicographically.
+        # Entries with no lastmod retain a stable fallback ordering.
+        indexed = list(enumerate(pages_with_dates))
+        indexed.sort(key=lambda item: (item[1][1] or "", item[0]), reverse=True)
+        pages = [item[1][0] for item in indexed]
+    else:
+        pages = []
+
+    return pages, child_maps
 
 def discover_sitemap_links(source: dict):
     root = source.get("sitemap_url")
@@ -308,7 +331,13 @@ def collect_enhanced_listing(source: dict):
                 if fallback:
                     events = [fallback]
             for event in events:
-                event.setdefault("url", detail_url)
+                # Never trust a widget/landing-page canonical URL over the
+                # detail page we actually fetched.
+                event["url"] = detail_url
+                if legacy.clean_text(event.get("name")).lower() in {
+                    legacy.clean_text(x).lower() for x in source.get("reject_names", [])
+                }:
+                    continue
                 raw.append(event)
         except Exception as exc:
             print(f"[source:{source.get('key')}] enhanced detail skipped {detail_url}: {exc}", file=sys.stderr)
