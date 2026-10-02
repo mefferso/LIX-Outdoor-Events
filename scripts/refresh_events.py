@@ -1055,9 +1055,33 @@ def collect_rendered_listing(source: dict[str, Any]) -> tuple[list[dict[str, Any
     detail_urls = links[: int(source.get("max_detail_pages", 80))]
 
     def hydrate(detail_url: str) -> dict[str, Any] | None:
+        # Detail pages are usually server-readable even when the listing itself
+        # is JS-driven. Prefer the authoritative page directly; this avoids
+        # hammering the renderer and preserves native JSON-LD when present.
+        try:
+            detail = fetch_text(
+                detail_url,
+                timeout=int(source.get("detail_timeout", 25)),
+                attempts=2,
+            )
+            events = extract_jsonld_events(detail)
+            if events:
+                event = events[0]
+                event.setdefault("url", detail_url)
+                return event
+            fallback = parse_generic_event_detail(detail, detail_url)
+            if fallback:
+                return fallback
+        except Exception as direct_exc:
+            print(
+                f"[source:{source.get('key')}] direct detail fallback {detail_url}: {direct_exc}",
+                file=sys.stderr,
+            )
+
+        # Last resort for detail pages that also require rendering.
         detail = fetch_text(
             renderer + detail_url,
-            timeout=int(source.get("detail_timeout", 30)),
+            timeout=int(source.get("detail_timeout", 25)),
             attempts=1,
             extra_headers=render_headers,
         )
