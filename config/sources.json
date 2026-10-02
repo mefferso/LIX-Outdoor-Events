@@ -21,27 +21,29 @@
       "name": "Visit Baton Rouge",
       "url": "https://www.visitbatonrouge.com/events/",
       "collector": "enhanced_listing",
-      "max_detail_pages": 50,
+      "max_detail_pages": 30,
       "enabled": true,
       "href_contains_any": [
         "/events/"
       ],
       "min_listing_links": 25,
       "renderer_base": "https://r.jina.ai/",
-      "render_timeout": 25,
+      "render_timeout": 15,
       "sitemap_url": "https://www.visitbatonrouge.com/sitemap.xml",
       "detail_path_tokens": [
         "/events/"
       ],
       "zero_is_failure": true,
-      "notes": "Enhanced discovery: static links + rendered listing + sitemap fallback; generic detail-page parser when JSON-LD is absent."
+      "notes": "Enhanced discovery: static links + rendered listing + sitemap fallback; generic detail-page parser when JSON-LD is absent.",
+      "timeout": 15,
+      "max_sitemaps": 4
     },
     {
       "key": "northshore",
       "name": "Louisiana Northshore",
       "url": "https://www.visitthenorthshore.com/events/",
       "collector": "enhanced_listing",
-      "max_detail_pages": 50,
+      "max_detail_pages": 30,
       "enabled": true,
       "href_contains_any": [
         "/event/",
@@ -53,13 +55,15 @@
       ],
       "min_listing_links": 10,
       "renderer_base": "https://r.jina.ai/",
-      "render_timeout": 25,
+      "render_timeout": 15,
       "sitemap_url": "https://www.visitthenorthshore.com/sitemap.xml",
       "detail_path_tokens": [
         "/event/"
       ],
       "zero_is_failure": true,
-      "notes": "Current Visit The Northshore domain. Uses homepage/listing links, rendered discovery, sitemap fallback, and generic detail parsing."
+      "notes": "Current Visit The Northshore domain. Uses homepage/listing links, rendered discovery, sitemap fallback, and generic detail parsing.",
+      "timeout": 15,
+      "max_sitemaps": 4
     },
     {
       "key": "houma",
@@ -148,7 +152,7 @@
       "name": "Downtown Baton Rouge",
       "url": "https://downtownbatonrouge.org/events",
       "collector": "enhanced_listing",
-      "max_detail_pages": 40,
+      "max_detail_pages": 20,
       "enabled": true,
       "href_contains_any": [
         "/events/",
@@ -157,12 +161,14 @@
       "notes": "Enhanced listing/detail parsing for current Downtown Baton Rouge markup.",
       "min_listing_links": 25,
       "renderer_base": "https://r.jina.ai/",
-      "render_timeout": 25,
+      "render_timeout": 15,
       "sitemap_url": "https://downtownbatonrouge.org/sitemap.xml",
       "detail_path_tokens": [
         "/event/",
         "/events/"
-      ]
+      ],
+      "timeout": 15,
+      "max_sitemaps": 4
     },
     {
       "key": "tangi_tourism_fairs",
@@ -178,7 +184,7 @@
       "name": "Coastal Mississippi",
       "url": "https://www.coastalmississippi.com/events/",
       "collector": "enhanced_listing",
-      "max_detail_pages": 60,
+      "max_detail_pages": 40,
       "enabled": true,
       "href_contains_any": [
         "/event/",
@@ -187,12 +193,14 @@
       "notes": "Official Coastal Mississippi source using rendered discovery and sitemap fallback for its JavaScript-driven calendar.",
       "min_listing_links": 50,
       "renderer_base": "https://r.jina.ai/",
-      "render_timeout": 25,
+      "render_timeout": 15,
       "sitemap_url": "https://www.coastalmississippi.com/sitemap.xml",
       "detail_path_tokens": [
         "/events/"
       ],
-      "zero_is_failure": true
+      "zero_is_failure": true,
+      "timeout": 15,
+      "max_sitemaps": 4
     },
     {
       "key": "sunherald_events",
