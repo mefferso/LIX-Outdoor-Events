@@ -16,7 +16,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: refresh-outdoor-events
+  group: refresh-outdoor-events-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
