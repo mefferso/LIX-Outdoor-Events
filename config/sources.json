@@ -26,7 +26,7 @@
       "href_contains_any": [
         "/events/"
       ],
-      "min_listing_links": 3,
+      "min_listing_links": 25,
       "renderer_base": "https://r.jina.ai/",
       "render_timeout": 75,
       "sitemap_url": "https://www.visitbatonrouge.com/sitemap.xml",
@@ -51,7 +51,7 @@
         "https://www.visitthenorthshore.com/events/",
         "https://www.visitthenorthshore.com/"
       ],
-      "min_listing_links": 3,
+      "min_listing_links": 10,
       "renderer_base": "https://r.jina.ai/",
       "render_timeout": 75,
       "sitemap_url": "https://www.visitthenorthshore.com/sitemap.xml",
@@ -155,7 +155,7 @@
         "/event/"
       ],
       "notes": "Enhanced listing/detail parsing for current Downtown Baton Rouge markup.",
-      "min_listing_links": 3,
+      "min_listing_links": 25,
       "renderer_base": "https://r.jina.ai/",
       "render_timeout": 75,
       "sitemap_url": "https://downtownbatonrouge.org/sitemap.xml",
@@ -185,7 +185,7 @@
         "/events/"
       ],
       "notes": "Official Coastal Mississippi source using rendered discovery and sitemap fallback for its JavaScript-driven calendar.",
-      "min_listing_links": 3,
+      "min_listing_links": 50,
       "renderer_base": "https://r.jina.ai/",
       "render_timeout": 75,
       "sitemap_url": "https://www.coastalmississippi.com/sitemap.xml",
