@@ -10,6 +10,8 @@ from xml.etree import ElementTree as ET
 
 import refresh_events as legacy
 
+legacy_collect_source = legacy.collect_source
+
 MONTHS = {
     "jan": 1, "january": 1, "feb": 2, "february": 2, "mar": 3, "march": 3,
     "apr": 4, "april": 4, "may": 5, "jun": 6, "june": 6, "jul": 7, "july": 7,
@@ -185,6 +187,17 @@ def markdown_links(text: str, base_url: str):
 
 def is_event_detail_url(url: str, source: dict):
     path = urlparse(url).path.lower()
+    if path.rstrip("/") in {"/event", "/events"}:
+        return False
+    generic_slugs = {
+        "this-weekend", "annual-events", "annual-events-festivals", "festivals",
+        "live-music", "concerts-live-music", "submit-your-event", "calendar",
+        "holiday-celebrations", "free-events", "mardi-gras",
+    }
+    parts = [p for p in path.strip("/").split("/") if p]
+    if parts and parts[0] in {"event", "events"}:
+        if len(parts) < 2 or parts[1] in generic_slugs:
+            return False
     tokens = source.get("detail_path_tokens") or source.get("href_contains_any") or ["/event/"]
     return any(str(t).lower() in path for t in tokens)
 
@@ -307,30 +320,30 @@ def parse_lsu_football(text: str, source: dict):
     parser.feed(text)
     clean = parser.text
     rows = []
-    # LSU page repeats each schedule card, but date/opponent/location text remains close.
-    pattern = re.compile(
-        r"(?P<date>(?:Sep(?:t(?:ember)?)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)\.?\s+\d{1,2}(?:,\s*2026)?)"
-        r"(?P<body>.{0,900}?)(?=(?:Sep(?:t(?:ember)?)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)\.?\s+\d{1,2}|$)",
-        re.I | re.S,
+    date_pat = re.compile(
+        r"(?:Mon|Tue|Wed|Thu|Fri|Sat|Sun)?\\s*(Sep(?:t(?:ember)?)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)\\.?\\s*(\\d{1,2})",
+        re.I,
     )
-    for m in pattern.finditer(clean):
-        start = parse_month_date(m.group("date"), int(source.get("season", 2026)))
-        if not start:
-            continue
-        body = legacy.clean_text(m.group("body"))
+    matches = list(date_pat.finditer(clean))
+    for idx, m in enumerate(matches):
+        month = MONTHS[m.group(1).lower().rstrip(".")]
+        start = datetime(int(source.get("season", 2026)), month, int(m.group(2)), tzinfo=legacy.TZ)
+        endpos = matches[idx + 1].start() if idx + 1 < len(matches) else min(len(clean), m.end() + 1200)
+        body = legacy.clean_text(clean[m.end():endpos])
         if not re.search(r"Tiger Stadium|Baton Rouge", body, re.I):
             continue
-        # Reject explicit away / neutral cards.
-        if re.search(r"\bAway\b|\bNeutral\b", body, re.I) and not re.search(r"\bHome\b", body, re.I):
+        if re.search(r"^\\s*at\\b|\\bat\\s+[A-Z]", body, re.I) and not re.search(r"\\bvs\\.?", body, re.I):
             continue
-        opp = ""
-        om = re.search(r"(?:vs\.?|Versus)\s+([A-Z][A-Za-z0-9 .&'\-]{2,80})", body, re.I)
-        if om:
-            opp = legacy.clean_text(om.group(1))
-        if not opp:
-            # Pick a plausible title fragment after the date.
-            bits = [x.strip() for x in re.split(r"[|\n]", m.group("body")) if x.strip()]
-            opp = next((legacy.clean_text(x) for x in bits if 3 < len(x) < 90 and not re.search(r"tickets|recap|stats|stadium|baton rouge|home|away", x, re.I)), "Opponent")
+        om = re.search(
+            r"vs\\.?\\s*(?:(?:Mon|Tue|Wed|Thu|Fri|Sat|Sun)?\\s*(?:Sep|Sept|Oct|Nov|Dec)\\.?\\s*\\d{1,2}\\s*)?"
+            r"vs\\.?\\s*(?:#\\d+\\s*)?([A-Za-z][A-Za-z0-9 .&'\\-]+?)\\s+Baton Rouge",
+            body, re.I,
+        )
+        if not om:
+            om = re.search(r"vs\\.?\\s*(?:#\\d+\\s*)?([A-Za-z][A-Za-z0-9 .&'\\-]+?)\\s+Baton Rouge", body, re.I)
+        if not om:
+            continue
+        opp = legacy.clean_text(om.group(1))
         rows.append({
             "name": f"LSU Football vs {opp}",
             "startDate": start.date().isoformat(),
@@ -341,12 +354,10 @@ def parse_lsu_football(text: str, source: dict):
             "description": "LSU home football game at outdoor Tiger Stadium.",
             "url": source["url"],
         })
-    # Stable de-dupe.
     dedup = {}
     for r in rows:
         dedup[(r["name"], r["startDate"])] = r
     return list(dedup.values())
-
 
 def parse_tangipahoa_fairs(text: str, source: dict):
     parser = VisibleTextParser()
@@ -369,7 +380,7 @@ def parse_tangipahoa_fairs(text: str, source: dict):
                 "name": "",
                 "address": {"addressLocality": city, "addressRegion": state or "LA"},
             },
-            "description": block,
+            "description": block + " Outdoor fair or festival.",
             "url": source["url"],
         })
     dedup = {}
@@ -461,7 +472,7 @@ def collect_source_v2(source: dict):
             raw = parse_mardi_gras(text, source)
             result.detail_links = 0
         else:
-            return legacy.collect_source(source)
+            return legacy_collect_source(source)
         result.success = True
         result.discovered = len(raw)
         if source.get("zero_is_failure") and not raw:
