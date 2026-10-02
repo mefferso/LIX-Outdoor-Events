@@ -436,6 +436,16 @@ MONTHS = {
 def parse_human_date_range(text: str) -> tuple[str | None, str | None]:
     text = clean_text(text).replace("–", "-").replace("—", "-")
 
+    # September 30 - October 4, 2026
+    cross_month = re.search(
+        r"\b(" + "|".join(MONTHS) + r")\s+(\d{1,2})\s*-\s*(" + "|".join(MONTHS) + r")\s+(\d{1,2}),\s*(20\d{2})\b",
+        text, re.I
+    )
+    if cross_month:
+        start = date(int(cross_month.group(5)), MONTHS[cross_month.group(1).lower()], int(cross_month.group(2)))
+        end = date(int(cross_month.group(5)), MONTHS[cross_month.group(3).lower()], int(cross_month.group(4)))
+        return start.isoformat(), end.isoformat()
+
     # September 18-20, 2026
     range_match = re.search(
         r"\b(" + "|".join(MONTHS) + r")\s+(\d{1,2})\s*-\s*(\d{1,2}),\s*(20\d{2})\b",
@@ -837,70 +847,406 @@ def collect_cityspark_rendered(
             )
     return output, len(occurrences)
 
+def parse_generic_event_detail(text: str, detail_url: str) -> dict[str, Any] | None:
+    """Fallback parser for ordinary event detail pages that do not expose Event JSON-LD."""
+    parser = VisibleTextParser()
+    parser.feed(text)
+    lines = parser.lines()
+    name = clean_text(" ".join(parser.h1))
+    if not name:
+        name = next((line for line in lines[:12] if 3 <= len(line) <= 120 and not line.lower().startswith(("menu", "search", "home"))), "")
+    if not name:
+        return None
+
+    start_date = end_date = None
+    date_index = None
+    for i, line in enumerate(lines[:60]):
+        start_date, end_date = parse_human_date_range(line)
+        if start_date:
+            date_index = i
+            break
+    if not start_date:
+        return None
+
+    start_clock = None
+    for line in lines[max(0, (date_index or 0) - 2):(date_index or 0) + 12]:
+        start_clock = parse_clock(line)
+        if start_clock:
+            break
+
+    start_dt = datetime.fromisoformat(start_date).replace(tzinfo=TZ)
+    if start_clock:
+        start_dt = start_dt.replace(hour=start_clock[0], minute=start_clock[1])
+
+    venue = ""
+    address_bits: list[str] = []
+    city = state = ""
+    for i, line in enumerate(lines):
+        low = line.lower().rstrip(":")
+        if low in {"location", "venue", "where"}:
+            chunk = lines[i + 1:i + 7]
+            if chunk:
+                venue = chunk[0]
+                address_bits = chunk[1:]
+            break
+    if not venue:
+        for line in lines:
+            m = re.match(r"^(?:location|venue|where)\s*:\s*(.+)$", line, re.I)
+            if m:
+                venue = clean_text(m.group(1))
+                break
+
+    for line in [venue, *address_bits, *lines]:
+        m = re.search(r"\b([^,]{2,50}),\s*(LA|MS)\b", line, re.I)
+        if m:
+            city = clean_text(m.group(1))
+            state = m.group(2).upper()
+            if line not in address_bits and line != venue:
+                address_bits.append(line)
+            break
+
+    description = " ".join(lines[:80])
+    location: dict[str, Any] = {
+        "@type": "Place",
+        "name": venue,
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": address_bits[0] if address_bits else "",
+            "addressLocality": city,
+            "addressRegion": state,
+        },
+    }
+    return {
+        "@type": "Event",
+        "name": name,
+        "startDate": start_dt.isoformat() if start_clock else start_date,
+        "endDate": end_date or start_date,
+        "description": description,
+        "location": location,
+        "url": detail_url,
+    }
+
+
+def _markdown_event_links(text: str, source: dict[str, Any]) -> list[str]:
+    listing_url = source["url"]
+    domain = urlparse(listing_url).netloc.lower().removeprefix("www.")
+    tokens = source.get("href_contains_any") or ["/event/", "/events/"]
+    links: list[str] = []
+    seen: set[str] = set()
+    candidates = re.findall(r"\[[^\]]+\]\((https?://[^)\s]+)\)", text)
+    candidates += re.findall(r"https?://[^\s)\]>]+", text)
+    for href in candidates:
+        href = html.unescape(href).rstrip(".,")
+        parsed = urlparse(href)
+        link_domain = parsed.netloc.lower().removeprefix("www.")
+        if link_domain != domain or not any(token in parsed.path for token in tokens):
+            continue
+        canonical = href.split("#", 1)[0]
+        if canonical == listing_url.split("#", 1)[0] or canonical in seen:
+            continue
+        seen.add(canonical)
+        links.append(canonical)
+    return links
+
+
+def _markdown_to_event(text: str, detail_url: str) -> dict[str, Any] | None:
+    """Parse Jina/browser-rendered Markdown into the same schema as JSON-LD."""
+    cleaned: list[str] = []
+    for raw in text.splitlines():
+        line = re.sub(r"^#{1,6}\s*", "", raw.strip())
+        line = re.sub(r"!\[[^\]]*\]\([^)]*\)", "", line)
+        line = re.sub(r"\[([^\]]+)\]\([^)]+\)", r"\1", line)
+        line = clean_text(line.strip("*_ >|-"))
+        if line and not line.lower().startswith(("title:", "url source:", "published time:", "markdown content:")):
+            cleaned.append(line)
+    if not cleaned:
+        return None
+
+    name = next((x for x in cleaned[:20] if 3 <= len(x) <= 140 and not parse_human_date_range(x)[0]), "")
+    if not name:
+        return None
+
+    start_date = end_date = None
+    date_index = 0
+    for i, line in enumerate(cleaned[:80]):
+        start_date, end_date = parse_human_date_range(line)
+        if start_date:
+            date_index = i
+            break
+    if not start_date:
+        return None
+
+    start_clock = None
+    for line in cleaned[max(0, date_index - 2):date_index + 12]:
+        start_clock = parse_clock(line)
+        if start_clock:
+            break
+
+    venue = ""
+    address = ""
+    city = state = ""
+    for i, line in enumerate(cleaned):
+        m = re.match(r"^(?:location|venue|where)\s*:?\s*(.*)$", line, re.I)
+        if not m:
+            continue
+        venue = clean_text(m.group(1))
+        if not venue and i + 1 < len(cleaned):
+            venue = cleaned[i + 1]
+        for candidate in cleaned[i + 1:i + 7]:
+            if re.search(r"\b[A-Z]{2}\s+\d{5}\b", candidate) or re.search(r",\s*(?:LA|MS)\b", candidate, re.I):
+                address = candidate
+                break
+        break
+
+    if not venue:
+        for line in cleaned[date_index + 1:date_index + 18]:
+            if len(line) <= 120 and any(word in line.lower() for word in ("park", "stadium", "fairgrounds", "plaza", "trailhead", "center", "street", "harbor")):
+                venue = line
+                break
+    for line in (address, venue, *cleaned):
+        m = re.search(r"\b([^,]{2,50}),\s*(LA|MS)\b", line, re.I)
+        if m:
+            city = clean_text(m.group(1))
+            state = m.group(2).upper()
+            break
+
+    start_dt = datetime.fromisoformat(start_date).replace(tzinfo=TZ)
+    if start_clock:
+        start_dt = start_dt.replace(hour=start_clock[0], minute=start_clock[1])
+    return {
+        "@type": "Event",
+        "name": name,
+        "startDate": start_dt.isoformat() if start_clock else start_date,
+        "endDate": end_date or start_date,
+        "description": " ".join(cleaned[:120]),
+        "location": {
+            "@type": "Place",
+            "name": venue,
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": address,
+                "addressLocality": city,
+                "addressRegion": state,
+            },
+        },
+        "url": detail_url,
+    }
+
+
+def collect_rendered_listing(source: dict[str, Any]) -> tuple[list[dict[str, Any]], int]:
+    """Browser-render JS-heavy tourism calendars through Jina, then hydrate detail pages."""
+    renderer = str(source.get("renderer_base") or "https://r.jina.ai/").rstrip("/") + "/"
+    render_headers = {
+        "X-Respond-Timing": "mutation-idle",
+        "X-Engine": "browser",
+        "X-Timeout": str(source.get("render_timeout", 60)),
+    }
+    listing_url = source["url"]
+    rendered = fetch_text(
+        renderer + listing_url,
+        timeout=int(source.get("render_timeout", 75)),
+        attempts=2,
+        extra_headers=render_headers,
+    )
+    links = _markdown_event_links(rendered, source)
+    output: list[dict[str, Any]] = []
+    for detail_url in links[: int(source.get("max_detail_pages", 80))]:
+        try:
+            detail = fetch_text(
+                renderer + detail_url,
+                timeout=int(source.get("render_timeout", 75)),
+                attempts=2,
+                extra_headers=render_headers,
+            )
+            event = _markdown_to_event(detail, detail_url)
+            if event:
+                output.append(event)
+        except Exception as exc:
+            print(f"[source:{source.get('key')}] rendered detail skipped {detail_url}: {exc}", file=sys.stderr)
+    return output, len(links)
+
+
+def parse_static_calendar_events(text: str, source: dict[str, Any]) -> list[dict[str, Any]]:
+    """Extract multiple events from static fairs/parades pages with visible date blocks."""
+    parser = VisibleTextParser()
+    parser.feed(text)
+    lines = parser.lines()
+    output: list[dict[str, Any]] = []
+    for i, line in enumerate(lines):
+        start_date, end_date = parse_human_date_range(line)
+        if not start_date:
+            continue
+
+        nearby = lines[max(0, i - 3):i + 10]
+        name = ""
+        for candidate in [*lines[i + 1:i + 4], *reversed(lines[max(0, i - 3):i])]:
+            low = candidate.lower()
+            if 3 <= len(candidate) <= 140 and not parse_human_date_range(candidate)[0] and low not in {"events", "fairs & festivals", "calendar"}:
+                name = candidate
+                break
+        if not name:
+            continue
+
+        venue = ""
+        city = clean_text(source.get("default_city"))
+        state = clean_text(source.get("default_state") or "LA")
+        for candidate in nearby:
+            if any(word in candidate.lower() for word in ("fairgrounds", "park", "stadium", "street", "avenue", "road", "hwy", "highway", "plaza")):
+                venue = candidate
+                break
+        description = " ".join(nearby)
+        output.append({
+            "@type": "Event",
+            "name": name,
+            "startDate": start_date,
+            "endDate": end_date or start_date,
+            "description": description,
+            "location": {
+                "@type": "Place",
+                "name": venue,
+                "address": {
+                    "@type": "PostalAddress",
+                    "addressLocality": city,
+                    "addressRegion": state,
+                },
+            },
+            "url": source["url"],
+        })
+    return output
+
+
+def parse_generic_football_schedule(text: str, source: dict[str, Any]) -> list[dict[str, Any]]:
+    """Fallback football parser for schedules that are not Sidearm and lack Event JSON-LD."""
+    parser = VisibleTextParser()
+    parser.feed(text)
+    lines = parser.lines()
+    output: list[dict[str, Any]] = []
+    year = int(source.get("season", now_local().year))
+    team = clean_text(source.get("team_name") or source.get("name"))
+    venue = clean_text(source.get("home_venue"))
+    city = clean_text(source.get("home_city"))
+    state = clean_text(source.get("home_state") or "LA")
+
+    month_pat = r"(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Sept|Oct|Nov|Dec)\.?\s+(\d{1,2})"
+    for i, line in enumerate(lines):
+        dm = re.search(month_pat, line, re.I)
+        if not dm:
+            continue
+        chunk = lines[i:i + 14]
+        joined = " ".join(chunk)
+        if not re.search(r"\bvs\.?\b", joined, re.I):
+            continue
+        opponent = ""
+        for j, part in enumerate(chunk):
+            if re.fullmatch(r"vs\.?", part.strip(), re.I) and j + 1 < len(chunk):
+                opponent = chunk[j + 1]
+                break
+            m = re.search(r"\bvs\.?\s+(.+)$", part, re.I)
+            if m:
+                opponent = clean_text(m.group(1))
+                break
+        if not opponent:
+            continue
+        opponent = re.split(r"\b(?:Tickets|Watch|Listen|Live Stats|History)\b", opponent, maxsplit=1, flags=re.I)[0].strip()
+        event_date = date(year, MONTH_ABBR[dm.group(1).lower()], int(dm.group(2)))
+        clock = parse_clock(joined.replace("a.m.", "AM").replace("p.m.", "PM"))
+        start = event_date.isoformat()
+        if clock:
+            start = datetime(year, event_date.month, event_date.day, clock[0], clock[1], tzinfo=TZ).isoformat()
+        output.append({
+            "@type": "Event",
+            "name": f"{team} Football vs. {opponent}",
+            "startDate": start,
+            "description": f"Outdoor home football game at {venue}.",
+            "location": {
+                "@type": "Place",
+                "name": venue,
+                "address": {
+                    "@type": "PostalAddress",
+                    "addressLocality": city,
+                    "addressRegion": state,
+                },
+            },
+            "url": source["url"],
+        })
+    return output
+
+
 def collect_source(source: dict[str, Any]) -> tuple[list[dict[str, Any]], SourceResult]:
     key = source["key"]
     name = source["name"]
     result = SourceResult(key=key, name=name, success=False)
     raw: list[dict[str, Any]] = []
     try:
-        if source.get("collector") == "cityspark_rendered":
+        collector = source.get("collector")
+
+        if collector == "cityspark_rendered":
             events, detail_links = collect_cityspark_rendered(source)
             raw.extend(events)
-            result.success = True
             result.detail_links = detail_links
-            result.discovered = len(raw)
-            return raw, result
-
-        if source.get("collector") == "evvnt_discovery":
+        elif collector == "evvnt_discovery":
             raw.extend(collect_evvnt_discovery(source))
-            result.success = True
-            result.discovered = len(raw)
-            return raw, result
+        elif collector == "rendered_listing":
+            events, detail_links = collect_rendered_listing(source)
+            raw.extend(events)
+            result.detail_links = detail_links
+        else:
+            listing_url = source["url"]
+            listing_text = fetch_text(listing_url)
+            raw.extend(extract_jsonld_events(listing_text))
 
-        listing_url = source["url"]
-        listing_text = fetch_text(listing_url)
-        raw.extend(extract_jsonld_events(listing_text))
-        if source.get("collector") == "sidearm_football":
-            raw.extend(parse_sidearm_football(listing_text, source))
-        elif source.get("collector") == "sidearm_text_football":
-            raw.extend(parse_sidearm_text_football(listing_text, source))
+            if collector == "sidearm_football":
+                raw.extend(parse_sidearm_football(listing_text, source))
+            elif collector == "sidearm_text_football":
+                raw.extend(parse_sidearm_text_football(listing_text, source))
+            elif collector == "generic_football":
+                raw.extend(parse_generic_football_schedule(listing_text, source))
+            elif collector == "static_calendar":
+                raw.extend(parse_static_calendar_events(listing_text, source))
 
-        if source.get("collector") in {"listing_jsonld", "listing_houma"}:
-            parser = parse_html(listing_text)
-            contains_any = source.get("href_contains_any")
-            if not contains_any:
-                contains_any = [source.get("href_contains", "/event/")]
-            domain = urlparse(listing_url).netloc.lower().removeprefix("www.")
-            links: list[str] = []
-            seen: set[str] = set()
-            for href in parser.links:
-                absolute = urljoin(listing_url, href)
-                parsed = urlparse(absolute)
-                link_domain = parsed.netloc.lower().removeprefix("www.")
-                if link_domain != domain or not any(token in parsed.path for token in contains_any):
-                    continue
-                canonical = absolute.split("#", 1)[0]
-                if canonical in seen:
-                    continue
-                seen.add(canonical)
-                links.append(canonical)
-            result.detail_links = len(links)
-            for detail_url in links[: int(source.get("max_detail_pages", 30))]:
-                try:
-                    detail_text = fetch_text(detail_url)
-                    detail_events = extract_jsonld_events(detail_text)
-                    if not detail_events and source.get("collector") == "listing_houma":
-                        fallback = parse_houma_event(detail_text, detail_url)
-                        if fallback:
-                            detail_events = [fallback]
-                    for event in detail_events:
-                        event.setdefault("url", detail_url)
-                        raw.append(event)
-                except Exception as exc:
-                    print(f"[source:{key}] detail skipped {detail_url}: {exc}", file=sys.stderr)
+            if collector in {"listing_jsonld", "listing_houma"}:
+                parser = parse_html(listing_text)
+                contains_any = source.get("href_contains_any")
+                if not contains_any:
+                    contains_any = [source.get("href_contains", "/event/")]
+                domain = urlparse(listing_url).netloc.lower().removeprefix("www.")
+                links: list[str] = []
+                seen: set[str] = set()
+                for href in parser.links:
+                    absolute = urljoin(listing_url, href)
+                    parsed = urlparse(absolute)
+                    link_domain = parsed.netloc.lower().removeprefix("www.")
+                    if link_domain != domain or not any(token in parsed.path for token in contains_any):
+                        continue
+                    canonical = absolute.split("#", 1)[0]
+                    if canonical in seen:
+                        continue
+                    seen.add(canonical)
+                    links.append(canonical)
+                result.detail_links = len(links)
+                for detail_url in links[: int(source.get("max_detail_pages", 30))]:
+                    try:
+                        detail_text = fetch_text(detail_url)
+                        detail_events = extract_jsonld_events(detail_text)
+                        if not detail_events:
+                            fallback = (
+                                parse_houma_event(detail_text, detail_url)
+                                if collector == "listing_houma"
+                                else parse_generic_event_detail(detail_text, detail_url)
+                            )
+                            if fallback:
+                                detail_events = [fallback]
+                        for event in detail_events:
+                            event.setdefault("url", detail_url)
+                            raw.append(event)
+                    except Exception as exc:
+                        print(f"[source:{key}] detail skipped {detail_url}: {exc}", file=sys.stderr)
 
         result.success = True
         result.discovered = len(raw)
+        if source.get("zero_is_failure") and result.discovered == 0:
+            result.success = False
+            result.error = "source returned zero event records"
         return raw, result
     except Exception as exc:
         result.error = str(exc)
