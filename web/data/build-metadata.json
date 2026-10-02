@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-10-02T00:36:19-05:00",
-  "event_count": 5,
+  "generated_at": "2026-10-02T07:33:41-05:00",
+  "event_count": 9,
   "manual_event_count": 0,
-  "automated_event_count": 5,
-  "automated_candidate_count": 5,
+  "automated_event_count": 9,
+  "automated_candidate_count": 11,
   "collection_window_start": "2026-10-02",
   "collection_window_end": "2026-10-09",
   "timezone": "America/Chicago",
@@ -15,28 +15,28 @@
       "name": "NewOrleans.com",
       "success": true,
       "health": "healthy",
-      "detail_links": 26,
-      "discovered": 46,
-      "accepted": 0,
+      "detail_links": 25,
+      "discovered": 48,
+      "accepted": 4,
       "error": null
     },
     {
       "key": "visitbatonrouge",
       "name": "Visit Baton Rouge",
-      "success": true,
-      "health": "degraded",
+      "success": false,
+      "health": "failed",
       "detail_links": 15,
       "discovered": 0,
       "accepted": 0,
-      "error": null
+      "error": "source returned zero event records"
     },
     {
       "key": "northshore",
-      "name": "Louisiana Northshore",
+      "name": "Visit The Northshore",
       "success": true,
-      "health": "degraded",
-      "detail_links": 7,
-      "discovered": 0,
+      "health": "healthy",
+      "detail_links": 18,
+      "discovered": 4,
       "accepted": 0,
       "error": null
     },
@@ -48,16 +48,6 @@
       "detail_links": 33,
       "discovered": 24,
       "accepted": 1,
-      "error": null
-    },
-    {
-      "key": "msgulfcoast",
-      "name": "Coastal Mississippi",
-      "success": true,
-      "health": "degraded",
-      "detail_links": 1,
-      "discovered": 0,
-      "accepted": 0,
       "error": null
     },
     {
@@ -104,29 +94,29 @@
       "key": "lsu_football",
       "name": "LSU Athletics",
       "success": true,
-      "health": "degraded",
+      "health": "healthy",
       "detail_links": 0,
-      "discovered": 0,
-      "accepted": 0,
+      "discovered": 11,
+      "accepted": 1,
       "error": null
     },
     {
       "key": "mardigras_neworleans",
       "name": "Mardi Gras New Orleans",
-      "success": true,
-      "health": "degraded",
+      "success": false,
+      "health": "failed",
       "detail_links": 0,
       "discovered": 0,
       "accepted": 0,
-      "error": null
+      "error": "source returned zero event records"
     },
     {
       "key": "downtown_baton_rouge",
       "name": "Downtown Baton Rouge",
       "success": true,
-      "health": "degraded",
+      "health": "healthy",
       "detail_links": 16,
-      "discovered": 0,
+      "discovered": 3,
       "accepted": 0,
       "error": null
     },
@@ -134,9 +124,9 @@
       "key": "tangi_tourism_fairs",
       "name": "Tangipahoa Parish Convention & Visitors Bureau",
       "success": true,
-      "health": "degraded",
+      "health": "healthy",
       "detail_links": 0,
-      "discovered": 0,
+      "discovered": 10,
       "accepted": 0,
       "error": null
     },
@@ -144,10 +134,10 @@
       "key": "coastal_mississippi",
       "name": "Coastal Mississippi",
       "success": true,
-      "health": "degraded",
-      "detail_links": 7,
-      "discovered": 0,
-      "accepted": 0,
+      "health": "healthy",
+      "detail_links": 33,
+      "discovered": 12,
+      "accepted": 1,
       "error": null
     },
     {
@@ -155,17 +145,17 @@
       "name": "Sun Herald Events",
       "success": true,
       "health": "healthy",
-      "detail_links": 50,
-      "discovered": 50,
+      "detail_links": 52,
+      "discovered": 52,
       "accepted": 3,
       "error": null
     }
   ],
   "source_health": {
-    "healthy": 7,
-    "degraded": 8,
-    "failed": 0,
-    "total": 15
+    "healthy": 12,
+    "degraded": 0,
+    "failed": 2,
+    "total": 14
   },
   "notes": "Automated source collection is merged with a curated safety-net file. Unknown indoor/outdoor events and points outside the LIX CWA are excluded."
 }

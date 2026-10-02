@@ -1,5 +1,59 @@
 [
   {
+    "id": "johnette-downing-2026-10-02-c0fde5e",
+    "name": "Johnette Downing",
+    "dates": [
+      "2026-10-02"
+    ],
+    "start": "2026-10-02T00:00:00-05:00",
+    "end": "2026-10-02T00:00:00-05:00",
+    "all_day": true,
+    "latitude": 29.956142,
+    "longitude": -90.073393,
+    "venue": "The New Orleans Jazz National Historical Park",
+    "address": "New Orleans",
+    "city": "New Orleans",
+    "state": "",
+    "parish_county": "Orleans Parish",
+    "idss_area": "New Orleans Metro",
+    "category": "other",
+    "outdoor_status": "outdoor",
+    "origin": "automated",
+    "importance": "major",
+    "location_confidence": 0.78,
+    "outdoor_confidence": 0.78,
+    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
+    "source_name": "NewOrleans.com",
+    "source_url": "https://www.neworleans.com/event/johnette-downing/203676/"
+  },
+  {
+    "id": "the-new-orleans-ragtime-festival-ft-tom-mcdermott-matt-lemmler-ragtime-trio-more-2026-10-02-acc758c",
+    "name": "The New Orleans Ragtime Festival ft. Tom McDermott, Matt Lemmler Ragtime Trio + More!",
+    "dates": [
+      "2026-10-02"
+    ],
+    "start": "2026-10-02T00:00:00-05:00",
+    "end": "2026-10-02T00:00:00-05:00",
+    "all_day": true,
+    "latitude": 29.956142,
+    "longitude": -90.073393,
+    "venue": "The New Orleans Jazz National Historical Park",
+    "address": "New Orleans",
+    "city": "New Orleans",
+    "state": "",
+    "parish_county": "Orleans Parish",
+    "idss_area": "New Orleans Metro",
+    "category": "festival",
+    "outdoor_status": "outdoor",
+    "origin": "automated",
+    "importance": "major",
+    "location_confidence": 0.78,
+    "outdoor_confidence": 0.78,
+    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
+    "source_name": "NewOrleans.com",
+    "source_url": "https://www.neworleans.com/event/the-new-orleans-ragtime-festival-ft-tom-mcdermott-matt-lemmler-ragtime-trio-%2b-more!/202854/"
+  },
+  {
     "id": "cattails-and-cocktails-on-krebs-lake-2026-10-02-de3f393",
     "name": "Cattails and Cocktails on Krebs Lake",
     "dates": [
@@ -25,6 +79,33 @@
     "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
     "source_name": "Sun Herald Events",
     "source_url": "https://www.sunherald.com/events/#/details/cattails-and-cocktails-on-krebs-lake/19895280/2026-10-02T16"
+  },
+  {
+    "id": "skip-to-content-2026-10-02-205d871",
+    "name": "Skip to content",
+    "dates": [
+      "2026-10-02"
+    ],
+    "start": "2026-10-02T16:00:00-05:00",
+    "end": "2026-10-02T00:00:00-05:00",
+    "all_day": false,
+    "latitude": 30.380209,
+    "longitude": -88.558222,
+    "venue": "Map",
+    "address": "4602 Fort Street Pascagoula, MS",
+    "city": "4602 Fort Street Pascagoula",
+    "state": "MS",
+    "parish_county": "",
+    "idss_area": "Mississippi Coast",
+    "category": "coastal_marine",
+    "outdoor_status": "partial",
+    "origin": "automated",
+    "importance": "moderate",
+    "location_confidence": 0.72,
+    "outdoor_confidence": 0.72,
+    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
+    "source_name": "Coastal Mississippi",
+    "source_url": "https://www.coastalmississippi.com/events/cattails-cocktails-on-krebs-lake/"
   },
   {
     "id": "maw-maw-walker-2026-10-03-5fc4c6e",
@@ -133,5 +214,32 @@
     "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
     "source_name": "Southern University Athletics",
     "source_url": "https://gojagsports.com/sports/football/schedule"
+  },
+  {
+    "id": "lsu-football-vs-mcneese-2026-10-03-97b52f1",
+    "name": "LSU Football vs. McNeese",
+    "dates": [
+      "2026-10-03"
+    ],
+    "start": "2026-10-03T18:45:00-05:00",
+    "end": null,
+    "all_day": false,
+    "latitude": 30.412,
+    "longitude": -91.1838,
+    "venue": "Tiger Stadium",
+    "address": "Baton Rouge, LA",
+    "city": "Baton Rouge",
+    "state": "LA",
+    "parish_county": "East Baton Rouge Parish",
+    "idss_area": "Baton Rouge Metro",
+    "category": "sports",
+    "outdoor_status": "outdoor",
+    "origin": "automated",
+    "importance": "major",
+    "location_confidence": 0.99,
+    "outdoor_confidence": 0.99,
+    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
+    "source_name": "LSU Athletics",
+    "source_url": "https://lsusports.net/sports/fb/schedule/season/2026"
   }
 ]

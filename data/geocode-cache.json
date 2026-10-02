@@ -66,5 +66,39 @@
     "latitude": 29.5783763,
     "longitude": -90.7267909,
     "display_name": "346, Civic Center Boulevard, Houma, Terrebonne Parish, Louisiana, 70360, United States"
+  },
+  "la": {
+    "latitude": 34.0536909,
+    "longitude": -118.242766,
+    "display_name": "Los Angeles, Los Angeles County, California, United States"
+  },
+  "museum of art 510 washington ave ocean springs, ms": {
+    "latitude": 30.4105588,
+    "longitude": -88.8274955,
+    "display_name": "Walter Anderson Museum of Art, 510, Washington Avenue, Ocean Springs, Jackson County, Mississippi, 39533, United States"
+  },
+  "aquarium 2100 e beach boulevard gulfport, ms": null,
+  "the hollywood warehouse 3420 giles rd gulfport, ms": null,
+  "on scenic 213 east scenic drive pass christian, ms": null,
+  "boomtown casino biloxi 676 bayview ave biloxi, ms": {
+    "latitude": 30.4122792,
+    "longitude": -88.8850854,
+    "display_name": "Boomtown Casino Biloxi, 676, Bayview Avenue, Biloxi, Harrison County, Mississippi, 39530, United States"
+  },
+  "the sound amphitheater 3855 dolphin drive gautier, ms": null,
+  "711 hollywood boulevard bay st. louis, ms": {
+    "latitude": 30.3293086,
+    "longitude": -89.350445,
+    "display_name": "711, Hollywood Boulevard, Bay St. Louis, Hancock County, Mississippi, 39520, United States"
+  },
+  "4602 fort street pascagoula, ms": {
+    "latitude": 30.3802091,
+    "longitude": -88.5582224,
+    "display_name": "4602, Fort Street, Pascagoula, Jackson County, Mississippi, 39567, United States"
+  },
+  "biloxi, ms": {
+    "latitude": 30.4007626,
+    "longitude": -88.8893818,
+    "display_name": "Biloxi, Harrison County, Mississippi, United States"
   }
 }
