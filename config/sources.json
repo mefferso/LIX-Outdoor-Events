@@ -20,24 +20,46 @@
       "key": "visitbatonrouge",
       "name": "Visit Baton Rouge",
       "url": "https://www.visitbatonrouge.com/events/",
-      "collector": "listing_jsonld",
-      "max_detail_pages": 30,
+      "collector": "enhanced_listing",
+      "max_detail_pages": 100,
       "enabled": true,
       "href_contains_any": [
         "/events/"
-      ]
+      ],
+      "min_listing_links": 3,
+      "renderer_base": "https://r.jina.ai/",
+      "render_timeout": 75,
+      "sitemap_url": "https://www.visitbatonrouge.com/sitemap.xml",
+      "detail_path_tokens": [
+        "/events/"
+      ],
+      "zero_is_failure": true,
+      "notes": "Enhanced discovery: static links + rendered listing + sitemap fallback; generic detail-page parser when JSON-LD is absent."
     },
     {
       "key": "northshore",
       "name": "Louisiana Northshore",
-      "url": "https://www.louisiananorthshore.com/events/",
-      "collector": "listing_jsonld",
-      "max_detail_pages": 30,
+      "url": "https://www.visitthenorthshore.com/events/",
+      "collector": "enhanced_listing",
+      "max_detail_pages": 120,
       "enabled": true,
       "href_contains_any": [
         "/event/",
         "/events/"
-      ]
+      ],
+      "listing_urls": [
+        "https://www.visitthenorthshore.com/events/",
+        "https://www.visitthenorthshore.com/"
+      ],
+      "min_listing_links": 3,
+      "renderer_base": "https://r.jina.ai/",
+      "render_timeout": 75,
+      "sitemap_url": "https://www.visitthenorthshore.com/sitemap.xml",
+      "detail_path_tokens": [
+        "/event/"
+      ],
+      "zero_is_failure": true,
+      "notes": "Current Visit The Northshore domain. Uses homepage/listing links, rendered discovery, sitemap fallback, and generic detail parsing."
     },
     {
       "key": "houma",
@@ -47,18 +69,6 @@
       "max_detail_pages": 25,
       "enabled": true,
       "href_contains_any": [
-        "/events/"
-      ]
-    },
-    {
-      "key": "msgulfcoast",
-      "name": "Coastal Mississippi",
-      "url": "https://www.gulfcoast.org/events/",
-      "collector": "listing_jsonld",
-      "max_detail_pages": 25,
-      "enabled": true,
-      "href_contains_any": [
-        "/event/",
         "/events/"
       ]
     },
@@ -114,13 +124,15 @@
       "key": "lsu_football",
       "name": "LSU Athletics",
       "url": "https://lsusports.net/sports/fb/schedule",
-      "collector": "page_jsonld",
+      "collector": "lsu_football",
       "season": 2026,
       "team_name": "LSU",
       "home_venue": "Tiger Stadium",
       "home_city": "Baton Rouge",
       "home_state": "LA",
-      "enabled": true
+      "enabled": true,
+      "zero_is_failure": true,
+      "notes": "Dedicated LSU schedule parser; home games are identified by Tiger Stadium/Baton Rouge context."
     },
     {
       "key": "mardigras_neworleans",
@@ -134,35 +146,52 @@
       "key": "downtown_baton_rouge",
       "name": "Downtown Baton Rouge",
       "url": "https://downtownbatonrouge.org/events",
-      "collector": "listing_jsonld",
-      "max_detail_pages": 30,
+      "collector": "enhanced_listing",
+      "max_detail_pages": 80,
       "enabled": true,
       "href_contains_any": [
         "/events/",
         "/event/"
       ],
-      "notes": "Broad downtown calendar; outdoor/IDSS relevance filter is intentionally strict because many listings are indoor."
+      "notes": "Enhanced listing/detail parsing for current Downtown Baton Rouge markup.",
+      "min_listing_links": 3,
+      "renderer_base": "https://r.jina.ai/",
+      "render_timeout": 75,
+      "sitemap_url": "https://downtownbatonrouge.org/sitemap.xml",
+      "detail_path_tokens": [
+        "/event/",
+        "/events/"
+      ]
     },
     {
       "key": "tangi_tourism_fairs",
       "name": "Tangipahoa Parish Convention & Visitors Bureau",
       "url": "https://www.tangitourism.com/Events/Fairs-Festivals",
-      "collector": "page_jsonld",
+      "collector": "tangipahoa_fairs",
       "enabled": true,
-      "notes": "High-value fairs/festivals source for Tangipahoa Parish. Dedicated static-page parser is planned for full yield."
+      "notes": "Dedicated static-page parser extracts fairs/festivals from ordinary HTML instead of relying on JSON-LD.",
+      "zero_is_failure": false
     },
     {
       "key": "coastal_mississippi",
       "name": "Coastal Mississippi",
-      "url": "https://www.coastalmississippi.com/events",
-      "collector": "listing_jsonld",
-      "max_detail_pages": 30,
+      "url": "https://www.coastalmississippi.com/events/",
+      "collector": "enhanced_listing",
+      "max_detail_pages": 120,
       "enabled": true,
       "href_contains_any": [
         "/event/",
         "/events/"
       ],
-      "notes": "Official Mississippi Gulf Coast tourism calendar. JS-driven listing may require a dedicated adapter."
+      "notes": "Official Coastal Mississippi source using rendered discovery and sitemap fallback for its JavaScript-driven calendar.",
+      "min_listing_links": 3,
+      "renderer_base": "https://r.jina.ai/",
+      "render_timeout": 75,
+      "sitemap_url": "https://www.coastalmississippi.com/sitemap.xml",
+      "detail_path_tokens": [
+        "/events/"
+      ],
+      "zero_is_failure": true
     },
     {
       "key": "sunherald_events",
