@@ -1,5 +1,59 @@
 [
   {
+    "id": "johnette-downing-2026-10-02-c0fde5e",
+    "name": "Johnette Downing",
+    "dates": [
+      "2026-10-02"
+    ],
+    "start": "2026-10-02T00:00:00-05:00",
+    "end": "2026-10-02T00:00:00-05:00",
+    "all_day": true,
+    "latitude": 29.956142,
+    "longitude": -90.073393,
+    "venue": "The New Orleans Jazz National Historical Park",
+    "address": "New Orleans",
+    "city": "New Orleans",
+    "state": "",
+    "parish_county": "Orleans Parish",
+    "idss_area": "New Orleans Metro",
+    "category": "other",
+    "outdoor_status": "outdoor",
+    "origin": "automated",
+    "importance": "major",
+    "location_confidence": 0.78,
+    "outdoor_confidence": 0.78,
+    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
+    "source_name": "NewOrleans.com",
+    "source_url": "https://www.neworleans.com/event/johnette-downing/203676/"
+  },
+  {
+    "id": "the-new-orleans-ragtime-festival-ft-tom-mcdermott-matt-lemmler-ragtime-trio-more-2026-10-02-acc758c",
+    "name": "The New Orleans Ragtime Festival ft. Tom McDermott, Matt Lemmler Ragtime Trio + More!",
+    "dates": [
+      "2026-10-02"
+    ],
+    "start": "2026-10-02T00:00:00-05:00",
+    "end": "2026-10-02T00:00:00-05:00",
+    "all_day": true,
+    "latitude": 29.956142,
+    "longitude": -90.073393,
+    "venue": "The New Orleans Jazz National Historical Park",
+    "address": "New Orleans",
+    "city": "New Orleans",
+    "state": "",
+    "parish_county": "Orleans Parish",
+    "idss_area": "New Orleans Metro",
+    "category": "festival",
+    "outdoor_status": "outdoor",
+    "origin": "automated",
+    "importance": "major",
+    "location_confidence": 0.78,
+    "outdoor_confidence": 0.78,
+    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
+    "source_name": "NewOrleans.com",
+    "source_url": "https://www.neworleans.com/event/the-new-orleans-ragtime-festival-ft-tom-mcdermott-matt-lemmler-ragtime-trio-%2b-more!/202854/"
+  },
+  {
     "id": "cattails-and-cocktails-on-krebs-lake-2026-10-02-de3f393",
     "name": "Cattails and Cocktails on Krebs Lake",
     "dates": [
