@@ -200,7 +200,11 @@
       ],
       "zero_is_failure": true,
       "timeout": 15,
-      "max_sitemaps": 4
+      "max_sitemaps": 4,
+      "reject_names": [
+        "Coast Adventures Await",
+        "TEST Coast Adventures Await"
+      ]
     },
     {
       "key": "sunherald_events",
