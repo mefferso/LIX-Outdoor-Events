@@ -57,6 +57,25 @@ class SourceAdaptersV2Tests(unittest.TestCase):
         self.assertIn("Krewe of Bilge", names)
         self.assertEqual(len(rows), 2)
 
+    def test_lsu_home_schedule_parser(self):
+        html = """
+        <html><body>
+          <div>SatOct 3</div>
+          <div>vs.</div>
+          <div>SatOct 3</div>
+          <div>vs.McNeese</div>
+          <div>Baton Rouge, La. (Tiger Stadium)</div>
+          <div>6:45 PM CT</div>
+        </body></html>
+        """
+        rows = v2.parse_lsu_football(html, {
+            "url": "https://lsusports.net/sports/fb/schedule",
+            "season": 2026,
+        })
+        self.assertEqual(len(rows), 1)
+        self.assertEqual(rows[0]["name"], "LSU Football vs McNeese")
+        self.assertTrue(rows[0]["startDate"].startswith("2026-10-03T18:45"))
+
     def test_sitemap_url_extraction(self):
         xml = """<?xml version="1.0"?>
         <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
