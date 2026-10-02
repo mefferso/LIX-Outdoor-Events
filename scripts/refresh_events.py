@@ -933,10 +933,11 @@ def _markdown_event_links(text: str, source: dict[str, Any]) -> list[str]:
     tokens = source.get("href_contains_any") or ["/event/", "/events/"]
     links: list[str] = []
     seen: set[str] = set()
-    candidates = re.findall(r"\[[^\]]+\]\((https?://[^)\s]+)\)", text)
+    candidates = re.findall(r"\[[^\]]+\]\(([^)\s]+)\)", text)
     candidates += re.findall(r"https?://[^\s)\]>]+", text)
     for href in candidates:
         href = html.unescape(href).rstrip(".,")
+        href = urljoin(listing_url, href)
         parsed = urlparse(href)
         link_domain = parsed.netloc.lower().removeprefix("www.")
         if link_domain != domain or not any(token in parsed.path for token in tokens):
