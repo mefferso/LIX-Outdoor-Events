@@ -378,6 +378,69 @@ def parse_tangipahoa_fairs(text: str, source: dict):
     return list(dedup.values())
 
 
+
+def parse_mardi_gras(text: str, source: dict):
+    parser = VisibleTextParser()
+    parser.feed(text)
+    lines = [legacy.clean_text(x) for x in parser.text.splitlines() if legacy.clean_text(x)]
+    raw = []
+    current_date = None
+    current_area = ""
+    area_map = {
+        "French Quarter": "New Orleans", "Uptown New Orleans": "New Orleans",
+        "Marigny": "New Orleans", "Mid-City": "New Orleans", "New Orleans East": "New Orleans",
+        "Westbank": "Gretna", "Metairie": "Metairie", "Kenner": "Kenner",
+        "Slidell": "Slidell", "Pearl River": "Pearl River", "Mandeville": "Mandeville",
+        "Madisonville": "Madisonville", "Covington": "Covington", "Abita Springs": "Abita Springs",
+        "Bush": "Bush", "Folsom": "Folsom", "Chalmette": "Chalmette",
+    }
+    date_re = re.compile(
+        r"^(?:Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday)\s+"
+        r"(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Sept|Oct|Nov|Dec)\.?\s+(\d{1,2})\s+(\d{4})",
+        re.I,
+    )
+    for line in lines:
+        dm = date_re.search(line)
+        if dm:
+            current_date = datetime(
+                int(dm.group(3)), MONTHS[dm.group(1).lower().rstrip(".")], int(dm.group(2)),
+                tzinfo=legacy.TZ
+            )
+            current_area = ""
+            continue
+        if line in area_map:
+            current_area = line
+            continue
+        if not current_date or not current_area:
+            continue
+        tm = re.search(r"\b(\d{1,2})(?::(\d{2}))?\s*(am|pm)\b", line, re.I)
+        if not tm:
+            continue
+        title = re.sub(r"\s+\d{1,2}(?::\d{2})?\s*(?:am|pm).*?$", "", line, flags=re.I)
+        title = re.sub(r"\s+(?:view\s*map|more\s*info).*$", "", title, flags=re.I)
+        title = legacy.clean_text(title)
+        if len(title) < 3:
+            continue
+        hour = int(tm.group(1)) % 12 + (12 if tm.group(3).lower() == "pm" else 0)
+        minute = int(tm.group(2) or 0)
+        start = current_date.replace(hour=hour, minute=minute)
+        city = area_map[current_area]
+        raw.append({
+            "name": title,
+            "startDate": start.isoformat(),
+            "location": {
+                "name": current_area,
+                "address": {"addressLocality": city, "addressRegion": "LA"},
+            },
+            "description": f"Outdoor Mardi Gras parade in {current_area}.",
+            "url": source["url"],
+        })
+    dedup = {}
+    for r in raw:
+        dedup[(r["name"].lower(), r["startDate"])] = r
+    return list(dedup.values())
+
+
 def collect_source_v2(source: dict):
     collector = source.get("collector")
     result = legacy.SourceResult(key=source["key"], name=source["name"], success=False)
@@ -392,6 +455,10 @@ def collect_source_v2(source: dict):
         elif collector == "tangipahoa_fairs":
             text = legacy.fetch_text(source["url"])
             raw = parse_tangipahoa_fairs(text, source)
+            result.detail_links = 0
+        elif collector == "mardi_gras":
+            text = legacy.fetch_text(source["url"])
+            raw = parse_mardi_gras(text, source)
             result.detail_links = 0
         else:
             return legacy.collect_source(source)
