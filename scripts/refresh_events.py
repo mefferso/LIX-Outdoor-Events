@@ -1132,6 +1132,7 @@ def parse_generic_football_schedule(text: str, source: dict[str, Any]) -> list[d
     parser.feed(text)
     lines = parser.lines()
     output: list[dict[str, Any]] = []
+    seen_games: set[tuple[date, str]] = set()
     year = int(source.get("season", now_local().year))
     team = clean_text(source.get("team_name") or source.get("name"))
     venue = clean_text(source.get("home_venue"))
@@ -1182,6 +1183,10 @@ def parse_generic_football_schedule(text: str, source: dict[str, Any]) -> list[d
             continue
         opponent = re.split(r"\b(?:Tickets|Watch|Listen|Live Stats|History)\b", opponent, maxsplit=1, flags=re.I)[0].strip()
         event_date = date(year, MONTH_ABBR[dm.group(1).lower()], int(dm.group(2)))
+        stable = (event_date, normalized_name(opponent))
+        if stable in seen_games:
+            continue
+        seen_games.add(stable)
         clock = parse_clock(joined.replace("a.m.", "AM").replace("p.m.", "PM"))
         start = event_date.isoformat()
         if clock:
