@@ -237,6 +237,15 @@ class PipelineTests(unittest.TestCase):
         self.assertEqual(start, "2026-09-30")
         self.assertEqual(end, "2026-10-04")
 
+    def test_abbreviated_cross_month_date_range(self):
+        start, end = mod.parse_human_date_range("Sept. 30 - Oct. 4, 2026")
+        self.assertEqual(start, "2026-09-30")
+        self.assertEqual(end, "2026-10-04")
+
+        start, end = mod.parse_human_date_range("Sep 30, 2026 - Oct 4, 2026")
+        self.assertEqual(start, "2026-09-30")
+        self.assertEqual(end, "2026-10-04")
+
     def test_generic_detail_fallback(self):
         text = """<html><body>
         <h1>LIVE AFTER 5 - After 8</h1>
