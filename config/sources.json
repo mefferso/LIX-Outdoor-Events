@@ -138,9 +138,10 @@
       "key": "mardigras_neworleans",
       "name": "Mardi Gras New Orleans",
       "url": "https://www.mardigrasneworleans.com/parades/",
-      "collector": "page_jsonld",
+      "collector": "mardi_gras",
       "enabled": true,
-      "notes": "High-priority parade schedule source. Static page is useful even when no JSON-LD is present; dedicated parade parser is the next adapter."
+      "notes": "Dedicated parser reads the published parade schedule directly from ordinary HTML.",
+      "zero_is_failure": false
     },
     {
       "key": "downtown_baton_rouge",
