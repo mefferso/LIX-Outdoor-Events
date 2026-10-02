@@ -100,5 +100,39 @@
     "latitude": 30.4007626,
     "longitude": -88.8893818,
     "display_name": "Biloxi, Harrison County, Mississippi, United States"
-  }
+  },
+  "amite, la": {
+    "latitude": 30.7265747,
+    "longitude": -90.5089815,
+    "display_name": "Amite City, Tangipahoa Parish, Louisiana, United States"
+  },
+  "walter anderson museum of art 510 washington ave ocean springs, mississippi 39564": {
+    "latitude": 30.4105588,
+    "longitude": -88.8274955,
+    "display_name": "Walter Anderson Museum of Art, 510, Washington Avenue, Ocean Springs, Jackson County, Mississippi, 39533, United States"
+  },
+  "mississippi aquarium 2100 e beach boulevard gulfport, mississippi 39501": null,
+  "the manor on scenic 213 east scenic drive pass christian, mississippi 39571": null,
+  "boomtown casino biloxi 676 bayview ave biloxi, mississippi 39530": {
+    "latitude": 30.4122792,
+    "longitude": -88.8850854,
+    "display_name": "Boomtown Casino Biloxi, 676, Bayview Avenue, Biloxi, Harrison County, Mississippi, 39530, United States"
+  },
+  "the sound amphitheater 3855 dolphin drive gautier, mississippi 39553": null,
+  "the hollywood warehouse 3420 giles rd gulfport, mississippi 39501": null,
+  "100 men hall 303 union st bay st. louis, mississippi 39520": null,
+  "gallery 782 1001 w howard ave biloxi, mississippi 39530": null,
+  "4602 fort street pascagoula, mississippi 39567": {
+    "latitude": 30.3802091,
+    "longitude": -88.5582224,
+    "display_name": "4602, Fort Street, Pascagoula, Jackson County, Mississippi, 39567, United States"
+  },
+  "riverfront park 5200 main street moss point, mississippi 39563": null,
+  "mississippi coast coliseum 2350 beach blvd biloxi, mississippi 39531": null,
+  "lapointe krebs house 4611 hickory street pascagoula, mississippi 39567": null,
+  "war memorial park, 101 fleitas pass christian, mississippi 39571": null,
+  "downtown pascagoula delmas avenue pascagoula, mississippi 39567": null,
+  "various location along the coast 1907 pass road, suite a biloxi, mississippi": null,
+  "the arts, hancock county 405 blaize ave bay st. louis, mississippi 39520": null,
+  "mary c. o'keefe cultural arts center 1600 government st ocean springs, mississippi 39564": null
 }

@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-10-02T07:33:41-05:00",
-  "event_count": 9,
+  "generated_at": "2026-10-02T07:39:40-05:00",
+  "event_count": 8,
   "manual_event_count": 0,
-  "automated_event_count": 9,
-  "automated_candidate_count": 11,
+  "automated_event_count": 8,
+  "automated_candidate_count": 10,
   "collection_window_start": "2026-10-02",
   "collection_window_end": "2026-10-09",
   "timezone": "America/Chicago",
@@ -35,8 +35,8 @@
       "name": "Visit The Northshore",
       "success": true,
       "health": "healthy",
-      "detail_links": 18,
-      "discovered": 4,
+      "detail_links": 16,
+      "discovered": 16,
       "accepted": 0,
       "error": null
     },
@@ -103,12 +103,12 @@
     {
       "key": "mardigras_neworleans",
       "name": "Mardi Gras New Orleans",
-      "success": false,
-      "health": "failed",
+      "success": true,
+      "health": "degraded",
       "detail_links": 0,
       "discovered": 0,
       "accepted": 0,
-      "error": "source returned zero event records"
+      "error": null
     },
     {
       "key": "downtown_baton_rouge",
@@ -136,8 +136,8 @@
       "success": true,
       "health": "healthy",
       "detail_links": 33,
-      "discovered": 12,
-      "accepted": 1,
+      "discovered": 22,
+      "accepted": 0,
       "error": null
     },
     {
@@ -153,8 +153,8 @@
   ],
   "source_health": {
     "healthy": 12,
-    "degraded": 0,
-    "failed": 2,
+    "degraded": 1,
+    "failed": 1,
     "total": 14
   },
   "notes": "Automated source collection is merged with a curated safety-net file. Unknown indoor/outdoor events and points outside the LIX CWA are excluded."
