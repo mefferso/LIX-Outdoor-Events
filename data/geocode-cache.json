@@ -110,5 +110,15 @@
     "latitude": 30.4007626,
     "longitude": -88.8893818,
     "display_name": "Biloxi, Harrison County, Mississippi, United States"
+  },
+  "1503 government street, baton rouge, louisiana 70802": {
+    "latitude": 30.4440781,
+    "longitude": -91.1729784,
+    "display_name": "1503, Government Street, Roseland Terrace, Garden District, Downtown East, Baton Rouge, East Baton Rouge Parish, Louisiana, 70802, United States"
+  },
+  "501 main street, baton rouge, louisiana 70802": {
+    "latitude": 30.451583,
+    "longitude": -91.185794,
+    "display_name": "501, Main Street, Spanish Town, Downtown Development District, Baton Rouge, East Baton Rouge Parish, Louisiana, 70801, United States"
   }
 }

@@ -62,34 +62,6 @@
     "source_url": "https://www.tangitourism.com/Events/Fairs-Festivals"
   },
   {
-    "id": "coast-adventures-await-2026-10-02-1c4bcbd",
-    "name": "Coast Adventures Await",
-    "dates": [
-      "2026-10-02",
-      "2026-10-03"
-    ],
-    "start": "2026-10-02T00:00:00-05:00",
-    "end": "2026-10-03T00:00:00-05:00",
-    "all_day": true,
-    "latitude": 30.400763,
-    "longitude": -88.889382,
-    "venue": "Location not listed",
-    "address": "Biloxi, MS",
-    "city": "Biloxi",
-    "state": "MS",
-    "parish_county": "Harrison County",
-    "idss_area": "Mississippi Coast",
-    "category": "festival",
-    "outdoor_status": "outdoor",
-    "origin": "automated",
-    "importance": "moderate",
-    "location_confidence": 0.78,
-    "outdoor_confidence": 0.78,
-    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
-    "source_name": "Coastal Mississippi",
-    "source_url": "https://www.coastalmississippi.com/events/ \"Prev\""
-  },
-  {
     "id": "johnette-downing-2026-10-02-c0fde5e",
     "name": "Johnette Downing",
     "dates": [
@@ -247,6 +219,33 @@
     "source_url": "https://www.visitthenorthshore.com/event/zoo-2-u-fall-fest-pumpkin-patch/8718/"
   },
   {
+    "id": "red-stick-farmers-market-at-main-street-market-in-downtown-baton-rouge-2026-10-03-1d6d5ba",
+    "name": "Red Stick Farmers Market at Main Street Market in Downtown Baton Rouge",
+    "dates": [
+      "2026-10-03"
+    ],
+    "start": "2026-10-03T03:00:00-05:00",
+    "end": "2026-10-03T07:00:00-05:00",
+    "all_day": false,
+    "latitude": 30.451583,
+    "longitude": -91.185794,
+    "venue": "Red Stick Farmers Market",
+    "address": "501 Main Street, Baton Rouge, Louisiana 70802",
+    "city": "Baton Rouge",
+    "state": "Louisiana",
+    "parish_county": "East Baton Rouge Parish",
+    "idss_area": "Baton Rouge Metro",
+    "category": "festival",
+    "outdoor_status": "outdoor",
+    "origin": "automated",
+    "importance": "moderate",
+    "location_confidence": 0.72,
+    "outdoor_confidence": 0.78,
+    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
+    "source_name": "Visit Baton Rouge",
+    "source_url": "https://www.visitbatonrouge.com/events/red-stick-farmers-market-at-main-street-market-in-downtown-baton-rouge/"
+  },
+  {
     "id": "pascagoula-river-paddle-battle-2026-10-03-2ae133e",
     "name": "Pascagoula River Paddle Battle",
     "dates": [
@@ -272,6 +271,33 @@
     "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
     "source_name": "Sun Herald Events",
     "source_url": "https://www.sunherald.com/events/#/details/pascagoula-river-paddle-battle/19895298/2026-10-03T06"
+  },
+  {
+    "id": "baton-rouge-arts-market-2026-10-03-83db9d8",
+    "name": "Baton Rouge Arts Market",
+    "dates": [
+      "2026-10-03"
+    ],
+    "start": "2026-10-03T08:00:00-05:00",
+    "end": null,
+    "all_day": false,
+    "latitude": 30.450048,
+    "longitude": -91.163248,
+    "venue": "Red Stick Farmers Market, North 5th Street, Baton Rouge, LA, USA",
+    "address": "Florida St. Baton Rouge, LA",
+    "city": "Florida St. Baton Rouge",
+    "state": "LA",
+    "parish_county": "",
+    "idss_area": "Baton Rouge Metro",
+    "category": "festival",
+    "outdoor_status": "outdoor",
+    "origin": "automated",
+    "importance": "moderate",
+    "location_confidence": 0.78,
+    "outdoor_confidence": 0.78,
+    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
+    "source_name": "Downtown Baton Rouge",
+    "source_url": "https://downtownbatonrouge.org/discover-downtown/events/baton-rouge-arts-market-7-1-1-1-1-1-1-1-1"
   },
   {
     "id": "butterflies-in-the-pass-monarch-festival-2026-10-03-b27145f",
@@ -326,5 +352,32 @@
     "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
     "source_name": "Southern University Athletics",
     "source_url": "https://gojagsports.com/sports/football/schedule"
+  },
+  {
+    "id": "lsu-football-vs-mcneese-2026-10-03-97b52f1",
+    "name": "LSU Football vs McNeese",
+    "dates": [
+      "2026-10-03"
+    ],
+    "start": "2026-10-03T18:45:00-05:00",
+    "end": null,
+    "all_day": false,
+    "latitude": 30.412,
+    "longitude": -91.1838,
+    "venue": "Tiger Stadium",
+    "address": "Baton Rouge, LA",
+    "city": "Baton Rouge",
+    "state": "LA",
+    "parish_county": "East Baton Rouge Parish",
+    "idss_area": "Baton Rouge Metro",
+    "category": "sports",
+    "outdoor_status": "outdoor",
+    "origin": "automated",
+    "importance": "major",
+    "location_confidence": 0.99,
+    "outdoor_confidence": 0.99,
+    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
+    "source_name": "LSU Athletics",
+    "source_url": "https://lsusports.net/sports/fb/schedule"
   }
 ]
