@@ -276,9 +276,9 @@ class PipelineTests(unittest.TestCase):
 
     def test_generic_football_schedule(self):
         text = """<html><body>
-        <div>Oct 3</div><div>6:30 PM</div><div>vs.</div><div>McNeese</div>
-        <div>Baton Rouge, LA</div>
-        <div>Oct 10</div><div>at</div><div>Florida</div>
+        <div>SatOct 3</div><div>#11</div><div>vs.</div><div>SatOct 3</div>
+        <div>vs.McNeese</div><div>Baton Rouge, La. (Tiger Stadium)</div><div>6:45 PM CT</div>
+        <div>SatOct 10</div><div>at</div><div>Kentucky</div>
         </body></html>"""
         source = {
             "url":"https://lsusports.net/sports/fb/schedule",
@@ -291,7 +291,7 @@ class PipelineTests(unittest.TestCase):
         events = mod.parse_generic_football_schedule(text, source)
         self.assertEqual(len(events), 1)
         self.assertEqual(events[0]["name"], "LSU Football vs. McNeese")
-        self.assertTrue(events[0]["startDate"].startswith("2026-10-03T18:30"))
+        self.assertTrue(events[0]["startDate"].startswith("2026-10-03T18:45"))
 
     def test_markdown_event_links(self):
         text = """[St. Tammany Parish Fair](https://www.visitthenorthshore.com/events/st-tammany-parish-fair/1234/)
