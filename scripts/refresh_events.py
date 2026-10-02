@@ -1149,22 +1149,33 @@ def parse_generic_football_schedule(text: str, source: dict[str, Any]) -> list[d
             continue
         opponent = ""
         for j, part in enumerate(chunk):
-            m = re.search(r"\bvs\.?\s*(.+)$", part, re.I)
-            if m and clean_text(m.group(1)):
-                opponent = clean_text(m.group(1))
+            stripped = clean_text(part).strip()
+            low = stripped.lower()
+            tail = ""
+            if low.startswith("vs."):
+                tail = stripped[3:].strip()
+            elif low == "vs" or low.startswith("vs "):
+                tail = stripped[2:].strip()
+            if tail:
+                opponent = tail
                 break
-            if re.fullmatch(r"vs\.?", part.strip(), re.I):
+            if low in {"vs", "vs."}:
                 for candidate in chunk[j + 1:j + 5]:
-                    candidate = clean_text(candidate)
+                    candidate = clean_text(candidate).strip()
                     if not candidate:
                         continue
                     if re.search(month_pat, candidate, re.I) or re.fullmatch(r"#?\d+", candidate):
                         continue
-                    if re.fullmatch(r"vs\.?", candidate, re.I):
+                    cand_low = candidate.lower()
+                    if cand_low in {"vs", "vs."}:
                         continue
-                    inline = re.search(r"\bvs\.?\s*(.+)$", candidate, re.I)
-                    opponent = clean_text(inline.group(1)) if inline and clean_text(inline.group(1)) else candidate
-                    break
+                    if cand_low.startswith("vs."):
+                        candidate = candidate[3:].strip()
+                    elif cand_low.startswith("vs "):
+                        candidate = candidate[2:].strip()
+                    if candidate:
+                        opponent = candidate
+                        break
                 if opponent:
                     break
         if not opponent:
