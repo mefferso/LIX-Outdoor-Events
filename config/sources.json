@@ -19,25 +19,32 @@
     {
       "key": "visitbatonrouge",
       "name": "Visit Baton Rouge",
-      "url": "https://www.visitbatonrouge.com/events/",
-      "collector": "listing_jsonld",
-      "max_detail_pages": 30,
-      "enabled": true,
-      "href_contains_any": [
-        "/events/"
-      ]
-    },
-    {
-      "key": "northshore",
-      "name": "Louisiana Northshore",
-      "url": "https://www.louisiananorthshore.com/events/",
-      "collector": "listing_jsonld",
-      "max_detail_pages": 30,
+      "url": "https://www.visitbatonrouge.com/events/?displaycount=100&sort=date&view=list",
+      "collector": "rendered_listing",
+      "max_detail_pages": 100,
       "enabled": true,
       "href_contains_any": [
         "/event/",
         "/events/"
-      ]
+      ],
+      "renderer_base": "https://r.jina.ai/",
+      "render_timeout": 75,
+      "zero_is_failure": true
+    },
+    {
+      "key": "northshore",
+      "name": "Visit The Northshore",
+      "url": "https://www.visitthenorthshore.com/events/?displaycount=100&sort=date&view=list",
+      "collector": "rendered_listing",
+      "max_detail_pages": 100,
+      "enabled": true,
+      "href_contains_any": [
+        "/event/",
+        "/events/"
+      ],
+      "renderer_base": "https://r.jina.ai/",
+      "render_timeout": 75,
+      "zero_is_failure": true
     },
     {
       "key": "houma",
@@ -47,18 +54,6 @@
       "max_detail_pages": 25,
       "enabled": true,
       "href_contains_any": [
-        "/events/"
-      ]
-    },
-    {
-      "key": "msgulfcoast",
-      "name": "Coastal Mississippi",
-      "url": "https://www.gulfcoast.org/events/",
-      "collector": "listing_jsonld",
-      "max_detail_pages": 25,
-      "enabled": true,
-      "href_contains_any": [
-        "/event/",
         "/events/"
       ]
     },
@@ -114,21 +109,24 @@
       "key": "lsu_football",
       "name": "LSU Athletics",
       "url": "https://lsusports.net/sports/fb/schedule",
-      "collector": "page_jsonld",
+      "collector": "generic_football",
       "season": 2026,
       "team_name": "LSU",
       "home_venue": "Tiger Stadium",
       "home_city": "Baton Rouge",
       "home_state": "LA",
-      "enabled": true
+      "enabled": true,
+      "zero_is_failure": true
     },
     {
       "key": "mardigras_neworleans",
       "name": "Mardi Gras New Orleans",
       "url": "https://www.mardigrasneworleans.com/parades/",
-      "collector": "page_jsonld",
+      "collector": "static_calendar",
       "enabled": true,
-      "notes": "High-priority parade schedule source. Static page is useful even when no JSON-LD is present; dedicated parade parser is the next adapter."
+      "notes": "Dedicated visible-text parade parser; no longer depends on Event JSON-LD.",
+      "default_state": "LA",
+      "zero_is_failure": true
     },
     {
       "key": "downtown_baton_rouge",
@@ -141,28 +139,34 @@
         "/events/",
         "/event/"
       ],
-      "notes": "Broad downtown calendar; outdoor/IDSS relevance filter is intentionally strict because many listings are indoor."
+      "notes": "Server-rendered listing/detail pages; generic detail fallback handles pages without Event JSON-LD.",
+      "zero_is_failure": true
     },
     {
       "key": "tangi_tourism_fairs",
       "name": "Tangipahoa Parish Convention & Visitors Bureau",
       "url": "https://www.tangitourism.com/Events/Fairs-Festivals",
-      "collector": "page_jsonld",
+      "collector": "static_calendar",
       "enabled": true,
-      "notes": "High-value fairs/festivals source for Tangipahoa Parish. Dedicated static-page parser is planned for full yield."
+      "notes": "Dedicated visible-text fairs/festivals parser; no longer depends on Event JSON-LD.",
+      "default_state": "LA",
+      "zero_is_failure": true
     },
     {
       "key": "coastal_mississippi",
       "name": "Coastal Mississippi",
-      "url": "https://www.coastalmississippi.com/events",
-      "collector": "listing_jsonld",
-      "max_detail_pages": 30,
+      "url": "https://www.coastalmississippi.com/events/?displaycount=100&sort=date&view=list",
+      "collector": "rendered_listing",
+      "max_detail_pages": 100,
       "enabled": true,
       "href_contains_any": [
         "/event/",
         "/events/"
       ],
-      "notes": "Official Mississippi Gulf Coast tourism calendar. JS-driven listing may require a dedicated adapter."
+      "notes": "Official Mississippi Gulf Coast tourism calendar; browser-rendered through Jina because the listing is JS-driven.",
+      "renderer_base": "https://r.jina.ai/",
+      "render_timeout": 75,
+      "zero_is_failure": true
     },
     {
       "key": "sunherald_events",
