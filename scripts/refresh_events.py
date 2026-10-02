@@ -433,41 +433,60 @@ MONTHS = {
          "July", "August", "September", "October", "November", "December"]
     ) if number
 }
+DATE_MONTHS = {**MONTHS, **MONTH_ABBR}
+DATE_MONTH_PATTERN = "|".join(
+    sorted((re.escape(name) for name in DATE_MONTHS), key=len, reverse=True)
+)
+
+def _human_month(value: str) -> int:
+    return DATE_MONTHS[value.lower().rstrip(".")]
 
 def parse_human_date_range(text: str) -> tuple[str | None, str | None]:
     text = clean_text(text).replace("–", "-").replace("—", "-")
+    mp = DATE_MONTH_PATTERN
 
-    # September 30 - October 4, 2026
+    # Sep 30, 2026 - Oct 4, 2026
+    full_cross = re.search(
+        rf"\b({mp})\.?\s+(\d{{1,2}}),\s*(20\d{{2}})\s*-\s*({mp})\.?\s+(\d{{1,2}}),\s*(20\d{{2}})\b",
+        text, re.I
+    )
+    if full_cross:
+        start = date(int(full_cross.group(3)), _human_month(full_cross.group(1)), int(full_cross.group(2)))
+        end = date(int(full_cross.group(6)), _human_month(full_cross.group(4)), int(full_cross.group(5)))
+        return start.isoformat(), end.isoformat()
+
+    # Sept. 30 - Oct. 4, 2026
     cross_month = re.search(
-        r"\b(" + "|".join(MONTHS) + r")\s+(\d{1,2})\s*-\s*(" + "|".join(MONTHS) + r")\s+(\d{1,2}),\s*(20\d{2})\b",
+        rf"\b({mp})\.?\s+(\d{{1,2}})\s*-\s*({mp})\.?\s+(\d{{1,2}}),\s*(20\d{{2}})\b",
         text, re.I
     )
     if cross_month:
-        start = date(int(cross_month.group(5)), MONTHS[cross_month.group(1).lower()], int(cross_month.group(2)))
-        end = date(int(cross_month.group(5)), MONTHS[cross_month.group(3).lower()], int(cross_month.group(4)))
+        start = date(int(cross_month.group(5)), _human_month(cross_month.group(1)), int(cross_month.group(2)))
+        end = date(int(cross_month.group(5)), _human_month(cross_month.group(3)), int(cross_month.group(4)))
         return start.isoformat(), end.isoformat()
 
-    # September 18-20, 2026
+    # Sept. 18-20, 2026
     range_match = re.search(
-        r"\b(" + "|".join(MONTHS) + r")\s+(\d{1,2})\s*-\s*(\d{1,2}),\s*(20\d{2})\b",
+        rf"\b({mp})\.?\s+(\d{{1,2}})\s*-\s*(\d{{1,2}}),\s*(20\d{{2}})\b",
         text, re.I
     )
     if range_match:
-        month = MONTHS[range_match.group(1).lower()]
+        month = _human_month(range_match.group(1))
         start = date(int(range_match.group(4)), month, int(range_match.group(2)))
         end = date(int(range_match.group(4)), month, int(range_match.group(3)))
         return start.isoformat(), end.isoformat()
 
-    # September 26, 2026
+    # Sept. 26, 2026
     single = re.search(
-        r"\b(" + "|".join(MONTHS) + r")\s+(\d{1,2}),\s*(20\d{2})\b",
+        rf"\b({mp})\.?\s+(\d{{1,2}}),\s*(20\d{{2}})\b",
         text, re.I
     )
     if not single:
         return None, None
-    month = MONTHS[single.group(1).lower()]
+    month = _human_month(single.group(1))
     d = date(int(single.group(3)), month, int(single.group(2)))
     return d.isoformat(), d.isoformat()
+
 
 def parse_clock(text: str) -> tuple[int, int] | None:
     m = re.search(r"\b(\d{1,2})(?::(\d{2}))?\s*(AM|PM)\b", text, re.I)
@@ -1114,7 +1133,7 @@ def parse_static_calendar_events(text: str, source: dict[str, Any]) -> list[dict
 
         nearby = lines[max(0, i - 3):i + 10]
         name = ""
-        for candidate in [*lines[i + 1:i + 4], *reversed(lines[max(0, i - 3):i])]:
+        for candidate in [*reversed(lines[max(0, i - 3):i]), *lines[i + 1:i + 4]]:
             low = candidate.lower()
             if 3 <= len(candidate) <= 140 and not parse_human_date_range(candidate)[0] and low not in {"events", "fairs & festivals", "calendar"}:
                 name = candidate
@@ -1453,6 +1472,7 @@ def normalize_schema_event(obj: dict[str, Any], source: dict[str, Any]) -> dict[
         "source_name": source["name"],
         "source_url": source_url,
         "_source_key": source["key"],
+        "_source_outdoor_hint": bool(source.get("assume_outdoor", False)),
     }
 
 def event_dates(start: datetime, end: datetime | None) -> list[str]:
@@ -1563,6 +1583,7 @@ def classify_event(event: dict[str, Any]) -> None:
     event["category"] = category
 
     venue_status = event.pop("_venue_outdoor_status", None)
+    source_outdoor_hint = bool(event.pop("_source_outdoor_hint", False))
     strong_outdoor_terms = tuple(
         word for word in OUTDOOR_POSITIVE
         if word not in {"park", "walk", "run", "field"}
@@ -1575,6 +1596,9 @@ def classify_event(event: dict[str, Any]) -> None:
     if venue_status:
         outdoor = venue_status
         confidence = 0.99
+    elif source_outdoor_hint:
+        outdoor = "outdoor"
+        confidence = 0.9
     elif has_outdoor and has_indoor:
         outdoor, confidence = "partial", 0.72
     elif has_outdoor:
