@@ -21,14 +21,14 @@
       "name": "Visit Baton Rouge",
       "url": "https://www.visitbatonrouge.com/events/",
       "collector": "enhanced_listing",
-      "max_detail_pages": 100,
+      "max_detail_pages": 50,
       "enabled": true,
       "href_contains_any": [
         "/events/"
       ],
       "min_listing_links": 25,
       "renderer_base": "https://r.jina.ai/",
-      "render_timeout": 75,
+      "render_timeout": 25,
       "sitemap_url": "https://www.visitbatonrouge.com/sitemap.xml",
       "detail_path_tokens": [
         "/events/"
@@ -41,7 +41,7 @@
       "name": "Louisiana Northshore",
       "url": "https://www.visitthenorthshore.com/events/",
       "collector": "enhanced_listing",
-      "max_detail_pages": 120,
+      "max_detail_pages": 50,
       "enabled": true,
       "href_contains_any": [
         "/event/",
@@ -53,7 +53,7 @@
       ],
       "min_listing_links": 10,
       "renderer_base": "https://r.jina.ai/",
-      "render_timeout": 75,
+      "render_timeout": 25,
       "sitemap_url": "https://www.visitthenorthshore.com/sitemap.xml",
       "detail_path_tokens": [
         "/event/"
@@ -148,7 +148,7 @@
       "name": "Downtown Baton Rouge",
       "url": "https://downtownbatonrouge.org/events",
       "collector": "enhanced_listing",
-      "max_detail_pages": 80,
+      "max_detail_pages": 40,
       "enabled": true,
       "href_contains_any": [
         "/events/",
@@ -157,7 +157,7 @@
       "notes": "Enhanced listing/detail parsing for current Downtown Baton Rouge markup.",
       "min_listing_links": 25,
       "renderer_base": "https://r.jina.ai/",
-      "render_timeout": 75,
+      "render_timeout": 25,
       "sitemap_url": "https://downtownbatonrouge.org/sitemap.xml",
       "detail_path_tokens": [
         "/event/",
@@ -178,7 +178,7 @@
       "name": "Coastal Mississippi",
       "url": "https://www.coastalmississippi.com/events/",
       "collector": "enhanced_listing",
-      "max_detail_pages": 120,
+      "max_detail_pages": 60,
       "enabled": true,
       "href_contains_any": [
         "/event/",
@@ -187,7 +187,7 @@
       "notes": "Official Coastal Mississippi source using rendered discovery and sitemap fallback for its JavaScript-driven calendar.",
       "min_listing_links": 50,
       "renderer_base": "https://r.jina.ai/",
-      "render_timeout": 75,
+      "render_timeout": 25,
       "sitemap_url": "https://www.coastalmississippi.com/sitemap.xml",
       "detail_path_tokens": [
         "/events/"
