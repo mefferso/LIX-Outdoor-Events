@@ -9,6 +9,7 @@ import os
 import re
 import sys
 import time
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from dataclasses import dataclass
 from datetime import date, datetime, timedelta
 from difflib import SequenceMatcher
@@ -1051,19 +1052,28 @@ def collect_rendered_listing(source: dict[str, Any]) -> tuple[list[dict[str, Any
     )
     links = _markdown_event_links(rendered, source)
     output: list[dict[str, Any]] = []
-    for detail_url in links[: int(source.get("max_detail_pages", 80))]:
-        try:
-            detail = fetch_text(
-                renderer + detail_url,
-                timeout=int(source.get("render_timeout", 75)),
-                attempts=2,
-                extra_headers=render_headers,
-            )
-            event = _markdown_to_event(detail, detail_url)
-            if event:
-                output.append(event)
-        except Exception as exc:
-            print(f"[source:{source.get('key')}] rendered detail skipped {detail_url}: {exc}", file=sys.stderr)
+    detail_urls = links[: int(source.get("max_detail_pages", 80))]
+
+    def hydrate(detail_url: str) -> dict[str, Any] | None:
+        detail = fetch_text(
+            renderer + detail_url,
+            timeout=int(source.get("render_timeout", 75)),
+            attempts=2,
+            extra_headers=render_headers,
+        )
+        return _markdown_to_event(detail, detail_url)
+
+    workers = max(1, min(int(source.get("render_workers", 6)), 8))
+    with ThreadPoolExecutor(max_workers=workers) as pool:
+        futures = {pool.submit(hydrate, url): url for url in detail_urls}
+        for future in as_completed(futures):
+            detail_url = futures[future]
+            try:
+                event = future.result()
+                if event:
+                    output.append(event)
+            except Exception as exc:
+                print(f"[source:{source.get('key')}] rendered detail skipped {detail_url}: {exc}", file=sys.stderr)
     return output, len(links)
 
 
