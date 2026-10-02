@@ -85,16 +85,37 @@ def parse_month_date(text: str, default_year: int | None = None):
 
 
 def parse_date_range(text: str):
-    # "September 30, 2026 - October 4, 2026"
-    matches = list(re.finditer(
+    # Common tourism-calendar forms:
+    #   "September 30, 2026 - October 4, 2026"
+    #   "Fri 02 Oct | 5:00pm"
+    month_first = list(re.finditer(
         r"\b(January|February|March|April|May|June|July|August|September|Sept|October|November|December|"
         r"Jan|Feb|Mar|Apr|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\.?\s+(\d{1,2})(?:,\s*(\d{4}))?",
         text, re.I
     ))
-    if not matches:
+    if month_first:
+        first = parse_month_date(month_first[0].group(0))
+        second = parse_month_date(month_first[1].group(0), first.year if first else None) if len(month_first) > 1 else None
+        return first, second
+
+    day_first = list(re.finditer(
+        r"\b(\d{1,2})\s+(January|February|March|April|May|June|July|August|September|Sept|October|November|December|"
+        r"Jan|Feb|Mar|Apr|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\b(?:\s+(\d{4}))?",
+        text, re.I
+    ))
+    if not day_first:
         return None, None
-    first = parse_month_date(matches[0].group(0))
-    second = parse_month_date(matches[1].group(0), first.year if first else None) if len(matches) > 1 else None
+
+    def build(match, year=None):
+        return datetime(
+            int(match.group(3) or year or legacy.now_local().year),
+            MONTHS[match.group(2).lower().rstrip(".")],
+            int(match.group(1)),
+            tzinfo=legacy.TZ,
+        )
+
+    first = build(day_first[0])
+    second = build(day_first[1], first.year) if len(day_first) > 1 else None
     return first, second
 
 
