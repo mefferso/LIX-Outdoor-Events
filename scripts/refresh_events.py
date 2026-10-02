@@ -1139,13 +1139,24 @@ def parse_generic_football_schedule(text: str, source: dict[str, Any]) -> list[d
             continue
         opponent = ""
         for j, part in enumerate(chunk):
-            if re.fullmatch(r"vs\.?", part.strip(), re.I) and j + 1 < len(chunk):
-                opponent = chunk[j + 1]
-                break
-            m = re.search(r"\bvs\.?\s+(.+)$", part, re.I)
-            if m:
+            m = re.search(r"\bvs\.?\s*(.+)$", part, re.I)
+            if m and clean_text(m.group(1)):
                 opponent = clean_text(m.group(1))
                 break
+            if re.fullmatch(r"vs\.?", part.strip(), re.I):
+                for candidate in chunk[j + 1:j + 5]:
+                    candidate = clean_text(candidate)
+                    if not candidate:
+                        continue
+                    if re.search(month_pat, candidate, re.I) or re.fullmatch(r"#?\d+", candidate):
+                        continue
+                    if re.fullmatch(r"vs\.?", candidate, re.I):
+                        continue
+                    inline = re.search(r"\bvs\.?\s*(.+)$", candidate, re.I)
+                    opponent = clean_text(inline.group(1)) if inline and clean_text(inline.group(1)) else candidate
+                    break
+                if opponent:
+                    break
         if not opponent:
             continue
         opponent = re.split(r"\b(?:Tickets|Watch|Listen|Live Stats|History)\b", opponent, maxsplit=1, flags=re.I)[0].strip()
