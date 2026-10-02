@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-10-02T07:34:39-05:00",
-  "event_count": 7,
+  "generated_at": "2026-10-02T08:26:32-05:00",
+  "event_count": 3,
   "manual_event_count": 0,
-  "automated_event_count": 7,
-  "automated_candidate_count": 9,
+  "automated_event_count": 3,
+  "automated_candidate_count": 4,
   "collection_window_start": "2026-10-02",
   "collection_window_end": "2026-10-09",
   "timezone": "America/Chicago",
@@ -13,20 +13,20 @@
     {
       "key": "neworleans",
       "name": "NewOrleans.com",
-      "success": true,
-      "health": "healthy",
-      "detail_links": 25,
-      "discovered": 45,
-      "accepted": 4,
-      "error": null
+      "success": false,
+      "health": "failed",
+      "detail_links": 0,
+      "discovered": 0,
+      "accepted": 0,
+      "error": "maximum recursion depth exceeded"
     },
     {
       "key": "visitbatonrouge",
       "name": "Visit Baton Rouge",
       "success": true,
-      "health": "degraded",
+      "health": "healthy",
       "detail_links": 15,
-      "discovered": 0,
+      "discovered": 6,
       "accepted": 0,
       "error": null
     },
@@ -34,89 +34,79 @@
       "key": "northshore",
       "name": "Louisiana Northshore",
       "success": true,
-      "health": "degraded",
-      "detail_links": 7,
-      "discovered": 0,
-      "accepted": 0,
+      "health": "healthy",
+      "detail_links": 19,
+      "discovered": 14,
+      "accepted": 2,
       "error": null
     },
     {
       "key": "houma",
       "name": "Explore Houma",
-      "success": true,
-      "health": "healthy",
-      "detail_links": 33,
-      "discovered": 24,
-      "accepted": 1,
-      "error": null
-    },
-    {
-      "key": "msgulfcoast",
-      "name": "Coastal Mississippi",
-      "success": true,
-      "health": "degraded",
-      "detail_links": 1,
+      "success": false,
+      "health": "failed",
+      "detail_links": 0,
       "discovered": 0,
       "accepted": 0,
-      "error": null
+      "error": "maximum recursion depth exceeded"
     },
     {
       "key": "tulane_football",
       "name": "Tulane Athletics",
-      "success": true,
-      "health": "healthy",
+      "success": false,
+      "health": "failed",
       "detail_links": 0,
-      "discovered": 6,
+      "discovered": 0,
       "accepted": 0,
-      "error": null
+      "error": "maximum recursion depth exceeded"
     },
     {
       "key": "nicholls_football",
       "name": "Nicholls Athletics",
-      "success": true,
-      "health": "healthy",
+      "success": false,
+      "health": "failed",
       "detail_links": 0,
-      "discovered": 13,
+      "discovered": 0,
       "accepted": 0,
-      "error": null
+      "error": "maximum recursion depth exceeded"
     },
     {
       "key": "southeastern_football",
       "name": "Southeastern Louisiana Athletics",
-      "success": true,
-      "health": "healthy",
+      "success": false,
+      "health": "failed",
       "detail_links": 0,
-      "discovered": 13,
+      "discovered": 0,
       "accepted": 0,
-      "error": null
+      "error": "maximum recursion depth exceeded"
     },
     {
       "key": "southern_football",
       "name": "Southern University Athletics",
-      "success": true,
-      "health": "healthy",
+      "success": false,
+      "health": "failed",
       "detail_links": 0,
-      "discovered": 13,
-      "accepted": 1,
-      "error": null
+      "discovered": 0,
+      "accepted": 0,
+      "error": "maximum recursion depth exceeded"
     },
     {
       "key": "lsu_football",
       "name": "LSU Athletics",
-      "success": true,
-      "health": "degraded",
+      "success": false,
+      "health": "failed",
       "detail_links": 0,
       "discovered": 0,
       "accepted": 0,
-      "error": null
+      "error": "source returned zero events"
     },
     {
       "key": "mardigras_neworleans",
       "name": "Mardi Gras New Orleans",
       "success": true,
-      "health": "degraded",
+      "health": "healthy",
       "detail_links": 0,
-      "discovered": 0,
+      "discovered": 66,
       "accepted": 0,
       "error": null
     },
@@ -124,9 +114,9 @@
       "key": "downtown_baton_rouge",
       "name": "Downtown Baton Rouge",
       "success": true,
-      "health": "degraded",
+      "health": "healthy",
       "detail_links": 16,
-      "discovered": 0,
+      "discovered": 7,
       "accepted": 0,
       "error": null
     },
@@ -134,9 +124,9 @@
       "key": "tangi_tourism_fairs",
       "name": "Tangipahoa Parish Convention & Visitors Bureau",
       "success": true,
-      "health": "degraded",
+      "health": "healthy",
       "detail_links": 0,
-      "discovered": 0,
+      "discovered": 17,
       "accepted": 0,
       "error": null
     },
@@ -144,28 +134,28 @@
       "key": "coastal_mississippi",
       "name": "Coastal Mississippi",
       "success": true,
-      "health": "degraded",
-      "detail_links": 7,
-      "discovered": 0,
-      "accepted": 0,
+      "health": "healthy",
+      "detail_links": 30,
+      "discovered": 24,
+      "accepted": 2,
       "error": null
     },
     {
       "key": "sunherald_events",
       "name": "Sun Herald Events",
-      "success": true,
-      "health": "healthy",
-      "detail_links": 52,
-      "discovered": 52,
-      "accepted": 3,
-      "error": null
+      "success": false,
+      "health": "failed",
+      "detail_links": 0,
+      "discovered": 0,
+      "accepted": 0,
+      "error": "maximum recursion depth exceeded"
     }
   ],
   "source_health": {
-    "healthy": 7,
-    "degraded": 8,
-    "failed": 0,
-    "total": 15
+    "healthy": 6,
+    "degraded": 0,
+    "failed": 8,
+    "total": 14
   },
   "notes": "Automated source collection is merged with a curated safety-net file. Unknown indoor/outdoor events and points outside the LIX CWA are excluded."
 }

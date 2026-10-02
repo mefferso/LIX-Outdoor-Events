@@ -66,5 +66,49 @@
     "latitude": 29.5783763,
     "longitude": -90.7267909,
     "display_name": "346, Civic Center Boulevard, Houma, Terrebonne Parish, Louisiana, 70360, United States"
+  },
+  "florida st. baton rouge, la": {
+    "latitude": 30.4500483,
+    "longitude": -91.163248,
+    "display_name": "Florida Street, Ogden Park, Downtown East, Baton Rouge, East Baton Rouge Parish, Louisiana, 70802, United States"
+  },
+  "nw central ave. amite, la": {
+    "latitude": 30.7318271,
+    "longitude": -90.5090711,
+    "display_name": "Northwest Central Avenue, Amite City, Tangipahoa Parish, Louisiana, 70456, United States"
+  },
+  "walter anderson museum of art 510 washington ave ocean springs, mississippi 39564": {
+    "latitude": 30.4105588,
+    "longitude": -88.8274955,
+    "display_name": "Walter Anderson Museum of Art, 510, Washington Avenue, Ocean Springs, Jackson County, Mississippi, 39533, United States"
+  },
+  "mississippi aquarium 2100 e beach boulevard gulfport, mississippi 39501": null,
+  "the hollywood warehouse 3420 giles rd gulfport, mississippi 39501": null,
+  "the manor on scenic 213 east scenic drive pass christian, mississippi 39571": null,
+  "4602 fort street pascagoula, mississippi 39567": {
+    "latitude": 30.3802091,
+    "longitude": -88.5582224,
+    "display_name": "4602, Fort Street, Pascagoula, Jackson County, Mississippi, 39567, United States"
+  },
+  "boomtown casino biloxi 676 bayview ave biloxi, mississippi 39530": {
+    "latitude": 30.4122792,
+    "longitude": -88.8850854,
+    "display_name": "Boomtown Casino Biloxi, 676, Bayview Avenue, Biloxi, Harrison County, Mississippi, 39530, United States"
+  },
+  "the sound amphitheater 3855 dolphin drive gautier, mississippi 39553": null,
+  "100 men hall 303 union st bay st. louis, mississippi 39520": null,
+  "gallery 782 1001 w howard ave biloxi, mississippi 39530": null,
+  "riverfront park 5200 main street moss point, mississippi 39563": null,
+  "lapointe krebs house 4611 hickory street pascagoula, mississippi 39567": null,
+  "mississippi coast coliseum 2350 beach blvd biloxi, mississippi 39531": null,
+  "war memorial park, 101 fleitas pass christian, mississippi 39571": null,
+  "the arts, hancock county 405 blaize ave bay st. louis, mississippi 39520": null,
+  "downtown pascagoula delmas avenue pascagoula, mississippi 39567": null,
+  "mary c. o'keefe cultural arts center 1600 government st ocean springs, mississippi 39564": null,
+  "various location along the coast 1907 pass road, suite a biloxi, mississippi": null,
+  "biloxi, ms": {
+    "latitude": 30.4007626,
+    "longitude": -88.8893818,
+    "display_name": "Biloxi, Harrison County, Mississippi, United States"
   }
 }
