@@ -41,7 +41,7 @@ OUTDOOR_POSITIVE = (
     "outdoor", "outside", "open-air", "open air", "park", "parade", "race", "5k", "10k",
     "marathon", "street fest", "block party", "tailgate", "stadium",
     "waterfront", "lakefront", "beach", "pier", "marina", "boat", "fishing", "golf",
-    "walk", "run", "bike", "cycling", "field"
+    "walk", "run", "bike", "cycling", "field", "fairgrounds", "plaza"
 )
 INDOOR_NEGATIVE = (
     "museum", "theater", "theatre", "ballroom", "conference room", "auditorium",
@@ -1128,6 +1128,12 @@ def parse_static_calendar_events(text: str, source: dict[str, Any]) -> list[dict
         for candidate in nearby:
             if any(word in candidate.lower() for word in ("fairgrounds", "park", "stadium", "street", "avenue", "road", "hwy", "highway", "plaza")):
                 venue = candidate
+                break
+        for candidate in nearby:
+            place = re.search(r"\b([^,]{2,50}),\s*(LA|MS)\b", candidate, re.I)
+            if place:
+                city = clean_text(place.group(1))
+                state = place.group(2).upper()
                 break
         description = " ".join(nearby)
         output.append({
