@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-02T07:34:39-05:00",
+  "generated_at": "2026-10-02T17:13:39-05:00",
   "event_count": 7,
   "manual_event_count": 0,
   "automated_event_count": 7,
@@ -25,7 +25,7 @@
       "name": "Visit Baton Rouge",
       "success": true,
       "health": "degraded",
-      "detail_links": 15,
+      "detail_links": 14,
       "discovered": 0,
       "accepted": 0,
       "error": null
