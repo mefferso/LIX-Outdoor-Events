@@ -134,5 +134,47 @@
   "downtown pascagoula delmas avenue pascagoula, mississippi 39567": null,
   "various location along the coast 1907 pass road, suite a biloxi, mississippi": null,
   "the arts, hancock county 405 blaize ave bay st. louis, mississippi 39520": null,
-  "mary c. o'keefe cultural arts center 1600 government st ocean springs, mississippi 39564": null
+  "mary c. o'keefe cultural arts center 1600 government st ocean springs, mississippi 39564": null,
+  "660 n. fourth street, baton rouge, louisiana 70802": null,
+  "100 s. river rd., baton rouge, louisiana 70802": {
+    "latitude": 30.4461484,
+    "longitude": -91.1903823,
+    "display_name": "Louisiana Art and Science Museum, 100, South River Road, Spanish Town, Downtown Development District, Baton Rouge, East Baton Rouge Parish, Louisiana, 70801, United States"
+  },
+  "100 s. river road, baton rouge, louisiana 70802": {
+    "latitude": 30.4461484,
+    "longitude": -91.1903823,
+    "display_name": "Louisiana Art and Science Museum, 100, South River Road, Spanish Town, Downtown Development District, Baton Rouge, East Baton Rouge Parish, Louisiana, 70801, United States"
+  },
+  "260 third street, baton rouge, louisiana 70801": null,
+  "mandeville": {
+    "latitude": 30.3582305,
+    "longitude": -90.0657477,
+    "display_name": "Mandeville, St. Tammany Parish, Louisiana, United States"
+  },
+  "covington": {
+    "latitude": 39.0831712,
+    "longitude": -84.5107548,
+    "display_name": "Covington, Kenton County, Kentucky, United States"
+  },
+  "folsom": {
+    "latitude": 38.6779591,
+    "longitude": -121.176058,
+    "display_name": "Folsom, Sacramento County, California, United States"
+  },
+  "madisonville": {
+    "latitude": 30.9498688,
+    "longitude": -95.9127773,
+    "display_name": "Madisonville, Madison County, Texas, 77864, United States"
+  },
+  "covington, la": {
+    "latitude": 30.4753525,
+    "longitude": -90.1010474,
+    "display_name": "Covington, St. Tammany Parish, Louisiana, United States"
+  },
+  "baton rouge, la": {
+    "latitude": 30.4494155,
+    "longitude": -91.1869659,
+    "display_name": "Baton Rouge, East Baton Rouge Parish, Louisiana, United States"
+  }
 }

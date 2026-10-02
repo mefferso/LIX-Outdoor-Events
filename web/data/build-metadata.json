@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-10-02T07:39:40-05:00",
-  "event_count": 8,
+  "generated_at": "2026-10-02T07:48:15-05:00",
+  "event_count": 19,
   "manual_event_count": 0,
-  "automated_event_count": 8,
-  "automated_candidate_count": 10,
+  "automated_event_count": 19,
+  "automated_candidate_count": 23,
   "collection_window_start": "2026-10-02",
   "collection_window_end": "2026-10-09",
   "timezone": "America/Chicago",
@@ -17,18 +17,18 @@
       "health": "healthy",
       "detail_links": 25,
       "discovered": 48,
-      "accepted": 4,
+      "accepted": 12,
       "error": null
     },
     {
       "key": "visitbatonrouge",
       "name": "Visit Baton Rouge",
-      "success": false,
-      "health": "failed",
-      "detail_links": 15,
-      "discovered": 0,
+      "success": true,
+      "health": "healthy",
+      "detail_links": 21,
+      "discovered": 10,
       "accepted": 0,
-      "error": "source returned zero event records"
+      "error": null
     },
     {
       "key": "northshore",
@@ -36,8 +36,18 @@
       "success": true,
       "health": "healthy",
       "detail_links": 16,
-      "discovered": 16,
-      "accepted": 0,
+      "discovered": 29,
+      "accepted": 3,
+      "error": null
+    },
+    {
+      "key": "st_tammany_parish_fair",
+      "name": "St. Tammany Parish Fair Association",
+      "success": true,
+      "health": "healthy",
+      "detail_links": 0,
+      "discovered": 1,
+      "accepted": 1,
       "error": null
     },
     {
@@ -127,7 +137,7 @@
       "health": "healthy",
       "detail_links": 0,
       "discovered": 10,
-      "accepted": 0,
+      "accepted": 1,
       "error": null
     },
     {
@@ -135,8 +145,8 @@
       "name": "Coastal Mississippi",
       "success": true,
       "health": "healthy",
-      "detail_links": 33,
-      "discovered": 22,
+      "detail_links": 11,
+      "discovered": 5,
       "accepted": 0,
       "error": null
     },
@@ -152,10 +162,10 @@
     }
   ],
   "source_health": {
-    "healthy": 12,
+    "healthy": 14,
     "degraded": 1,
-    "failed": 1,
-    "total": 14
+    "failed": 0,
+    "total": 15
   },
   "notes": "Automated source collection is merged with a curated safety-net file. Unknown indoor/outdoor events and points outside the LIX CWA are excluded."
 }
