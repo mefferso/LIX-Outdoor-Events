@@ -108,7 +108,7 @@
     {
       "key": "lsu_football",
       "name": "LSU Athletics",
-      "url": "https://lsusports.net/sports/fb/schedule",
+      "url": "https://lsusports.net/sports/fb/schedule/season/2026",
       "collector": "generic_football",
       "season": 2026,
       "team_name": "LSU",
