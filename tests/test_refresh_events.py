@@ -232,6 +232,77 @@ class PipelineTests(unittest.TestCase):
         )
         self.assertEqual(event["startDate"], "2026-09-27")
 
+    def test_cross_month_date_range(self):
+        start, end = mod.parse_human_date_range("September 30 - October 4, 2026")
+        self.assertEqual(start, "2026-09-30")
+        self.assertEqual(end, "2026-10-04")
+
+    def test_generic_detail_fallback(self):
+        text = """<html><body>
+        <h1>LIVE AFTER 5 - After 8</h1>
+        <div>October 2, 2026</div>
+        <div>5:00 PM - 8:00 PM</div>
+        <p>Outdoor concert series in downtown Baton Rouge.</p>
+        <h3>Location</h3>
+        <div>Rhorer Plaza</div>
+        <div>230 St Louis St</div>
+        <div>Baton Rouge, LA 70801</div>
+        </body></html>"""
+        event = mod.parse_generic_event_detail(text, "https://example.com/event")
+        self.assertIsNotNone(event)
+        self.assertEqual(event["name"], "LIVE AFTER 5 - After 8")
+        self.assertTrue(event["startDate"].startswith("2026-10-02T17:00"))
+        self.assertEqual(event["location"]["name"], "Rhorer Plaza")
+        self.assertEqual(event["location"]["address"]["addressLocality"], "Baton Rouge")
+
+    def test_static_calendar_multiple_events(self):
+        text = """<html><body>
+        <h2>Fairs & Festivals</h2>
+        <div>SEPTEMBER 30 - OCTOBER 4, 2026</div>
+        <div>Tangipahoa Parish Fair</div>
+        <div>Tangipahoa Parish Fairgrounds</div>
+        <div>Amite, LA</div>
+        <div>October 10, 2026</div>
+        <div>Fall Festival</div>
+        <div>Memorial Park</div>
+        <div>Hammond, LA</div>
+        </body></html>"""
+        source = {"url":"https://example.com/events","default_state":"LA"}
+        events = mod.parse_static_calendar_events(text, source)
+        self.assertGreaterEqual(len(events), 2)
+        self.assertEqual(events[0]["startDate"], "2026-09-30")
+        self.assertEqual(events[0]["endDate"], "2026-10-04")
+        self.assertEqual(events[0]["name"], "Tangipahoa Parish Fair")
+
+    def test_generic_football_schedule(self):
+        text = """<html><body>
+        <div>Oct 3</div><div>6:30 PM</div><div>vs.</div><div>McNeese</div>
+        <div>Baton Rouge, LA</div>
+        <div>Oct 10</div><div>at</div><div>Florida</div>
+        </body></html>"""
+        source = {
+            "url":"https://lsusports.net/sports/fb/schedule",
+            "season":2026,
+            "team_name":"LSU",
+            "home_venue":"Tiger Stadium",
+            "home_city":"Baton Rouge",
+            "home_state":"LA",
+        }
+        events = mod.parse_generic_football_schedule(text, source)
+        self.assertEqual(len(events), 1)
+        self.assertEqual(events[0]["name"], "LSU Football vs. McNeese")
+        self.assertTrue(events[0]["startDate"].startswith("2026-10-03T18:30"))
+
+    def test_markdown_event_links(self):
+        text = """[St. Tammany Parish Fair](https://www.visitthenorthshore.com/events/st-tammany-parish-fair/1234/)
+        [About](https://www.visitthenorthshore.com/about/)"""
+        source = {
+            "url":"https://www.visitthenorthshore.com/events/?displaycount=100",
+            "href_contains_any":["/event/","/events/"],
+        }
+        links = mod._markdown_event_links(text, source)
+        self.assertEqual(links, ["https://www.visitthenorthshore.com/events/st-tammany-parish-fair/1234/"])
+
     def test_duplicate_requires_overlap_and_proximity(self):
         a = {"name":"BlackAmericana Fest", "dates":["2026-09-26"], "latitude":29.9693, "longitude":-90.0853}
         b = {"name":"BlackAmericana Fest Day 2", "dates":["2026-09-26"], "latitude":29.9694, "longitude":-90.0854}
