@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-10-03T07:38:49-05:00",
-  "event_count": 15,
+  "generated_at": "2026-10-03T07:42:40-05:00",
+  "event_count": 13,
   "manual_event_count": 0,
-  "automated_event_count": 15,
-  "automated_candidate_count": 17,
+  "automated_event_count": 13,
+  "automated_candidate_count": 15,
   "collection_window_start": "2026-10-03",
   "collection_window_end": "2026-10-10",
   "timezone": "America/Chicago",
@@ -93,12 +93,12 @@
     {
       "key": "lsu_football",
       "name": "LSU Athletics",
-      "success": true,
-      "health": "healthy",
+      "success": false,
+      "health": "failed",
       "detail_links": 0,
-      "discovered": 13,
-      "accepted": 2,
-      "error": null
+      "discovered": 0,
+      "accepted": 0,
+      "error": "source returned zero events"
     },
     {
       "key": "mardigras_neworleans",
@@ -145,16 +145,16 @@
       "name": "Sun Herald Events",
       "success": true,
       "health": "healthy",
-      "detail_links": 52,
-      "discovered": 52,
+      "detail_links": 53,
+      "discovered": 53,
       "accepted": 4,
       "error": null
     }
   ],
   "source_health": {
-    "healthy": 14,
+    "healthy": 13,
     "degraded": 0,
-    "failed": 0,
+    "failed": 1,
     "total": 14
   },
   "notes": "Automated source collection is merged with a curated safety-net file. Unknown indoor/outdoor events and points outside the LIX CWA are excluded."
