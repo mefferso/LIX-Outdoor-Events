@@ -119,6 +119,28 @@ def parse_date_range(text: str):
     return first, second
 
 
+def reinterpret_jsonld_times_as_local_wall_clock(event: dict):
+    """Treat source-provided ISO datetimes as local Central wall-clock values.
+
+    Some tourism CMS feeds append Z even though the displayed event time is
+    local. This helper is intentionally opt-in per source so genuinely UTC-aware
+    feeds continue to be converted normally by the legacy normalizer.
+    """
+    for field in ("startDate", "endDate"):
+        value = event.get(field)
+        if not value:
+            continue
+        text = str(value).strip()
+        if re.fullmatch(r"\d{4}-\d{2}-\d{2}", text):
+            continue
+        try:
+            dt = datetime.fromisoformat(text.replace("Z", "+00:00"))
+        except ValueError:
+            continue
+        event[field] = dt.replace(tzinfo=None).replace(tzinfo=legacy.TZ).isoformat()
+    return event
+
+
 def infer_city_state(text: str):
     # Prefer full street/city snippets, then city/state.
     m = re.search(r"\b([A-Za-z .'-]+),\s*(LA|MS)\s+\d{5}\b", text)
@@ -352,6 +374,8 @@ def collect_enhanced_listing(source: dict):
                 if fallback:
                     events = [fallback]
             for event in events:
+                if source.get("jsonld_times_are_local"):
+                    reinterpret_jsonld_times_as_local_wall_clock(event)
                 # Never trust a widget/landing-page canonical URL over the
                 # detail page we actually fetched.
                 event["url"] = detail_url
