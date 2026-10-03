@@ -12,6 +12,26 @@ sys.modules["refresh_events"] = mod
 SPEC.loader.exec_module(mod)
 
 class PipelineTests(unittest.TestCase):
+    def test_reversed_source_dates_are_rejected(self):
+        source = {"key": "test", "name": "Test", "url": "https://example.com"}
+        event = mod.normalize_schema_event({
+            "name": "Outdoor Festival", "startDate": "2026-10-04",
+            "endDate": "2026-10-03",
+        }, source)
+        self.assertIsNone(event)
+
+    def test_reversed_dates_do_not_overlap_window(self):
+        from datetime import date
+        event = {"start": "2026-10-04", "end": "2026-10-03"}
+        self.assertFalse(mod.in_window(event, date(2026, 10, 3), date(2026, 10, 10)))
+
+    def test_valid_multiday_event_keeps_dates(self):
+        event = mod.finalize({
+            "name": "Outdoor Festival", "start": "2026-10-03", "end": "2026-10-04",
+            "latitude": 30.0, "longitude": -90.0,
+        })
+        self.assertEqual(event["dates"], ["2026-10-03", "2026-10-04"])
+
     def test_extract_jsonld_event(self):
         text = """<html><script type="application/ld+json">
         {"@context":"https://schema.org","@type":"Event","name":"Test Fest","startDate":"2026-09-26T12:00:00-05:00"}

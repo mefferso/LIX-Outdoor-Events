@@ -2,11 +2,14 @@ name: Refresh Outdoor Events
 
 on:
   push:
+    branches: [main]
     paths:
       - "scripts/refresh_events.py"
+      - "scripts/refresh_events_v2.py"
       - "config/**"
       - "data/manual-events.json"
       - "tests/test_refresh_events.py"
+      - "tests/test_source_adapters_v2.py"
       - ".github/workflows/refresh-events.yml"
   schedule:
     - cron: "17 */6 * * *"
@@ -16,8 +19,8 @@ permissions:
   contents: write
 
 concurrency:
-  group: refresh-outdoor-events
-  cancel-in-progress: true
+  group: refresh-outdoor-events-${{ github.ref }}
+  cancel-in-progress: false
 
 jobs:
   refresh:
@@ -35,7 +38,7 @@ jobs:
         run: python -m unittest discover -s tests -v
 
       - name: Refresh event dataset
-        run: python scripts/refresh_events.py
+        run: python scripts/refresh_events_v2.py
 
       - name: Validate generated JSON
         run: |
