@@ -823,203 +823,599 @@ def collect_cityspark_rendered(
         widget_url = f"https://cdn-p.cityspark.com/wid/{portal}_{event_id}.jsx"
         try:
             widget_text = fetch_text(widget_url, timeout=20, attempts=2)
-            c…10478 tokens truncated…t/landing-page canonical URL over the
-                # detail page we actually fetched.
-                event["url"] = detail_url
-                if legacy.clean_text(event.get("name")).lower() in {
-                    legacy.clean_text(x).lower() for x in source.get("reject_names", [])
-                }:
-                    continue
-                raw.append(event)
+            card = parse_cityspark_widget_payload(widget_text)
+            if not card:
+                continue
+            normalized = cityspark_card_to_schema(card, occurrence, detail_url)
+            if normalized:
+                output.append(normalized)
+                hydrated += 1
         except Exception as exc:
-            print(f"[source:{source.get('key')}] enhanced detail skipped {detail_url}: {exc}", file=sys.stderr)
-    return raw, len(links)
-
-
-def parse_lsu_football(text: str, source: dict):
-    parser = VisibleTextParser()
-    parser.feed(text)
-    lines = [legacy.clean_text(x) for x in parser.text.splitlines() if legacy.clean_text(x)]
-    rows = []
-    season = int(source.get("season", legacy.now_local().year))
-    date_re = re.compile(
-        r"^(?:Mon|Tue|Wed|Thu|Fri|Sat|Sun)?\s*"
-        r"(Sep(?:t(?:ember)?)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)\.?\s*(\d{1,2})$",
-        re.I,
-    )
-
-    for i, line in enumerate(lines):
-        dm = date_re.match(line)
-        if not dm:
-            continue
-        month = MONTHS[dm.group(1).lower().rstrip(".")]
-        start = datetime(season, month, int(dm.group(2)), tzinfo=legacy.TZ)
-        block_lines = lines[i + 1:i + 18]
-        block = " ".join(block_lines)
-
-        # A home game must explicitly resolve to Tiger Stadium / Baton Rouge.
-        if not re.search(r"Tiger Stadium|Baton Rouge", block, re.I):
-            continue
-
-        opponent = ""
-        for candidate in block_lines:
-            om = re.match(r"^vs\.?\s*(?:#\d+\s*)?(.+?)$", candidate, re.I)
-            if om:
-                value = legacy.clean_text(om.group(1))
-                if value and value not in {".", "-", "vs", "vs."} and not date_re.match(value):
-                    opponent = value
-                    break
-        if not opponent:
-            continue
-
-        tm = re.search(r"\b(\d{1,2})(?::(\d{2}))?\s*(AM|PM)\s*CT\b", block, re.I)
-        if tm:
-            hour = int(tm.group(1)) % 12 + (12 if tm.group(3).upper() == "PM" else 0)
-            start = start.replace(hour=hour, minute=int(tm.group(2) or 0))
-
-        rows.append({
-            "name": f"LSU Football vs {opponent}",
-            "startDate": start.isoformat(),
-            "location": {
-                "name": "Tiger Stadium",
-                "address": {"addressLocality": "Baton Rouge", "addressRegion": "LA"},
-            },
-            "description": "LSU home football game at outdoor Tiger Stadium.",
-            "url": source["url"],
-        })
-
-    dedup = {}
-    for row in rows:
-        dedup[(row["name"].lower(), row["startDate"])] = row
-    return list(dedup.values())
-
-def parse_tangipahoa_fairs(text: str, source: dict):
-    parser = VisibleTextParser()
-    parser.feed(text)
-    lines = [legacy.clean_text(x) for x in parser.text.splitlines() if legacy.clean_text(x)]
-    raw = []
-    for i, line in enumerate(lines):
-        if not re.search(r"\b(fair|festival|airshow|rodeo|parade)\b", line, re.I):
-            continue
-        block = " ".join(lines[max(0, i-3): min(len(lines), i+12)])
-        start, end = parse_date_range(block)
-        if not start:
-            continue
-        city, state = infer_city_state(block)
-        raw.append({
-            "name": line,
-            "startDate": start.date().isoformat(),
-            "endDate": end.date().isoformat() if end else None,
-            "location": {
-                "name": "",
-                "address": {"addressLocality": city, "addressRegion": state or "LA"},
-            },
-            "description": block + " Outdoor fair or festival.",
-            "url": source["url"],
-        })
-    dedup = {}
-    for r in raw:
-        dedup[(r["name"].lower(), r["startDate"])] = r
-    return list(dedup.values())
-
-
-
-def parse_mardi_gras(text: str, source: dict):
-    parser = VisibleTextParser()
-    parser.feed(text)
-    lines = [legacy.clean_text(x) for x in parser.text.splitlines() if legacy.clean_text(x)]
-    raw = []
-    current_date = None
-    current_area = ""
-    area_map = {
-        "French Quarter": "New Orleans", "Uptown New Orleans": "New Orleans",
-        "Marigny": "New Orleans", "Mid-City": "New Orleans", "New Orleans East": "New Orleans",
-        "Westbank": "Gretna", "Metairie": "Metairie", "Kenner": "Kenner",
-        "Slidell": "Slidell", "Pearl River": "Pearl River", "Mandeville": "Mandeville",
-        "Madisonville": "Madisonville", "Covington": "Covington", "Abita Springs": "Abita Springs",
-        "Bush": "Bush", "Folsom": "Folsom", "Chalmette": "Chalmette",
-    }
-    date_re = re.compile(
-        r"^(?:Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday)\s+"
-        r"(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Sept|Oct|Nov|Dec)\.?\s+(\d{1,2})\s+(\d{4})",
-        re.I,
-    )
-    for line in lines:
-        dm = date_re.search(line)
-        if dm:
-            current_date = datetime(
-                int(dm.group(3)), MONTHS[dm.group(1).lower().rstrip(".")], int(dm.group(2)),
-                tzinfo=legacy.TZ
+            print(
+                f"[source:{source.get('key')}] CitySpark detail skipped {event_id}: {exc}",
+                file=sys.stderr,
             )
-            current_area = ""
-            continue
-        if line in area_map:
-            current_area = line
-            continue
-        if not current_date or not current_area:
-            continue
-        tm = re.search(r"\b(\d{1,2})(?::(\d{2}))?\s*(am|pm)\b", line, re.I)
-        if not tm:
-            continue
-        title = re.sub(r"\s+\d{1,2}(?::\d{2})?\s*(?:am|pm).*?$", "", line, flags=re.I)
-        title = re.sub(r"\s+(?:view\s*map|more\s*info).*$", "", title, flags=re.I)
-        title = legacy.clean_text(title)
-        if len(title) < 3:
-            continue
-        hour = int(tm.group(1)) % 12 + (12 if tm.group(3).lower() == "pm" else 0)
-        minute = int(tm.group(2) or 0)
-        start = current_date.replace(hour=hour, minute=minute)
-        city = area_map[current_area]
-        raw.append({
-            "name": title,
-            "startDate": start.isoformat(),
-            "location": {
-                "name": current_area,
-                "address": {"addressLocality": city, "addressRegion": "LA"},
-            },
-            "description": f"Outdoor Mardi Gras parade in {current_area}.",
-            "url": source["url"],
-        })
-    dedup = {}
-    for r in raw:
-        dedup[(r["name"].lower(), r["startDate"])] = r
-    return list(dedup.values())
+    return output, len(occurrences)
 
-
-def collect_source_v2(source: dict):
-    collector = source.get("collector")
-    result = legacy.SourceResult(key=source["key"], name=source["name"], success=False)
+def collect_source(source: dict[str, Any]) -> tuple[list[dict[str, Any]], SourceResult]:
+    key = source["key"]
+    name = source["name"]
+    result = SourceResult(key=key, name=name, success=False)
+    raw: list[dict[str, Any]] = []
     try:
-        if collector == "enhanced_listing":
-            raw, link_count = collect_enhanced_listing(source)
-            result.detail_links = link_count
-        elif collector == "lsu_football":
-            text = legacy.fetch_text(source["url"])
-            raw = parse_lsu_football(text, source)
-            result.detail_links = 0
-        elif collector == "tangipahoa_fairs":
-            text = legacy.fetch_text(source["url"])
-            raw = parse_tangipahoa_fairs(text, source)
-            result.detail_links = 0
-        elif collector == "mardi_gras":
-            text = legacy.fetch_text(source["url"])
-            raw = parse_mardi_gras(text, source)
-            result.detail_links = 0
-        else:
-            return legacy_collect_source(source)
+        if source.get("collector") == "cityspark_rendered":
+            events, detail_links = collect_cityspark_rendered(source)
+            raw.extend(events)
+            result.success = True
+            result.detail_links = detail_links
+            result.discovered = len(raw)
+            return raw, result
+
+        if source.get("collector") == "evvnt_discovery":
+            raw.extend(collect_evvnt_discovery(source))
+            result.success = True
+            result.discovered = len(raw)
+            return raw, result
+
+        listing_url = source["url"]
+        listing_text = fetch_text(listing_url)
+        raw.extend(extract_jsonld_events(listing_text))
+        if source.get("collector") == "sidearm_football":
+            raw.extend(parse_sidearm_football(listing_text, source))
+        elif source.get("collector") == "sidearm_text_football":
+            raw.extend(parse_sidearm_text_football(listing_text, source))
+
+        if source.get("collector") in {"listing_jsonld", "listing_houma"}:
+            parser = parse_html(listing_text)
+            contains_any = source.get("href_contains_any")
+            if not contains_any:
+                contains_any = [source.get("href_contains", "/event/")]
+            domain = urlparse(listing_url).netloc.lower().removeprefix("www.")
+            links: list[str] = []
+            seen: set[str] = set()
+            for href in parser.links:
+                absolute = urljoin(listing_url, href)
+                parsed = urlparse(absolute)
+                link_domain = parsed.netloc.lower().removeprefix("www.")
+                if link_domain != domain or not any(token in parsed.path for token in contains_any):
+                    continue
+                canonical = absolute.split("#", 1)[0]
+                if canonical in seen:
+                    continue
+                seen.add(canonical)
+                links.append(canonical)
+            result.detail_links = len(links)
+            for detail_url in links[: int(source.get("max_detail_pages", 30))]:
+                try:
+                    detail_text = fetch_text(detail_url)
+                    detail_events = extract_jsonld_events(detail_text)
+                    if not detail_events and source.get("collector") == "listing_houma":
+                        fallback = parse_houma_event(detail_text, detail_url)
+                        if fallback:
+                            detail_events = [fallback]
+                    for event in detail_events:
+                        event.setdefault("url", detail_url)
+                        raw.append(event)
+                except Exception as exc:
+                    print(f"[source:{key}] detail skipped {detail_url}: {exc}", file=sys.stderr)
+
         result.success = True
         result.discovered = len(raw)
-        if source.get("zero_is_failure") and not raw:
-            result.success = False
-            result.error = "source returned zero events"
         return raw, result
     except Exception as exc:
         result.error = str(exc)
         return [], result
 
+def parse_dt(value: Any) -> datetime | None:
+    if not value:
+        return None
+    text = str(value).strip()
+    if re.fullmatch(r"\d{4}-\d{2}-\d{2}", text):
+        return datetime.fromisoformat(text).replace(tzinfo=TZ)
+    try:
+        dt = datetime.fromisoformat(text.replace("Z", "+00:00"))
+        if dt.tzinfo is None:
+            dt = dt.replace(tzinfo=TZ)
+        return dt.astimezone(TZ)
+    except ValueError:
+        return None
 
-# Tighten source health without changing the downstream event model.
-legacy.collect_source = collect_source_v2
+def address_parts(location: Any) -> tuple[str, str, str, str, float | None, float | None]:
+    venue = address = city = state = ""
+    lat = lon = None
+    if isinstance(location, list) and location:
+        location = location[0]
+    if isinstance(location, str):
+        venue = clean_text(location)
+        return venue, address, city, state, lat, lon
+    if not isinstance(location, dict):
+        return venue, address, city, state, lat, lon
+    venue = clean_text(location.get("name"))
+    addr = location.get("address")
+    if isinstance(addr, str):
+        address = clean_text(addr)
+    elif isinstance(addr, dict):
+        street = clean_text(addr.get("streetAddress"))
+        city = clean_text(addr.get("addressLocality"))
+        state = clean_text(addr.get("addressRegion"))
+        postal = clean_text(addr.get("postalCode"))
+        address = ", ".join(x for x in (street, city, state + (f" {postal}" if postal else "")) if x)
+    geo = location.get("geo")
+    if isinstance(geo, dict):
+        try:
+            lat = float(geo.get("latitude"))
+            lon = float(geo.get("longitude"))
+        except (TypeError, ValueError):
+            lat = lon = None
+    return venue, address, city, state, lat, lon
+
+def venue_index() -> dict[str, dict[str, Any]]:
+    venues = load_json(VENUE_CONFIG, [])
+    idx: dict[str, dict[str, Any]] = {}
+    for venue in venues:
+        names = [venue.get("name", "")] + venue.get("aliases", [])
+        for name in names:
+            if name:
+                idx[normalized_name(name)] = venue
+    return idx
+
+def resolve_known_venue(event: dict[str, Any], venues: dict[str, dict[str, Any]]) -> bool:
+    for candidate in (event.get("venue"), event.get("address")):
+        key = normalized_name(candidate or "")
+        if not key:
+            continue
+        venue = venues.get(key)
+        if venue:
+            event["venue"] = event.get("venue") or venue["name"]
+            event["address"] = event.get("address") or venue.get("address", "")
+            event["city"] = event.get("city") or venue.get("city", "")
+            event["state"] = event.get("state") or venue.get("state", "")
+            if event.get("latitude") is None:
+                event["latitude"] = venue["latitude"]
+            if event.get("longitude") is None:
+                event["longitude"] = venue["longitude"]
+            event["location_confidence"] = max(float(event.get("location_confidence", 0)), 0.99)
+            if venue.get("outdoor_status"):
+                event["_venue_outdoor_status"] = venue["outdoor_status"]
+            if venue.get("importance"):
+                event["_venue_importance"] = venue["importance"]
+            return True
+    return False
+
+def geocode(event: dict[str, Any], cache: dict[str, Any]) -> bool:
+    query = event.get("address") or ", ".join(x for x in (event.get("venue"), event.get("city"), event.get("state")) if x)
+    query = clean_text(query)
+    if not query:
+        return False
+    key = query.lower()
+    if key in cache:
+        item = cache[key]
+        if not item:
+            return False
+        event["latitude"] = item["latitude"]
+        event["longitude"] = item["longitude"]
+        event["location_confidence"] = 0.78
+        return True
+    params = urlencode({"q": query, "format": "jsonv2", "limit": 1, "countrycodes": "us"})
+    try:
+        text = fetch_text(f"https://nominatim.openstreetmap.org/search?{params}", attempts=1)
+        rows = json.loads(text)
+        if not rows:
+            cache[key] = None
+            return False
+        event["latitude"] = float(rows[0]["lat"])
+        event["longitude"] = float(rows[0]["lon"])
+        event["location_confidence"] = 0.72
+        cache[key] = {"latitude": event["latitude"], "longitude": event["longitude"], "display_name": rows[0].get("display_name")}
+        time.sleep(1.05)
+        return True
+    except Exception as exc:
+        print(f"[geocode] {query}: {exc}", file=sys.stderr)
+        return False
+
+def normalize_schema_event(obj: dict[str, Any], source: dict[str, Any]) -> dict[str, Any] | None:
+    name = clean_text(obj.get("name") or obj.get("headline"))
+    start = parse_dt(obj.get("startDate"))
+    end = parse_dt(obj.get("endDate"))
+    if not name or not start:
+        return None
+    if end is not None and end < start:
+        return None
+    venue, address, city, state, lat, lon = address_parts(obj.get("location"))
+    description = clean_text(obj.get("description"))
+    source_url = clean_text(obj.get("url")) or source["url"]
+    if source_url.startswith("/"):
+        source_url = urljoin(source["url"], source_url)
+    return {
+        "name": name,
+        "start": start.isoformat(),
+        "end": end.isoformat() if end else None,
+        "all_day": bool(re.fullmatch(r"\d{4}-\d{2}-\d{2}", str(obj.get("startDate") or ""))),
+        "latitude": lat,
+        "longitude": lon,
+        "venue": venue,
+        "address": address,
+        "city": city,
+        "state": state,
+        "description": description,
+        "source_name": source["name"],
+        "source_url": source_url,
+        "_source_key": source["key"],
+    }
+
+def event_dates(start: datetime, end: datetime | None) -> list[str]:
+    final = (end or start).date()
+    current = start.date()
+    dates: list[str] = []
+    while current <= final and len(dates) < 31:
+        dates.append(current.isoformat())
+        current += timedelta(days=1)
+    return dates
+
+def in_window(event: dict[str, Any], window_start: date, window_end: date) -> bool:
+    start = parse_dt(event.get("start"))
+    end = parse_dt(event.get("end")) or start
+    if not start:
+        return False
+    if end < start:
+        return False
+    return start.date() <= window_end and end.date() >= window_start
+
+def contains_term(text: str, term: str) -> bool:
+    return re.search(r"(?<!\w)" + re.escape(term.lower()) + r"(?!\w)", text.lower()) is not None
+
+CITY_CONTEXT = {
+    "new orleans": ("Orleans Parish", "New Orleans Metro"),
+    "metairie": ("Jefferson Parish", "New Orleans Metro"),
+    "kenner": ("Jefferson Parish", "New Orleans Metro"),
+    "jefferson": ("Jefferson Parish", "New Orleans Metro"),
+    "gretna": ("Jefferson Parish", "New Orleans Metro"),
+    "harvey": ("Jefferson Parish", "New Orleans Metro"),
+    "marrero": ("Jefferson Parish", "New Orleans Metro"),
+    "westwego": ("Jefferson Parish", "New Orleans Metro"),
+    "baton rouge": ("East Baton Rouge Parish", "Baton Rouge Metro"),
+    "zachary": ("East Baton Rouge Parish", "Baton Rouge Metro"),
+    "baker": ("East Baton Rouge Parish", "Baton Rouge Metro"),
+    "mandeville": ("St. Tammany Parish", "Northshore"),
+    "covington": ("St. Tammany Parish", "Northshore"),
+    "slidell": ("St. Tammany Parish", "Northshore"),
+    "madisonville": ("St. Tammany Parish", "Northshore"),
+    "hammond": ("Tangipahoa Parish", "Northshore"),
+    "ponchatoula": ("Tangipahoa Parish", "Northshore"),
+    "amite": ("Tangipahoa Parish", "Northshore"),
+    "houma": ("Terrebonne Parish", "Bayou Parishes"),
+    "thibodaux": ("Lafourche Parish", "Bayou Parishes"),
+    "cut off": ("Lafourche Parish", "Bayou Parishes"),
+    "galliano": ("Lafourche Parish", "Bayou Parishes"),
+    "raceland": ("Lafourche Parish", "Bayou Parishes"),
+    "laplace": ("St. John the Baptist Parish", "River Parishes"),
+    "reserve": ("St. John the Baptist Parish", "River Parishes"),
+    "destrehan": ("St. Charles Parish", "River Parishes"),
+    "luling": ("St. Charles Parish", "River Parishes"),
+    "gramercy": ("St. James Parish", "River Parishes"),
+    "gulfport": ("Harrison County", "Mississippi Coast"),
+    "biloxi": ("Harrison County", "Mississippi Coast"),
+    "long beach": ("Harrison County", "Mississippi Coast"),
+    "pass christian": ("Harrison County", "Mississippi Coast"),
+    "bay st. louis": ("Hancock County", "Mississippi Coast"),
+    "bay saint louis": ("Hancock County", "Mississippi Coast"),
+    "waveland": ("Hancock County", "Mississippi Coast"),
+    "picayune": ("Pearl River County", "Southwest Mississippi"),
+}
+
+def derive_operational_context(event: dict[str, Any]) -> None:
+    city = clean_text(event.get("city")).lower()
+    parish_county, area = CITY_CONTEXT.get(city, ("", ""))
+    if not area:
+        try:
+            lat, lon = float(event["latitude"]), float(event["longitude"])
+            if lat < 30.15 and lon > -90.45:
+                area = "New Orleans Metro"
+            elif lat >= 30.25 and lon < -90.85:
+                area = "Baton Rouge Metro"
+            elif lat >= 30.2 and -90.85 <= lon <= -89.65:
+                area = "Northshore"
+            elif lat < 30.2 and lon <= -90.45:
+                area = "Bayou Parishes"
+            elif event.get("state") == "MS":
+                area = "Mississippi Coast"
+        except (KeyError, TypeError, ValueError):
+            pass
+    event["parish_county"] = parish_county
+    event["idss_area"] = area
+
+def classify_event(event: dict[str, Any]) -> None:
+    # Street addresses are excluded from semantic classification. A venue on
+    # "Beach Blvd" is not automatically a beach/outdoor event.
+    text = " ".join(clean_text(event.get(k)) for k in ("name", "description", "venue")).lower()
+    indoor_text = " ".join(clean_text(event.get(k)) for k in ("name", "description", "venue", "address")).lower()
+    name_text = clean_text(event.get("name")).lower()
+    location_text = " ".join(clean_text(event.get(k)) for k in ("name", "venue")).lower()
+    category = "other"
+    if str(event.get("_source_key", "")).endswith("_football"):
+        category = "sports"
+    elif any(contains_term(name_text, word) for word in ("festival", "fest", "fair", "carnival")):
+        category = "festival"
+    elif any(
+        contains_term(name_text, word)
+        for word in ("parade", "marathon", "half marathon", "5k", "10k", "race", "run", "walk", "cycling", "bike")
+    ):
+        # Race/walk/run terms are intentionally name-based. Generic prose such
+        # as "walk among the dinosaurs" must not turn an exhibit into a race.
+        category = "race_parade"
+    else:
+        for label, words in CATEGORY_RULES:
+            if label == "race_parade":
+                continue
+            if any(contains_term(text, word) for word in words):
+                category = label
+                break
+    event["category"] = category
+
+    venue_status = event.pop("_venue_outdoor_status", None)
+    strong_outdoor_terms = tuple(
+        word for word in OUTDOOR_POSITIVE
+        if word not in {"park", "walk", "run", "field"}
+    )
+    has_outdoor = (
+        any(contains_term(text, word) for word in strong_outdoor_terms)
+        or any(contains_term(location_text, word) for word in ("park", "walk", "run", "field"))
+    )
+    has_indoor = any(contains_term(indoor_text, word) for word in INDOOR_NEGATIVE)
+    if venue_status:
+        outdoor = venue_status
+        confidence = 0.99
+    elif has_outdoor and has_indoor:
+        outdoor, confidence = "partial", 0.72
+    elif has_outdoor:
+        outdoor, confidence = "outdoor", 0.78
+    else:
+        outdoor, confidence = "unknown", 0.35
+    event["outdoor_status"] = outdoor
+    event["outdoor_confidence"] = confidence
+
+    venue_importance = event.pop("_venue_importance", None)
+    if venue_importance:
+        importance = venue_importance
+    elif any(contains_term(text, hint) for hint in MAJOR_HINTS):
+        importance = "major"
+    else:
+        importance = "moderate"
+    event["importance"] = importance
+
+def is_idss_relevant(event: dict[str, Any]) -> bool:
+    if event.get("outdoor_status") not in {"outdoor", "partial"}:
+        return False
+    text = " ".join(clean_text(event.get(k)) for k in ("name", "description", "venue")).lower()
+    if any(contains_term(text, term) for term in LOW_VALUE) and not any(contains_term(text, term) for term in SIGNIFICANT_POSITIVE):
+        return False
+    if event.get("importance") == "major":
+        return True
+    return any(contains_term(text, term) for term in SIGNIFICANT_POSITIVE)
+
+def load_boundary() -> dict[str, Any]:
+    try:
+        data = json.loads(fetch_text(BOUNDARY_URL))
+        if data.get("features"):
+            write_json(BOUNDARY_CACHE, data)
+            return data
+    except Exception as exc:
+        print(f"[boundary] live fetch failed: {exc}", file=sys.stderr)
+    cached = load_json(BOUNDARY_CACHE, None)
+    if cached and cached.get("features"):
+        return cached
+    raise RuntimeError("LIX CWA boundary unavailable and no cached boundary exists")
+
+def point_in_ring(x: float, y: float, ring: list[list[float]]) -> bool:
+    inside = False
+    j = len(ring) - 1
+    for i in range(len(ring)):
+        xi, yi = ring[i][0], ring[i][1]
+        xj, yj = ring[j][0], ring[j][1]
+        if ((yi > y) != (yj > y)) and (x < (xj - xi) * (y - yi) / ((yj - yi) or 1e-15) + xi):
+            inside = not inside
+        j = i
+    return inside
+
+def point_in_polygon(x: float, y: float, polygon: list[list[list[float]]]) -> bool:
+    if not polygon or not point_in_ring(x, y, polygon[0]):
+        return False
+    return not any(point_in_ring(x, y, hole) for hole in polygon[1:])
+
+def point_in_boundary(lon: float, lat: float, boundary: dict[str, Any]) -> bool:
+    for feature in boundary.get("features", []):
+        geom = feature.get("geometry") or {}
+        if geom.get("type") == "Polygon" and point_in_polygon(lon, lat, geom.get("coordinates", [])):
+            return True
+        if geom.get("type") == "MultiPolygon":
+            if any(point_in_polygon(lon, lat, poly) for poly in geom.get("coordinates", [])):
+                return True
+    return False
+
+def haversine_miles(a: dict[str, Any], b: dict[str, Any]) -> float:
+    try:
+        lat1, lon1 = math.radians(float(a["latitude"])), math.radians(float(a["longitude"]))
+        lat2, lon2 = math.radians(float(b["latitude"])), math.radians(float(b["longitude"]))
+    except (KeyError, TypeError, ValueError):
+        return 999.0
+    dlat, dlon = lat2 - lat1, lon2 - lon1
+    h = math.sin(dlat / 2) ** 2 + math.cos(lat1) * math.cos(lat2) * math.sin(dlon / 2) ** 2
+    return 3958.8 * 2 * math.asin(min(1.0, math.sqrt(h)))
+
+def is_duplicate(candidate: dict[str, Any], existing: dict[str, Any]) -> bool:
+    if not set(candidate.get("dates", [])) & set(existing.get("dates", [])):
+        return False
+    similarity = SequenceMatcher(None, normalized_name(candidate["name"]), normalized_name(existing["name"])).ratio()
+    if similarity < 0.72:
+        return False
+    return haversine_miles(candidate, existing) <= 1.5
+
+def finalize(event: dict[str, Any]) -> dict[str, Any]:
+    start = parse_dt(event.get("start"))
+    end = parse_dt(event.get("end"))
+    assert start is not None
+    event["dates"] = event_dates(start, end)
+    stable = f'{normalized_name(event["name"])}|{event["dates"][0]}|{round(float(event["latitude"]), 3)}|{round(float(event["longitude"]), 3)}'
+    event["id"] = f'{slugify(event["name"])}-{event["dates"][0]}-{hashlib.sha1(stable.encode()).hexdigest()[:7]}'
+    event.setdefault("weather_exposure_notes", "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.")
+    derive_operational_context(event)
+    event.setdefault("origin", "automated")
+    event.pop("description", None)
+    event.pop("_source_key", None)
+    ordered = {
+        "id": event["id"], "name": event["name"], "dates": event["dates"], "start": event.get("start"),
+        "end": event.get("end"), "all_day": bool(event.get("all_day", False)),
+        "latitude": round(float(event["latitude"]), 6), "longitude": round(float(event["longitude"]), 6),
+        "venue": event.get("venue") or "Location not listed", "address": event.get("address") or "",
+        "city": event.get("city") or "", "state": event.get("state") or "",
+        "parish_county": event.get("parish_county") or "", "idss_area": event.get("idss_area") or "",
+        "category": event.get("category") or "other", "outdoor_status": event.get("outdoor_status") or "unknown",
+        "origin": event.get("origin") or "automated",
+        "importance": event.get("importance") or "moderate",
+        "location_confidence": round(float(event.get("location_confidence", 0.5)), 2),
+        "outdoor_confidence": round(float(event.get("outdoor_confidence", 0.5)), 2),
+        "weather_exposure_notes": event.get("weather_exposure_notes") or "",
+        "source_name": event.get("source_name") or "", "source_url": event.get("source_url") or "",
+    }
+    return ordered
+
+def manual_in_window(window_start: date, window_end: date, boundary: dict[str, Any]) -> list[dict[str, Any]]:
+    output = []
+    for event in load_json(MANUAL_EVENTS, []):
+        if not in_window(event, window_start, window_end):
+            continue
+        try:
+            if not point_in_boundary(float(event["longitude"]), float(event["latitude"]), boundary):
+                continue
+        except (KeyError, TypeError, ValueError):
+            continue
+        output.append(event)
+    return output
+
+def main() -> int:
+    now = now_local()
+    window_start = now.date()
+    window_end = window_start + timedelta(days=7)
+    config = load_json(SOURCE_CONFIG, {"sources": []})
+    source_health_modes = {src.get("key"): src.get("health_mode", "records") for src in config.get("sources", [])}
+    venues = venue_index()
+    geocode_cache = load_json(GEOCODE_CACHE, {})
+    boundary = load_boundary()
+
+    results: list[SourceResult] = []
+    accepted_auto: list[dict[str, Any]] = []
+
+    for source in config.get("sources", []):
+        if not source.get("enabled", True):
+            continue
+        raw_events, status = collect_source(source)
+        for raw in raw_events:
+            event = normalize_schema_event(raw, source)
+            if not event or not in_window(event, window_start, window_end):
+                continue
+
+            if event.get("latitude") is not None and event.get("longitude") is not None:
+                event["location_confidence"] = 0.96
+
+            # Trusted venue records enrich outdoor status/importance even when
+            # the source already supplies accurate coordinates.
+            resolve_known_venue(event, venues)
+
+            if event.get("latitude") is None and config.get("geocoding", {}).get("enabled", True):
+                geocode(event, geocode_cache)
+
+            if event.get("latitude") is None or event.get("longitude") is None:
+                continue
+            if not point_in_boundary(float(event["longitude"]), float(event["latitude"]), boundary):
+                continue
+
+            classify_event(event)
+            if not is_idss_relevant(event):
+                continue
+
+            accepted_auto.append(finalize(event))
+            status.accepted += 1
+        results.append(status)
+        print(f'[source:{status.key}] success={status.success} detail_links={status.detail_links} discovered={status.discovered} accepted={status.accepted} error={status.error or "-"}')
+
+    write_json(GEOCODE_CACHE, geocode_cache)
+
+    if results and not any(r.success for r in results):
+        raise RuntimeError("All enabled automated sources failed; preserving last-known-good published dataset")
+
+    # Automated records are authoritative when available. Manual records are
+    # fallback/override safety-net entries and are retired automatically when
+    # the same event is collected successfully.
+    merged: list[dict[str, Any]] = []
+    for event in sorted(accepted_auto, key=lambda e: (e["dates"][0], e["name"].lower())):
+        if any(is_duplicate(event, current) for current in merged):
+            continue
+        merged.append(event)
+
+    for event in manual_in_window(window_start, window_end, boundary):
+        manual = dict(event)
+        manual["origin"] = "manual"
+        derive_operational_context(manual)
+        if any(is_duplicate(manual, current) for current in merged):
+            continue
+        merged.append(manual)
+
+    merged.sort(key=lambda e: (e["dates"][0] if e.get("dates") else "9999-99-99", e.get("start") or "", e["name"].lower()))
+
+    # Protect against a parser collapse that still returns successful HTTP
+    # responses. A severe automated-yield drop preserves the last-good data.
+    previous_meta = load_json(OUTPUT_META, {})
+    previous_auto = int(previous_meta.get("automated_candidate_count") or 0)
+    if previous_auto >= 3 and len(accepted_auto) < max(1, math.ceil(previous_auto * 0.4)):
+        raise RuntimeError(
+            f"Automated candidate yield collapsed from {previous_auto} to {len(accepted_auto)}; "
+            "preserving last-known-good published dataset"
+        )
+
+    write_json(OUTPUT_EVENTS, merged)
+    meta = {
+        "generated_at": now.isoformat(timespec="seconds"),
+        "event_count": len(merged),
+        "manual_event_count": sum(1 for e in merged if e.get("origin") == "manual"),
+        "automated_event_count": sum(1 for e in merged if e.get("origin") == "automated"),
+        "automated_candidate_count": len(accepted_auto),
+        "collection_window_start": window_start.isoformat(),
+        "collection_window_end": window_end.isoformat(),
+        "timezone": "America/Chicago",
+        "boundary_source": "NOAA/NWS reference map FeatureServer",
+        "pipeline_state": "automated-multi-source-v1",
+        "sources": [
+            {
+                "key": r.key, "name": r.name, "success": r.success,
+                "health": (
+                    "failed" if not r.success else
+                    "healthy" if source_health_modes.get(r.key) == "fetch" else
+                    "degraded" if r.discovered == 0 else
+                    "healthy"
+                ),
+                "detail_links": r.detail_links, "discovered": r.discovered,
+                "accepted": r.accepted, "error": r.error,
+            }
+            for r in results
+        ],
+        "source_health": {
+            "healthy": sum(
+                1 for r in results
+                if r.success and (r.discovered > 0 or source_health_modes.get(r.key) == "fetch")
+            ),
+            "degraded": sum(
+                1 for r in results
+                if r.success and r.discovered == 0 and source_health_modes.get(r.key) != "fetch"
+            ),
+            "failed": sum(1 for r in results if not r.success),
+            "total": len(results),
+        },
+        "notes": "Automated source collection is merged with a curated safety-net file. Unknown indoor/outdoor events and points outside the LIX CWA are excluded.",
+    }
+    write_json(OUTPUT_META, meta)
+
+    print(f"[publish] {len(merged)} events for {window_start} through {window_end}")
+    return 0
 
 if __name__ == "__main__":
-    raise SystemExit(legacy.main())
+    raise SystemExit(main())
