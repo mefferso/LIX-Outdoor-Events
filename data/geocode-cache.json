@@ -66,5 +66,75 @@
     "latitude": 29.5783763,
     "longitude": -90.7267909,
     "display_name": "346, Civic Center Boulevard, Houma, Terrebonne Parish, Louisiana, 70360, United States"
-  }
+  },
+  "1503 government street, baton rouge, louisiana 70802": {
+    "latitude": 30.4440781,
+    "longitude": -91.1729784,
+    "display_name": "1503, Government Street, Roseland Terrace, Garden District, Downtown East, Baton Rouge, East Baton Rouge Parish, Louisiana, 70802, United States"
+  },
+  "501 main street, baton rouge, louisiana 70802": {
+    "latitude": 30.451583,
+    "longitude": -91.185794,
+    "display_name": "501, Main Street, Spanish Town, Downtown Development District, Baton Rouge, East Baton Rouge Parish, Louisiana, 70801, United States"
+  },
+  "100 s. river rd, baton rouge, louisiana 70802": {
+    "latitude": 30.4461484,
+    "longitude": -91.1903823,
+    "display_name": "Louisiana Art and Science Museum, 100, South River Road, Spanish Town, Downtown Development District, Baton Rouge, East Baton Rouge Parish, Louisiana, 70801, United States"
+  },
+  "1010 nicholson dr, baton rouge, louisiana 70802": {
+    "latitude": 30.4383634,
+    "longitude": -91.1871574,
+    "display_name": "1010, Nicholson Drive, Downtown Development District, Baton Rouge, East Baton Rouge Parish, Louisiana, 70802, United States"
+  },
+  "8951 park avenue, houma, la 70363": {
+    "latitude": 29.598846,
+    "longitude": -90.7043387,
+    "display_name": "Park Avenue, Houma, Terrebonne Parish, Louisiana, 70363, United States"
+  },
+  "edinburg, tx": {
+    "latitude": 26.3013982,
+    "longitude": -98.1624501,
+    "display_name": "Edinburg, Hidalgo County, Texas, United States"
+  },
+  "prairie view, tx": {
+    "latitude": 30.0857916,
+    "longitude": -95.9907058,
+    "display_name": "Prairie View, Waller County, Texas, 77446, United States"
+  },
+  "florida st. baton rouge, la": {
+    "latitude": 30.4499278,
+    "longitude": -91.1676159,
+    "display_name": "Florida Street, Downtown East, Baton Rouge, East Baton Rouge Parish, Louisiana, 70802, United States"
+  },
+  "nw central ave. amite, la": {
+    "latitude": 30.7318271,
+    "longitude": -90.5090711,
+    "display_name": "Northwest Central Avenue, Amite City, Tangipahoa Parish, Louisiana, 70456, United States"
+  },
+  "walter anderson museum of art 510 washington ave ocean springs, mississippi 39564": {
+    "latitude": 30.4105588,
+    "longitude": -88.8274955,
+    "display_name": "Walter Anderson Museum of Art, 510, Washington Avenue, Ocean Springs, Jackson County, Mississippi, 39533, United States"
+  },
+  "mississippi aquarium 2100 e beach boulevard gulfport, mississippi 39501": null,
+  "the hollywood warehouse 3420 giles rd gulfport, mississippi 39501": null,
+  "boomtown casino biloxi 676 bayview ave biloxi, mississippi 39530": {
+    "latitude": 30.4122792,
+    "longitude": -88.8850854,
+    "display_name": "Boomtown Casino Biloxi, 676, Bayview Avenue, Biloxi, Harrison County, Mississippi, 39530, United States"
+  },
+  "100 men hall 303 union st bay st. louis, mississippi 39520": null,
+  "gallery 782 1001 w howard ave biloxi, mississippi 39530": null,
+  "riverfront park 5200 main street moss point, mississippi 39563": null,
+  "lapointe krebs house 4611 hickory street pascagoula, mississippi 39567": null,
+  "mississippi coast coliseum 2350 beach blvd biloxi, mississippi 39531": null,
+  "war memorial park, 101 fleitas pass christian, mississippi 39571": null,
+  "the arts, hancock county 405 blaize ave bay st. louis, mississippi 39520": null,
+  "mary c. o'keefe cultural arts center 1600 government st ocean springs, mississippi 39564": null,
+  "various location along the coast 1907 pass road, suite a biloxi, mississippi": null,
+  "downtown moss point 4320 mcinnis ave moss point, mississippi 39563": null,
+  "golden nugget parking lot 1700 beach blvd biloxi, mississippi 39530": null,
+  "beau rivage retail promenade, mgm golf / lux lounge 875 beach blvd biloxi, mississippi 39530": null,
+  "beau rivage retail promenade at mgm golf / lux lounge 875 beach blvd biloxi, mississippi 39530": null
 }
