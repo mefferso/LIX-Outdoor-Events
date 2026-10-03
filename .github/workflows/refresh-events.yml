@@ -28,6 +28,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          ref: main
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -53,9 +55,32 @@ jobs:
             echo "No event-data changes."
             exit 0
           fi
+
+          # Preserve the freshly generated artifacts, then move onto the latest
+          # remote main before committing them. This avoids rebase conflicts when
+          # an older queued refresh was triggered from a stale event SHA.
+          tmpdir="$(mktemp -d)"
+          mkdir -p "$tmpdir/web/data" "$tmpdir/data"
+          cp web/data/events.json "$tmpdir/web/data/events.json"
+          cp web/data/build-metadata.json "$tmpdir/web/data/build-metadata.json"
+          cp data/geocode-cache.json "$tmpdir/data/geocode-cache.json"
+          cp data/lix-boundary.geojson "$tmpdir/data/lix-boundary.geojson"
+
+          git fetch origin main
+          git reset --hard origin/main
+
+          cp "$tmpdir/web/data/events.json" web/data/events.json
+          cp "$tmpdir/web/data/build-metadata.json" web/data/build-metadata.json
+          cp "$tmpdir/data/geocode-cache.json" data/geocode-cache.json
+          cp "$tmpdir/data/lix-boundary.geojson" data/lix-boundary.geojson
+
+          if [ -z "$(git status --porcelain -- web/data/events.json web/data/build-metadata.json data/geocode-cache.json data/lix-boundary.geojson)" ]; then
+            echo "Latest main already contains this event dataset."
+            exit 0
+          fi
+
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add web/data/events.json web/data/build-metadata.json data/geocode-cache.json data/lix-boundary.geojson
           git commit -m "data: refresh outdoor events"
-          git pull --rebase origin main
           git push
