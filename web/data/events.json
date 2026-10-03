@@ -89,33 +89,6 @@
     "source_url": "https://www.neworleans.com/event/drum-circle-with-tim-brown-ii/203686/"
   },
   {
-    "id": "maw-maw-walker-2026-10-03-5fc4c6e",
-    "name": "Maw Maw Walker",
-    "dates": [
-      "2026-10-03"
-    ],
-    "start": "2026-10-03T00:00:00-05:00",
-    "end": "2026-10-03T00:00:00-05:00",
-    "all_day": true,
-    "latitude": 29.595799,
-    "longitude": -90.685756,
-    "venue": "Courthouse Square in Downtown Houma",
-    "address": "7856 Main Street, Houma, LA",
-    "city": "Houma",
-    "state": "LA",
-    "parish_county": "Terrebonne Parish",
-    "idss_area": "Bayou Parishes",
-    "category": "festival",
-    "outdoor_status": "outdoor",
-    "origin": "automated",
-    "importance": "moderate",
-    "location_confidence": 0.78,
-    "outdoor_confidence": 0.78,
-    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
-    "source_name": "Explore Houma",
-    "source_url": "https://explorehouma.com/events/maw-maw-walker/"
-  },
-  {
     "id": "the-new-orleans-ragtime-festival-ft-steve-pistorius-the-southern-syncopators-ada-2026-10-03-c02d5dc",
     "name": "The New Orleans Ragtime Festival ft. Steve Pistorius & The Southern Syncopators, Adam Rogers + More!",
     "dates": [
@@ -271,6 +244,33 @@
     "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
     "source_name": "Visit Baton Rouge",
     "source_url": "https://www.visitbatonrouge.com/events/red-stick-farmers-market-at-main-street-market-in-downtown-baton-rouge/"
+  },
+  {
+    "id": "maw-maw-walker-2026-10-03-5fc4c6e",
+    "name": "Maw Maw Walker",
+    "dates": [
+      "2026-10-03"
+    ],
+    "start": "2026-10-03T09:00:00-05:00",
+    "end": "2026-10-03T12:00:00-05:00",
+    "all_day": false,
+    "latitude": 29.595799,
+    "longitude": -90.685756,
+    "venue": "Courthouse Square in Downtown Houma",
+    "address": "7856 Main Street, Houma, LA",
+    "city": "Houma",
+    "state": "LA",
+    "parish_county": "Terrebonne Parish",
+    "idss_area": "Bayou Parishes",
+    "category": "festival",
+    "outdoor_status": "outdoor",
+    "origin": "automated",
+    "importance": "moderate",
+    "location_confidence": 0.78,
+    "outdoor_confidence": 0.78,
+    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
+    "source_name": "Explore Houma",
+    "source_url": "https://explorehouma.com/events/maw-maw-walker/"
   },
   {
     "id": "butterflies-in-the-pass-monarch-festival-2026-10-03-b27145f",
