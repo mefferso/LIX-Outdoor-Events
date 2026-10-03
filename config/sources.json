@@ -34,9 +34,10 @@
         "/events/"
       ],
       "zero_is_failure": true,
-      "notes": "Enhanced discovery: static links + rendered listing + sitemap fallback; generic detail-page parser when JSON-LD is absent.",
+      "notes": "Enhanced discovery: static links + rendered listing + sitemap fallback; generic detail-page parser when JSON-LD is absent. Source CMS timestamps are interpreted as Central wall-clock times to match the public event page.",
       "timeout": 15,
-      "max_sitemaps": 4
+      "max_sitemaps": 4,
+      "jsonld_times_are_local": true
     },
     {
       "key": "northshore",
