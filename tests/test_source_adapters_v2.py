@@ -76,6 +76,15 @@ class SourceAdaptersV2Tests(unittest.TestCase):
         self.assertEqual(rows[0]["name"], "LSU Football vs McNeese")
         self.assertTrue(rows[0]["startDate"].startswith("2026-10-03T18:45"))
 
+    def test_reinterpret_jsonld_times_as_local_wall_clock(self):
+        event = {
+            "startDate": "2026-10-03T08:00:00Z",
+            "endDate": "2026-10-03T12:00:00Z",
+        }
+        fixed = v2.reinterpret_jsonld_times_as_local_wall_clock(event)
+        self.assertEqual(fixed["startDate"], "2026-10-03T08:00:00-05:00")
+        self.assertEqual(fixed["endDate"], "2026-10-03T12:00:00-05:00")
+
     def test_sitemap_url_extraction(self):
         xml = """<?xml version="1.0"?>
         <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
