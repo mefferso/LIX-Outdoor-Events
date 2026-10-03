@@ -25,6 +25,54 @@ class PipelineTests(unittest.TestCase):
         event = {"start": "2026-10-04", "end": "2026-10-03"}
         self.assertFalse(mod.in_window(event, date(2026, 10, 3), date(2026, 10, 10)))
 
+    def test_failed_source_retains_last_known_good_event(self):
+        from datetime import date
+        previous = [{
+            "id": "lsu-test",
+            "name": "LSU Football vs Test",
+            "dates": ["2026-10-10"],
+            "start": "2026-10-10T18:00:00-05:00",
+            "end": None,
+            "all_day": False,
+            "latitude": 30.412,
+            "longitude": -91.1838,
+            "venue": "Tiger Stadium",
+            "address": "Baton Rouge, LA",
+            "city": "Baton Rouge",
+            "state": "LA",
+            "parish_county": "East Baton Rouge Parish",
+            "idss_area": "Baton Rouge Metro",
+            "category": "sports",
+            "outdoor_status": "outdoor",
+            "origin": "automated",
+            "importance": "major",
+            "location_confidence": 0.99,
+            "outdoor_confidence": 0.99,
+            "weather_exposure_notes": "",
+            "source_name": "LSU Athletics",
+            "source_url": "https://example.com/lsu",
+        }]
+        original_load_json = mod.load_json
+        try:
+            def fake_load_json(path, default):
+                if path == mod.OUTPUT_EVENTS:
+                    return previous
+                return original_load_json(path, default)
+            mod.load_json = fake_load_json
+            accepted = []
+            results = [mod.SourceResult(
+                key="lsu_football", name="LSU Athletics", success=False,
+                error="temporary source failure"
+            )]
+            retained = mod.retain_failed_source_events(
+                accepted, results, date(2026, 10, 3), date(2026, 10, 10)
+            )
+        finally:
+            mod.load_json = original_load_json
+        self.assertEqual(retained, 1)
+        self.assertEqual(len(accepted), 1)
+        self.assertEqual(accepted[0]["name"], "LSU Football vs Test")
+
     def test_valid_multiday_event_keeps_dates(self):
         event = mod.finalize({
             "name": "Outdoor Festival", "start": "2026-10-03", "end": "2026-10-04",
