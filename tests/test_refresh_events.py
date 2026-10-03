@@ -87,6 +87,24 @@ class PipelineTests(unittest.TestCase):
         self.assertEqual(event["endDate"][:10], "2026-09-20")
         self.assertEqual(event["location"]["name"], "Barry P. Bonvillain Civic Center")
 
+    def test_houma_single_day_time_range(self):
+        text = """<html><body>
+        <h1>Maw Maw Walker</h1>
+        <div>Saturday, October 3, 2026</div>
+        <h3>calendar_month DATE</h3>
+        <div>Saturday, October 3, 2026</div>
+        <div>9:00AM-12:00PM</div>
+        <h3>location_on LOCATION</h3>
+        <div>Courthouse Square in Downtown Houma</div>
+        <div>7856 Main Street</div>
+        <div>Houma, LA 70360</div>
+        <h3>attach_money PRICE</h3>
+        </body></html>"""
+        event = mod.parse_houma_event(text, "https://explorehouma.com/events/maw-maw-walker/")
+        self.assertIsNotNone(event)
+        self.assertEqual(event["startDate"], "2026-10-03T09:00:00-05:00")
+        self.assertEqual(event["endDate"], "2026-10-03T12:00:00-05:00")
+
     def test_sidearm_text_home_football_parser(self):
         text = """<table>
         <tr><th>Date</th><th>Time</th><th>At</th><th>Opponent</th><th>Location</th></tr>
