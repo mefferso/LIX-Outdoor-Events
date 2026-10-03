@@ -877,7 +877,14 @@ def collect_source(source: dict[str, Any]) -> tuple[list[dict[str, Any]], Source
 
         listing_url = source["url"]
         listing_text = fetch_text(listing_url)
-        raw.extend(extract_jsonld_events(listing_text))
+
+        # Houma listing cards can contain a date-only copy of an event while
+        # the event detail page contains the actual clock time. Do not seed
+        # listing_houma with those lower-fidelity copies; let the detail parser
+        # provide the canonical event record.
+        if source.get("collector") != "listing_houma":
+            raw.extend(extract_jsonld_events(listing_text))
+
         if source.get("collector") == "sidearm_football":
             raw.extend(parse_sidearm_football(listing_text, source))
         elif source.get("collector") == "sidearm_text_football":
