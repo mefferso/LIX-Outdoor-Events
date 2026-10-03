@@ -219,60 +219,6 @@
     "source_url": "https://downtownbatonrouge.org/discover-downtown/events/baton-rouge-arts-market-7-1-1-1-1-1-1-1-1"
   },
   {
-    "id": "red-stick-farmers-market-at-main-street-market-in-downtown-baton-rouge-2026-10-03-1d6d5ba",
-    "name": "Red Stick Farmers Market at Main Street Market in Downtown Baton Rouge",
-    "dates": [
-      "2026-10-03"
-    ],
-    "start": "2026-10-03T08:00:00-05:00",
-    "end": "2026-10-03T12:00:00-05:00",
-    "all_day": false,
-    "latitude": 30.451583,
-    "longitude": -91.185794,
-    "venue": "Red Stick Farmers Market",
-    "address": "501 Main Street, Baton Rouge, Louisiana 70802",
-    "city": "Baton Rouge",
-    "state": "Louisiana",
-    "parish_county": "East Baton Rouge Parish",
-    "idss_area": "Baton Rouge Metro",
-    "category": "festival",
-    "outdoor_status": "outdoor",
-    "origin": "automated",
-    "importance": "moderate",
-    "location_confidence": 0.78,
-    "outdoor_confidence": 0.78,
-    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
-    "source_name": "Visit Baton Rouge",
-    "source_url": "https://www.visitbatonrouge.com/events/red-stick-farmers-market-at-main-street-market-in-downtown-baton-rouge/"
-  },
-  {
-    "id": "maw-maw-walker-2026-10-03-5fc4c6e",
-    "name": "Maw Maw Walker",
-    "dates": [
-      "2026-10-03"
-    ],
-    "start": "2026-10-03T09:00:00-05:00",
-    "end": "2026-10-03T12:00:00-05:00",
-    "all_day": false,
-    "latitude": 29.595799,
-    "longitude": -90.685756,
-    "venue": "Courthouse Square in Downtown Houma",
-    "address": "7856 Main Street, Houma, LA",
-    "city": "Houma",
-    "state": "LA",
-    "parish_county": "Terrebonne Parish",
-    "idss_area": "Bayou Parishes",
-    "category": "festival",
-    "outdoor_status": "outdoor",
-    "origin": "automated",
-    "importance": "moderate",
-    "location_confidence": 0.78,
-    "outdoor_confidence": 0.78,
-    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
-    "source_name": "Explore Houma",
-    "source_url": "https://explorehouma.com/events/maw-maw-walker/"
-  },
-  {
     "id": "butterflies-in-the-pass-monarch-festival-2026-10-03-b27145f",
     "name": "Butterflies In the Pass Monarch Festival",
     "dates": [
@@ -379,6 +325,33 @@
     "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
     "source_name": "Sun Herald Events",
     "source_url": "https://www.sunherald.com/events/#/details/cruisin-the-coast/20063350/2026-10-04T09"
+  },
+  {
+    "id": "red-stick-farmers-market-at-main-street-market-in-downtown-baton-rouge-2026-10-10-d9a7cf3",
+    "name": "Red Stick Farmers Market at Main Street Market in Downtown Baton Rouge",
+    "dates": [
+      "2026-10-10"
+    ],
+    "start": "2026-10-10T08:00:00-05:00",
+    "end": "2026-10-10T12:00:00-05:00",
+    "all_day": false,
+    "latitude": 30.451583,
+    "longitude": -91.185794,
+    "venue": "Red Stick Farmers Market",
+    "address": "501 Main Street, Baton Rouge, Louisiana 70802",
+    "city": "Baton Rouge",
+    "state": "Louisiana",
+    "parish_county": "East Baton Rouge Parish",
+    "idss_area": "Baton Rouge Metro",
+    "category": "festival",
+    "outdoor_status": "outdoor",
+    "origin": "automated",
+    "importance": "moderate",
+    "location_confidence": 0.78,
+    "outdoor_confidence": 0.78,
+    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
+    "source_name": "Visit Baton Rouge",
+    "source_url": "https://www.visitbatonrouge.com/events/red-stick-farmers-market-at-main-street-market-in-downtown-baton-rouge/"
   },
   {
     "id": "stories-of-the-bayou-davis-bayou-paddle-2026-10-10-221be10",

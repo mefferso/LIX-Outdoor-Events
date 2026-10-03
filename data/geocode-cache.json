@@ -136,5 +136,10 @@
   "downtown moss point 4320 mcinnis ave moss point, mississippi 39563": null,
   "golden nugget parking lot 1700 beach blvd biloxi, mississippi 39530": null,
   "beau rivage retail promenade, mgm golf / lux lounge 875 beach blvd biloxi, mississippi 39530": null,
-  "beau rivage retail promenade at mgm golf / lux lounge 875 beach blvd biloxi, mississippi 39530": null
+  "beau rivage retail promenade at mgm golf / lux lounge 875 beach blvd biloxi, mississippi 39530": null,
+  "875 beach boulevard biloxi, mississippi": {
+    "latitude": 30.3926721,
+    "longitude": -88.8918711,
+    "display_name": "Beau Rivage Casino, 875, Beach Boulevard, Biloxi, Harrison County, Mississippi, 39530, United States"
+  }
 }

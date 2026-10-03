@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-10-03T11:17:06-05:00",
-  "event_count": 15,
+  "generated_at": "2026-10-03T16:13:42-05:00",
+  "event_count": 14,
   "manual_event_count": 0,
-  "automated_event_count": 15,
-  "automated_candidate_count": 17,
+  "automated_event_count": 14,
+  "automated_candidate_count": 16,
   "collection_window_start": "2026-10-03",
   "collection_window_end": "2026-10-10",
   "timezone": "America/Chicago",
@@ -45,9 +45,9 @@
       "name": "Explore Houma",
       "success": true,
       "health": "healthy",
-      "detail_links": 33,
+      "detail_links": 32,
       "discovered": 24,
-      "accepted": 1,
+      "accepted": 0,
       "error": null
     },
     {
@@ -115,8 +115,8 @@
       "name": "Downtown Baton Rouge",
       "success": true,
       "health": "healthy",
-      "detail_links": 3144,
-      "discovered": 19,
+      "detail_links": 3145,
+      "discovered": 18,
       "accepted": 1,
       "error": null
     },
@@ -145,8 +145,8 @@
       "name": "Sun Herald Events",
       "success": true,
       "health": "healthy",
-      "detail_links": 50,
-      "discovered": 50,
+      "detail_links": 51,
+      "discovered": 51,
       "accepted": 4,
       "error": null
     }
