@@ -6,18 +6,28 @@ Operational situational-awareness map for significant outdoor events across the 
 
 ## Current state
 
-The repository now contains a deployable MVP under `web/`:
+The repository contains a deployed GitHub Pages application under `web/` backed by an automated multi-source Python collection pipeline.
+
+Current capabilities include:
 
 - Today through Day 7 in **America/Chicago**
-- NOAA/NWS LIX CWA boundary
-- clustered event markers
+- NOAA/NWS LIX CWA spatial filtering
+- clustered event markers with event-type icons
 - event list synchronized to the selected day
-- category filters plus **Major only**
-- importance, outdoor status, location confidence, exposure notes, and source links
+- category filters for sports, festivals/concerts, races/parades, coastal/marine, and other events
+- event date/time, venue, parish/county, outdoor status, location confidence, and source provenance
+- source-health status in the UI
 - responsive desktop/mobile layout
 - visible dataset freshness
+- automated source refresh every six hours
+- cached geocoding and deduplication across sources
+- curated manual-event safety net
 
-The initial dataset is deliberately small and evidence-backed so the interface can be evaluated before the automated collection pipeline starts feeding it.
+## Automated sources
+
+The source registry is maintained in `config/sources.json` and currently includes tourism/event calendars, official college-football schedules, Mardi Gras/parade schedules, and regional event-discovery sources across the LIX CWA.
+
+See `docs/SOURCES.md` for the current source list and `docs/PIPELINE.md` for collection and filtering logic.
 
 ## Run locally
 
@@ -31,23 +41,13 @@ Then open `http://localhost:8000`.
 
 ## Deployment
 
-GitHub Pages deployment is handled by `.github/workflows/deploy-pages.yml`. The workflow publishes the `web/` directory whenever `main` changes.
+- `Refresh Outdoor Events` runs every six hours and on relevant source/config/code changes.
+- The refresh workflow runs unit tests, rebuilds the event dataset, validates generated JSON, and commits refreshed data when it changes.
+- `Deploy GitHub Pages` publishes the `web/` directory after successful refreshes and relevant web changes.
+- Refresh runs are serialized to avoid concurrent data commits racing each other.
 
 ## Data policy
 
-This is an **IDSS support layer**, not an entertainment calendar. Routine small events, indoor events, and events with unclear outdoor exposure are excluded by default. Unknown attendance is not fabricated.
+This is an **IDSS support layer**, not an exhaustive entertainment calendar. Routine small events, indoor events, events with unclear outdoor exposure, and events outside the LIX CWA are excluded by default. Unknown attendance is not fabricated.
 
-## Initial verified events
-
-The seed dataset includes representative real events for the current operational window, including Celebración Latina, International Arts Festival: NOLA, BlackAmericana Fest, L.O.C.A.L.S. Fest, and LSU vs. Texas A&M.
-
-This is a bootstrap dataset, **not** the final source architecture.
-
-## Next implementation stage
-
-The approved implementation plan remains in:
-
-- `docs/superpowers/specs/2026-09-19-lix-outdoor-events-design.md`
-- `docs/superpowers/plans/2026-09-19-lix-outdoor-events.md`
-
-Next priority is the scheduled Python collector and source registry so the map is automatically refreshed from tourism calendars, official athletics schedules, organizers, venues, and government sources while preserving provenance and last-known-good data.
+Each published event retains source provenance. Automated sources are isolated so one failing source does not prevent healthy sources from refreshing. If every automated source fails, the pipeline protects the last-known-good published dataset.
