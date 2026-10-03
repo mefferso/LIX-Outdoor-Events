@@ -1317,6 +1317,39 @@ def manual_in_window(window_start: date, window_end: date, boundary: dict[str, A
         output.append(event)
     return output
 
+def retain_failed_source_events(
+    accepted_auto: list[dict[str, Any]],
+    results: list[SourceResult],
+    window_start: date,
+    window_end: date,
+) -> int:
+    """Keep still-relevant last-known-good events for sources that failed.
+
+    A transient source outage should degrade source health, not silently remove
+    operationally relevant events that were successfully collected on the
+    previous run. Fresh records from healthy sources remain authoritative.
+    """
+    failed_names = {r.name for r in results if not r.success}
+    if not failed_names:
+        return 0
+
+    previous = load_json(OUTPUT_EVENTS, [])
+    start_key = window_start.isoformat()
+    end_key = window_end.isoformat()
+    retained = 0
+    for event in previous:
+        if event.get("source_name") not in failed_names:
+            continue
+        dates = [str(d) for d in event.get("dates", [])]
+        if not any(start_key <= d <= end_key for d in dates):
+            continue
+        if any(is_duplicate(event, current) for current in accepted_auto):
+            continue
+        accepted_auto.append(dict(event))
+        retained += 1
+    return retained
+
+
 def main() -> int:
     now = now_local()
     window_start = now.date()
@@ -1367,6 +1400,12 @@ def main() -> int:
 
     if results and not any(r.success for r in results):
         raise RuntimeError("All enabled automated sources failed; preserving last-known-good published dataset")
+
+    retained_failed = retain_failed_source_events(
+        accepted_auto, results, window_start, window_end
+    )
+    if retained_failed:
+        print(f"[fallback] retained {retained_failed} last-known-good event(s) from failed source(s)")
 
     # Automated records are authoritative when available. Manual records are
     # fallback/override safety-net entries and are retired automatically when
@@ -1435,7 +1474,12 @@ def main() -> int:
             "failed": sum(1 for r in results if not r.success),
             "total": len(results),
         },
-        "notes": "Automated source collection is merged with a curated safety-net file. Unknown indoor/outdoor events and points outside the LIX CWA are excluded.",
+        "notes": (
+            "Automated source collection is merged with a curated safety-net file. "
+            "If an individual source fails, its still-in-window last-known-good events "
+            "are retained while source health remains failed. Unknown indoor/outdoor "
+            "events and points outside the LIX CWA are excluded."
+        ),
     }
     write_json(OUTPUT_META, meta)
 
