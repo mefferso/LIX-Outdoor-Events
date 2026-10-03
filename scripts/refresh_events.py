@@ -470,6 +470,53 @@ def parse_clock(text: str) -> tuple[int, int] | None:
         hour = 0
     return hour, minute
 
+def enrich_houma_date_only_time(event: dict[str, Any], text: str) -> dict[str, Any]:
+    """Upgrade a date-only Houma event using the visible DATE-section clock."""
+    start_raw = str(event.get("startDate") or "").strip()
+    if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", start_raw):
+        return event
+
+    parser = VisibleTextParser()
+    parser.feed(text)
+    lines = parser.lines()
+    date_index = next(
+        (i for i, line in enumerate(lines)
+         if line.upper() == "DATE" or line.upper().endswith(" DATE")),
+        None,
+    )
+    section = lines[date_index + 1:date_index + 10] if date_index is not None else lines
+    clock_re = re.compile(r"\b(\d{1,2})(?::(\d{2}))?\s*(AM|PM)\b", re.I)
+    matches = list(clock_re.finditer(" ".join(section)))
+    if not matches:
+        return event
+
+    def clock(match):
+        hour = int(match.group(1))
+        minute = int(match.group(2) or 0)
+        if match.group(3).upper() == "PM" and hour != 12:
+            hour += 12
+        if match.group(3).upper() == "AM" and hour == 12:
+            hour = 0
+        return hour, minute
+
+    start_clock = clock(matches[0])
+    start_dt = datetime.fromisoformat(start_raw).replace(
+        hour=start_clock[0], minute=start_clock[1], tzinfo=TZ
+    )
+    event["startDate"] = start_dt.isoformat()
+
+    if len(matches) > 1:
+        end_clock = clock(matches[1])
+        end_raw = str(event.get("endDate") or start_raw).strip()
+        if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", end_raw):
+            end_raw = start_raw
+        end_dt = datetime.fromisoformat(end_raw).replace(
+            hour=end_clock[0], minute=end_clock[1], tzinfo=TZ
+        )
+        event["endDate"] = end_dt.isoformat()
+    return event
+
+
 def parse_houma_event(text: str, detail_url: str) -> dict[str, Any] | None:
     parser = VisibleTextParser()
     parser.feed(text)
@@ -916,6 +963,10 @@ def collect_source(source: dict[str, Any]) -> tuple[list[dict[str, Any]], Source
                     if source.get("collector") == "listing_houma":
                         parsed = parse_houma_event(detail_text, detail_url)
                         detail_events = [parsed] if parsed else extract_jsonld_events(detail_text)
+                        detail_events = [
+                            enrich_houma_date_only_time(event, detail_text)
+                            for event in detail_events
+                        ]
                     else:
                         detail_events = extract_jsonld_events(detail_text)
                     for event in detail_events:
