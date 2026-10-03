@@ -491,19 +491,37 @@ def parse_houma_event(text: str, detail_url: str) -> dict[str, Any] | None:
     if not start_date:
         return None
 
-    # Prefer a clock shown in the DATE section.
-    start_clock = None
+    # Prefer clocks shown in the DATE section, including explicit time ranges.
+    start_clock = end_clock = None
+    clock_re = re.compile(r"\b(\d{1,2})(?::(\d{2}))?\s*(AM|PM)\b", re.I)
     for line in body[(date_index or 0): (date_index or 0) + 15]:
-        start_clock = parse_clock(line)
-        if start_clock:
-            break
+        matches = list(clock_re.finditer(line))
+        if not matches:
+            continue
+        def _clock(match):
+            hour = int(match.group(1))
+            minute = int(match.group(2) or 0)
+            if match.group(3).upper() == "PM" and hour != 12:
+                hour += 12
+            if match.group(3).upper() == "AM" and hour == 12:
+                hour = 0
+            return hour, minute
+        start_clock = _clock(matches[0])
+        if len(matches) > 1:
+            end_clock = _clock(matches[1])
+        break
 
     start_dt = datetime.fromisoformat(start_date).replace(tzinfo=TZ)
     if start_clock:
         start_dt = start_dt.replace(hour=start_clock[0], minute=start_clock[1])
-    end_dt = datetime.fromisoformat(end_date or start_date).replace(tzinfo=TZ)
-    if end_date == start_date and start_clock:
-        end_dt = start_dt
+
+    end_dt = None
+    if end_date:
+        end_dt = datetime.fromisoformat(end_date).replace(tzinfo=TZ)
+    elif end_clock:
+        end_dt = datetime.fromisoformat(start_date).replace(tzinfo=TZ)
+    if end_dt is not None and end_clock:
+        end_dt = end_dt.replace(hour=end_clock[0], minute=end_clock[1])
 
     location_index = next((i for i, line in enumerate(body) if line.upper() == "LOCATION" or line.upper().endswith(" LOCATION")), None)
     location_lines: list[str] = []
@@ -531,7 +549,7 @@ def parse_houma_event(text: str, detail_url: str) -> dict[str, Any] | None:
         "@type": "Event",
         "name": name,
         "startDate": start_dt.isoformat() if start_clock else start_date,
-        "endDate": end_dt.isoformat() if start_clock else (end_date or start_date),
+        "endDate": end_dt.isoformat() if end_dt is not None else None,
         "description": description,
         "location": {
             "@type": "Place",
@@ -888,11 +906,11 @@ def collect_source(source: dict[str, Any]) -> tuple[list[dict[str, Any]], Source
             for detail_url in links[: int(source.get("max_detail_pages", 30))]:
                 try:
                     detail_text = fetch_text(detail_url)
-                    detail_events = extract_jsonld_events(detail_text)
-                    if not detail_events and source.get("collector") == "listing_houma":
-                        fallback = parse_houma_event(detail_text, detail_url)
-                        if fallback:
-                            detail_events = [fallback]
+                    if source.get("collector") == "listing_houma":
+                        parsed = parse_houma_event(detail_text, detail_url)
+                        detail_events = [parsed] if parsed else extract_jsonld_events(detail_text)
+                    else:
+                        detail_events = extract_jsonld_events(detail_text)
                     for event in detail_events:
                         event.setdefault("url", detail_url)
                         raw.append(event)
