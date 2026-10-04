@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-10-03T16:13:42-05:00",
-  "event_count": 14,
+  "generated_at": "2026-10-04T00:51:26-05:00",
+  "event_count": 7,
   "manual_event_count": 0,
-  "automated_event_count": 14,
-  "automated_candidate_count": 16,
-  "collection_window_start": "2026-10-03",
-  "collection_window_end": "2026-10-10",
+  "automated_event_count": 7,
+  "automated_candidate_count": 7,
+  "collection_window_start": "2026-10-04",
+  "collection_window_end": "2026-10-11",
   "timezone": "America/Chicago",
   "boundary_source": "NOAA/NWS reference map FeatureServer",
   "pipeline_state": "automated-multi-source-v1",
@@ -16,8 +16,8 @@
       "success": true,
       "health": "healthy",
       "detail_links": 26,
-      "discovered": 45,
-      "accepted": 4,
+      "discovered": 44,
+      "accepted": 0,
       "error": null
     },
     {
@@ -87,7 +87,7 @@
       "health": "healthy",
       "detail_links": 0,
       "discovered": 13,
-      "accepted": 1,
+      "accepted": 0,
       "error": null
     },
     {
@@ -97,7 +97,7 @@
       "health": "healthy",
       "detail_links": 0,
       "discovered": 13,
-      "accepted": 2,
+      "accepted": 1,
       "error": null
     },
     {
@@ -115,9 +115,9 @@
       "name": "Downtown Baton Rouge",
       "success": true,
       "health": "healthy",
-      "detail_links": 3145,
-      "discovered": 18,
-      "accepted": 1,
+      "detail_links": 40,
+      "discovered": 16,
+      "accepted": 0,
       "error": null
     },
     {
@@ -145,9 +145,9 @@
       "name": "Sun Herald Events",
       "success": true,
       "health": "healthy",
-      "detail_links": 51,
-      "discovered": 51,
-      "accepted": 4,
+      "detail_links": 53,
+      "discovered": 53,
+      "accepted": 2,
       "error": null
     }
   ],
