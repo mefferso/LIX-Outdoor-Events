@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-04T07:20:53-05:00",
+  "generated_at": "2026-10-04T16:24:06-05:00",
   "event_count": 7,
   "manual_event_count": 0,
   "automated_event_count": 7,
@@ -25,7 +25,7 @@
       "name": "Visit Baton Rouge",
       "success": true,
       "health": "healthy",
-      "detail_links": 237,
+      "detail_links": 244,
       "discovered": 26,
       "accepted": 1,
       "error": null
@@ -45,7 +45,7 @@
       "name": "Explore Houma",
       "success": true,
       "health": "healthy",
-      "detail_links": 32,
+      "detail_links": 31,
       "discovered": 24,
       "accepted": 0,
       "error": null
@@ -115,8 +115,8 @@
       "name": "Downtown Baton Rouge",
       "success": true,
       "health": "healthy",
-      "detail_links": 3145,
-      "discovered": 18,
+      "detail_links": 3144,
+      "discovered": 19,
       "accepted": 0,
       "error": null
     },
@@ -145,8 +145,8 @@
       "name": "Sun Herald Events",
       "success": true,
       "health": "healthy",
-      "detail_links": 51,
-      "discovered": 51,
+      "detail_links": 52,
+      "discovered": 52,
       "accepted": 2,
       "error": null
     }
