@@ -1,67 +1,5 @@
 [
   {
-    "id": "st-tammany-parish-fair-2026-09-30-35f8c44",
-    "name": "St. Tammany Parish Fair",
-    "dates": [
-      "2026-09-30",
-      "2026-10-01",
-      "2026-10-02",
-      "2026-10-03",
-      "2026-10-04"
-    ],
-    "start": "2026-09-30T00:00:00-05:00",
-    "end": "2026-10-04T00:00:00-05:00",
-    "all_day": true,
-    "latitude": 30.490093,
-    "longitude": -90.100173,
-    "venue": "St. Tammany Parish Fairgrounds, Columbia Street in Covington",
-    "address": "1304 N. Columbia St., Covington, LA 70433",
-    "city": "Covington",
-    "state": "LA",
-    "parish_county": "St. Tammany Parish",
-    "idss_area": "Northshore",
-    "category": "festival",
-    "outdoor_status": "outdoor",
-    "origin": "automated",
-    "importance": "moderate",
-    "location_confidence": 0.96,
-    "outdoor_confidence": 0.78,
-    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
-    "source_name": "Louisiana Northshore",
-    "source_url": "https://www.visitthenorthshore.com/event/st-tammany-parish-fair/8874/"
-  },
-  {
-    "id": "tangipahoa-parish-fair-2026-09-30-8d623fb",
-    "name": "Tangipahoa Parish Fair",
-    "dates": [
-      "2026-09-30",
-      "2026-10-01",
-      "2026-10-02",
-      "2026-10-03",
-      "2026-10-04"
-    ],
-    "start": "2026-09-30T00:00:00-05:00",
-    "end": "2026-10-04T00:00:00-05:00",
-    "all_day": true,
-    "latitude": 30.731827,
-    "longitude": -90.509071,
-    "venue": "Location not listed",
-    "address": "NW Central Ave. Amite, LA",
-    "city": "NW Central Ave. Amite",
-    "state": "LA",
-    "parish_county": "",
-    "idss_area": "Northshore",
-    "category": "festival",
-    "outdoor_status": "outdoor",
-    "origin": "automated",
-    "importance": "moderate",
-    "location_confidence": 0.78,
-    "outdoor_confidence": 0.78,
-    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
-    "source_name": "Tangipahoa Parish Convention & Visitors Bureau",
-    "source_url": "https://www.tangitourism.com/Events/Fairs-Festivals"
-  },
-  {
     "id": "zoo-2-u-fall-fest-pumpkin-patch-2026-10-03-8a2846e",
     "name": "Zoo 2 U Fall Fest Pumpkin Patch",
     "dates": [
@@ -111,13 +49,13 @@
     "source_url": "https://www.visitthenorthshore.com/event/zoo-2-u-fall-fest-pumpkin-patch/8718/"
   },
   {
-    "id": "cruisin-the-coast-2026-10-04-84c0210",
+    "id": "cruisin-the-coast-2026-10-05-d8c5914",
     "name": "Cruisin' The Coast",
     "dates": [
-      "2026-10-04"
+      "2026-10-05"
     ],
-    "start": "2026-10-04T09:00:00-05:00",
-    "end": "2026-10-04T17:00:00-05:00",
+    "start": "2026-10-05T09:00:00-05:00",
+    "end": "2026-10-05T17:00:00-05:00",
     "all_day": false,
     "latitude": 30.36577,
     "longitude": -89.08809,
@@ -135,7 +73,7 @@
     "outdoor_confidence": 0.78,
     "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
     "source_name": "Sun Herald Events",
-    "source_url": "https://www.sunherald.com/events/#/details/cruisin-the-coast/20063350/2026-10-04T09"
+    "source_url": "https://www.sunherald.com/events/#/details/cruisin-the-coast/20063350/2026-10-05T09"
   },
   {
     "id": "red-stick-farmers-market-at-main-street-market-in-downtown-baton-rouge-2026-10-10-d9a7cf3",
