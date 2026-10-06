@@ -154,5 +154,10 @@
   "hospitality & resort management center 420 debuys road biloxi, mississippi 39531": null,
   "pascagoula beach park 603 watts ave pascagoula, mississippi 39567": null,
   "ship island excursions ferry pier, jones park marina, gulfport, ms – fort massachusetts, ship island, ms , mississippi": null,
-  "the arts, hancock county 405 blaize ave bay st louis, mississippi 39520": null
+  "the arts, hancock county 405 blaize ave bay st louis, mississippi 39520": null,
+  "5511 winbourne avenue, baton rouge, louisiana 70805": {
+    "latitude": 30.479239,
+    "longitude": -91.134533,
+    "display_name": "5511, Winbourne Avenue, Pioneer Park, Istrouma, Victoria Garden, Baton Rouge, East Baton Rouge Parish, Louisiana, 70805, United States"
+  }
 }
