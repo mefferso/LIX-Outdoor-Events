@@ -49,13 +49,67 @@
     "source_url": "https://www.visitthenorthshore.com/event/zoo-2-u-fall-fest-pumpkin-patch/8718/"
   },
   {
-    "id": "cruisin-the-coast-2026-10-05-d8c5914",
+    "id": "arrowhead-jazz-band-with-james-jordan-2026-10-06-7a4e897",
+    "name": "Arrowhead Jazz Band with James Jordan",
+    "dates": [
+      "2026-10-06"
+    ],
+    "start": "2026-10-06T00:00:00-05:00",
+    "end": "2026-10-06T00:00:00-05:00",
+    "all_day": true,
+    "latitude": 29.956142,
+    "longitude": -90.073393,
+    "venue": "The New Orleans Jazz National Historical Park",
+    "address": "New Orleans",
+    "city": "New Orleans",
+    "state": "",
+    "parish_county": "Orleans Parish",
+    "idss_area": "New Orleans Metro",
+    "category": "other",
+    "outdoor_status": "outdoor",
+    "origin": "automated",
+    "importance": "major",
+    "location_confidence": 0.78,
+    "outdoor_confidence": 0.78,
+    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
+    "source_name": "NewOrleans.com",
+    "source_url": "https://www.neworleans.com/event/arrowhead-jazz-band-with-james-jordan/203704/"
+  },
+  {
+    "id": "tim-brown-ii-2026-10-06-56f01b0",
+    "name": "Tim Brown, II",
+    "dates": [
+      "2026-10-06"
+    ],
+    "start": "2026-10-06T00:00:00-05:00",
+    "end": "2026-10-06T00:00:00-05:00",
+    "all_day": true,
+    "latitude": 29.956142,
+    "longitude": -90.073393,
+    "venue": "The New Orleans Jazz National Historical Park",
+    "address": "New Orleans",
+    "city": "New Orleans",
+    "state": "",
+    "parish_county": "Orleans Parish",
+    "idss_area": "New Orleans Metro",
+    "category": "other",
+    "outdoor_status": "outdoor",
+    "origin": "automated",
+    "importance": "major",
+    "location_confidence": 0.78,
+    "outdoor_confidence": 0.78,
+    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
+    "source_name": "NewOrleans.com",
+    "source_url": "https://www.neworleans.com/event/tim-brown-ii/203703/"
+  },
+  {
+    "id": "cruisin-the-coast-2026-10-06-df9c55b",
     "name": "Cruisin' The Coast",
     "dates": [
-      "2026-10-05"
+      "2026-10-06"
     ],
-    "start": "2026-10-05T09:00:00-05:00",
-    "end": "2026-10-05T17:00:00-05:00",
+    "start": "2026-10-06T09:00:00-05:00",
+    "end": "2026-10-06T17:00:00-05:00",
     "all_day": false,
     "latitude": 30.36577,
     "longitude": -89.08809,
@@ -73,7 +127,7 @@
     "outdoor_confidence": 0.78,
     "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
     "source_name": "Sun Herald Events",
-    "source_url": "https://www.sunherald.com/events/#/details/cruisin-the-coast/20063350/2026-10-05T09"
+    "source_url": "https://www.sunherald.com/events/#/details/cruisin-the-coast/20063350/2026-10-06T09"
   },
   {
     "id": "red-stick-farmers-market-at-main-street-market-in-downtown-baton-rouge-2026-10-10-d9a7cf3",
@@ -101,33 +155,6 @@
     "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
     "source_name": "Visit Baton Rouge",
     "source_url": "https://www.visitbatonrouge.com/events/red-stick-farmers-market-at-main-street-market-in-downtown-baton-rouge/"
-  },
-  {
-    "id": "stories-of-the-bayou-davis-bayou-paddle-2026-10-10-221be10",
-    "name": "Stories of the Bayou: Davis Bayou Paddle",
-    "dates": [
-      "2026-10-10"
-    ],
-    "start": "2026-10-10T10:00:00-05:00",
-    "end": "2026-10-10T12:00:00-05:00",
-    "all_day": false,
-    "latitude": 30.397393,
-    "longitude": -88.796187,
-    "venue": "Davis Bayou Campground",
-    "address": "3500 Park Rd, Ocean Springs, MS 39564",
-    "city": "Ocean Springs",
-    "state": "MS",
-    "parish_county": "",
-    "idss_area": "Mississippi Coast",
-    "category": "coastal_marine",
-    "outdoor_status": "outdoor",
-    "origin": "automated",
-    "importance": "major",
-    "location_confidence": 0.96,
-    "outdoor_confidence": 0.78,
-    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
-    "source_name": "Sun Herald Events",
-    "source_url": "https://www.sunherald.com/events/#/details/stories-of-the-bayou-davis-bayou-paddle/19903112/2026-10-10T10"
   },
   {
     "id": "lsu-football-vs-mississippi-state-2026-10-10-2c59952",
