@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-05T09:36:38-05:00",
+  "generated_at": "2026-10-05T19:02:43-05:00",
   "event_count": 5,
   "manual_event_count": 0,
   "automated_event_count": 5,
@@ -25,7 +25,7 @@
       "name": "Visit Baton Rouge",
       "success": true,
       "health": "healthy",
-      "detail_links": 237,
+      "detail_links": 240,
       "discovered": 26,
       "accepted": 1,
       "error": null
@@ -96,7 +96,7 @@
       "success": true,
       "health": "healthy",
       "detail_links": 0,
-      "discovered": 13,
+      "discovered": 12,
       "accepted": 1,
       "error": null
     },
@@ -115,8 +115,8 @@
       "name": "Downtown Baton Rouge",
       "success": true,
       "health": "healthy",
-      "detail_links": 3144,
-      "discovered": 19,
+      "detail_links": 3145,
+      "discovered": 18,
       "accepted": 0,
       "error": null
     },
@@ -135,7 +135,7 @@
       "name": "Coastal Mississippi",
       "success": true,
       "health": "healthy",
-      "detail_links": 258,
+      "detail_links": 263,
       "discovered": 38,
       "accepted": 0,
       "error": null
@@ -145,8 +145,8 @@
       "name": "Sun Herald Events",
       "success": true,
       "health": "healthy",
-      "detail_links": 51,
-      "discovered": 51,
+      "detail_links": 53,
+      "discovered": 53,
       "accepted": 2,
       "error": null
     }
