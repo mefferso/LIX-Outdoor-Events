@@ -49,13 +49,13 @@
     "source_url": "https://www.visitthenorthshore.com/event/zoo-2-u-fall-fest-pumpkin-patch/8718/"
   },
   {
-    "id": "arrowhead-jazz-band-with-james-jordan-2026-10-06-7a4e897",
-    "name": "Arrowhead Jazz Band with James Jordan",
+    "id": "sam-kuslan-calvin-morin-martin-2026-10-07-edf11e7",
+    "name": "Sam Kuslan & Calvin Morin-Martin",
     "dates": [
-      "2026-10-06"
+      "2026-10-07"
     ],
-    "start": "2026-10-06T00:00:00-05:00",
-    "end": "2026-10-06T00:00:00-05:00",
+    "start": "2026-10-07T00:00:00-05:00",
+    "end": "2026-10-07T00:00:00-05:00",
     "all_day": true,
     "latitude": 29.956142,
     "longitude": -90.073393,
@@ -73,43 +73,16 @@
     "outdoor_confidence": 0.78,
     "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
     "source_name": "NewOrleans.com",
-    "source_url": "https://www.neworleans.com/event/arrowhead-jazz-band-with-james-jordan/203704/"
+    "source_url": "https://www.neworleans.com/event/sam-kuslan-%26-calvin-morin-martin/204742/"
   },
   {
-    "id": "tim-brown-ii-2026-10-06-56f01b0",
-    "name": "Tim Brown, II",
-    "dates": [
-      "2026-10-06"
-    ],
-    "start": "2026-10-06T00:00:00-05:00",
-    "end": "2026-10-06T00:00:00-05:00",
-    "all_day": true,
-    "latitude": 29.956142,
-    "longitude": -90.073393,
-    "venue": "The New Orleans Jazz National Historical Park",
-    "address": "New Orleans",
-    "city": "New Orleans",
-    "state": "",
-    "parish_county": "Orleans Parish",
-    "idss_area": "New Orleans Metro",
-    "category": "other",
-    "outdoor_status": "outdoor",
-    "origin": "automated",
-    "importance": "major",
-    "location_confidence": 0.78,
-    "outdoor_confidence": 0.78,
-    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
-    "source_name": "NewOrleans.com",
-    "source_url": "https://www.neworleans.com/event/tim-brown-ii/203703/"
-  },
-  {
-    "id": "cruisin-the-coast-2026-10-06-df9c55b",
+    "id": "cruisin-the-coast-2026-10-07-4172603",
     "name": "Cruisin' The Coast",
     "dates": [
-      "2026-10-06"
+      "2026-10-07"
     ],
-    "start": "2026-10-06T09:00:00-05:00",
-    "end": "2026-10-06T17:00:00-05:00",
+    "start": "2026-10-07T09:00:00-05:00",
+    "end": "2026-10-07T17:00:00-05:00",
     "all_day": false,
     "latitude": 30.36577,
     "longitude": -89.08809,
@@ -127,7 +100,7 @@
     "outdoor_confidence": 0.78,
     "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
     "source_name": "Sun Herald Events",
-    "source_url": "https://www.sunherald.com/events/#/details/cruisin-the-coast/20063350/2026-10-06T09"
+    "source_url": "https://www.sunherald.com/events/#/details/cruisin-the-coast/20063350/2026-10-07T09"
   },
   {
     "id": "geaux-fish-catfish-rodeo-2026-10-10-bb563c6",
@@ -150,7 +123,7 @@
     "outdoor_status": "outdoor",
     "origin": "automated",
     "importance": "moderate",
-    "location_confidence": 0.72,
+    "location_confidence": 0.78,
     "outdoor_confidence": 0.78,
     "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
     "source_name": "Visit Baton Rouge",

@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-10-06T13:21:27-05:00",
-  "event_count": 7,
+  "generated_at": "2026-10-07T00:58:21-05:00",
+  "event_count": 6,
   "manual_event_count": 0,
-  "automated_event_count": 7,
-  "automated_candidate_count": 9,
-  "collection_window_start": "2026-10-06",
-  "collection_window_end": "2026-10-13",
+  "automated_event_count": 6,
+  "automated_candidate_count": 7,
+  "collection_window_start": "2026-10-07",
+  "collection_window_end": "2026-10-14",
   "timezone": "America/Chicago",
   "boundary_source": "NOAA/NWS reference map FeatureServer",
   "pipeline_state": "automated-multi-source-v1",
@@ -17,7 +17,7 @@
       "health": "healthy",
       "detail_links": 26,
       "discovered": 43,
-      "accepted": 4,
+      "accepted": 2,
       "error": null
     },
     {
@@ -25,7 +25,7 @@
       "name": "Visit Baton Rouge",
       "success": true,
       "health": "healthy",
-      "detail_links": 245,
+      "detail_links": 247,
       "discovered": 26,
       "accepted": 2,
       "error": null
@@ -35,8 +35,8 @@
       "name": "Louisiana Northshore",
       "success": true,
       "health": "healthy",
-      "detail_links": 21,
-      "discovered": 16,
+      "detail_links": 17,
+      "discovered": 14,
       "accepted": 1,
       "error": null
     },
@@ -45,7 +45,7 @@
       "name": "Explore Houma",
       "success": true,
       "health": "healthy",
-      "detail_links": 33,
+      "detail_links": 32,
       "discovered": 24,
       "accepted": 0,
       "error": null
@@ -115,8 +115,8 @@
       "name": "Downtown Baton Rouge",
       "success": true,
       "health": "healthy",
-      "detail_links": 3145,
-      "discovered": 18,
+      "detail_links": 3144,
+      "discovered": 19,
       "accepted": 0,
       "error": null
     },
@@ -145,8 +145,8 @@
       "name": "Sun Herald Events",
       "success": true,
       "health": "healthy",
-      "detail_links": 53,
-      "discovered": 53,
+      "detail_links": 52,
+      "discovered": 52,
       "accepted": 1,
       "error": null
     }
