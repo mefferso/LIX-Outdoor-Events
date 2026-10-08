@@ -103,6 +103,33 @@
     "source_url": "https://www.sunherald.com/events/#/details/cruisin-the-coast/20063350/2026-10-08T09"
   },
   {
+    "id": "hancock-whitney-classic-mississippi-state-vs-auburn-2026-10-09-bbd05e8",
+    "name": "Hancock Whitney Classic | Mississippi State vs Auburn",
+    "dates": [
+      "2026-10-09"
+    ],
+    "start": "2026-10-09T00:00:00-05:00",
+    "end": "2026-10-09T23:59:00-05:00",
+    "all_day": false,
+    "latitude": 30.395455,
+    "longitude": -88.893256,
+    "venue": "Keesler Federal Park 105 Caillavet St Biloxi, Mississippi 39530",
+    "address": "",
+    "city": "",
+    "state": "",
+    "parish_county": "",
+    "idss_area": "",
+    "category": "sports",
+    "outdoor_status": "outdoor",
+    "origin": "automated",
+    "importance": "moderate",
+    "location_confidence": 0.72,
+    "outdoor_confidence": 0.78,
+    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
+    "source_name": "Coastal Mississippi",
+    "source_url": "https://www.coastalmississippi.com/events/hancock-whitney-classic-mississippi-state-vs-auburn/"
+  },
+  {
     "id": "geaux-fish-catfish-rodeo-2026-10-10-bb563c6",
     "name": "GEAUX Fish Catfish Rodeo",
     "dates": [

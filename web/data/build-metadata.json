@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-10-08T01:02:49-05:00",
-  "event_count": 6,
+  "generated_at": "2026-10-08T08:28:07-05:00",
+  "event_count": 7,
   "manual_event_count": 0,
-  "automated_event_count": 6,
-  "automated_candidate_count": 7,
+  "automated_event_count": 7,
+  "automated_candidate_count": 8,
   "collection_window_start": "2026-10-08",
   "collection_window_end": "2026-10-15",
   "timezone": "America/Chicago",
@@ -25,7 +25,7 @@
       "name": "Visit Baton Rouge",
       "success": true,
       "health": "healthy",
-      "detail_links": 247,
+      "detail_links": 246,
       "discovered": 26,
       "accepted": 2,
       "error": null
@@ -115,8 +115,8 @@
       "name": "Downtown Baton Rouge",
       "success": true,
       "health": "healthy",
-      "detail_links": 3147,
-      "discovered": 18,
+      "detail_links": 3146,
+      "discovered": 19,
       "accepted": 0,
       "error": null
     },
@@ -135,9 +135,9 @@
       "name": "Coastal Mississippi",
       "success": true,
       "health": "healthy",
-      "detail_links": 263,
+      "detail_links": 256,
       "discovered": 38,
-      "accepted": 0,
+      "accepted": 1,
       "error": null
     },
     {
