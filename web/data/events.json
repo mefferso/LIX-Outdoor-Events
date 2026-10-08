@@ -49,13 +49,13 @@
     "source_url": "https://www.visitthenorthshore.com/event/zoo-2-u-fall-fest-pumpkin-patch/8718/"
   },
   {
-    "id": "sam-kuslan-calvin-morin-martin-2026-10-07-edf11e7",
-    "name": "Sam Kuslan & Calvin Morin-Martin",
+    "id": "talkin-jazz-in-concert-with-fred-kasten-ft-benjamin-cousins-2026-10-08-a93201c",
+    "name": "Talkin’ Jazz: In Concert with Fred Kasten ft. Benjamin Cousins",
     "dates": [
-      "2026-10-07"
+      "2026-10-08"
     ],
-    "start": "2026-10-07T00:00:00-05:00",
-    "end": "2026-10-07T00:00:00-05:00",
+    "start": "2026-10-08T00:00:00-05:00",
+    "end": "2026-10-08T00:00:00-05:00",
     "all_day": true,
     "latitude": 29.956142,
     "longitude": -90.073393,
@@ -65,7 +65,7 @@
     "state": "",
     "parish_county": "Orleans Parish",
     "idss_area": "New Orleans Metro",
-    "category": "other",
+    "category": "festival",
     "outdoor_status": "outdoor",
     "origin": "automated",
     "importance": "major",
@@ -73,16 +73,16 @@
     "outdoor_confidence": 0.78,
     "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
     "source_name": "NewOrleans.com",
-    "source_url": "https://www.neworleans.com/event/sam-kuslan-%26-calvin-morin-martin/204742/"
+    "source_url": "https://www.neworleans.com/event/talkin%e2%80%99-jazz%3a-in-concert-with-fred-kasten-ft-benjamin-cousins/203714/"
   },
   {
-    "id": "cruisin-the-coast-2026-10-07-4172603",
+    "id": "cruisin-the-coast-2026-10-08-ca5be3e",
     "name": "Cruisin' The Coast",
     "dates": [
-      "2026-10-07"
+      "2026-10-08"
     ],
-    "start": "2026-10-07T09:00:00-05:00",
-    "end": "2026-10-07T17:00:00-05:00",
+    "start": "2026-10-08T09:00:00-05:00",
+    "end": "2026-10-08T17:00:00-05:00",
     "all_day": false,
     "latitude": 30.36577,
     "longitude": -89.08809,
@@ -100,7 +100,7 @@
     "outdoor_confidence": 0.78,
     "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
     "source_name": "Sun Herald Events",
-    "source_url": "https://www.sunherald.com/events/#/details/cruisin-the-coast/20063350/2026-10-07T09"
+    "source_url": "https://www.sunherald.com/events/#/details/cruisin-the-coast/20063350/2026-10-08T09"
   },
   {
     "id": "geaux-fish-catfish-rodeo-2026-10-10-bb563c6",
