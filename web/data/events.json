@@ -49,60 +49,6 @@
     "source_url": "https://www.visitthenorthshore.com/event/zoo-2-u-fall-fest-pumpkin-patch/8718/"
   },
   {
-    "id": "talkin-jazz-in-concert-with-fred-kasten-ft-benjamin-cousins-2026-10-08-a93201c",
-    "name": "Talkin’ Jazz: In Concert with Fred Kasten ft. Benjamin Cousins",
-    "dates": [
-      "2026-10-08"
-    ],
-    "start": "2026-10-08T00:00:00-05:00",
-    "end": "2026-10-08T00:00:00-05:00",
-    "all_day": true,
-    "latitude": 29.956142,
-    "longitude": -90.073393,
-    "venue": "The New Orleans Jazz National Historical Park",
-    "address": "New Orleans",
-    "city": "New Orleans",
-    "state": "",
-    "parish_county": "Orleans Parish",
-    "idss_area": "New Orleans Metro",
-    "category": "festival",
-    "outdoor_status": "outdoor",
-    "origin": "automated",
-    "importance": "major",
-    "location_confidence": 0.78,
-    "outdoor_confidence": 0.78,
-    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
-    "source_name": "NewOrleans.com",
-    "source_url": "https://www.neworleans.com/event/talkin%e2%80%99-jazz%3a-in-concert-with-fred-kasten-ft-benjamin-cousins/203714/"
-  },
-  {
-    "id": "cruisin-the-coast-2026-10-08-ca5be3e",
-    "name": "Cruisin' The Coast",
-    "dates": [
-      "2026-10-08"
-    ],
-    "start": "2026-10-08T09:00:00-05:00",
-    "end": "2026-10-08T17:00:00-05:00",
-    "all_day": false,
-    "latitude": 30.36577,
-    "longitude": -89.08809,
-    "venue": "Jones Park",
-    "address": "2250 Jones Park Drive, Gulfport, MS 39501",
-    "city": "Gulfport",
-    "state": "MS",
-    "parish_county": "Harrison County",
-    "idss_area": "Mississippi Coast",
-    "category": "festival",
-    "outdoor_status": "outdoor",
-    "origin": "automated",
-    "importance": "moderate",
-    "location_confidence": 0.96,
-    "outdoor_confidence": 0.78,
-    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
-    "source_name": "Sun Herald Events",
-    "source_url": "https://www.sunherald.com/events/#/details/cruisin-the-coast/20063350/2026-10-08T09"
-  },
-  {
     "id": "hancock-whitney-classic-mississippi-state-vs-auburn-2026-10-09-bbd05e8",
     "name": "Hancock Whitney Classic | Mississippi State vs Auburn",
     "dates": [
@@ -128,6 +74,33 @@
     "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
     "source_name": "Coastal Mississippi",
     "source_url": "https://www.coastalmississippi.com/events/hancock-whitney-classic-mississippi-state-vs-auburn/"
+  },
+  {
+    "id": "cruisin-the-coast-2026-10-09-928fd84",
+    "name": "Cruisin' The Coast",
+    "dates": [
+      "2026-10-09"
+    ],
+    "start": "2026-10-09T09:00:00-05:00",
+    "end": "2026-10-09T17:00:00-05:00",
+    "all_day": false,
+    "latitude": 30.36577,
+    "longitude": -89.08809,
+    "venue": "Jones Park",
+    "address": "2250 Jones Park Drive, Gulfport, MS 39501",
+    "city": "Gulfport",
+    "state": "MS",
+    "parish_county": "Harrison County",
+    "idss_area": "Mississippi Coast",
+    "category": "festival",
+    "outdoor_status": "outdoor",
+    "origin": "automated",
+    "importance": "moderate",
+    "location_confidence": 0.96,
+    "outdoor_confidence": 0.78,
+    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
+    "source_name": "Sun Herald Events",
+    "source_url": "https://www.sunherald.com/events/#/details/cruisin-the-coast/20063350/2026-10-09T09"
   },
   {
     "id": "geaux-fish-catfish-rodeo-2026-10-10-bb563c6",
@@ -184,6 +157,33 @@
     "source_url": "https://www.visitbatonrouge.com/events/red-stick-farmers-market-at-main-street-market-in-downtown-baton-rouge/"
   },
   {
+    "id": "stories-of-the-bayou-davis-bayou-paddle-2026-10-10-221be10",
+    "name": "Stories of the Bayou: Davis Bayou Paddle",
+    "dates": [
+      "2026-10-10"
+    ],
+    "start": "2026-10-10T10:00:00-05:00",
+    "end": "2026-10-10T12:00:00-05:00",
+    "all_day": false,
+    "latitude": 30.397393,
+    "longitude": -88.796187,
+    "venue": "Davis Bayou Campground",
+    "address": "3500 Park Rd, Ocean Springs, MS 39564",
+    "city": "Ocean Springs",
+    "state": "MS",
+    "parish_county": "",
+    "idss_area": "Mississippi Coast",
+    "category": "coastal_marine",
+    "outdoor_status": "outdoor",
+    "origin": "automated",
+    "importance": "major",
+    "location_confidence": 0.96,
+    "outdoor_confidence": 0.78,
+    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
+    "source_name": "Sun Herald Events",
+    "source_url": "https://www.sunherald.com/events/#/details/stories-of-the-bayou-davis-bayou-paddle/19903112/2026-10-10T10"
+  },
+  {
     "id": "lsu-football-vs-mississippi-state-2026-10-10-2c59952",
     "name": "LSU Football vs Mississippi State",
     "dates": [
@@ -209,5 +209,59 @@
     "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
     "source_name": "LSU Athletics",
     "source_url": "https://lsusports.net/sports/fb/schedule"
+  },
+  {
+    "id": "bayou-dularge-cajun-fair-2026-10-16-d2df792",
+    "name": "Bayou Dularge Cajun Fair",
+    "dates": [
+      "2026-10-16"
+    ],
+    "start": "2026-10-16T18:00:00-05:00",
+    "end": "2026-10-16T22:00:00-05:00",
+    "all_day": false,
+    "latitude": 29.457438,
+    "longitude": -90.749784,
+    "venue": "St. Eloi Catholic Church Grounds",
+    "address": "1335 Bayou Dularge Road, Theriot, LA",
+    "city": "Theriot",
+    "state": "LA",
+    "parish_county": "",
+    "idss_area": "Bayou Parishes",
+    "category": "festival",
+    "outdoor_status": "outdoor",
+    "origin": "automated",
+    "importance": "moderate",
+    "location_confidence": 0.72,
+    "outdoor_confidence": 0.78,
+    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
+    "source_name": "Explore Houma",
+    "source_url": "https://explorehouma.com/events/bayou-dularge-cajun-fair/"
+  },
+  {
+    "id": "tulane-football-vs-memphis-2026-10-16-d5bff37",
+    "name": "Tulane Football vs. Memphis",
+    "dates": [
+      "2026-10-16"
+    ],
+    "start": "2026-10-16T18:30:00-05:00",
+    "end": null,
+    "all_day": false,
+    "latitude": 29.9445,
+    "longitude": -90.1179,
+    "venue": "Yulman Stadium",
+    "address": "New Orleans, LA",
+    "city": "New Orleans",
+    "state": "LA",
+    "parish_county": "Orleans Parish",
+    "idss_area": "New Orleans Metro",
+    "category": "sports",
+    "outdoor_status": "outdoor",
+    "origin": "automated",
+    "importance": "major",
+    "location_confidence": 0.99,
+    "outdoor_confidence": 0.99,
+    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
+    "source_name": "Tulane Athletics",
+    "source_url": "https://tulanegreenwave.com/sports/football/schedule/text"
   }
 ]

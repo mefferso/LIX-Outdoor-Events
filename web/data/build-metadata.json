@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-10-08T18:20:26-05:00",
-  "event_count": 7,
+  "generated_at": "2026-10-09T01:07:49-05:00",
+  "event_count": 9,
   "manual_event_count": 0,
-  "automated_event_count": 7,
-  "automated_candidate_count": 8,
-  "collection_window_start": "2026-10-08",
-  "collection_window_end": "2026-10-15",
+  "automated_event_count": 9,
+  "automated_candidate_count": 9,
+  "collection_window_start": "2026-10-09",
+  "collection_window_end": "2026-10-16",
   "timezone": "America/Chicago",
   "boundary_source": "NOAA/NWS reference map FeatureServer",
   "pipeline_state": "automated-multi-source-v1",
@@ -15,9 +15,9 @@
       "name": "NewOrleans.com",
       "success": true,
       "health": "healthy",
-      "detail_links": 26,
-      "discovered": 44,
-      "accepted": 2,
+      "detail_links": 24,
+      "discovered": 40,
+      "accepted": 0,
       "error": null
     },
     {
@@ -35,8 +35,8 @@
       "name": "Louisiana Northshore",
       "success": true,
       "health": "healthy",
-      "detail_links": 17,
-      "discovered": 17,
+      "detail_links": 16,
+      "discovered": 16,
       "accepted": 1,
       "error": null
     },
@@ -47,7 +47,7 @@
       "health": "healthy",
       "detail_links": 31,
       "discovered": 24,
-      "accepted": 0,
+      "accepted": 1,
       "error": null
     },
     {
@@ -57,7 +57,7 @@
       "health": "healthy",
       "detail_links": 0,
       "discovered": 6,
-      "accepted": 0,
+      "accepted": 1,
       "error": null
     },
     {
@@ -115,8 +115,8 @@
       "name": "Downtown Baton Rouge",
       "success": true,
       "health": "healthy",
-      "detail_links": 3148,
-      "discovered": 18,
+      "detail_links": 3147,
+      "discovered": 19,
       "accepted": 0,
       "error": null
     },
@@ -147,7 +147,7 @@
       "health": "healthy",
       "detail_links": 52,
       "discovered": 52,
-      "accepted": 1,
+      "accepted": 2,
       "error": null
     }
   ],

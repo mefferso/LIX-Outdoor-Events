@@ -169,5 +169,21 @@
   "lux lounge 875 beach blvd biloxi, mississippi 39530": null,
   "hollywood casino gulf coast 711 hollywood boulevard bay st. louis, mississippi 39520": null,
   "riverfront park 4836 main st moss point, mississippi 39563": null,
-  "beau rivage theatre 875 beach blvd biloxi, mississippi 39": null
+  "beau rivage theatre 875 beach blvd biloxi, mississippi 39": null,
+  "100 north boulevard, baton rouge, louisiana 70801": {
+    "latitude": 30.4465932,
+    "longitude": -91.1890705,
+    "display_name": "Old State Capitol, 100, North Boulevard, Spanish Town, Downtown Development District, Baton Rouge, East Baton Rouge Parish, Louisiana, 70801, United States"
+  },
+  "1335 bayou dularge road, theriot, la": {
+    "latitude": 29.4574382,
+    "longitude": -90.7497838,
+    "display_name": "Saint Eloi Catholic Church, 1335, Bayou Dularge Road, Theriot, Terrebonne Parish, Louisiana, 70397, United States"
+  },
+  "point cadet marina 119 beach blvd biloxi, mississippi 39530": null,
+  "850 bayview avenue biloxi, mississippi": {
+    "latitude": 30.411155,
+    "longitude": -88.8891557,
+    "display_name": "850, Bayview Avenue, Biloxi, Harrison County, Mississippi, 39530, United States"
+  }
 }
