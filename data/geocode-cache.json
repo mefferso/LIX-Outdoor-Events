@@ -185,5 +185,10 @@
     "latitude": 30.411155,
     "longitude": -88.8891557,
     "display_name": "850, Bayview Avenue, Biloxi, Harrison County, Mississippi, 39530, United States"
+  },
+  "156 camellia st biloxi, mississippi": {
+    "latitude": 30.395606,
+    "longitude": -88.953351,
+    "display_name": "156, Camellia Street, Biloxi, Harrison County, Mississippi, 39531, United States"
   }
 }
