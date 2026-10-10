@@ -76,6 +76,33 @@
     "source_url": "https://www.neworleans.com/event/drum-circle-with-tim-brown-ii/203732/"
   },
   {
+    "id": "hancock-whitney-classic-mississippi-state-vs-southern-miss-2026-10-10-db6c408",
+    "name": "Hancock Whitney Classic | Mississippi State vs Southern Miss",
+    "dates": [
+      "2026-10-10"
+    ],
+    "start": "2026-10-10T00:00:00-05:00",
+    "end": "2026-10-10T23:59:00-05:00",
+    "all_day": false,
+    "latitude": 30.395455,
+    "longitude": -88.893256,
+    "venue": "Keesler Federal Park 105 Caillavet St Biloxi, Mississippi 39530",
+    "address": "",
+    "city": "",
+    "state": "",
+    "parish_county": "",
+    "idss_area": "",
+    "category": "sports",
+    "outdoor_status": "outdoor",
+    "origin": "automated",
+    "importance": "moderate",
+    "location_confidence": 0.78,
+    "outdoor_confidence": 0.78,
+    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
+    "source_name": "Coastal Mississippi",
+    "source_url": "https://www.coastalmississippi.com/events/hancock-whitney-classic-mississippi-state-vs-southern-miss/"
+  },
+  {
     "id": "geaux-fish-catfish-rodeo-2026-10-10-bb563c6",
     "name": "GEAUX Fish Catfish Rodeo",
     "dates": [
@@ -101,33 +128,6 @@
     "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
     "source_name": "Visit Baton Rouge",
     "source_url": "https://www.visitbatonrouge.com/events/geaux-fish-catfish-rodeo/"
-  },
-  {
-    "id": "red-stick-farmers-market-at-main-street-market-in-downtown-baton-rouge-2026-10-10-d9a7cf3",
-    "name": "Red Stick Farmers Market at Main Street Market in Downtown Baton Rouge",
-    "dates": [
-      "2026-10-10"
-    ],
-    "start": "2026-10-10T08:00:00-05:00",
-    "end": "2026-10-10T12:00:00-05:00",
-    "all_day": false,
-    "latitude": 30.451583,
-    "longitude": -91.185794,
-    "venue": "Red Stick Farmers Market",
-    "address": "501 Main Street, Baton Rouge, Louisiana 70802",
-    "city": "Baton Rouge",
-    "state": "Louisiana",
-    "parish_county": "East Baton Rouge Parish",
-    "idss_area": "Baton Rouge Metro",
-    "category": "festival",
-    "outdoor_status": "outdoor",
-    "origin": "automated",
-    "importance": "moderate",
-    "location_confidence": 0.78,
-    "outdoor_confidence": 0.78,
-    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
-    "source_name": "Visit Baton Rouge",
-    "source_url": "https://www.visitbatonrouge.com/events/red-stick-farmers-market-at-main-street-market-in-downtown-baton-rouge/"
   },
   {
     "id": "cruisin-the-coast-2026-10-10-1d678d3",
@@ -290,6 +290,33 @@
     "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
     "source_name": "Louisiana Northshore",
     "source_url": "https://www.visitthenorthshore.com/event/gator-tail-5k-trail-run/10849/"
+  },
+  {
+    "id": "red-stick-farmers-market-at-main-street-market-in-downtown-baton-rouge-2026-10-17-dd01ad4",
+    "name": "Red Stick Farmers Market at Main Street Market in Downtown Baton Rouge",
+    "dates": [
+      "2026-10-17"
+    ],
+    "start": "2026-10-17T08:00:00-05:00",
+    "end": "2026-10-17T12:00:00-05:00",
+    "all_day": false,
+    "latitude": 30.451583,
+    "longitude": -91.185794,
+    "venue": "Red Stick Farmers Market",
+    "address": "501 Main Street, Baton Rouge, Louisiana 70802",
+    "city": "Baton Rouge",
+    "state": "Louisiana",
+    "parish_county": "East Baton Rouge Parish",
+    "idss_area": "Baton Rouge Metro",
+    "category": "festival",
+    "outdoor_status": "outdoor",
+    "origin": "automated",
+    "importance": "moderate",
+    "location_confidence": 0.78,
+    "outdoor_confidence": 0.78,
+    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
+    "source_name": "Visit Baton Rouge",
+    "source_url": "https://www.visitbatonrouge.com/events/red-stick-farmers-market-at-main-street-market-in-downtown-baton-rouge/"
   },
   {
     "id": "lsu-football-vs-mississippi-state-2026-10-17-49fc898",
