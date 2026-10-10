@@ -190,5 +190,29 @@
     "latitude": 30.395606,
     "longitude": -88.953351,
     "display_name": "156, Camellia Street, Biloxi, Harrison County, Mississippi, 39531, United States"
-  }
+  },
+  "3000 zoo circle, baton rouge, louisiana 70807": null,
+  "240 st. louis street, baton rouge, louisiana 70802": {
+    "latitude": 30.4449521,
+    "longitude": -91.1879156,
+    "display_name": "River Center Performing Arts Theater, 240, Saint Louis Street, Downtown Development District, Baton Rouge, East Baton Rouge Parish, Louisiana, 70802, United States"
+  },
+  "104 downtown ct, houma, la 70363": {
+    "latitude": 29.59714,
+    "longitude": -90.6938904,
+    "display_name": "104, Downtown Court, Houma, Terrebonne Parish, Louisiana, 70363, United States"
+  },
+  "houma, la, houma, la 70360": {
+    "latitude": 29.5971335,
+    "longitude": -90.7584147,
+    "display_name": "Houma Highlands Court, Houma Highlands, Houma, Terrebonne Parish, Louisiana, 70360, United States"
+  },
+  "7850 w main st, houma, la 70360": {
+    "latitude": 29.6212355,
+    "longitude": -90.7492073,
+    "display_name": "West Main Street, Bayou Cane, Houma, Terrebonne Parish, Louisiana, 70360, United States"
+  },
+  "paradise pier stage | margaritaville resort biloxi 195 bach blvd biloxi, mississippi 39530": null,
+  "stars & stripes realty llc 2700 24th ave gulfport, mississippi 39501": null,
+  "chandeleur island brewing company 2711 14th street gulfport, mississippi 39501": null
 }

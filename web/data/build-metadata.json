@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-10-09T17:37:45-05:00",
-  "event_count": 9,
+  "generated_at": "2026-10-10T00:51:48-05:00",
+  "event_count": 13,
   "manual_event_count": 0,
-  "automated_event_count": 9,
-  "automated_candidate_count": 9,
-  "collection_window_start": "2026-10-09",
-  "collection_window_end": "2026-10-16",
+  "automated_event_count": 13,
+  "automated_candidate_count": 14,
+  "collection_window_start": "2026-10-10",
+  "collection_window_end": "2026-10-17",
   "timezone": "America/Chicago",
   "boundary_source": "NOAA/NWS reference map FeatureServer",
   "pipeline_state": "automated-multi-source-v1",
@@ -15,9 +15,9 @@
       "name": "NewOrleans.com",
       "success": true,
       "health": "healthy",
-      "detail_links": 25,
+      "detail_links": 26,
       "discovered": 41,
-      "accepted": 0,
+      "accepted": 2,
       "error": null
     },
     {
@@ -37,7 +37,7 @@
       "health": "healthy",
       "detail_links": 16,
       "discovered": 16,
-      "accepted": 1,
+      "accepted": 2,
       "error": null
     },
     {
@@ -67,7 +67,7 @@
       "health": "healthy",
       "detail_links": 0,
       "discovered": 13,
-      "accepted": 0,
+      "accepted": 1,
       "error": null
     },
     {
@@ -77,7 +77,7 @@
       "health": "healthy",
       "detail_links": 0,
       "discovered": 13,
-      "accepted": 0,
+      "accepted": 1,
       "error": null
     },
     {
@@ -97,7 +97,7 @@
       "health": "healthy",
       "detail_links": 0,
       "discovered": 12,
-      "accepted": 1,
+      "accepted": 2,
       "error": null
     },
     {
@@ -115,7 +115,7 @@
       "name": "Downtown Baton Rouge",
       "success": true,
       "health": "healthy",
-      "detail_links": 43,
+      "detail_links": 3148,
       "discovered": 18,
       "accepted": 0,
       "error": null
@@ -137,7 +137,7 @@
       "health": "healthy",
       "detail_links": 259,
       "discovered": 38,
-      "accepted": 1,
+      "accepted": 0,
       "error": null
     },
     {
@@ -145,8 +145,8 @@
       "name": "Sun Herald Events",
       "success": true,
       "health": "healthy",
-      "detail_links": 51,
-      "discovered": 51,
+      "detail_links": 28,
+      "discovered": 28,
       "accepted": 2,
       "error": null
     }
