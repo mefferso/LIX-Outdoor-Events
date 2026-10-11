@@ -231,5 +231,18 @@
     "latitude": 30.3937767,
     "longitude": -88.9382413,
     "display_name": "1696, Beach Boulevard, Edgewater Park, Biloxi, Harrison County, Mississippi, 39531, United States"
-  }
+  },
+  "100 men hall 303 union street bay st. louis, mississippi 39520": null,
+  "infinity science center 1 discovery circle pearlington, mississippi 39572": {
+    "latitude": 30.3118283,
+    "longitude": -89.6049456,
+    "display_name": "INFINITY Science Center, 1, Discovery Circle, Pearlington, Hancock County, Mississippi, 39572, United States"
+  },
+  "pass christian books 301 east scenic drive pass christian, mississippi 39571": null,
+  "2350 beach boulevard biloxi, mississippi 39531": {
+    "latitude": 30.3913532,
+    "longitude": -88.9738697,
+    "display_name": "2350, Beach Boulevard, Edgewater Park, Biloxi, Harrison County, Mississippi, 39531, United States"
+  },
+  "tony's brick oven pizzeria 2417 14th street gulfport, mississippi 39501": null
 }
