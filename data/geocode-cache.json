@@ -244,5 +244,10 @@
     "longitude": -88.9738697,
     "display_name": "2350, Beach Boulevard, Edgewater Park, Biloxi, Harrison County, Mississippi, 39531, United States"
   },
-  "tony's brick oven pizzeria 2417 14th street gulfport, mississippi 39501": null
+  "tony's brick oven pizzeria 2417 14th street gulfport, mississippi 39501": null,
+  "860 st louis st, baton rouge, louisiana 70802": {
+    "latitude": 30.4398808,
+    "longitude": -91.187563,
+    "display_name": "George's Place, 860, Saint Louis Street, Downtown Development District, Baton Rouge, East Baton Rouge Parish, Louisiana, 70802, United States"
+  }
 }
