@@ -133,33 +133,6 @@
     "source_url": "https://www.neworleans.com/event/ghosts-in-the-oaks/84519/"
   },
   {
-    "id": "churchs-chicken-hosts-block-party-in-gulfport-win-free-chicken-for-a-year-2026-10-15-8258b2c",
-    "name": "Church’s Chicken Hosts Block Party in Gulfport Win Free Chicken for a Year",
-    "dates": [
-      "2026-10-15"
-    ],
-    "start": "2026-10-15T16:00:00-05:00",
-    "end": "2026-10-15T19:00:00-05:00",
-    "all_day": false,
-    "latitude": 30.38,
-    "longitude": -89.09133,
-    "venue": "Church's Texas Chicken",
-    "address": "2321 Pass Road, Gulfport, MS 39501",
-    "city": "Gulfport",
-    "state": "MS",
-    "parish_county": "Harrison County",
-    "idss_area": "Mississippi Coast",
-    "category": "other",
-    "outdoor_status": "outdoor",
-    "origin": "automated",
-    "importance": "moderate",
-    "location_confidence": 0.96,
-    "outdoor_confidence": 0.78,
-    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
-    "source_name": "Sun Herald Events",
-    "source_url": "https://www.sunherald.com/events/#/details/church-s-chicken-hosts-block-party-in-gulfport-win-free-chicken-for-a-year/20171659/2026-10-15T16"
-  },
-  {
     "id": "bayou-dularge-cajun-fair-2026-10-16-d2df792",
     "name": "Bayou Dularge Cajun Fair",
     "dates": [
