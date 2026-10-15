@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-10-14T23:37:35-05:00",
+  "generated_at": "2026-10-15T06:27:50-05:00",
   "event_count": 13,
   "manual_event_count": 0,
   "automated_event_count": 13,
   "automated_candidate_count": 16,
-  "collection_window_start": "2026-10-14",
-  "collection_window_end": "2026-10-21",
+  "collection_window_start": "2026-10-15",
+  "collection_window_end": "2026-10-22",
   "timezone": "America/Chicago",
   "boundary_source": "NOAA/NWS reference map FeatureServer",
   "pipeline_state": "automated-multi-source-v1",
@@ -25,7 +25,7 @@
       "name": "Visit Baton Rouge",
       "success": true,
       "health": "healthy",
-      "detail_links": 252,
+      "detail_links": 243,
       "discovered": 26,
       "accepted": 1,
       "error": null
@@ -93,12 +93,12 @@
     {
       "key": "lsu_football",
       "name": "LSU Athletics",
-      "success": false,
-      "health": "failed",
+      "success": true,
+      "health": "healthy",
       "detail_links": 0,
-      "discovered": 0,
-      "accepted": 0,
-      "error": "source returned zero events"
+      "discovered": 12,
+      "accepted": 1,
+      "error": null
     },
     {
       "key": "mardigras_neworleans",
@@ -115,7 +115,7 @@
       "name": "Downtown Baton Rouge",
       "success": true,
       "health": "healthy",
-      "detail_links": 3149,
+      "detail_links": 3150,
       "discovered": 18,
       "accepted": 0,
       "error": null
@@ -135,7 +135,7 @@
       "name": "Coastal Mississippi",
       "success": true,
       "health": "healthy",
-      "detail_links": 238,
+      "detail_links": 234,
       "discovered": 38,
       "accepted": 0,
       "error": null
@@ -145,16 +145,16 @@
       "name": "Sun Herald Events",
       "success": true,
       "health": "healthy",
-      "detail_links": 52,
-      "discovered": 52,
+      "detail_links": 51,
+      "discovered": 51,
       "accepted": 1,
       "error": null
     }
   ],
   "source_health": {
-    "healthy": 13,
+    "healthy": 14,
     "degraded": 0,
-    "failed": 1,
+    "failed": 0,
     "total": 14
   },
   "notes": "Automated source collection is merged with a curated safety-net file. If an individual source fails, its still-in-window last-known-good events are retained while source health remains failed. Unknown indoor/outdoor events and points outside the LIX CWA are excluded."

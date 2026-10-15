@@ -49,13 +49,13 @@
     "source_url": "https://www.visitthenorthshore.com/event/zoo-2-u-fall-fest-pumpkin-patch/8718/"
   },
   {
-    "id": "adonis-rose-lagniappe-sessions-with-kurt-brunus-2026-10-14-e303a0c",
-    "name": "Adonis Rose Lagniappe Sessions with Kurt Brunus",
+    "id": "bruno-elisabetsy-trio-2026-10-15-390e949",
+    "name": "Bruno Elisabetsy Trio",
     "dates": [
-      "2026-10-14"
+      "2026-10-15"
     ],
-    "start": "2026-10-14T00:00:00-05:00",
-    "end": "2026-10-14T00:00:00-05:00",
+    "start": "2026-10-15T00:00:00-05:00",
+    "end": "2026-10-15T00:00:00-05:00",
     "all_day": true,
     "latitude": 29.956142,
     "longitude": -90.073393,
@@ -73,34 +73,7 @@
     "outdoor_confidence": 0.78,
     "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
     "source_name": "NewOrleans.com",
-    "source_url": "https://www.neworleans.com/event/adonis-rose-lagniappe-sessions-with-kurt-brunus/203757/"
-  },
-  {
-    "id": "zoë-de-priester-michael-pellera-2026-10-14-ecbe023",
-    "name": "Zoë de Priester & Michael Pellera",
-    "dates": [
-      "2026-10-14"
-    ],
-    "start": "2026-10-14T00:00:00-05:00",
-    "end": "2026-10-14T00:00:00-05:00",
-    "all_day": true,
-    "latitude": 29.956142,
-    "longitude": -90.073393,
-    "venue": "The New Orleans Jazz National Historical Park",
-    "address": "New Orleans",
-    "city": "New Orleans",
-    "state": "",
-    "parish_county": "Orleans Parish",
-    "idss_area": "New Orleans Metro",
-    "category": "other",
-    "outdoor_status": "outdoor",
-    "origin": "automated",
-    "importance": "major",
-    "location_confidence": 0.78,
-    "outdoor_confidence": 0.78,
-    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
-    "source_name": "NewOrleans.com",
-    "source_url": "https://www.neworleans.com/event/zo%c3%ab-de-priester-%26-michael-pellera/206072/"
+    "source_url": "https://www.neworleans.com/event/bruno-elisabetsy-trio/202600/"
   },
   {
     "id": "ghosts-in-the-oaks-2026-10-15-2f6e6dc",
@@ -131,6 +104,33 @@
     "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
     "source_name": "NewOrleans.com",
     "source_url": "https://www.neworleans.com/event/ghosts-in-the-oaks/84519/"
+  },
+  {
+    "id": "rosalynn-de-roos-buku-do-choro-2026-10-15-23f4e98",
+    "name": "Rosalynn de Roos & Buku Do Choro",
+    "dates": [
+      "2026-10-15"
+    ],
+    "start": "2026-10-15T00:00:00-05:00",
+    "end": "2026-10-15T00:00:00-05:00",
+    "all_day": true,
+    "latitude": 29.956142,
+    "longitude": -90.073393,
+    "venue": "The New Orleans Jazz National Historical Park",
+    "address": "New Orleans",
+    "city": "New Orleans",
+    "state": "",
+    "parish_county": "Orleans Parish",
+    "idss_area": "New Orleans Metro",
+    "category": "other",
+    "outdoor_status": "outdoor",
+    "origin": "automated",
+    "importance": "major",
+    "location_confidence": 0.78,
+    "outdoor_confidence": 0.78,
+    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
+    "source_name": "NewOrleans.com",
+    "source_url": "https://www.neworleans.com/event/rosalynn-de-roos-%26-buku-do-choro/204754/"
   },
   {
     "id": "churchs-chicken-hosts-block-party-in-gulfport-win-free-chicken-for-a-year-2026-10-15-8258b2c",
