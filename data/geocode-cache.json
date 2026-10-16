@@ -267,5 +267,17 @@
   "the sound amphitheater 3855 dolphin drive gautier, mississippi 39553": null,
   "historic depot grounds 1928 depot way bay st. louis, mississippi 39520": null,
   "fallen oak golf 24400 hwy 15 saucier, mississippi 39574": null,
-  "beauvoir, the jefferson davis home & presidential library 2244 beach blvd biloxi, mississippi 39531": null
+  "beauvoir, the jefferson davis home & presidential library 2244 beach blvd biloxi, mississippi 39531": null,
+  "86 valhi blvd, houma, la": {
+    "latitude": 29.5819578,
+    "longitude": -90.7315593,
+    "display_name": "86, Valhi Boulevard, Argyle, Houma, Terrebonne Parish, Louisiana, 70360, United States"
+  },
+  "mississippi coast coliseum 2350 beach boulevard biloxi, mississippi 39531": null,
+  "traintastic 615 pass road gulfport, mississippi 39501": {
+    "latitude": 30.3880937,
+    "longitude": -89.0620717,
+    "display_name": "TrainTastic, 615, Pass Road, Gulfport, Harrison County, Mississippi, 39507, United States"
+  },
+  "the mary c. o'keefe cultural arts center | trent lott theater 1600 government street ocean springs, mississippi 39564": null
 }

@@ -49,115 +49,31 @@
     "source_url": "https://www.visitthenorthshore.com/event/zoo-2-u-fall-fest-pumpkin-patch/8718/"
   },
   {
-    "id": "bruno-elisabetsy-trio-2026-10-15-390e949",
-    "name": "Bruno Elisabetsy Trio",
+    "id": "nola-funk-fest-ft-galactic-ft-jelly-joseph-dumpstaphunk-soul-project-more-2026-10-16-a582228",
+    "name": "NOLA Funk Fest ft. Galactic ft. Jelly Joseph, Dumpstaphunk, Soul Project + More!",
     "dates": [
-      "2026-10-15"
+      "2026-10-16"
     ],
-    "start": "2026-10-15T00:00:00-05:00",
-    "end": "2026-10-15T00:00:00-05:00",
+    "start": "2026-10-16T00:00:00-05:00",
+    "end": "2026-10-16T00:00:00-05:00",
     "all_day": true,
     "latitude": 29.956142,
     "longitude": -90.073393,
-    "venue": "The New Orleans Jazz National Historical Park",
+    "venue": "Goldring Woldenberg Riverfront Park",
     "address": "New Orleans",
     "city": "New Orleans",
     "state": "",
-    "parish_county": "Orleans Parish",
-    "idss_area": "New Orleans Metro",
-    "category": "other",
-    "outdoor_status": "outdoor",
-    "origin": "automated",
-    "importance": "major",
-    "location_confidence": 0.78,
-    "outdoor_confidence": 0.78,
-    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
-    "source_name": "NewOrleans.com",
-    "source_url": "https://www.neworleans.com/event/bruno-elisabetsy-trio/202600/"
-  },
-  {
-    "id": "ghosts-in-the-oaks-2026-10-15-2f6e6dc",
-    "name": "Ghosts in the Oaks",
-    "dates": [
-      "2026-10-15",
-      "2026-10-16",
-      "2026-10-17",
-      "2026-10-18"
-    ],
-    "start": "2026-10-15T00:00:00-05:00",
-    "end": "2026-10-18T00:00:00-05:00",
-    "all_day": true,
-    "latitude": 29.9934,
-    "longitude": -90.0982,
-    "venue": "New Orleans City Park",
-    "address": "New Orleans",
-    "city": "New Orleans",
-    "state": "LA",
     "parish_county": "Orleans Parish",
     "idss_area": "New Orleans Metro",
     "category": "festival",
     "outdoor_status": "outdoor",
     "origin": "automated",
     "importance": "moderate",
-    "location_confidence": 0.99,
-    "outdoor_confidence": 0.99,
-    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
-    "source_name": "NewOrleans.com",
-    "source_url": "https://www.neworleans.com/event/ghosts-in-the-oaks/84519/"
-  },
-  {
-    "id": "rosalynn-de-roos-buku-do-choro-2026-10-15-23f4e98",
-    "name": "Rosalynn de Roos & Buku Do Choro",
-    "dates": [
-      "2026-10-15"
-    ],
-    "start": "2026-10-15T00:00:00-05:00",
-    "end": "2026-10-15T00:00:00-05:00",
-    "all_day": true,
-    "latitude": 29.956142,
-    "longitude": -90.073393,
-    "venue": "The New Orleans Jazz National Historical Park",
-    "address": "New Orleans",
-    "city": "New Orleans",
-    "state": "",
-    "parish_county": "Orleans Parish",
-    "idss_area": "New Orleans Metro",
-    "category": "other",
-    "outdoor_status": "outdoor",
-    "origin": "automated",
-    "importance": "major",
     "location_confidence": 0.78,
     "outdoor_confidence": 0.78,
     "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
     "source_name": "NewOrleans.com",
-    "source_url": "https://www.neworleans.com/event/rosalynn-de-roos-%26-buku-do-choro/204754/"
-  },
-  {
-    "id": "churchs-chicken-hosts-block-party-in-gulfport-win-free-chicken-for-a-year-2026-10-15-8258b2c",
-    "name": "Church’s Chicken Hosts Block Party in Gulfport Win Free Chicken for a Year",
-    "dates": [
-      "2026-10-15"
-    ],
-    "start": "2026-10-15T16:00:00-05:00",
-    "end": "2026-10-15T19:00:00-05:00",
-    "all_day": false,
-    "latitude": 30.38,
-    "longitude": -89.09133,
-    "venue": "Church's Texas Chicken",
-    "address": "2321 Pass Road, Gulfport, MS 39501",
-    "city": "Gulfport",
-    "state": "MS",
-    "parish_county": "Harrison County",
-    "idss_area": "Mississippi Coast",
-    "category": "other",
-    "outdoor_status": "outdoor",
-    "origin": "automated",
-    "importance": "moderate",
-    "location_confidence": 0.96,
-    "outdoor_confidence": 0.78,
-    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
-    "source_name": "Sun Herald Events",
-    "source_url": "https://www.sunherald.com/events/#/details/church-s-chicken-hosts-block-party-in-gulfport-win-free-chicken-for-a-year/20171659/2026-10-15T16"
+    "source_url": "https://www.neworleans.com/event/nola-funk-fest-ft-galactic-ft-jelly-joseph-dumpstaphunk-soul-project-%2b-more!/203477/"
   },
   {
     "id": "bayou-dularge-cajun-fair-2026-10-16-d2df792",
@@ -268,6 +184,33 @@
     "source_url": "https://www.visitthenorthshore.com/event/monster-mash/9774/"
   },
   {
+    "id": "pink-dress-run-2026-10-17-da1bbe7",
+    "name": "Pink Dress Run",
+    "dates": [
+      "2026-10-17"
+    ],
+    "start": "2026-10-17T00:00:00-05:00",
+    "end": null,
+    "all_day": true,
+    "latitude": 30.36788,
+    "longitude": -89.095395,
+    "venue": "Location Festivities take place at Chandeleur Island Brewery and on the streets of Downtown Gulfport",
+    "address": "2711 14th Street, Gulfport, MS 39501",
+    "city": "Gulfport",
+    "state": "MS",
+    "parish_county": "Harrison County",
+    "idss_area": "Mississippi Coast",
+    "category": "race_parade",
+    "outdoor_status": "outdoor",
+    "origin": "automated",
+    "importance": "moderate",
+    "location_confidence": 0.96,
+    "outdoor_confidence": 0.78,
+    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
+    "source_name": "Sun Herald Events",
+    "source_url": "https://www.sunherald.com/events/#/details/pink-dress-run/17744057/2026-10-17T00"
+  },
+  {
     "id": "red-stick-farmers-market-at-main-street-market-in-downtown-baton-rouge-2026-10-17-dd01ad4",
     "name": "Red Stick Farmers Market at Main Street Market in Downtown Baton Rouge",
     "dates": [
@@ -322,8 +265,8 @@
     "source_url": "https://lsusports.net/sports/fb/schedule"
   },
   {
-    "id": "nicholls-state-university-vs-stephen-f-austin-2026-10-17-7830a1d",
-    "name": "Nicholls State University Vs Stephen F. Austin",
+    "id": "nicholls-state-university-vs-no-33-stephen-f-austin-2026-10-17-57a7974",
+    "name": "Nicholls State University Vs No. 3/3 Stephen F. Austin",
     "dates": [
       "2026-10-17"
     ],
@@ -374,5 +317,34 @@
     "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
     "source_name": "Southeastern Louisiana Athletics",
     "source_url": "https://lionsports.net/sports/football/schedule/2026"
+  },
+  {
+    "id": "rougarou-fest-2026-10-23-d04241c",
+    "name": "Rougarou Fest",
+    "dates": [
+      "2026-10-23",
+      "2026-10-24",
+      "2026-10-25"
+    ],
+    "start": "2026-10-23T22:00:00-05:00",
+    "end": "2026-10-25T00:00:00-05:00",
+    "all_day": false,
+    "latitude": 29.581958,
+    "longitude": -90.731559,
+    "venue": "Rougarou Fest Grounds",
+    "address": "86 Valhi Blvd, Houma, LA",
+    "city": "Houma",
+    "state": "LA",
+    "parish_county": "Terrebonne Parish",
+    "idss_area": "Bayou Parishes",
+    "category": "festival",
+    "outdoor_status": "outdoor",
+    "origin": "automated",
+    "importance": "moderate",
+    "location_confidence": 0.72,
+    "outdoor_confidence": 0.78,
+    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
+    "source_name": "Explore Houma",
+    "source_url": "https://explorehouma.com/events/rougarou-festival/"
   }
 ]
