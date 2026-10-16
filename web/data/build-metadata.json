@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-16T11:38:51-05:00",
+  "generated_at": "2026-10-16T16:07:02-05:00",
   "event_count": 12,
   "manual_event_count": 0,
   "automated_event_count": 12,
@@ -143,18 +143,18 @@
     {
       "key": "sunherald_events",
       "name": "Sun Herald Events",
-      "success": false,
-      "health": "failed",
-      "detail_links": 0,
-      "discovered": 0,
-      "accepted": 0,
-      "error": "fetch failed for https://r.jina.ai/https://www.sunherald.com/events/: HTTP Error 403: Forbidden"
+      "success": true,
+      "health": "healthy",
+      "detail_links": 51,
+      "discovered": 51,
+      "accepted": 1,
+      "error": null
     }
   ],
   "source_health": {
-    "healthy": 13,
+    "healthy": 14,
     "degraded": 0,
-    "failed": 1,
+    "failed": 0,
     "total": 14
   },
   "notes": "Automated source collection is merged with a curated safety-net file. If an individual source fails, its still-in-window last-known-good events are retained while source health remains failed. Unknown indoor/outdoor events and points outside the LIX CWA are excluded."
