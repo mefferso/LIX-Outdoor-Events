@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-17T10:33:59-05:00",
+  "generated_at": "2026-10-17T15:35:55-05:00",
   "event_count": 17,
   "manual_event_count": 0,
   "automated_event_count": 17,
@@ -45,8 +45,8 @@
       "name": "Explore Houma",
       "success": true,
       "health": "healthy",
-      "detail_links": 27,
-      "discovered": 24,
+      "detail_links": 23,
+      "discovered": 22,
       "accepted": 1,
       "error": null
     },
@@ -93,12 +93,12 @@
     {
       "key": "lsu_football",
       "name": "LSU Athletics",
-      "success": true,
-      "health": "healthy",
+      "success": false,
+      "health": "failed",
       "detail_links": 0,
-      "discovered": 12,
-      "accepted": 2,
-      "error": null
+      "discovered": 0,
+      "accepted": 0,
+      "error": "source returned zero events"
     },
     {
       "key": "mardigras_neworleans",
@@ -145,16 +145,16 @@
       "name": "Sun Herald Events",
       "success": true,
       "health": "healthy",
-      "detail_links": 52,
-      "discovered": 52,
+      "detail_links": 53,
+      "discovered": 53,
       "accepted": 2,
       "error": null
     }
   ],
   "source_health": {
-    "healthy": 14,
+    "healthy": 13,
     "degraded": 0,
-    "failed": 0,
+    "failed": 1,
     "total": 14
   },
   "notes": "Automated source collection is merged with a curated safety-net file. If an individual source fails, its still-in-window last-known-good events are retained while source health remains failed. Unknown indoor/outdoor events and points outside the LIX CWA are excluded."

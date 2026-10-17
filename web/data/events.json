@@ -214,33 +214,6 @@
     "source_url": "https://www.sunherald.com/events/#/details/pink-dress-run/17744057/2026-10-17T00"
   },
   {
-    "id": "red-stick-farmers-market-at-main-street-market-in-downtown-baton-rouge-2026-10-17-dd01ad4",
-    "name": "Red Stick Farmers Market at Main Street Market in Downtown Baton Rouge",
-    "dates": [
-      "2026-10-17"
-    ],
-    "start": "2026-10-17T08:00:00-05:00",
-    "end": "2026-10-17T12:00:00-05:00",
-    "all_day": false,
-    "latitude": 30.451583,
-    "longitude": -91.185794,
-    "venue": "Red Stick Farmers Market",
-    "address": "501 Main Street, Baton Rouge, Louisiana 70802",
-    "city": "Baton Rouge",
-    "state": "Louisiana",
-    "parish_county": "East Baton Rouge Parish",
-    "idss_area": "Baton Rouge Metro",
-    "category": "festival",
-    "outdoor_status": "outdoor",
-    "origin": "automated",
-    "importance": "moderate",
-    "location_confidence": 0.78,
-    "outdoor_confidence": 0.78,
-    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
-    "source_name": "Visit Baton Rouge",
-    "source_url": "https://www.visitbatonrouge.com/events/red-stick-farmers-market-at-main-street-market-in-downtown-baton-rouge/"
-  },
-  {
     "id": "lsu-football-vs-mississippi-state-2026-10-17-49fc898",
     "name": "LSU Football vs Mississippi State",
     "dates": [
@@ -415,6 +388,33 @@
     "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
     "source_name": "Tangipahoa Parish Convention & Visitors Bureau",
     "source_url": "https://www.tangitourism.com/Events/Fairs-Festivals"
+  },
+  {
+    "id": "red-stick-farmers-market-at-main-street-market-in-downtown-baton-rouge-2026-10-24-0935625",
+    "name": "Red Stick Farmers Market at Main Street Market in Downtown Baton Rouge",
+    "dates": [
+      "2026-10-24"
+    ],
+    "start": "2026-10-24T08:00:00-05:00",
+    "end": "2026-10-24T12:00:00-05:00",
+    "all_day": false,
+    "latitude": 30.451583,
+    "longitude": -91.185794,
+    "venue": "Red Stick Farmers Market",
+    "address": "501 Main Street, Baton Rouge, Louisiana 70802",
+    "city": "Baton Rouge",
+    "state": "Louisiana",
+    "parish_county": "East Baton Rouge Parish",
+    "idss_area": "Baton Rouge Metro",
+    "category": "festival",
+    "outdoor_status": "outdoor",
+    "origin": "automated",
+    "importance": "moderate",
+    "location_confidence": 0.78,
+    "outdoor_confidence": 0.78,
+    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
+    "source_name": "Visit Baton Rouge",
+    "source_url": "https://www.visitbatonrouge.com/events/red-stick-farmers-market-at-main-street-market-in-downtown-baton-rouge/"
   },
   {
     "id": "adventure-team-race-3-2026-10-24-30920a2",
