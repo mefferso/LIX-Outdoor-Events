@@ -279,5 +279,27 @@
     "longitude": -89.0620717,
     "display_name": "TrainTastic, 615, Pass Road, Gulfport, Harrison County, Mississippi, 39507, United States"
   },
-  "the mary c. o'keefe cultural arts center | trent lott theater 1600 government street ocean springs, mississippi 39564": null
+  "the mary c. o'keefe cultural arts center | trent lott theater 1600 government street ocean springs, mississippi 39564": null,
+  "natchitoches, la.": {
+    "latitude": 31.7606732,
+    "longitude": -93.0860209,
+    "display_name": "Natchitoches, Natchitoches Parish, Louisiana, United States"
+  },
+  "nacogdoches, tx": {
+    "latitude": 31.5970503,
+    "longitude": -94.5927451,
+    "display_name": "Nacogdoches County, Texas, United States"
+  },
+  "houston, tx": {
+    "latitude": 29.7589382,
+    "longitude": -95.3676974,
+    "display_name": "Houston, Harris County, Texas, United States"
+  },
+  "e. thomas street hammond, la": {
+    "latitude": 30.5043773,
+    "longitude": -90.4598167,
+    "display_name": "East Thomas Street, Hammond, Tangipahoa Parish, Louisiana, 70401, United States"
+  },
+  "fly llama brewing 186 bohn street biloxi, mississippi 39530": null,
+  "old town bay st. louis 128 main st bay st. louis, mississippi 39520": null
 }

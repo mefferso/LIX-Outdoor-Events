@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-10-16T23:24:36-05:00",
-  "event_count": 12,
+  "generated_at": "2026-10-17T05:43:04-05:00",
+  "event_count": 17,
   "manual_event_count": 0,
-  "automated_event_count": 12,
-  "automated_candidate_count": 13,
-  "collection_window_start": "2026-10-16",
-  "collection_window_end": "2026-10-23",
+  "automated_event_count": 17,
+  "automated_candidate_count": 20,
+  "collection_window_start": "2026-10-17",
+  "collection_window_end": "2026-10-24",
   "timezone": "America/Chicago",
   "boundary_source": "NOAA/NWS reference map FeatureServer",
   "pipeline_state": "automated-multi-source-v1",
@@ -15,9 +15,9 @@
       "name": "NewOrleans.com",
       "success": true,
       "health": "healthy",
-      "detail_links": 28,
-      "discovered": 38,
-      "accepted": 2,
+      "detail_links": 29,
+      "discovered": 41,
+      "accepted": 6,
       "error": null
     },
     {
@@ -25,7 +25,7 @@
       "name": "Visit Baton Rouge",
       "success": true,
       "health": "healthy",
-      "detail_links": 255,
+      "detail_links": 240,
       "discovered": 26,
       "accepted": 1,
       "error": null
@@ -35,8 +35,8 @@
       "name": "Louisiana Northshore",
       "success": true,
       "health": "healthy",
-      "detail_links": 17,
-      "discovered": 17,
+      "detail_links": 19,
+      "discovered": 18,
       "accepted": 3,
       "error": null
     },
@@ -47,7 +47,7 @@
       "health": "healthy",
       "detail_links": 29,
       "discovered": 24,
-      "accepted": 2,
+      "accepted": 1,
       "error": null
     },
     {
@@ -97,7 +97,7 @@
       "health": "healthy",
       "detail_links": 0,
       "discovered": 12,
-      "accepted": 1,
+      "accepted": 2,
       "error": null
     },
     {
@@ -116,7 +116,7 @@
       "success": true,
       "health": "healthy",
       "detail_links": 3149,
-      "discovered": 19,
+      "discovered": 18,
       "accepted": 0,
       "error": null
     },
@@ -127,7 +127,7 @@
       "health": "healthy",
       "detail_links": 0,
       "discovered": 17,
-      "accepted": 0,
+      "accepted": 2,
       "error": null
     },
     {
@@ -135,7 +135,7 @@
       "name": "Coastal Mississippi",
       "success": true,
       "health": "healthy",
-      "detail_links": 232,
+      "detail_links": 223,
       "discovered": 40,
       "accepted": 0,
       "error": null
@@ -147,7 +147,7 @@
       "health": "healthy",
       "detail_links": 52,
       "discovered": 52,
-      "accepted": 1,
+      "accepted": 2,
       "error": null
     }
   ],
