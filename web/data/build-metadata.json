@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-18T10:51:56-05:00",
+  "generated_at": "2026-10-18T15:42:07-05:00",
   "event_count": 13,
   "manual_event_count": 0,
   "automated_event_count": 13,
@@ -35,8 +35,8 @@
       "name": "Louisiana Northshore",
       "success": true,
       "health": "healthy",
-      "detail_links": 18,
-      "discovered": 18,
+      "detail_links": 16,
+      "discovered": 16,
       "accepted": 3,
       "error": null
     },
@@ -115,8 +115,8 @@
       "name": "Downtown Baton Rouge",
       "success": true,
       "health": "healthy",
-      "detail_links": 3149,
-      "discovered": 19,
+      "detail_links": 3150,
+      "discovered": 18,
       "accepted": 0,
       "error": null
     },
@@ -145,8 +145,8 @@
       "name": "Sun Herald Events",
       "success": true,
       "health": "healthy",
-      "detail_links": 51,
-      "discovered": 51,
+      "detail_links": 52,
+      "discovered": 52,
       "accepted": 1,
       "error": null
     }
