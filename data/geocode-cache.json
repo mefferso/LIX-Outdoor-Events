@@ -302,5 +302,10 @@
   },
   "fly llama brewing 186 bohn street biloxi, mississippi 39530": null,
   "old town bay st. louis 128 main st bay st. louis, mississippi 39520": null,
-  "gulfport sportsplex soccer fields 17200 16th st gulfport, mississippi 39503": null
+  "gulfport sportsplex soccer fields 17200 16th st gulfport, mississippi 39503": null,
+  "100 south river road, baton rouge, louisiana 70802": {
+    "latitude": 30.4461484,
+    "longitude": -91.1903823,
+    "display_name": "Louisiana Art and Science Museum, 100, South River Road, Spanish Town, Downtown Development District, Baton Rouge, East Baton Rouge Parish, Louisiana, 70801, United States"
+  }
 }
