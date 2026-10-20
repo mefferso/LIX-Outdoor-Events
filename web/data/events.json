@@ -49,6 +49,60 @@
     "source_url": "https://www.visitthenorthshore.com/event/zoo-2-u-fall-fest-pumpkin-patch/8718/"
   },
   {
+    "id": "arrowhead-jazz-band-with-james-jordan-2026-10-20-a53dc8d",
+    "name": "Arrowhead Jazz Band with James Jordan",
+    "dates": [
+      "2026-10-20"
+    ],
+    "start": "2026-10-20T00:00:00-05:00",
+    "end": "2026-10-20T00:00:00-05:00",
+    "all_day": true,
+    "latitude": 29.956142,
+    "longitude": -90.073393,
+    "venue": "The New Orleans Jazz National Historical Park",
+    "address": "New Orleans",
+    "city": "New Orleans",
+    "state": "",
+    "parish_county": "Orleans Parish",
+    "idss_area": "New Orleans Metro",
+    "category": "other",
+    "outdoor_status": "outdoor",
+    "origin": "automated",
+    "importance": "major",
+    "location_confidence": 0.78,
+    "outdoor_confidence": 0.78,
+    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
+    "source_name": "NewOrleans.com",
+    "source_url": "https://www.neworleans.com/event/arrowhead-jazz-band-with-james-jordan/203801/"
+  },
+  {
+    "id": "tim-brown-ii-2026-10-20-b4e444e",
+    "name": "Tim Brown, II",
+    "dates": [
+      "2026-10-20"
+    ],
+    "start": "2026-10-20T00:00:00-05:00",
+    "end": "2026-10-20T00:00:00-05:00",
+    "all_day": true,
+    "latitude": 29.956142,
+    "longitude": -90.073393,
+    "venue": "The New Orleans Jazz National Historical Park",
+    "address": "New Orleans",
+    "city": "New Orleans",
+    "state": "",
+    "parish_county": "Orleans Parish",
+    "idss_area": "New Orleans Metro",
+    "category": "other",
+    "outdoor_status": "outdoor",
+    "origin": "automated",
+    "importance": "major",
+    "location_confidence": 0.78,
+    "outdoor_confidence": 0.78,
+    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
+    "source_name": "NewOrleans.com",
+    "source_url": "https://www.neworleans.com/event/tim-brown-ii/203799/"
+  },
+  {
     "id": "childrens-museum-of-st-tammany-clays-for-kids-tournament-fundraiser-2026-10-23-dfab800",
     "name": "Children's Museum of St. Tammany Clays for Kids Tournament Fundraiser",
     "dates": [
@@ -250,33 +304,6 @@
     "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
     "source_name": "Visit Baton Rouge",
     "source_url": "https://www.visitbatonrouge.com/events/red-stick-farmers-market-at-main-street-market-in-downtown-baton-rouge/"
-  },
-  {
-    "id": "adventure-team-race-3-2026-10-24-30920a2",
-    "name": "Adventure Team Race #3",
-    "dates": [
-      "2026-10-24"
-    ],
-    "start": "2026-10-24T11:00:00-05:00",
-    "end": "2026-10-24T13:30:00-05:00",
-    "all_day": false,
-    "latitude": 30.397251,
-    "longitude": -88.896388,
-    "venue": "Altered Reality Brewing",
-    "address": "969 Howard Avenue, Biloxi, MS 39530",
-    "city": "Biloxi",
-    "state": "MS",
-    "parish_county": "Harrison County",
-    "idss_area": "Mississippi Coast",
-    "category": "race_parade",
-    "outdoor_status": "outdoor",
-    "origin": "automated",
-    "importance": "moderate",
-    "location_confidence": 0.96,
-    "outdoor_confidence": 0.78,
-    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
-    "source_name": "Sun Herald Events",
-    "source_url": "https://www.sunherald.com/events/#/details/adventure-team-race-3/20036057/2026-10-24T11"
   },
   {
     "id": "lsu-football-vs-alabama-2026-10-24-9f07a4b",
