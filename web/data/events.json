@@ -103,6 +103,33 @@
     "source_url": "https://www.neworleans.com/event/tim-brown-ii/203799/"
   },
   {
+    "id": "national-reptile-day-with-nature-on-the-geaux-2026-10-21-5b7126c",
+    "name": "National Reptile Day with Nature on the Geaux",
+    "dates": [
+      "2026-10-21"
+    ],
+    "start": "2026-10-21T14:30:00-05:00",
+    "end": "2026-10-21T16:30:00-05:00",
+    "all_day": false,
+    "latitude": 30.36742,
+    "longitude": -89.09282,
+    "venue": "Outdoor Classroom",
+    "address": "Gulfport, MS",
+    "city": "Gulfport",
+    "state": "MS",
+    "parish_county": "Harrison County",
+    "idss_area": "Mississippi Coast",
+    "category": "other",
+    "outdoor_status": "outdoor",
+    "origin": "automated",
+    "importance": "major",
+    "location_confidence": 0.96,
+    "outdoor_confidence": 0.78,
+    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
+    "source_name": "Sun Herald Events",
+    "source_url": "https://www.sunherald.com/events/#/details/national-reptile-day-with-nature-on-the-geaux/20226772/2026-10-21T14"
+  },
+  {
     "id": "childrens-museum-of-st-tammany-clays-for-kids-tournament-fundraiser-2026-10-23-dfab800",
     "name": "Children's Museum of St. Tammany Clays for Kids Tournament Fundraiser",
     "dates": [
