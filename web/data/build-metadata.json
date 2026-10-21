@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-21T06:47:40-05:00",
+  "generated_at": "2026-10-21T12:11:16-05:00",
   "event_count": 12,
   "manual_event_count": 0,
   "automated_event_count": 12,
@@ -25,7 +25,7 @@
       "name": "Visit Baton Rouge",
       "success": true,
       "health": "healthy",
-      "detail_links": 234,
+      "detail_links": 242,
       "discovered": 26,
       "accepted": 1,
       "error": null
@@ -35,8 +35,8 @@
       "name": "Louisiana Northshore",
       "success": true,
       "health": "healthy",
-      "detail_links": 20,
-      "discovered": 14,
+      "detail_links": 17,
+      "discovered": 13,
       "accepted": 3,
       "error": null
     },
@@ -115,8 +115,8 @@
       "name": "Downtown Baton Rouge",
       "success": true,
       "health": "healthy",
-      "detail_links": 3150,
-      "discovered": 18,
+      "detail_links": 3149,
+      "discovered": 19,
       "accepted": 0,
       "error": null
     },
