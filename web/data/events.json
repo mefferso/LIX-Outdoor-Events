@@ -49,13 +49,13 @@
     "source_url": "https://www.visitthenorthshore.com/event/zoo-2-u-fall-fest-pumpkin-patch/8718/"
   },
   {
-    "id": "arrowhead-jazz-band-with-james-jordan-2026-10-20-a53dc8d",
-    "name": "Arrowhead Jazz Band with James Jordan",
+    "id": "tom-mcdermott-tim-laughlin-2026-10-21-685466e",
+    "name": "Tom McDermott & Tim Laughlin",
     "dates": [
-      "2026-10-20"
+      "2026-10-21"
     ],
-    "start": "2026-10-20T00:00:00-05:00",
-    "end": "2026-10-20T00:00:00-05:00",
+    "start": "2026-10-21T00:00:00-05:00",
+    "end": "2026-10-21T00:00:00-05:00",
     "all_day": true,
     "latitude": 29.956142,
     "longitude": -90.073393,
@@ -73,34 +73,7 @@
     "outdoor_confidence": 0.78,
     "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
     "source_name": "NewOrleans.com",
-    "source_url": "https://www.neworleans.com/event/arrowhead-jazz-band-with-james-jordan/203801/"
-  },
-  {
-    "id": "tim-brown-ii-2026-10-20-b4e444e",
-    "name": "Tim Brown, II",
-    "dates": [
-      "2026-10-20"
-    ],
-    "start": "2026-10-20T00:00:00-05:00",
-    "end": "2026-10-20T00:00:00-05:00",
-    "all_day": true,
-    "latitude": 29.956142,
-    "longitude": -90.073393,
-    "venue": "The New Orleans Jazz National Historical Park",
-    "address": "New Orleans",
-    "city": "New Orleans",
-    "state": "",
-    "parish_county": "Orleans Parish",
-    "idss_area": "New Orleans Metro",
-    "category": "other",
-    "outdoor_status": "outdoor",
-    "origin": "automated",
-    "importance": "major",
-    "location_confidence": 0.78,
-    "outdoor_confidence": 0.78,
-    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
-    "source_name": "NewOrleans.com",
-    "source_url": "https://www.neworleans.com/event/tim-brown-ii/203799/"
+    "source_url": "https://www.neworleans.com/event/tom-mcdermott-%26-tim-laughlin/206075/"
   },
   {
     "id": "national-reptile-day-with-nature-on-the-geaux-2026-10-21-5b7126c",
