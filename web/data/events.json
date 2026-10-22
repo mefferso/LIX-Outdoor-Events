@@ -49,13 +49,13 @@
     "source_url": "https://www.visitthenorthshore.com/event/zoo-2-u-fall-fest-pumpkin-patch/8718/"
   },
   {
-    "id": "tom-mcdermott-tim-laughlin-2026-10-21-685466e",
-    "name": "Tom McDermott & Tim Laughlin",
+    "id": "patrice-fisher-arpa-with-omar-ramirez-2026-10-22-ec3ea93",
+    "name": "Patrice Fisher & Arpa with Omar Ramirez",
     "dates": [
-      "2026-10-21"
+      "2026-10-22"
     ],
-    "start": "2026-10-21T00:00:00-05:00",
-    "end": "2026-10-21T00:00:00-05:00",
+    "start": "2026-10-22T00:00:00-05:00",
+    "end": "2026-10-22T00:00:00-05:00",
     "all_day": true,
     "latitude": 29.956142,
     "longitude": -90.073393,
@@ -73,34 +73,7 @@
     "outdoor_confidence": 0.78,
     "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
     "source_name": "NewOrleans.com",
-    "source_url": "https://www.neworleans.com/event/tom-mcdermott-%26-tim-laughlin/206075/"
-  },
-  {
-    "id": "national-reptile-day-with-nature-on-the-geaux-2026-10-21-5b7126c",
-    "name": "National Reptile Day with Nature on the Geaux",
-    "dates": [
-      "2026-10-21"
-    ],
-    "start": "2026-10-21T14:30:00-05:00",
-    "end": "2026-10-21T16:30:00-05:00",
-    "all_day": false,
-    "latitude": 30.36742,
-    "longitude": -89.09282,
-    "venue": "Outdoor Classroom",
-    "address": "Gulfport, MS",
-    "city": "Gulfport",
-    "state": "MS",
-    "parish_county": "Harrison County",
-    "idss_area": "Mississippi Coast",
-    "category": "other",
-    "outdoor_status": "outdoor",
-    "origin": "automated",
-    "importance": "major",
-    "location_confidence": 0.96,
-    "outdoor_confidence": 0.78,
-    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
-    "source_name": "Sun Herald Events",
-    "source_url": "https://www.sunherald.com/events/#/details/national-reptile-day-with-nature-on-the-geaux/20226772/2026-10-21T14"
+    "source_url": "https://www.neworleans.com/event/patrice-fisher-%26-arpa-with-omar-ramirez/202608/"
   },
   {
     "id": "childrens-museum-of-st-tammany-clays-for-kids-tournament-fundraiser-2026-10-23-dfab800",
@@ -358,5 +331,32 @@
     "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
     "source_name": "Tulane Athletics",
     "source_url": "https://tulanegreenwave.com/sports/football/schedule/text"
+  },
+  {
+    "id": "os-garden-club-250-anniversary-celebration-2026-10-29-2525759",
+    "name": "OS Garden Club 250 Anniversary Celebration",
+    "dates": [
+      "2026-10-29"
+    ],
+    "start": "2026-10-29T10:00:00-05:00",
+    "end": "2026-10-29T11:00:00-05:00",
+    "all_day": false,
+    "latitude": 30.411384,
+    "longitude": -88.822413,
+    "venue": "Freedom Field",
+    "address": "Porter Avenue and General Pershing Avenue, Ocean Springs, MS 39564",
+    "city": "Ocean Springs",
+    "state": "MS",
+    "parish_county": "",
+    "idss_area": "Mississippi Coast",
+    "category": "festival",
+    "outdoor_status": "outdoor",
+    "origin": "automated",
+    "importance": "moderate",
+    "location_confidence": 0.96,
+    "outdoor_confidence": 0.78,
+    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
+    "source_name": "Sun Herald Events",
+    "source_url": "https://www.sunherald.com/events/#/details/os-garden-club-250-anniversary-celebration/19967089/2026-10-29T10"
   }
 ]
