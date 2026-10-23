@@ -308,5 +308,16 @@
     "longitude": -91.1903823,
     "display_name": "Louisiana Art and Science Museum, 100, South River Road, Spanish Town, Downtown Development District, Baton Rouge, East Baton Rouge Parish, Louisiana, 70801, United States"
   },
-  "lyman community center 13472 us-49 gulfport, mississippi 39503": null
+  "lyman community center 13472 us-49 gulfport, mississippi 39503": null,
+  "275 s river rd, baton rouge, louisiana 70802": {
+    "latitude": 30.4448425,
+    "longitude": -91.1890714,
+    "display_name": "Raising Cane's River Center, 275, South River Road, Downtown Development District, Baton Rouge, East Baton Rouge Parish, Louisiana, 70802, United States"
+  },
+  "hammond, la": {
+    "latitude": 30.5043583,
+    "longitude": -90.4611995,
+    "display_name": "Hammond, Tangipahoa Parish, Louisiana, United States"
+  },
+  "judge leon ford dr. hammond, la": null
 }
