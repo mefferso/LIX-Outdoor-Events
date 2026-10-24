@@ -319,5 +319,21 @@
     "longitude": -90.4611995,
     "display_name": "Hammond, Tangipahoa Parish, Louisiana, United States"
   },
-  "judge leon ford dr. hammond, la": null
+  "judge leon ford dr. hammond, la": null,
+  "701 north fourth street, baton rouge, louisiana 70802-": null,
+  "lake charles, la.": {
+    "latitude": 30.2305095,
+    "longitude": -93.2169807,
+    "display_name": "Lake Charles, Calcasieu Parish, Louisiana, United States"
+  },
+  "commerce, tx": {
+    "latitude": 33.2436492,
+    "longitude": -95.9026927,
+    "display_name": "Commerce, Hunt County, Texas, 75428, United States"
+  },
+  "tallahassee, fl": {
+    "latitude": 30.4380832,
+    "longitude": -84.2809332,
+    "display_name": "Tallahassee, Leon County, Florida, United States"
+  }
 }
