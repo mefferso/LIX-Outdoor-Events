@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-26T08:01:23-05:00",
+  "generated_at": "2026-10-26T17:39:29-05:00",
   "event_count": 7,
   "manual_event_count": 0,
   "automated_event_count": 7,
@@ -25,7 +25,7 @@
       "name": "Visit Baton Rouge",
       "success": true,
       "health": "healthy",
-      "detail_links": 218,
+      "detail_links": 223,
       "discovered": 26,
       "accepted": 1,
       "error": null
@@ -35,7 +35,7 @@
       "name": "Louisiana Northshore",
       "success": true,
       "health": "healthy",
-      "detail_links": 18,
+      "detail_links": 17,
       "discovered": 14,
       "accepted": 1,
       "error": null
@@ -96,7 +96,7 @@
       "success": true,
       "health": "healthy",
       "detail_links": 0,
-      "discovered": 11,
+      "discovered": 12,
       "accepted": 0,
       "error": null
     },
@@ -116,7 +116,7 @@
       "success": true,
       "health": "healthy",
       "detail_links": 3150,
-      "discovered": 18,
+      "discovered": 19,
       "accepted": 0,
       "error": null
     },
@@ -135,7 +135,7 @@
       "name": "Coastal Mississippi",
       "success": true,
       "health": "healthy",
-      "detail_links": 197,
+      "detail_links": 199,
       "discovered": 40,
       "accepted": 0,
       "error": null
@@ -145,8 +145,8 @@
       "name": "Sun Herald Events",
       "success": true,
       "health": "healthy",
-      "detail_links": 53,
-      "discovered": 53,
+      "detail_links": 52,
+      "discovered": 52,
       "accepted": 2,
       "error": null
     }
