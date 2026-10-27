@@ -179,32 +179,5 @@
     "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
     "source_name": "Visit Baton Rouge",
     "source_url": "https://www.visitbatonrouge.com/events/red-stick-farmers-market-at-main-street-market-in-downtown-baton-rouge/"
-  },
-  {
-    "id": "halloween-fun-festival-2026-10-31-881ffab",
-    "name": "Halloween Fun Festival",
-    "dates": [
-      "2026-10-31"
-    ],
-    "start": "2026-10-31T10:00:00-05:00",
-    "end": "2026-10-31T12:00:00-05:00",
-    "all_day": false,
-    "latitude": 30.382435,
-    "longitude": -89.037558,
-    "venue": "Lynn Meadows Discovery Center",
-    "address": "246 Dolan Ave, Gulfport, MS 39507",
-    "city": "Gulfport",
-    "state": "MS",
-    "parish_county": "Harrison County",
-    "idss_area": "Mississippi Coast",
-    "category": "festival",
-    "outdoor_status": "partial",
-    "origin": "automated",
-    "importance": "moderate",
-    "location_confidence": 0.96,
-    "outdoor_confidence": 0.72,
-    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
-    "source_name": "Sun Herald Events",
-    "source_url": "https://www.sunherald.com/events/#/details/halloween-fun-festival/20189891/2026-10-31T10"
   }
 ]
