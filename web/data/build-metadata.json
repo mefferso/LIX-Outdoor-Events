@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-27T13:00:05-05:00",
+  "generated_at": "2026-10-27T17:13:39-05:00",
   "event_count": 8,
   "manual_event_count": 0,
   "automated_event_count": 8,
@@ -25,7 +25,7 @@
       "name": "Visit Baton Rouge",
       "success": true,
       "health": "healthy",
-      "detail_links": 242,
+      "detail_links": 244,
       "discovered": 26,
       "accepted": 1,
       "error": null
@@ -35,8 +35,8 @@
       "name": "Louisiana Northshore",
       "success": true,
       "health": "healthy",
-      "detail_links": 17,
-      "discovered": 14,
+      "detail_links": 20,
+      "discovered": 15,
       "accepted": 1,
       "error": null
     },
@@ -93,12 +93,12 @@
     {
       "key": "lsu_football",
       "name": "LSU Athletics",
-      "success": false,
-      "health": "failed",
+      "success": true,
+      "health": "healthy",
       "detail_links": 0,
-      "discovered": 0,
+      "discovered": 12,
       "accepted": 0,
-      "error": "source returned zero events"
+      "error": null
     },
     {
       "key": "mardigras_neworleans",
@@ -115,8 +115,8 @@
       "name": "Downtown Baton Rouge",
       "success": true,
       "health": "healthy",
-      "detail_links": 3151,
-      "discovered": 18,
+      "detail_links": 41,
+      "discovered": 16,
       "accepted": 0,
       "error": null
     },
@@ -145,16 +145,16 @@
       "name": "Sun Herald Events",
       "success": true,
       "health": "healthy",
-      "detail_links": 53,
-      "discovered": 53,
+      "detail_links": 52,
+      "discovered": 52,
       "accepted": 1,
       "error": null
     }
   ],
   "source_health": {
-    "healthy": 13,
+    "healthy": 14,
     "degraded": 0,
-    "failed": 1,
+    "failed": 0,
     "total": 14
   },
   "notes": "Automated source collection is merged with a curated safety-net file. If an individual source fails, its still-in-window last-known-good events are retained while source health remains failed. Unknown indoor/outdoor events and points outside the LIX CWA are excluded."
