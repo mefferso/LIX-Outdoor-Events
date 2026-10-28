@@ -66,6 +66,60 @@
     "source_url": "https://www.tangitourism.com/Events/Fairs-Festivals"
   },
   {
+    "id": "2nd-annual-wwno-benefest-ft-tank-norman-of-tank-the-bangas-helen-gillet-leyla-mc-2026-10-28-4f59fde",
+    "name": "2nd Annual WWNO Benefest ft. Tank & Norman (of Tank & the Bangas) + Helen Gillet + Leyla McCalla",
+    "dates": [
+      "2026-10-28"
+    ],
+    "start": "2026-10-28T00:00:00-05:00",
+    "end": "2026-10-28T00:00:00-05:00",
+    "all_day": true,
+    "latitude": 29.9693,
+    "longitude": -90.0853,
+    "venue": "The Broadside",
+    "address": "New Orleans",
+    "city": "New Orleans",
+    "state": "LA",
+    "parish_county": "Orleans Parish",
+    "idss_area": "New Orleans Metro",
+    "category": "festival",
+    "outdoor_status": "partial",
+    "origin": "automated",
+    "importance": "moderate",
+    "location_confidence": 0.99,
+    "outdoor_confidence": 0.99,
+    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
+    "source_name": "NewOrleans.com",
+    "source_url": "https://www.neworleans.com/event/2nd-annual-wwno-benefest-ft-tank-%26-norman-(of-tank-%26-the-bangas)-%2b-helen-gillet-%2b-leyla-mccalla/206524/"
+  },
+  {
+    "id": "arrowhead-jazz-band-with-michael-torregano-jr-mahalia-jackson-tribute-2026-10-28-8d671aa",
+    "name": "Arrowhead Jazz Band with Michael Torregano, Jr. – Mahalia Jackson Tribute",
+    "dates": [
+      "2026-10-28"
+    ],
+    "start": "2026-10-28T00:00:00-05:00",
+    "end": "2026-10-28T00:00:00-05:00",
+    "all_day": true,
+    "latitude": 29.956142,
+    "longitude": -90.073393,
+    "venue": "The New Orleans Jazz National Historical Park",
+    "address": "New Orleans",
+    "city": "New Orleans",
+    "state": "",
+    "parish_county": "Orleans Parish",
+    "idss_area": "New Orleans Metro",
+    "category": "other",
+    "outdoor_status": "outdoor",
+    "origin": "automated",
+    "importance": "major",
+    "location_confidence": 0.78,
+    "outdoor_confidence": 0.78,
+    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
+    "source_name": "NewOrleans.com",
+    "source_url": "https://www.neworleans.com/event/arrowhead-jazz-band-with-michael-torregano-jr-%26%238211%3b-mahalia-jackson-tribute/203855/"
+  },
+  {
     "id": "os-garden-club-250-anniversary-celebration-2026-10-29-2525759",
     "name": "OS Garden Club 250 Anniversary Celebration",
     "dates": [
