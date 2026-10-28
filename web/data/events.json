@@ -66,60 +66,6 @@
     "source_url": "https://www.tangitourism.com/Events/Fairs-Festivals"
   },
   {
-    "id": "arrowhead-jazz-band-with-james-jordan-2026-10-27-650b663",
-    "name": "Arrowhead Jazz Band with James Jordan",
-    "dates": [
-      "2026-10-27"
-    ],
-    "start": "2026-10-27T00:00:00-05:00",
-    "end": "2026-10-27T00:00:00-05:00",
-    "all_day": true,
-    "latitude": 29.956142,
-    "longitude": -90.073393,
-    "venue": "The New Orleans Jazz National Historical Park",
-    "address": "New Orleans",
-    "city": "New Orleans",
-    "state": "",
-    "parish_county": "Orleans Parish",
-    "idss_area": "New Orleans Metro",
-    "category": "other",
-    "outdoor_status": "outdoor",
-    "origin": "automated",
-    "importance": "major",
-    "location_confidence": 0.78,
-    "outdoor_confidence": 0.78,
-    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
-    "source_name": "NewOrleans.com",
-    "source_url": "https://www.neworleans.com/event/arrowhead-jazz-band-with-james-jordan/203850/"
-  },
-  {
-    "id": "tim-brown-ii-2026-10-27-b6cafd1",
-    "name": "Tim Brown, II",
-    "dates": [
-      "2026-10-27"
-    ],
-    "start": "2026-10-27T00:00:00-05:00",
-    "end": "2026-10-27T00:00:00-05:00",
-    "all_day": true,
-    "latitude": 29.956142,
-    "longitude": -90.073393,
-    "venue": "The New Orleans Jazz National Historical Park",
-    "address": "New Orleans",
-    "city": "New Orleans",
-    "state": "",
-    "parish_county": "Orleans Parish",
-    "idss_area": "New Orleans Metro",
-    "category": "other",
-    "outdoor_status": "outdoor",
-    "origin": "automated",
-    "importance": "major",
-    "location_confidence": 0.78,
-    "outdoor_confidence": 0.78,
-    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
-    "source_name": "NewOrleans.com",
-    "source_url": "https://www.neworleans.com/event/tim-brown-ii/203848/"
-  },
-  {
     "id": "os-garden-club-250-anniversary-celebration-2026-10-29-2525759",
     "name": "OS Garden Club 250 Anniversary Celebration",
     "dates": [
