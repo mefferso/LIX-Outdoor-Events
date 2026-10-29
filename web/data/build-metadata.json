@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-10-29T07:59:33-05:00",
-  "event_count": 12,
+  "generated_at": "2026-10-29T17:44:20-05:00",
+  "event_count": 10,
   "manual_event_count": 0,
-  "automated_event_count": 12,
-  "automated_candidate_count": 14,
+  "automated_event_count": 10,
+  "automated_candidate_count": 12,
   "collection_window_start": "2026-10-29",
   "collection_window_end": "2026-11-05",
   "timezone": "America/Chicago",
@@ -25,7 +25,7 @@
       "name": "Visit Baton Rouge",
       "success": true,
       "health": "healthy",
-      "detail_links": 228,
+      "detail_links": 241,
       "discovered": 26,
       "accepted": 1,
       "error": null
@@ -45,8 +45,8 @@
       "name": "Explore Houma",
       "success": true,
       "health": "healthy",
-      "detail_links": 18,
-      "discovered": 17,
+      "detail_links": 19,
+      "discovered": 18,
       "accepted": 0,
       "error": null
     },
@@ -115,9 +115,9 @@
       "name": "Downtown Baton Rouge",
       "success": true,
       "health": "healthy",
-      "detail_links": 3153,
-      "discovered": 19,
-      "accepted": 2,
+      "detail_links": 3156,
+      "discovered": 18,
+      "accepted": 0,
       "error": null
     },
     {
