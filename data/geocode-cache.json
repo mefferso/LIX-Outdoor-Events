@@ -341,5 +341,10 @@
     "longitude": -91.1954718,
     "display_name": "2550, Gourrier Avenue, Baton Rouge, East Baton Rouge Parish, Louisiana, 70820, United States"
   },
-  "660 n. fourth street, baton rouge, louisiana 70802": null
+  "660 n. fourth street, baton rouge, louisiana 70802": null,
+  "275 south river rd, baton rouge, louisiana 70802": {
+    "latitude": 30.4448425,
+    "longitude": -91.1890714,
+    "display_name": "Raising Cane's River Center, 275, South River Road, Downtown Development District, Baton Rouge, East Baton Rouge Parish, Louisiana, 70802, United States"
+  }
 }

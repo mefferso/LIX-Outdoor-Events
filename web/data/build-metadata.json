@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-10-28T17:34:23-05:00",
-  "event_count": 8,
+  "generated_at": "2026-10-29T00:46:50-05:00",
+  "event_count": 11,
   "manual_event_count": 0,
-  "automated_event_count": 8,
-  "automated_candidate_count": 10,
-  "collection_window_start": "2026-10-28",
-  "collection_window_end": "2026-11-04",
+  "automated_event_count": 11,
+  "automated_candidate_count": 13,
+  "collection_window_start": "2026-10-29",
+  "collection_window_end": "2026-11-05",
   "timezone": "America/Chicago",
   "boundary_source": "NOAA/NWS reference map FeatureServer",
   "pipeline_state": "automated-multi-source-v1",
@@ -115,9 +115,9 @@
       "name": "Downtown Baton Rouge",
       "success": true,
       "health": "healthy",
-      "detail_links": 41,
-      "discovered": 16,
-      "accepted": 0,
+      "detail_links": 3154,
+      "discovered": 18,
+      "accepted": 2,
       "error": null
     },
     {
@@ -147,7 +147,7 @@
       "health": "healthy",
       "detail_links": 52,
       "discovered": 52,
-      "accepted": 1,
+      "accepted": 2,
       "error": null
     }
   ],
