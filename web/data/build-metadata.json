@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-30T00:47:19-05:00",
+  "generated_at": "2026-10-30T07:54:32-05:00",
   "event_count": 12,
   "manual_event_count": 0,
   "automated_event_count": 12,
@@ -16,7 +16,7 @@
       "success": true,
       "health": "healthy",
       "detail_links": 31,
-      "discovered": 49,
+      "discovered": 50,
       "accepted": 2,
       "error": null
     },
@@ -25,7 +25,7 @@
       "name": "Visit Baton Rouge",
       "success": true,
       "health": "healthy",
-      "detail_links": 246,
+      "detail_links": 232,
       "discovered": 26,
       "accepted": 1,
       "error": null
@@ -35,8 +35,8 @@
       "name": "Louisiana Northshore",
       "success": true,
       "health": "healthy",
-      "detail_links": 17,
-      "discovered": 14,
+      "detail_links": 20,
+      "discovered": 15,
       "accepted": 2,
       "error": null
     },
@@ -115,8 +115,8 @@
       "name": "Downtown Baton Rouge",
       "success": true,
       "health": "healthy",
-      "detail_links": 3155,
-      "discovered": 19,
+      "detail_links": 3156,
+      "discovered": 18,
       "accepted": 2,
       "error": null
     },
@@ -135,7 +135,7 @@
       "name": "Coastal Mississippi",
       "success": true,
       "health": "healthy",
-      "detail_links": 199,
+      "detail_links": 193,
       "discovered": 40,
       "accepted": 2,
       "error": null
