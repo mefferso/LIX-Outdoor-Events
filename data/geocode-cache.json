@@ -351,5 +351,15 @@
     "latitude": 30.4007626,
     "longitude": -88.8893818,
     "display_name": "Biloxi, Harrison County, Mississippi, United States"
+  },
+  "la": {
+    "latitude": 34.0536923,
+    "longitude": -118.2427676,
+    "display_name": "Los Angeles, Los Angeles County, California, United States"
+  },
+  "2350 beach blvd biloxi, mississippi": {
+    "latitude": 30.3913532,
+    "longitude": -88.9738697,
+    "display_name": "2350, Beach Boulevard, Edgewater Park, Biloxi, Harrison County, Mississippi, 39531, United States"
   }
 }

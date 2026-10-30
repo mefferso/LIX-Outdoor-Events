@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-10-29T17:44:20-05:00",
-  "event_count": 10,
+  "generated_at": "2026-10-30T00:47:19-05:00",
+  "event_count": 12,
   "manual_event_count": 0,
-  "automated_event_count": 10,
-  "automated_candidate_count": 12,
-  "collection_window_start": "2026-10-29",
-  "collection_window_end": "2026-11-05",
+  "automated_event_count": 12,
+  "automated_candidate_count": 13,
+  "collection_window_start": "2026-10-30",
+  "collection_window_end": "2026-11-06",
   "timezone": "America/Chicago",
   "boundary_source": "NOAA/NWS reference map FeatureServer",
   "pipeline_state": "automated-multi-source-v1",
@@ -17,7 +17,7 @@
       "health": "healthy",
       "detail_links": 31,
       "discovered": 49,
-      "accepted": 4,
+      "accepted": 2,
       "error": null
     },
     {
@@ -25,7 +25,7 @@
       "name": "Visit Baton Rouge",
       "success": true,
       "health": "healthy",
-      "detail_links": 241,
+      "detail_links": 246,
       "discovered": 26,
       "accepted": 1,
       "error": null
@@ -37,7 +37,7 @@
       "health": "healthy",
       "detail_links": 17,
       "discovered": 14,
-      "accepted": 1,
+      "accepted": 2,
       "error": null
     },
     {
@@ -115,9 +115,9 @@
       "name": "Downtown Baton Rouge",
       "success": true,
       "health": "healthy",
-      "detail_links": 3156,
-      "discovered": 18,
-      "accepted": 0,
+      "detail_links": 3155,
+      "discovered": 19,
+      "accepted": 2,
       "error": null
     },
     {
@@ -137,7 +137,7 @@
       "health": "healthy",
       "detail_links": 199,
       "discovered": 40,
-      "accepted": 1,
+      "accepted": 2,
       "error": null
     },
     {
@@ -147,7 +147,7 @@
       "health": "healthy",
       "detail_links": 52,
       "discovered": 52,
-      "accepted": 2,
+      "accepted": 1,
       "error": null
     }
   ],
