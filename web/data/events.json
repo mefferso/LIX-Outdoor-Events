@@ -91,6 +91,33 @@
     "source_url": "https://www.tangitourism.com/Events/Fairs-Festivals"
   },
   {
+    "id": "drum-circle-with-tim-brown-ii-2026-10-31-a904231",
+    "name": "Drum Circle with Tim Brown, II",
+    "dates": [
+      "2026-10-31"
+    ],
+    "start": "2026-10-31T00:00:00-05:00",
+    "end": "2026-10-31T00:00:00-05:00",
+    "all_day": true,
+    "latitude": 29.956142,
+    "longitude": -90.073393,
+    "venue": "The New Orleans Jazz National Historical Park",
+    "address": "New Orleans",
+    "city": "New Orleans",
+    "state": "",
+    "parish_county": "Orleans Parish",
+    "idss_area": "New Orleans Metro",
+    "category": "other",
+    "outdoor_status": "outdoor",
+    "origin": "automated",
+    "importance": "major",
+    "location_confidence": 0.78,
+    "outdoor_confidence": 0.78,
+    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
+    "source_name": "NewOrleans.com",
+    "source_url": "https://www.neworleans.com/event/drum-circle-with-tim-brown-ii/203879/"
+  },
+  {
     "id": "halloween-in-abita-springs-2026-10-31-7064113",
     "name": "Halloween in Abita Springs",
     "dates": [
@@ -302,7 +329,7 @@
     "outdoor_status": "partial",
     "origin": "automated",
     "importance": "moderate",
-    "location_confidence": 0.72,
+    "location_confidence": 0.78,
     "outdoor_confidence": 0.72,
     "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
     "source_name": "Explore Houma",
