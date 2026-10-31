@@ -366,5 +366,16 @@
     "latitude": 30.4999693,
     "longitude": -90.4601636,
     "display_name": "Southwest Railroad Avenue, Oliver, Hammond, Tangipahoa Parish, Louisiana, 70403, United States"
-  }
+  },
+  "1208 museum drive, houma, la": {
+    "latitude": 29.5887083,
+    "longitude": -90.7402854,
+    "display_name": "Southdown Plantation, 1208, Museum Drive, Houma, Terrebonne Parish, Louisiana, 70360, United States"
+  },
+  "211 aviation rd, houma, la 70363": {
+    "latitude": 29.5786194,
+    "longitude": -90.6612724,
+    "display_name": "211, Aviation Road, Houma, Terrebonne Parish, Louisiana, 70363, United States"
+  },
+  "historic hancock county courthouse coleman avenue waveland, mississippi 39576": null
 }
