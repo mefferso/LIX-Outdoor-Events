@@ -145,33 +145,6 @@
     "source_url": "https://www.visitthenorthshore.com/event/halloween-in-abita-springs/11428/"
   },
   {
-    "id": "red-stick-farmers-market-at-main-street-market-in-downtown-baton-rouge-2026-10-31-40f4818",
-    "name": "Red Stick Farmers Market at Main Street Market in Downtown Baton Rouge",
-    "dates": [
-      "2026-10-31"
-    ],
-    "start": "2026-10-31T08:00:00-05:00",
-    "end": "2026-10-31T12:00:00-05:00",
-    "all_day": false,
-    "latitude": 30.451583,
-    "longitude": -91.185794,
-    "venue": "Red Stick Farmers Market",
-    "address": "501 Main Street, Baton Rouge, Louisiana 70802",
-    "city": "Baton Rouge",
-    "state": "Louisiana",
-    "parish_county": "East Baton Rouge Parish",
-    "idss_area": "Baton Rouge Metro",
-    "category": "festival",
-    "outdoor_status": "outdoor",
-    "origin": "automated",
-    "importance": "moderate",
-    "location_confidence": 0.78,
-    "outdoor_confidence": 0.78,
-    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
-    "source_name": "Visit Baton Rouge",
-    "source_url": "https://www.visitbatonrouge.com/events/red-stick-farmers-market-at-main-street-market-in-downtown-baton-rouge/"
-  },
-  {
     "id": "halloween-fun-festival-2026-10-31-881ffab",
     "name": "Halloween Fun Festival",
     "dates": [
@@ -307,6 +280,33 @@
     "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
     "source_name": "Louisiana Northshore",
     "source_url": "https://www.visitthenorthshore.com/event/mandeville-veterans-day-parade/10949/"
+  },
+  {
+    "id": "red-stick-farmers-market-at-main-street-market-in-downtown-baton-rouge-2026-11-07-35749d3",
+    "name": "Red Stick Farmers Market at Main Street Market in Downtown Baton Rouge",
+    "dates": [
+      "2026-11-07"
+    ],
+    "start": "2026-11-07T08:00:00-06:00",
+    "end": "2026-11-07T12:00:00-06:00",
+    "all_day": false,
+    "latitude": 30.451583,
+    "longitude": -91.185794,
+    "venue": "Red Stick Farmers Market",
+    "address": "501 Main Street, Baton Rouge, Louisiana 70802",
+    "city": "Baton Rouge",
+    "state": "Louisiana",
+    "parish_county": "East Baton Rouge Parish",
+    "idss_area": "Baton Rouge Metro",
+    "category": "festival",
+    "outdoor_status": "outdoor",
+    "origin": "automated",
+    "importance": "moderate",
+    "location_confidence": 0.78,
+    "outdoor_confidence": 0.78,
+    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
+    "source_name": "Visit Baton Rouge",
+    "source_url": "https://www.visitbatonrouge.com/events/red-stick-farmers-market-at-main-street-market-in-downtown-baton-rouge/"
   },
   {
     "id": "southdown-marketplace-arts-and-crafts-festival-2026-11-07-2b7d9f6",
