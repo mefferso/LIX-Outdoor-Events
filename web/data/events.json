@@ -91,87 +91,6 @@
     "source_url": "https://www.tangitourism.com/Events/Fairs-Festivals"
   },
   {
-    "id": "drum-circle-with-tim-brown-ii-2026-10-31-a904231",
-    "name": "Drum Circle with Tim Brown, II",
-    "dates": [
-      "2026-10-31"
-    ],
-    "start": "2026-10-31T00:00:00-05:00",
-    "end": "2026-10-31T00:00:00-05:00",
-    "all_day": true,
-    "latitude": 29.956142,
-    "longitude": -90.073393,
-    "venue": "The New Orleans Jazz National Historical Park",
-    "address": "New Orleans",
-    "city": "New Orleans",
-    "state": "",
-    "parish_county": "Orleans Parish",
-    "idss_area": "New Orleans Metro",
-    "category": "other",
-    "outdoor_status": "outdoor",
-    "origin": "automated",
-    "importance": "major",
-    "location_confidence": 0.78,
-    "outdoor_confidence": 0.78,
-    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
-    "source_name": "NewOrleans.com",
-    "source_url": "https://www.neworleans.com/event/drum-circle-with-tim-brown-ii/203879/"
-  },
-  {
-    "id": "halloween-in-abita-springs-2026-10-31-7064113",
-    "name": "Halloween in Abita Springs",
-    "dates": [
-      "2026-10-31"
-    ],
-    "start": "2026-10-31T00:00:00-05:00",
-    "end": "2026-10-31T00:00:00-05:00",
-    "all_day": true,
-    "latitude": 30.47907,
-    "longitude": -90.039244,
-    "venue": "Abita Springs Trailhead Park",
-    "address": "22044 Main St., Abita Springs, LA 70420",
-    "city": "Abita Springs",
-    "state": "LA",
-    "parish_county": "",
-    "idss_area": "Northshore",
-    "category": "festival",
-    "outdoor_status": "outdoor",
-    "origin": "automated",
-    "importance": "moderate",
-    "location_confidence": 0.96,
-    "outdoor_confidence": 0.78,
-    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
-    "source_name": "Louisiana Northshore",
-    "source_url": "https://www.visitthenorthshore.com/event/halloween-in-abita-springs/11428/"
-  },
-  {
-    "id": "halloween-fun-festival-2026-10-31-881ffab",
-    "name": "Halloween Fun Festival",
-    "dates": [
-      "2026-10-31"
-    ],
-    "start": "2026-10-31T10:00:00-05:00",
-    "end": "2026-10-31T12:00:00-05:00",
-    "all_day": false,
-    "latitude": 30.382435,
-    "longitude": -89.037558,
-    "venue": "Lynn Meadows Discovery Center",
-    "address": "246 Dolan Ave, Gulfport, MS 39507",
-    "city": "Gulfport",
-    "state": "MS",
-    "parish_county": "Harrison County",
-    "idss_area": "Mississippi Coast",
-    "category": "festival",
-    "outdoor_status": "partial",
-    "origin": "automated",
-    "importance": "moderate",
-    "location_confidence": 0.96,
-    "outdoor_confidence": 0.72,
-    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
-    "source_name": "Sun Herald Events",
-    "source_url": "https://www.sunherald.com/events/#/details/halloween-fun-festival/20189891/2026-10-31T10"
-  },
-  {
     "id": "cap-city-beer-fest-2026-11-01-3ea676a",
     "name": "CAP CITY BEER FEST",
     "dates": [
@@ -255,6 +174,33 @@
     "source_url": "https://www.visitthenorthshore.com/event/q50-races-chupacabra-night-trail-race/11279/"
   },
   {
+    "id": "beignet-fest-2026-11-07-4bd09f9",
+    "name": "Beignet Fest",
+    "dates": [
+      "2026-11-07"
+    ],
+    "start": "2026-11-07T00:00:00-06:00",
+    "end": "2026-11-07T00:00:00-06:00",
+    "all_day": true,
+    "latitude": 29.9934,
+    "longitude": -90.0982,
+    "venue": "New Orleans City Park",
+    "address": "New Orleans",
+    "city": "New Orleans",
+    "state": "LA",
+    "parish_county": "Orleans Parish",
+    "idss_area": "New Orleans Metro",
+    "category": "festival",
+    "outdoor_status": "outdoor",
+    "origin": "automated",
+    "importance": "moderate",
+    "location_confidence": 0.99,
+    "outdoor_confidence": 0.99,
+    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
+    "source_name": "NewOrleans.com",
+    "source_url": "https://www.neworleans.com/event/beignet-fest/3203/"
+  },
+  {
     "id": "mandeville-veterans-day-parade-2026-11-07-9c5fa2e",
     "name": "Mandeville Veterans Day Parade",
     "dates": [
@@ -280,6 +226,33 @@
     "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
     "source_name": "Louisiana Northshore",
     "source_url": "https://www.visitthenorthshore.com/event/mandeville-veterans-day-parade/10949/"
+  },
+  {
+    "id": "baton-rouge-arts-market-2026-11-07-327ec3a",
+    "name": "Baton Rouge Arts Market",
+    "dates": [
+      "2026-11-07"
+    ],
+    "start": "2026-11-07T08:00:00-06:00",
+    "end": null,
+    "all_day": false,
+    "latitude": 30.449928,
+    "longitude": -91.167616,
+    "venue": "Red Stick Farmers Market, North 5th Street, Baton Rouge, LA, USA",
+    "address": "Florida St. Baton Rouge, LA",
+    "city": "Florida St. Baton Rouge",
+    "state": "LA",
+    "parish_county": "",
+    "idss_area": "Baton Rouge Metro",
+    "category": "festival",
+    "outdoor_status": "outdoor",
+    "origin": "automated",
+    "importance": "moderate",
+    "location_confidence": 0.78,
+    "outdoor_confidence": 0.78,
+    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
+    "source_name": "Downtown Baton Rouge",
+    "source_url": "https://downtownbatonrouge.org/discover-downtown/events/baton-rouge-arts-market-7-1-1-1-1-1-1-1-1-1-1"
   },
   {
     "id": "red-stick-farmers-market-at-main-street-market-in-downtown-baton-rouge-2026-11-07-35749d3",

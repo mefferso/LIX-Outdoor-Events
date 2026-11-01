@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-10-31T16:32:57-05:00",
-  "event_count": 16,
+  "generated_at": "2026-11-01T01:02:00-05:00",
+  "event_count": 15,
   "manual_event_count": 0,
-  "automated_event_count": 16,
-  "automated_candidate_count": 18,
-  "collection_window_start": "2026-10-31",
-  "collection_window_end": "2026-11-07",
+  "automated_event_count": 15,
+  "automated_candidate_count": 16,
+  "collection_window_start": "2026-11-01",
+  "collection_window_end": "2026-11-08",
   "timezone": "America/Chicago",
   "boundary_source": "NOAA/NWS reference map FeatureServer",
   "pipeline_state": "automated-multi-source-v1",
@@ -15,9 +15,9 @@
       "name": "NewOrleans.com",
       "success": true,
       "health": "healthy",
-      "detail_links": 32,
-      "discovered": 51,
-      "accepted": 2,
+      "detail_links": 30,
+      "discovered": 45,
+      "accepted": 1,
       "error": null
     },
     {
@@ -35,9 +35,9 @@
       "name": "Louisiana Northshore",
       "success": true,
       "health": "healthy",
-      "detail_links": 17,
+      "detail_links": 16,
       "discovered": 14,
-      "accepted": 3,
+      "accepted": 2,
       "error": null
     },
     {
@@ -115,9 +115,9 @@
       "name": "Downtown Baton Rouge",
       "success": true,
       "health": "healthy",
-      "detail_links": 3158,
-      "discovered": 18,
-      "accepted": 1,
+      "detail_links": 3157,
+      "discovered": 19,
+      "accepted": 2,
       "error": null
     },
     {
@@ -145,9 +145,9 @@
       "name": "Sun Herald Events",
       "success": true,
       "health": "healthy",
-      "detail_links": 51,
-      "discovered": 51,
-      "accepted": 1,
+      "detail_links": 49,
+      "discovered": 49,
+      "accepted": 0,
       "error": null
     }
   ],
