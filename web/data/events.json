@@ -91,33 +91,6 @@
     "source_url": "https://www.tangitourism.com/Events/Fairs-Festivals"
   },
   {
-    "id": "cap-city-beer-fest-2026-11-01-3ea676a",
-    "name": "CAP CITY BEER FEST",
-    "dates": [
-      "2026-11-01"
-    ],
-    "start": "2026-11-01T14:00:00-06:00",
-    "end": null,
-    "all_day": false,
-    "latitude": 30.449928,
-    "longitude": -91.167616,
-    "venue": "North 4th Street & Spanish Town Road, Baton Rouge, LA, USA",
-    "address": "Florida St. Baton Rouge, LA",
-    "city": "Florida St. Baton Rouge",
-    "state": "LA",
-    "parish_county": "",
-    "idss_area": "Baton Rouge Metro",
-    "category": "festival",
-    "outdoor_status": "outdoor",
-    "origin": "automated",
-    "importance": "major",
-    "location_confidence": 0.78,
-    "outdoor_confidence": 0.78,
-    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
-    "source_name": "Downtown Baton Rouge",
-    "source_url": "https://downtownbatonrouge.org/discover-downtown/events/capitol-city-beer-fest-1-1-1"
-  },
-  {
     "id": "inkin-the-coast-tattoo-festival-2026-11-06-4843327",
     "name": "Inkin the Coast Tattoo Festival",
     "dates": [
