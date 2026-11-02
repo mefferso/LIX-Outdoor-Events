@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-11-02T00:00:14-06:00",
+  "generated_at": "2026-11-02T09:49:23-06:00",
   "event_count": 14,
   "manual_event_count": 0,
   "automated_event_count": 14,
-  "automated_candidate_count": 15,
+  "automated_candidate_count": 16,
   "collection_window_start": "2026-11-02",
   "collection_window_end": "2026-11-09",
   "timezone": "America/Chicago",
@@ -15,9 +15,9 @@
       "name": "NewOrleans.com",
       "success": true,
       "health": "healthy",
-      "detail_links": 30,
-      "discovered": 44,
-      "accepted": 1,
+      "detail_links": 33,
+      "discovered": 59,
+      "accepted": 2,
       "error": null
     },
     {
@@ -25,7 +25,7 @@
       "name": "Visit Baton Rouge",
       "success": true,
       "health": "healthy",
-      "detail_links": 225,
+      "detail_links": 219,
       "discovered": 26,
       "accepted": 2,
       "error": null
@@ -35,8 +35,8 @@
       "name": "Louisiana Northshore",
       "success": true,
       "health": "healthy",
-      "detail_links": 28,
-      "discovered": 25,
+      "detail_links": 16,
+      "discovered": 14,
       "accepted": 2,
       "error": null
     },
@@ -115,8 +115,8 @@
       "name": "Downtown Baton Rouge",
       "success": true,
       "health": "healthy",
-      "detail_links": 3158,
-      "discovered": 18,
+      "detail_links": 3157,
+      "discovered": 19,
       "accepted": 1,
       "error": null
     },
@@ -135,7 +135,7 @@
       "name": "Coastal Mississippi",
       "success": true,
       "health": "healthy",
-      "detail_links": 179,
+      "detail_links": 177,
       "discovered": 40,
       "accepted": 2,
       "error": null
@@ -145,8 +145,8 @@
       "name": "Sun Herald Events",
       "success": true,
       "health": "healthy",
-      "detail_links": 51,
-      "discovered": 51,
+      "detail_links": 52,
+      "discovered": 52,
       "accepted": 0,
       "error": null
     }
