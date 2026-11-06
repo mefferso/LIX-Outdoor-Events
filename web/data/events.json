@@ -120,6 +120,33 @@
     "source_url": "https://www.coastalmississippi.com/events/inkin-the-coast-tattoo-festival/"
   },
   {
+    "id": "johnette-downing-2026-11-06-8cc24c0",
+    "name": "Johnette Downing",
+    "dates": [
+      "2026-11-06"
+    ],
+    "start": "2026-11-06T00:00:00-06:00",
+    "end": "2026-11-06T00:00:00-06:00",
+    "all_day": true,
+    "latitude": 29.956142,
+    "longitude": -90.073393,
+    "venue": "The New Orleans Jazz National Historical Park",
+    "address": "New Orleans",
+    "city": "New Orleans",
+    "state": "",
+    "parish_county": "Orleans Parish",
+    "idss_area": "New Orleans Metro",
+    "category": "other",
+    "outdoor_status": "outdoor",
+    "origin": "automated",
+    "importance": "major",
+    "location_confidence": 0.78,
+    "outdoor_confidence": 0.78,
+    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
+    "source_name": "NewOrleans.com",
+    "source_url": "https://www.neworleans.com/event/johnette-downing/207047/"
+  },
+  {
     "id": "q50-races-chupacabra-night-trail-race-2026-11-06-c7806ad",
     "name": "Q50 Races Chupacabra Night Trail Race",
     "dates": [
@@ -145,6 +172,33 @@
     "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
     "source_name": "Louisiana Northshore",
     "source_url": "https://www.visitthenorthshore.com/event/q50-races-chupacabra-night-trail-race/11279/"
+  },
+  {
+    "id": "saskia-walker-trio-2026-11-06-77642aa",
+    "name": "Saskia Walker Trio",
+    "dates": [
+      "2026-11-06"
+    ],
+    "start": "2026-11-06T00:00:00-06:00",
+    "end": "2026-11-06T00:00:00-06:00",
+    "all_day": true,
+    "latitude": 29.956142,
+    "longitude": -90.073393,
+    "venue": "The New Orleans Jazz National Historical Park",
+    "address": "New Orleans",
+    "city": "New Orleans",
+    "state": "",
+    "parish_county": "Orleans Parish",
+    "idss_area": "New Orleans Metro",
+    "category": "other",
+    "outdoor_status": "outdoor",
+    "origin": "automated",
+    "importance": "major",
+    "location_confidence": 0.78,
+    "outdoor_confidence": 0.78,
+    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
+    "source_name": "NewOrleans.com",
+    "source_url": "https://www.neworleans.com/event/saskia-walker-trio/207049/"
   },
   {
     "id": "beignet-fest-2026-11-07-4bd09f9",
