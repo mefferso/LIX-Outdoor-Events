@@ -91,33 +91,6 @@
     "source_url": "https://www.tangitourism.com/Events/Fairs-Festivals"
   },
   {
-    "id": "adonis-rose-lagniappe-sessions-2026-11-05-9e95b36",
-    "name": "Adonis Rose Lagniappe Sessions",
-    "dates": [
-      "2026-11-05"
-    ],
-    "start": "2026-11-05T00:00:00-06:00",
-    "end": "2026-11-05T00:00:00-06:00",
-    "all_day": true,
-    "latitude": 29.956142,
-    "longitude": -90.073393,
-    "venue": "The New Orleans Jazz National Historical Park",
-    "address": "New Orleans",
-    "city": "New Orleans",
-    "state": "",
-    "parish_county": "Orleans Parish",
-    "idss_area": "New Orleans Metro",
-    "category": "other",
-    "outdoor_status": "outdoor",
-    "origin": "automated",
-    "importance": "major",
-    "location_confidence": 0.78,
-    "outdoor_confidence": 0.78,
-    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
-    "source_name": "NewOrleans.com",
-    "source_url": "https://www.neworleans.com/event/adonis-rose-lagniappe-sessions/207040/"
-  },
-  {
     "id": "inkin-the-coast-tattoo-festival-2026-11-06-4843327",
     "name": "Inkin the Coast Tattoo Festival",
     "dates": [
@@ -199,33 +172,6 @@
     "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
     "source_name": "NewOrleans.com",
     "source_url": "https://www.neworleans.com/event/beignet-fest/3203/"
-  },
-  {
-    "id": "lsu-football-vs-alabama-2026-11-07-d4038d9",
-    "name": "LSU Football vs. Alabama",
-    "dates": [
-      "2026-11-07"
-    ],
-    "start": "2026-11-07T00:00:00-06:00",
-    "end": "2026-11-07T23:59:00-06:00",
-    "all_day": false,
-    "latitude": 30.412,
-    "longitude": -91.1838,
-    "venue": "LSU Tiger Stadium",
-    "address": "North Stadium Drive at Nicholson Drive, Baton Rouge, Louisiana 70803",
-    "city": "Baton Rouge",
-    "state": "Louisiana",
-    "parish_county": "East Baton Rouge Parish",
-    "idss_area": "Baton Rouge Metro",
-    "category": "sports",
-    "outdoor_status": "outdoor",
-    "origin": "automated",
-    "importance": "major",
-    "location_confidence": 0.99,
-    "outdoor_confidence": 0.99,
-    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
-    "source_name": "Visit Baton Rouge",
-    "source_url": "https://www.visitbatonrouge.com/events/lsu-football-vs-alabama/"
   },
   {
     "id": "mandeville-veterans-day-parade-2026-11-07-9c5fa2e",
@@ -390,6 +336,33 @@
     "source_url": "https://gojagsports.com/sports/football/schedule"
   },
   {
+    "id": "lsu-football-vs-alabama-2026-11-07-d4038d9",
+    "name": "LSU Football vs Alabama",
+    "dates": [
+      "2026-11-07"
+    ],
+    "start": "2026-11-07T14:30:00-06:00",
+    "end": null,
+    "all_day": false,
+    "latitude": 30.412,
+    "longitude": -91.1838,
+    "venue": "Tiger Stadium",
+    "address": "Baton Rouge, LA",
+    "city": "Baton Rouge",
+    "state": "LA",
+    "parish_county": "East Baton Rouge Parish",
+    "idss_area": "Baton Rouge Metro",
+    "category": "sports",
+    "outdoor_status": "outdoor",
+    "origin": "automated",
+    "importance": "major",
+    "location_confidence": 0.99,
+    "outdoor_confidence": 0.99,
+    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
+    "source_name": "LSU Athletics",
+    "source_url": "https://lsusports.net/sports/fb/schedule"
+  },
+  {
     "id": "nicholls-state-university-vs-east-texas-am-2026-11-07-22bf034",
     "name": "Nicholls State University Vs East Texas A&M",
     "dates": [
@@ -442,5 +415,33 @@
     "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
     "source_name": "Southeastern Louisiana Athletics",
     "source_url": "https://lionsports.net/sports/football/schedule/2026"
+  },
+  {
+    "id": "wellnxt-new-orleans-wellness-festival-2026-2026-11-13-808fae6",
+    "name": "WellNXT New Orleans Wellness Festival 2026",
+    "dates": [
+      "2026-11-13",
+      "2026-11-14"
+    ],
+    "start": "2026-11-13T00:00:00-06:00",
+    "end": "2026-11-14T00:00:00-06:00",
+    "all_day": true,
+    "latitude": 29.9934,
+    "longitude": -90.0982,
+    "venue": "New Orleans City Park",
+    "address": "New Orleans",
+    "city": "New Orleans",
+    "state": "LA",
+    "parish_county": "Orleans Parish",
+    "idss_area": "New Orleans Metro",
+    "category": "festival",
+    "outdoor_status": "outdoor",
+    "origin": "automated",
+    "importance": "moderate",
+    "location_confidence": 0.99,
+    "outdoor_confidence": 0.99,
+    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
+    "source_name": "NewOrleans.com",
+    "source_url": "https://www.neworleans.com/event/wellnxt-new-orleans-wellness-festival-2026/203664/"
   }
 ]
