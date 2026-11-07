@@ -381,5 +381,25 @@
   "801 harding bouldvard at e street, baton rouge, louisiana 70807": null,
   "harrison county fairgrounds 15321 county farm rd gulfport, mississippi 39503": null,
   "pelican landing conference center 6217 mississippi highway 613 moss point, mississippi 39563": null,
-  "mississippi coast convention center 2350 beach boulevard biloxi, mississippi 39531": null
+  "mississippi coast convention center 2350 beach boulevard biloxi, mississippi 39531": null,
+  "200 block to 600 block of columbia street, covington, la 70433": null,
+  "main branch, houma, la": null,
+  "schriever, la 70395, gray, la": null,
+  "san antonio, texas": {
+    "latitude": 29.4246002,
+    "longitude": -98.4951405,
+    "display_name": "San Antonio, Bexar County, Texas, United States"
+  },
+  "615 pass road gulfport, mississippi": {
+    "latitude": 30.3880417,
+    "longitude": -89.0620578,
+    "display_name": "615, Pass Road, Gulfport, Harrison County, Mississippi, 39501, United States"
+  },
+  "historic train depot 1928 depot way bay st. louis, mississippi 39520": null,
+  "802 e pass road gulfport, mississippi 39507": {
+    "latitude": 30.3966841,
+    "longitude": -89.0354759,
+    "display_name": "802, East Pass Road, Handsboro, Gulfport, Harrison County, Mississippi, 39507, United States"
+  },
+  "mamie hillery art center sculpture garden 405 blaize ave. bay st. louis, mississippi 39520": null
 }
