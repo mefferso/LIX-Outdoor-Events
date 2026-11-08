@@ -168,19 +168,19 @@
   },
   {
     "id": "lsu-football-vs-alabama-2026-11-07-d4038d9",
-    "name": "LSU Football vs. Alabama",
+    "name": "LSU Football vs Alabama",
     "dates": [
       "2026-11-07"
     ],
     "start": "2026-11-07T00:00:00-06:00",
-    "end": "2026-11-07T23:59:00-06:00",
+    "end": null,
     "all_day": false,
     "latitude": 30.412,
     "longitude": -91.1838,
-    "venue": "LSU Tiger Stadium",
-    "address": "North Stadium Drive at Nicholson Drive, Baton Rouge, Louisiana 70803",
+    "venue": "Tiger Stadium",
+    "address": "Baton Rouge, LA",
     "city": "Baton Rouge",
-    "state": "Louisiana",
+    "state": "LA",
     "parish_county": "East Baton Rouge Parish",
     "idss_area": "Baton Rouge Metro",
     "category": "sports",
@@ -190,89 +190,8 @@
     "location_confidence": 0.99,
     "outdoor_confidence": 0.99,
     "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
-    "source_name": "Visit Baton Rouge",
-    "source_url": "https://www.visitbatonrouge.com/events/lsu-football-vs-alabama/"
-  },
-  {
-    "id": "mandeville-veterans-day-parade-2026-11-07-9c5fa2e",
-    "name": "Mandeville Veterans Day Parade",
-    "dates": [
-      "2026-11-07"
-    ],
-    "start": "2026-11-07T00:00:00-06:00",
-    "end": "2026-11-07T00:00:00-06:00",
-    "all_day": true,
-    "latitude": 30.358251,
-    "longitude": -90.065631,
-    "venue": "Mandeville Lakefront",
-    "address": "Mandeville, LA 70448",
-    "city": "Mandeville",
-    "state": "LA",
-    "parish_county": "St. Tammany Parish",
-    "idss_area": "Northshore",
-    "category": "race_parade",
-    "outdoor_status": "outdoor",
-    "origin": "automated",
-    "importance": "moderate",
-    "location_confidence": 0.96,
-    "outdoor_confidence": 0.78,
-    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
-    "source_name": "Louisiana Northshore",
-    "source_url": "https://www.visitthenorthshore.com/event/mandeville-veterans-day-parade/10949/"
-  },
-  {
-    "id": "baton-rouge-arts-market-2026-11-07-327ec3a",
-    "name": "Baton Rouge Arts Market",
-    "dates": [
-      "2026-11-07"
-    ],
-    "start": "2026-11-07T08:00:00-06:00",
-    "end": null,
-    "all_day": false,
-    "latitude": 30.449928,
-    "longitude": -91.167616,
-    "venue": "Red Stick Farmers Market, North 5th Street, Baton Rouge, LA, USA",
-    "address": "Florida St. Baton Rouge, LA",
-    "city": "Florida St. Baton Rouge",
-    "state": "LA",
-    "parish_county": "",
-    "idss_area": "Baton Rouge Metro",
-    "category": "festival",
-    "outdoor_status": "outdoor",
-    "origin": "automated",
-    "importance": "moderate",
-    "location_confidence": 0.78,
-    "outdoor_confidence": 0.78,
-    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
-    "source_name": "Downtown Baton Rouge",
-    "source_url": "https://downtownbatonrouge.org/discover-downtown/events/baton-rouge-arts-market-7-1-1-1-1-1-1-1-1-1-1"
-  },
-  {
-    "id": "southdown-marketplace-arts-and-crafts-festival-2026-11-07-2b7d9f6",
-    "name": "Southdown Marketplace Arts and Crafts Festival",
-    "dates": [
-      "2026-11-07"
-    ],
-    "start": "2026-11-07T08:00:00-06:00",
-    "end": "2026-11-07T16:00:00-06:00",
-    "all_day": false,
-    "latitude": 29.588708,
-    "longitude": -90.740285,
-    "venue": "Southdown Plantation & Museum Grounds",
-    "address": "1208 Museum Drive, Houma, LA",
-    "city": "Houma",
-    "state": "LA",
-    "parish_county": "Terrebonne Parish",
-    "idss_area": "Bayou Parishes",
-    "category": "festival",
-    "outdoor_status": "partial",
-    "origin": "automated",
-    "importance": "moderate",
-    "location_confidence": 0.78,
-    "outdoor_confidence": 0.72,
-    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
-    "source_name": "Explore Houma",
-    "source_url": "https://explorehouma.com/events/southdown-marketplace-arts-and-crafts-festival/"
+    "source_name": "LSU Athletics",
+    "source_url": "https://lsusports.net/sports/fb/schedule"
   },
   {
     "id": "tulane-football-vs-tulsa-2026-11-07-d0125b9",
@@ -411,33 +330,6 @@
     "source_url": "https://www.neworleans.com/event/wellnxt-new-orleans-wellness-festival-2026/203664/"
   },
   {
-    "id": "lsu-football-vs-texas-2026-11-14-5d6ffe8",
-    "name": "LSU Football vs. Texas",
-    "dates": [
-      "2026-11-14"
-    ],
-    "start": "2026-11-14T00:00:00-06:00",
-    "end": "2026-11-14T23:59:00-06:00",
-    "all_day": false,
-    "latitude": 30.412,
-    "longitude": -91.1838,
-    "venue": "LSU Tiger Stadium",
-    "address": "North Stadium Drive at Nicholson Drive, Baton Rouge, Louisiana 70803",
-    "city": "Baton Rouge",
-    "state": "Louisiana",
-    "parish_county": "East Baton Rouge Parish",
-    "idss_area": "Baton Rouge Metro",
-    "category": "sports",
-    "outdoor_status": "outdoor",
-    "origin": "automated",
-    "importance": "major",
-    "location_confidence": 0.99,
-    "outdoor_confidence": 0.99,
-    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
-    "source_name": "Visit Baton Rouge",
-    "source_url": "https://www.visitbatonrouge.com/events/lsu-football-vs-texas/"
-  },
-  {
     "id": "red-stick-farmers-market-at-main-street-market-in-downtown-baton-rouge-2026-11-14-ef2a60d",
     "name": "Red Stick Farmers Market at Main Street Market in Downtown Baton Rouge",
     "dates": [
@@ -517,5 +409,32 @@
     "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
     "source_name": "Southeastern Louisiana Athletics",
     "source_url": "https://lionsports.net/sports/football/schedule/2026"
+  },
+  {
+    "id": "lsu-football-vs-texas-2026-11-14-5d6ffe8",
+    "name": "LSU Football vs Texas",
+    "dates": [
+      "2026-11-14"
+    ],
+    "start": "2026-11-14T18:30:00-06:00",
+    "end": null,
+    "all_day": false,
+    "latitude": 30.412,
+    "longitude": -91.1838,
+    "venue": "Tiger Stadium",
+    "address": "Baton Rouge, LA",
+    "city": "Baton Rouge",
+    "state": "LA",
+    "parish_county": "East Baton Rouge Parish",
+    "idss_area": "Baton Rouge Metro",
+    "category": "sports",
+    "outdoor_status": "outdoor",
+    "origin": "automated",
+    "importance": "major",
+    "location_confidence": 0.99,
+    "outdoor_confidence": 0.99,
+    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
+    "source_name": "LSU Athletics",
+    "source_url": "https://lsusports.net/sports/fb/schedule"
   }
 ]
