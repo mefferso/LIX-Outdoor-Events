@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-11-09T16:20:20-06:00",
-  "event_count": 6,
+  "generated_at": "2026-11-10T01:16:58-06:00",
+  "event_count": 8,
   "manual_event_count": 0,
-  "automated_event_count": 6,
-  "automated_candidate_count": 8,
-  "collection_window_start": "2026-11-09",
-  "collection_window_end": "2026-11-16",
+  "automated_event_count": 8,
+  "automated_candidate_count": 13,
+  "collection_window_start": "2026-11-10",
+  "collection_window_end": "2026-11-17",
   "timezone": "America/Chicago",
   "boundary_source": "NOAA/NWS reference map FeatureServer",
   "pipeline_state": "automated-multi-source-v1",
@@ -15,9 +15,9 @@
       "name": "NewOrleans.com",
       "success": true,
       "health": "healthy",
-      "detail_links": 31,
-      "discovered": 59,
-      "accepted": 4,
+      "detail_links": 32,
+      "discovered": 62,
+      "accepted": 8,
       "error": null
     },
     {
@@ -25,7 +25,7 @@
       "name": "Visit Baton Rouge",
       "success": true,
       "health": "healthy",
-      "detail_links": 265,
+      "detail_links": 256,
       "discovered": 26,
       "accepted": 2,
       "error": null
@@ -35,7 +35,7 @@
       "name": "Louisiana Northshore",
       "success": true,
       "health": "healthy",
-      "detail_links": 16,
+      "detail_links": 19,
       "discovered": 14,
       "accepted": 0,
       "error": null
@@ -93,12 +93,12 @@
     {
       "key": "lsu_football",
       "name": "LSU Athletics",
-      "success": false,
-      "health": "failed",
+      "success": true,
+      "health": "healthy",
       "detail_links": 0,
-      "discovered": 0,
-      "accepted": 0,
-      "error": "source returned zero events"
+      "discovered": 12,
+      "accepted": 1,
+      "error": null
     },
     {
       "key": "mardigras_neworleans",
@@ -115,7 +115,7 @@
       "name": "Downtown Baton Rouge",
       "success": true,
       "health": "healthy",
-      "detail_links": 42,
+      "detail_links": 3178,
       "discovered": 18,
       "accepted": 0,
       "error": null
@@ -135,7 +135,7 @@
       "name": "Coastal Mississippi",
       "success": true,
       "health": "healthy",
-      "detail_links": 175,
+      "detail_links": 174,
       "discovered": 40,
       "accepted": 0,
       "error": null
@@ -152,9 +152,9 @@
     }
   ],
   "source_health": {
-    "healthy": 13,
+    "healthy": 14,
     "degraded": 0,
-    "failed": 1,
+    "failed": 0,
     "total": 14
   },
   "notes": "Automated source collection is merged with a curated safety-net file. If an individual source fails, its still-in-window last-known-good events are retained while source health remains failed. Unknown indoor/outdoor events and points outside the LIX CWA are excluded."
