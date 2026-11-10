@@ -82,6 +82,33 @@
     "source_url": "https://www.neworleans.com/event/wellnxt-new-orleans-wellness-festival-2026/203664/"
   },
   {
+    "id": "lsu-football-vs-texas-2026-11-14-5d6ffe8",
+    "name": "LSU Football vs. Texas",
+    "dates": [
+      "2026-11-14"
+    ],
+    "start": "2026-11-14T00:00:00-06:00",
+    "end": "2026-11-14T23:59:00-06:00",
+    "all_day": false,
+    "latitude": 30.412,
+    "longitude": -91.1838,
+    "venue": "LSU Tiger Stadium",
+    "address": "North Stadium Drive at Nicholson Drive, Baton Rouge, Louisiana 70803",
+    "city": "Baton Rouge",
+    "state": "Louisiana",
+    "parish_county": "East Baton Rouge Parish",
+    "idss_area": "Baton Rouge Metro",
+    "category": "sports",
+    "outdoor_status": "outdoor",
+    "origin": "automated",
+    "importance": "major",
+    "location_confidence": 0.99,
+    "outdoor_confidence": 0.99,
+    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
+    "source_name": "Visit Baton Rouge",
+    "source_url": "https://www.visitbatonrouge.com/events/lsu-football-vs-texas/"
+  },
+  {
     "id": "new-orleans-marathon-2026-11-14-3e65e35",
     "name": "New Orleans Marathon",
     "dates": [
@@ -188,32 +215,5 @@
     "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
     "source_name": "Southeastern Louisiana Athletics",
     "source_url": "https://lionsports.net/sports/football/schedule/2026"
-  },
-  {
-    "id": "lsu-football-vs-texas-2026-11-14-5d6ffe8",
-    "name": "LSU Football vs Texas",
-    "dates": [
-      "2026-11-14"
-    ],
-    "start": "2026-11-14T18:30:00-06:00",
-    "end": null,
-    "all_day": false,
-    "latitude": 30.412,
-    "longitude": -91.1838,
-    "venue": "Tiger Stadium",
-    "address": "Baton Rouge, LA",
-    "city": "Baton Rouge",
-    "state": "LA",
-    "parish_county": "East Baton Rouge Parish",
-    "idss_area": "Baton Rouge Metro",
-    "category": "sports",
-    "outdoor_status": "outdoor",
-    "origin": "automated",
-    "importance": "major",
-    "location_confidence": 0.99,
-    "outdoor_confidence": 0.99,
-    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
-    "source_name": "LSU Athletics",
-    "source_url": "https://lsusports.net/sports/fb/schedule"
   }
 ]
