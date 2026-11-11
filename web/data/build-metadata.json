@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-11T00:16:50-06:00",
+  "generated_at": "2026-11-11T08:31:18-06:00",
   "event_count": 6,
   "manual_event_count": 0,
   "automated_event_count": 6,
@@ -25,7 +25,7 @@
       "name": "Visit Baton Rouge",
       "success": true,
       "health": "healthy",
-      "detail_links": 269,
+      "detail_links": 268,
       "discovered": 26,
       "accepted": 2,
       "error": null
@@ -115,8 +115,8 @@
       "name": "Downtown Baton Rouge",
       "success": true,
       "health": "healthy",
-      "detail_links": 3180,
-      "discovered": 18,
+      "detail_links": 3179,
+      "discovered": 19,
       "accepted": 0,
       "error": null
     },
@@ -145,8 +145,8 @@
       "name": "Sun Herald Events",
       "success": true,
       "health": "healthy",
-      "detail_links": 51,
-      "discovered": 51,
+      "detail_links": 50,
+      "discovered": 50,
       "accepted": 0,
       "error": null
     }
