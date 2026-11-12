@@ -411,5 +411,16 @@
     "latitude": 30.4461484,
     "longitude": -91.1903823,
     "display_name": "Louisiana Art and Science Museum, 100, South River Road, Spanish Town, Downtown Development District, Baton Rouge, East Baton Rouge Parish, Louisiana, 70801, United States"
-  }
+  },
+  "240 st louis street, baton rouge, louisiana 70802": {
+    "latitude": 30.4449521,
+    "longitude": -91.1879156,
+    "display_name": "River Center Performing Arts Theater, 240, Saint Louis Street, Downtown Development District, Baton Rouge, East Baton Rouge Parish, Louisiana, 70802, United States"
+  },
+  "thibodaux, la": {
+    "latitude": 29.7957633,
+    "longitude": -90.822871,
+    "display_name": "Thibodaux, Lafourche Parish, Louisiana, United States"
+  },
+  "various locations 2309 15th street gulfport, mississippi": null
 }
