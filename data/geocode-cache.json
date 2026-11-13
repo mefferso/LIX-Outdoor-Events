@@ -422,5 +422,10 @@
     "longitude": -90.822871,
     "display_name": "Thibodaux, Lafourche Parish, Louisiana, United States"
   },
-  "various locations 2309 15th street gulfport, mississippi": null
+  "various locations 2309 15th street gulfport, mississippi": null,
+  "government street, baton rouge, louisiana 70806": {
+    "latitude": 30.4450263,
+    "longitude": -91.1204615,
+    "display_name": "Government Street, Riverlon, Goodwood, Baton Rouge, East Baton Rouge Parish, Louisiana, 70806, United States"
+  }
 }
