@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-11-13T00:43:39-06:00",
-  "event_count": 7,
+  "generated_at": "2026-11-13T13:40:54-06:00",
+  "event_count": 9,
   "manual_event_count": 0,
-  "automated_event_count": 7,
-  "automated_candidate_count": 8,
+  "automated_event_count": 9,
+  "automated_candidate_count": 12,
   "collection_window_start": "2026-11-13",
   "collection_window_end": "2026-11-20",
   "timezone": "America/Chicago",
@@ -13,19 +13,19 @@
     {
       "key": "neworleans",
       "name": "NewOrleans.com",
-      "success": false,
-      "health": "failed",
-      "detail_links": 0,
-      "discovered": 0,
-      "accepted": 0,
-      "error": "fetch failed for https://www.neworleans.com/events/: HTTP Error 403: Forbidden"
+      "success": true,
+      "health": "healthy",
+      "detail_links": 32,
+      "discovered": 60,
+      "accepted": 5,
+      "error": null
     },
     {
       "key": "visitbatonrouge",
       "name": "Visit Baton Rouge",
       "success": true,
       "health": "healthy",
-      "detail_links": 259,
+      "detail_links": 264,
       "discovered": 26,
       "accepted": 2,
       "error": null
@@ -33,12 +33,12 @@
     {
       "key": "northshore",
       "name": "Louisiana Northshore",
-      "success": false,
-      "health": "failed",
+      "success": true,
+      "health": "healthy",
       "detail_links": 15,
-      "discovered": 0,
+      "discovered": 14,
       "accepted": 0,
-      "error": "source returned zero events"
+      "error": null
     },
     {
       "key": "houma",
@@ -115,8 +115,8 @@
       "name": "Downtown Baton Rouge",
       "success": true,
       "health": "healthy",
-      "detail_links": 3179,
-      "discovered": 19,
+      "detail_links": 3180,
+      "discovered": 18,
       "accepted": 0,
       "error": null
     },
@@ -135,9 +135,9 @@
       "name": "Coastal Mississippi",
       "success": true,
       "health": "healthy",
-      "detail_links": 180,
+      "detail_links": 179,
       "discovered": 40,
-      "accepted": 0,
+      "accepted": 1,
       "error": null
     },
     {
@@ -145,16 +145,16 @@
       "name": "Sun Herald Events",
       "success": true,
       "health": "healthy",
-      "detail_links": 51,
-      "discovered": 51,
+      "detail_links": 49,
+      "discovered": 49,
       "accepted": 0,
       "error": null
     }
   ],
   "source_health": {
-    "healthy": 12,
+    "healthy": 14,
     "degraded": 0,
-    "failed": 2,
+    "failed": 0,
     "total": 14
   },
   "notes": "Automated source collection is merged with a curated safety-net file. If an individual source fails, its still-in-window last-known-good events are retained while source health remains failed. Unknown indoor/outdoor events and points outside the LIX CWA are excluded."
