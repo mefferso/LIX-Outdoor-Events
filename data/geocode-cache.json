@@ -427,5 +427,17 @@
     "latitude": 30.4450263,
     "longitude": -91.1204615,
     "display_name": "Government Street, Riverlon, Goodwood, Baton Rouge, East Baton Rouge Parish, Louisiana, 70806, United States"
-  }
+  },
+  "16072 airline highway, baton rouge, louisiana 70817": {
+    "latitude": 30.4591103,
+    "longitude": -91.1002449,
+    "display_name": "Airline Highway, Goodwood Homesites, Goodwood, Baton Rouge, East Baton Rouge Parish, Louisiana, 70817, United States"
+  },
+  "downtown houma, houma, la 70360": {
+    "latitude": 29.5967636,
+    "longitude": -90.7225189,
+    "display_name": "Downtown Jeaux Coffee Cafe, 300, Church Street, Houma, Terrebonne Parish, Louisiana, 70360, United States"
+  },
+  "event center 208 208 pass road gulfport, mississippi 39507": null,
+  "biloxi bay bridge 100 bienville blvd ocean springs, mississippi 39564": null
 }
