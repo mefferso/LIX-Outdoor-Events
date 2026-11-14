@@ -166,33 +166,6 @@
     "source_url": "https://www.neworleans.com/event/new-orleans-marathon/203663/"
   },
   {
-    "id": "red-stick-farmers-market-at-main-street-market-in-downtown-baton-rouge-2026-11-14-ef2a60d",
-    "name": "Red Stick Farmers Market at Main Street Market in Downtown Baton Rouge",
-    "dates": [
-      "2026-11-14"
-    ],
-    "start": "2026-11-14T08:00:00-06:00",
-    "end": "2026-11-14T12:00:00-06:00",
-    "all_day": false,
-    "latitude": 30.451583,
-    "longitude": -91.185794,
-    "venue": "Red Stick Farmers Market",
-    "address": "501 Main Street, Baton Rouge, Louisiana 70802",
-    "city": "Baton Rouge",
-    "state": "Louisiana",
-    "parish_county": "East Baton Rouge Parish",
-    "idss_area": "Baton Rouge Metro",
-    "category": "festival",
-    "outdoor_status": "outdoor",
-    "origin": "automated",
-    "importance": "moderate",
-    "location_confidence": 0.78,
-    "outdoor_confidence": 0.78,
-    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
-    "source_name": "Visit Baton Rouge",
-    "source_url": "https://www.visitbatonrouge.com/events/red-stick-farmers-market-at-main-street-market-in-downtown-baton-rouge/"
-  },
-  {
     "id": "southern-university-vs-alcorn-state-university-2026-11-14-8cbebde",
     "name": "Southern University Vs Alcorn State University",
     "dates": [
@@ -299,6 +272,33 @@
     "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
     "source_name": "Tulane Athletics",
     "source_url": "https://tulanegreenwave.com/sports/football/schedule/text"
+  },
+  {
+    "id": "red-stick-farmers-market-at-main-street-market-in-downtown-baton-rouge-2026-11-21-c1eb5a2",
+    "name": "Red Stick Farmers Market at Main Street Market in Downtown Baton Rouge",
+    "dates": [
+      "2026-11-21"
+    ],
+    "start": "2026-11-21T08:00:00-06:00",
+    "end": "2026-11-21T12:00:00-06:00",
+    "all_day": false,
+    "latitude": 30.451583,
+    "longitude": -91.185794,
+    "venue": "Red Stick Farmers Market",
+    "address": "501 Main Street, Baton Rouge, Louisiana 70802",
+    "city": "Baton Rouge",
+    "state": "Louisiana",
+    "parish_county": "East Baton Rouge Parish",
+    "idss_area": "Baton Rouge Metro",
+    "category": "festival",
+    "outdoor_status": "outdoor",
+    "origin": "automated",
+    "importance": "moderate",
+    "location_confidence": 0.78,
+    "outdoor_confidence": 0.78,
+    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
+    "source_name": "Visit Baton Rouge",
+    "source_url": "https://www.visitbatonrouge.com/events/red-stick-farmers-market-at-main-street-market-in-downtown-baton-rouge/"
   },
   {
     "id": "tcu-tailgate-cook-off-2026-11-21-1393cc9",
