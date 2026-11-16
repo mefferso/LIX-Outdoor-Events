@@ -439,5 +439,10 @@
     "display_name": "Downtown Jeaux Coffee Cafe, 300, Church Street, Houma, Terrebonne Parish, Louisiana, 70360, United States"
   },
   "event center 208 208 pass road gulfport, mississippi 39507": null,
-  "biloxi bay bridge 100 bienville blvd ocean springs, mississippi 39564": null
+  "biloxi bay bridge 100 bienville blvd ocean springs, mississippi 39564": null,
+  "gray, la, gray, la 70364": {
+    "latitude": 29.6867175,
+    "longitude": -90.781302,
+    "display_name": "Gray, Terrebonne Parish, Louisiana, 70359, United States"
+  }
 }
