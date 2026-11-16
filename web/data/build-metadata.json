@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-11-15T12:50:25-06:00",
-  "event_count": 7,
+  "generated_at": "2026-11-16T00:27:16-06:00",
+  "event_count": 6,
   "manual_event_count": 0,
-  "automated_event_count": 7,
-  "automated_candidate_count": 7,
-  "collection_window_start": "2026-11-15",
-  "collection_window_end": "2026-11-22",
+  "automated_event_count": 6,
+  "automated_candidate_count": 6,
+  "collection_window_start": "2026-11-16",
+  "collection_window_end": "2026-11-23",
   "timezone": "America/Chicago",
   "boundary_source": "NOAA/NWS reference map FeatureServer",
   "pipeline_state": "automated-multi-source-v1",
@@ -17,7 +17,7 @@
       "health": "healthy",
       "detail_links": 32,
       "discovered": 58,
-      "accepted": 1,
+      "accepted": 0,
       "error": null
     },
     {
@@ -35,8 +35,8 @@
       "name": "Louisiana Northshore",
       "success": true,
       "health": "healthy",
-      "detail_links": 15,
-      "discovered": 13,
+      "detail_links": 16,
+      "discovered": 15,
       "accepted": 0,
       "error": null
     },
@@ -45,8 +45,8 @@
       "name": "Explore Houma",
       "success": true,
       "health": "healthy",
-      "detail_links": 14,
-      "discovered": 13,
+      "detail_links": 13,
+      "discovered": 12,
       "accepted": 1,
       "error": null
     },
@@ -93,12 +93,12 @@
     {
       "key": "lsu_football",
       "name": "LSU Athletics",
-      "success": false,
-      "health": "failed",
+      "success": true,
+      "health": "healthy",
       "detail_links": 0,
-      "discovered": 0,
+      "discovered": 12,
       "accepted": 0,
-      "error": "source returned zero events"
+      "error": null
     },
     {
       "key": "mardigras_neworleans",
@@ -115,8 +115,8 @@
       "name": "Downtown Baton Rouge",
       "success": true,
       "health": "healthy",
-      "detail_links": 3179,
-      "discovered": 19,
+      "detail_links": 3180,
+      "discovered": 18,
       "accepted": 1,
       "error": null
     },
@@ -145,16 +145,16 @@
       "name": "Sun Herald Events",
       "success": true,
       "health": "healthy",
-      "detail_links": 51,
-      "discovered": 51,
+      "detail_links": 52,
+      "discovered": 52,
       "accepted": 0,
       "error": null
     }
   ],
   "source_health": {
-    "healthy": 13,
+    "healthy": 14,
     "degraded": 0,
-    "failed": 1,
+    "failed": 0,
     "total": 14
   },
   "notes": "Automated source collection is merged with a curated safety-net file. If an individual source fails, its still-in-window last-known-good events are retained while source health remains failed. Unknown indoor/outdoor events and points outside the LIX CWA are excluded."

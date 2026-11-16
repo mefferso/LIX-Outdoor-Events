@@ -57,33 +57,6 @@
     "source_url": "https://www.coastalmississippi.com/holiday/events/"
   },
   {
-    "id": "we-belong-here-new-orleans-2026-ft-sammy-virji-blondish-more-2026-11-15-cf530ff",
-    "name": "We Belong Here New Orleans 2026 ft. Sammy Virji, BLOND:ISH & More!",
-    "dates": [
-      "2026-11-15"
-    ],
-    "start": "2026-11-15T00:00:00-06:00",
-    "end": "2026-11-15T00:00:00-06:00",
-    "all_day": true,
-    "latitude": 29.951001,
-    "longitude": -90.063072,
-    "venue": "Goldring Woldenberg Riverfront Park",
-    "address": "1 Canal Street, New Orleans, LA 70130",
-    "city": "New Orleans",
-    "state": "LA",
-    "parish_county": "Orleans Parish",
-    "idss_area": "New Orleans Metro",
-    "category": "festival",
-    "outdoor_status": "outdoor",
-    "origin": "automated",
-    "importance": "moderate",
-    "location_confidence": 0.96,
-    "outdoor_confidence": 0.78,
-    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
-    "source_name": "NewOrleans.com",
-    "source_url": "https://www.neworleans.com/event/we-belong-here-new-orleans-2026-ft-sammy-virji-blond%3aish-%26-more!/194628/"
-  },
-  {
     "id": "nicholls-state-university-vs-southeastern-2026-11-19-27ff453",
     "name": "Nicholls State University Vs Southeastern",
     "dates": [
