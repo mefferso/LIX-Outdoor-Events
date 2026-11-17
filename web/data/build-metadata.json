@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-11-16T16:00:06-06:00",
-  "event_count": 6,
+  "generated_at": "2026-11-17T01:53:43-06:00",
+  "event_count": 10,
   "manual_event_count": 0,
-  "automated_event_count": 6,
-  "automated_candidate_count": 6,
-  "collection_window_start": "2026-11-16",
-  "collection_window_end": "2026-11-23",
+  "automated_event_count": 10,
+  "automated_candidate_count": 12,
+  "collection_window_start": "2026-11-17",
+  "collection_window_end": "2026-11-24",
   "timezone": "America/Chicago",
   "boundary_source": "NOAA/NWS reference map FeatureServer",
   "pipeline_state": "automated-multi-source-v1",
@@ -13,19 +13,19 @@
     {
       "key": "neworleans",
       "name": "NewOrleans.com",
-      "success": false,
-      "health": "failed",
-      "detail_links": 0,
-      "discovered": 0,
-      "accepted": 0,
-      "error": "fetch failed for https://www.neworleans.com/events/: HTTP Error 403: Forbidden"
+      "success": true,
+      "health": "healthy",
+      "detail_links": 33,
+      "discovered": 63,
+      "accepted": 6,
+      "error": null
     },
     {
       "key": "visitbatonrouge",
       "name": "Visit Baton Rouge",
       "success": true,
       "health": "healthy",
-      "detail_links": 249,
+      "detail_links": 240,
       "discovered": 26,
       "accepted": 1,
       "error": null
@@ -33,12 +33,12 @@
     {
       "key": "northshore",
       "name": "Louisiana Northshore",
-      "success": false,
-      "health": "failed",
-      "detail_links": 225,
-      "discovered": 0,
+      "success": true,
+      "health": "healthy",
+      "detail_links": 19,
+      "discovered": 15,
       "accepted": 0,
-      "error": "source returned zero events"
+      "error": null
     },
     {
       "key": "houma",
@@ -115,7 +115,7 @@
       "name": "Downtown Baton Rouge",
       "success": true,
       "health": "healthy",
-      "detail_links": 3179,
+      "detail_links": 43,
       "discovered": 19,
       "accepted": 1,
       "error": null
@@ -135,26 +135,26 @@
       "name": "Coastal Mississippi",
       "success": true,
       "health": "healthy",
-      "detail_links": 158,
-      "discovered": 38,
+      "detail_links": 155,
+      "discovered": 40,
       "accepted": 1,
       "error": null
     },
     {
       "key": "sunherald_events",
       "name": "Sun Herald Events",
-      "success": false,
-      "health": "failed",
-      "detail_links": 0,
-      "discovered": 0,
+      "success": true,
+      "health": "healthy",
+      "detail_links": 53,
+      "discovered": 53,
       "accepted": 0,
-      "error": "fetch failed for https://r.jina.ai/https://www.sunherald.com/events/: HTTP Error 401: Unauthorized"
+      "error": null
     }
   ],
   "source_health": {
-    "healthy": 11,
+    "healthy": 14,
     "degraded": 0,
-    "failed": 3,
+    "failed": 0,
     "total": 14
   },
   "notes": "Automated source collection is merged with a curated safety-net file. If an individual source fails, its still-in-window last-known-good events are retained while source health remains failed. Unknown indoor/outdoor events and points outside the LIX CWA are excluded."
