@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-11-18T01:27:01-06:00",
+  "generated_at": "2026-11-18T14:29:53-06:00",
   "event_count": 8,
   "manual_event_count": 0,
   "automated_event_count": 8,
-  "automated_candidate_count": 8,
+  "automated_candidate_count": 9,
   "collection_window_start": "2026-11-18",
   "collection_window_end": "2026-11-25",
   "timezone": "America/Chicago",
@@ -16,8 +16,8 @@
       "success": true,
       "health": "healthy",
       "detail_links": 33,
-      "discovered": 48,
-      "accepted": 2,
+      "discovered": 63,
+      "accepted": 4,
       "error": null
     },
     {
@@ -25,7 +25,7 @@
       "name": "Visit Baton Rouge",
       "success": true,
       "health": "healthy",
-      "detail_links": 241,
+      "detail_links": 249,
       "discovered": 26,
       "accepted": 1,
       "error": null
@@ -115,9 +115,9 @@
       "name": "Downtown Baton Rouge",
       "success": true,
       "health": "healthy",
-      "detail_links": 3180,
+      "detail_links": 3195,
       "discovered": 19,
-      "accepted": 1,
+      "accepted": 0,
       "error": null
     },
     {
@@ -135,7 +135,7 @@
       "name": "Coastal Mississippi",
       "success": true,
       "health": "healthy",
-      "detail_links": 169,
+      "detail_links": 175,
       "discovered": 40,
       "accepted": 1,
       "error": null
@@ -143,18 +143,18 @@
     {
       "key": "sunherald_events",
       "name": "Sun Herald Events",
-      "success": true,
-      "health": "healthy",
-      "detail_links": 53,
-      "discovered": 53,
+      "success": false,
+      "health": "failed",
+      "detail_links": 0,
+      "discovered": 0,
       "accepted": 0,
-      "error": null
+      "error": "fetch failed for https://r.jina.ai/https://www.sunherald.com/events/: HTTP Error 401: Unauthorized"
     }
   ],
   "source_health": {
-    "healthy": 14,
+    "healthy": 13,
     "degraded": 0,
-    "failed": 0,
+    "failed": 1,
     "total": 14
   },
   "notes": "Automated source collection is merged with a curated safety-net file. If an individual source fails, its still-in-window last-known-good events are retained while source health remains failed. Unknown indoor/outdoor events and points outside the LIX CWA are excluded."
