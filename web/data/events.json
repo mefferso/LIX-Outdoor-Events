@@ -57,60 +57,6 @@
     "source_url": "https://www.coastalmississippi.com/holiday/events/"
   },
   {
-    "id": "arrowhead-jazz-band-with-tim-brown-ii-simon-lott-doyle-cooper-2026-11-17-3e5ba5b",
-    "name": "Arrowhead Jazz Band with Tim Brown II, Simon Lott & Doyle Cooper",
-    "dates": [
-      "2026-11-17"
-    ],
-    "start": "2026-11-17T00:00:00-06:00",
-    "end": "2026-11-17T00:00:00-06:00",
-    "all_day": true,
-    "latitude": 29.956142,
-    "longitude": -90.073393,
-    "venue": "The New Orleans Jazz National Historical Park",
-    "address": "New Orleans",
-    "city": "New Orleans",
-    "state": "",
-    "parish_county": "Orleans Parish",
-    "idss_area": "New Orleans Metro",
-    "category": "other",
-    "outdoor_status": "outdoor",
-    "origin": "automated",
-    "importance": "major",
-    "location_confidence": 0.78,
-    "outdoor_confidence": 0.78,
-    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
-    "source_name": "NewOrleans.com",
-    "source_url": "https://www.neworleans.com/event/arrowhead-jazz-band-with-tim-brown-ii-simon-lott-%26-doyle-cooper/207091/"
-  },
-  {
-    "id": "tim-brown-ii-2026-11-17-2583696",
-    "name": "Tim Brown, II",
-    "dates": [
-      "2026-11-17"
-    ],
-    "start": "2026-11-17T00:00:00-06:00",
-    "end": "2026-11-17T00:00:00-06:00",
-    "all_day": true,
-    "latitude": 29.956142,
-    "longitude": -90.073393,
-    "venue": "The New Orleans Jazz National Historical Park",
-    "address": "New Orleans",
-    "city": "New Orleans",
-    "state": "",
-    "parish_county": "Orleans Parish",
-    "idss_area": "New Orleans Metro",
-    "category": "other",
-    "outdoor_status": "outdoor",
-    "origin": "automated",
-    "importance": "major",
-    "location_confidence": 0.78,
-    "outdoor_confidence": 0.78,
-    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
-    "source_name": "NewOrleans.com",
-    "source_url": "https://www.neworleans.com/event/tim-brown-ii/207090/"
-  },
-  {
     "id": "nicholls-state-university-vs-southeastern-2026-11-19-27ff453",
     "name": "Nicholls State University Vs Southeastern",
     "dates": [

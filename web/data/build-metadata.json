@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-11-17T14:53:59-06:00",
-  "event_count": 10,
+  "generated_at": "2026-11-18T01:27:01-06:00",
+  "event_count": 8,
   "manual_event_count": 0,
-  "automated_event_count": 10,
-  "automated_candidate_count": 12,
-  "collection_window_start": "2026-11-17",
-  "collection_window_end": "2026-11-24",
+  "automated_event_count": 8,
+  "automated_candidate_count": 8,
+  "collection_window_start": "2026-11-18",
+  "collection_window_end": "2026-11-25",
   "timezone": "America/Chicago",
   "boundary_source": "NOAA/NWS reference map FeatureServer",
   "pipeline_state": "automated-multi-source-v1",
@@ -16,8 +16,8 @@
       "success": true,
       "health": "healthy",
       "detail_links": 33,
-      "discovered": 63,
-      "accepted": 6,
+      "discovered": 48,
+      "accepted": 2,
       "error": null
     },
     {
@@ -25,7 +25,7 @@
       "name": "Visit Baton Rouge",
       "success": true,
       "health": "healthy",
-      "detail_links": 253,
+      "detail_links": 241,
       "discovered": 26,
       "accepted": 1,
       "error": null
@@ -116,7 +116,7 @@
       "success": true,
       "health": "healthy",
       "detail_links": 3180,
-      "discovered": 18,
+      "discovered": 19,
       "accepted": 1,
       "error": null
     },
@@ -135,7 +135,7 @@
       "name": "Coastal Mississippi",
       "success": true,
       "health": "healthy",
-      "detail_links": 173,
+      "detail_links": 169,
       "discovered": 40,
       "accepted": 1,
       "error": null
@@ -145,8 +145,8 @@
       "name": "Sun Herald Events",
       "success": true,
       "health": "healthy",
-      "detail_links": 52,
-      "discovered": 52,
+      "detail_links": 53,
+      "discovered": 53,
       "accepted": 0,
       "error": null
     }
