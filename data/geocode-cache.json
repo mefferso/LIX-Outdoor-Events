@@ -450,5 +450,11 @@
     "longitude": -91.1887878,
     "display_name": "LSU Museum of Art, 100, Lafayette Street, Devall Town, Downtown Development District, Baton Rouge, East Baton Rouge Parish, Louisiana, 70801, United States"
   },
-  "bay st. louis train depot 1928 depot way bay st. louis, mississippi 39520": null
+  "bay st. louis train depot 1928 depot way bay st. louis, mississippi 39520": null,
+  "3601 thomas road, baton rouge, louisiana 70807": {
+    "latitude": 30.5647201,
+    "longitude": -91.1616002,
+    "display_name": "Baton Rouge Zoo, 3601, Thomas Road, Kings Estates, Baton Rouge, East Baton Rouge Parish, Louisiana, 70807, United States"
+  },
+  "jones park 2250 jones park dr gulfport, mississippi 39502": null
 }
