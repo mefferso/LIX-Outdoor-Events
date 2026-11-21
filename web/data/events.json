@@ -57,60 +57,6 @@
     "source_url": "https://www.coastalmississippi.com/holiday/events/"
   },
   {
-    "id": "friday-night-fights-2026-11-20-1ad35e8",
-    "name": "Friday Night Fights",
-    "dates": [
-      "2026-11-20"
-    ],
-    "start": "2026-11-20T00:00:00-06:00",
-    "end": "2026-11-20T00:00:00-06:00",
-    "all_day": true,
-    "latitude": 29.939688,
-    "longitude": -90.079893,
-    "venue": "1632 Oretha Castle Haley Boulevard",
-    "address": "1632 Oretha Castle Haley Boulevard, New Orleans, LA 70113",
-    "city": "New Orleans",
-    "state": "LA",
-    "parish_county": "Orleans Parish",
-    "idss_area": "New Orleans Metro",
-    "category": "other",
-    "outdoor_status": "outdoor",
-    "origin": "automated",
-    "importance": "moderate",
-    "location_confidence": 0.96,
-    "outdoor_confidence": 0.78,
-    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
-    "source_name": "NewOrleans.com",
-    "source_url": "https://www.neworleans.com/event/friday-night-fights/206443/"
-  },
-  {
-    "id": "saskia-walker-quartet-with-tanner-guss-david-pulphus-oscar-rossignoli-2026-11-20-363792a",
-    "name": "Saskia Walker Quartet with Tanner Guss, David Pulphus & Oscar Rossignoli",
-    "dates": [
-      "2026-11-20"
-    ],
-    "start": "2026-11-20T00:00:00-06:00",
-    "end": "2026-11-20T00:00:00-06:00",
-    "all_day": true,
-    "latitude": 29.956142,
-    "longitude": -90.073393,
-    "venue": "The New Orleans Jazz National Historical Park",
-    "address": "New Orleans",
-    "city": "New Orleans",
-    "state": "",
-    "parish_county": "Orleans Parish",
-    "idss_area": "New Orleans Metro",
-    "category": "other",
-    "outdoor_status": "outdoor",
-    "origin": "automated",
-    "importance": "major",
-    "location_confidence": 0.78,
-    "outdoor_confidence": 0.78,
-    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
-    "source_name": "NewOrleans.com",
-    "source_url": "https://www.neworleans.com/event/saskia-walker-quartet-with-tanner-guss-david-pulphus-%26-oscar-rossignoli/207099/"
-  },
-  {
     "id": "celebration-in-the-oaks-jingle-bells-beer-2026-11-21-194125a",
     "name": "Celebration in the Oaks Jingle Bells & Beer",
     "dates": [
@@ -136,6 +82,60 @@
     "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
     "source_name": "NewOrleans.com",
     "source_url": "https://www.neworleans.com/event/celebration-in-the-oaks-jingle-bells-%26-beer/112658/"
+  },
+  {
+    "id": "drum-circle-with-tim-brown-ii-2026-11-21-303632a",
+    "name": "Drum Circle with Tim Brown, II",
+    "dates": [
+      "2026-11-21"
+    ],
+    "start": "2026-11-21T00:00:00-06:00",
+    "end": "2026-11-21T00:00:00-06:00",
+    "all_day": true,
+    "latitude": 29.956142,
+    "longitude": -90.073393,
+    "venue": "The New Orleans Jazz National Historical Park",
+    "address": "New Orleans",
+    "city": "New Orleans",
+    "state": "",
+    "parish_county": "Orleans Parish",
+    "idss_area": "New Orleans Metro",
+    "category": "other",
+    "outdoor_status": "outdoor",
+    "origin": "automated",
+    "importance": "major",
+    "location_confidence": 0.78,
+    "outdoor_confidence": 0.78,
+    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
+    "source_name": "NewOrleans.com",
+    "source_url": "https://www.neworleans.com/event/drum-circle-with-tim-brown-ii/207102/"
+  },
+  {
+    "id": "sober-fest-2026-ft-ivan-neville-friends-robin-barnes-the-fiyabirds-flow-tribe-mo-2026-11-21-2da4a1d",
+    "name": "Sober Fest 2026 ft. Ivan Neville & Friends, Robin Barnes & The FiyaBirds, Flow Tribe & More!",
+    "dates": [
+      "2026-11-21"
+    ],
+    "start": "2026-11-21T00:00:00-06:00",
+    "end": "2026-11-21T00:00:00-06:00",
+    "all_day": true,
+    "latitude": 29.9693,
+    "longitude": -90.0853,
+    "venue": "The Broadside",
+    "address": "New Orleans",
+    "city": "New Orleans",
+    "state": "LA",
+    "parish_county": "Orleans Parish",
+    "idss_area": "New Orleans Metro",
+    "category": "festival",
+    "outdoor_status": "partial",
+    "origin": "automated",
+    "importance": "moderate",
+    "location_confidence": 0.99,
+    "outdoor_confidence": 0.99,
+    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
+    "source_name": "NewOrleans.com",
+    "source_url": "https://www.neworleans.com/event/sober-fest-2026-ft-ivan-neville-%26-friends-robin-barnes-%26-the-fiyabirds-flow-tribe-%26-more!/207103/"
   },
   {
     "id": "red-stick-farmers-market-2026-11-21-f02fe1b",
@@ -273,6 +273,33 @@
     "source_url": "https://www.visitthenorthshore.com/event/harry-potter-%26-the-sorcerers-stone-movie-celebration/11496/"
   },
   {
+    "id": "baton-rouge-turkey-trot-2026-11-26-4fa3091",
+    "name": "Baton Rouge Turkey Trot",
+    "dates": [
+      "2026-11-26"
+    ],
+    "start": "2026-11-26T06:00:00-06:00",
+    "end": null,
+    "all_day": false,
+    "latitude": 30.449928,
+    "longitude": -91.167616,
+    "venue": "Downtown, Baton Rouge, LA, USA",
+    "address": "Florida St. Baton Rouge, LA",
+    "city": "Florida St. Baton Rouge",
+    "state": "LA",
+    "parish_county": "",
+    "idss_area": "Baton Rouge Metro",
+    "category": "other",
+    "outdoor_status": "outdoor",
+    "origin": "automated",
+    "importance": "moderate",
+    "location_confidence": 0.78,
+    "outdoor_confidence": 0.78,
+    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
+    "source_name": "Downtown Baton Rouge",
+    "source_url": "https://downtownbatonrouge.org/discover-downtown/events/baton-rouge-turkey-trot-2"
+  },
+  {
     "id": "celebration-in-the-oaks-2026-11-27-a407189",
     "name": "Celebration in the Oaks",
     "dates": [
@@ -328,5 +355,59 @@
     "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
     "source_name": "NewOrleans.com",
     "source_url": "https://www.neworleans.com/event/celebration-in-the-oaks/3721/"
+  },
+  {
+    "id": "lsu-football-vs-clemson-2026-11-28-a6ab316",
+    "name": "LSU Football vs Clemson",
+    "dates": [
+      "2026-11-28"
+    ],
+    "start": "2026-11-28T00:00:00-06:00",
+    "end": null,
+    "all_day": false,
+    "latitude": 30.412,
+    "longitude": -91.1838,
+    "venue": "Tiger Stadium",
+    "address": "Baton Rouge, LA",
+    "city": "Baton Rouge",
+    "state": "LA",
+    "parish_county": "East Baton Rouge Parish",
+    "idss_area": "Baton Rouge Metro",
+    "category": "sports",
+    "outdoor_status": "outdoor",
+    "origin": "automated",
+    "importance": "major",
+    "location_confidence": 0.99,
+    "outdoor_confidence": 0.99,
+    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
+    "source_name": "LSU Athletics",
+    "source_url": "https://lsusports.net/sports/fb/schedule"
+  },
+  {
+    "id": "old-algiers-holiday-market-shop-small-saturday-2026-11-28-db6b53a",
+    "name": "Old Algiers Holiday Market & Shop Small Saturday",
+    "dates": [
+      "2026-11-28"
+    ],
+    "start": "2026-11-28T00:00:00-06:00",
+    "end": "2026-11-28T00:00:00-06:00",
+    "all_day": true,
+    "latitude": 29.956142,
+    "longitude": -90.073393,
+    "venue": "Delcazal Park, 401 Verret @ Opelousas",
+    "address": "New Orleans",
+    "city": "New Orleans",
+    "state": "",
+    "parish_county": "Orleans Parish",
+    "idss_area": "New Orleans Metro",
+    "category": "festival",
+    "outdoor_status": "outdoor",
+    "origin": "automated",
+    "importance": "moderate",
+    "location_confidence": 0.78,
+    "outdoor_confidence": 0.78,
+    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
+    "source_name": "NewOrleans.com",
+    "source_url": "https://www.neworleans.com/event/old-algiers-holiday-market-%26-shop-small-saturday/208775/"
   }
 ]

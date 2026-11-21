@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-11-20T14:17:10-06:00",
-  "event_count": 10,
+  "generated_at": "2026-11-21T01:05:08-06:00",
+  "event_count": 13,
   "manual_event_count": 0,
-  "automated_event_count": 10,
-  "automated_candidate_count": 12,
-  "collection_window_start": "2026-11-20",
-  "collection_window_end": "2026-11-27",
+  "automated_event_count": 13,
+  "automated_candidate_count": 17,
+  "collection_window_start": "2026-11-21",
+  "collection_window_end": "2026-11-28",
   "timezone": "America/Chicago",
   "boundary_source": "NOAA/NWS reference map FeatureServer",
   "pipeline_state": "automated-multi-source-v1",
@@ -16,8 +16,8 @@
       "success": true,
       "health": "healthy",
       "detail_links": 33,
-      "discovered": 63,
-      "accepted": 6,
+      "discovered": 62,
+      "accepted": 9,
       "error": null
     },
     {
@@ -25,7 +25,7 @@
       "name": "Visit Baton Rouge",
       "success": true,
       "health": "healthy",
-      "detail_links": 239,
+      "detail_links": 226,
       "discovered": 26,
       "accepted": 1,
       "error": null
@@ -35,8 +35,8 @@
       "name": "Louisiana Northshore",
       "success": true,
       "health": "healthy",
-      "detail_links": 19,
-      "discovered": 16,
+      "detail_links": 16,
+      "discovered": 15,
       "accepted": 1,
       "error": null
     },
@@ -45,8 +45,8 @@
       "name": "Explore Houma",
       "success": true,
       "health": "healthy",
-      "detail_links": 19,
-      "discovered": 18,
+      "detail_links": 17,
+      "discovered": 16,
       "accepted": 1,
       "error": null
     },
@@ -97,7 +97,7 @@
       "health": "healthy",
       "detail_links": 0,
       "discovered": 12,
-      "accepted": 0,
+      "accepted": 1,
       "error": null
     },
     {
@@ -115,9 +115,9 @@
       "name": "Downtown Baton Rouge",
       "success": true,
       "health": "healthy",
-      "detail_links": 3198,
-      "discovered": 19,
-      "accepted": 1,
+      "detail_links": 3199,
+      "discovered": 18,
+      "accepted": 2,
       "error": null
     },
     {
@@ -135,7 +135,7 @@
       "name": "Coastal Mississippi",
       "success": true,
       "health": "healthy",
-      "detail_links": 178,
+      "detail_links": 170,
       "discovered": 40,
       "accepted": 1,
       "error": null
@@ -145,8 +145,8 @@
       "name": "Sun Herald Events",
       "success": true,
       "health": "healthy",
-      "detail_links": 52,
-      "discovered": 52,
+      "detail_links": 51,
+      "discovered": 51,
       "accepted": 0,
       "error": null
     }

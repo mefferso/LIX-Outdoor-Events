@@ -456,5 +456,11 @@
     "longitude": -91.1616002,
     "display_name": "Baton Rouge Zoo, 3601, Thomas Road, Kings Estates, Baton Rouge, East Baton Rouge Parish, Louisiana, 70807, United States"
   },
-  "jones park 2250 jones park dr gulfport, mississippi 39502": null
+  "jones park 2250 jones park dr gulfport, mississippi 39502": null,
+  "6126 west park avenue, houma, la": null,
+  "new orleans, la": {
+    "latitude": 29.9574657,
+    "longitude": -90.0629493,
+    "display_name": "New Orleans, Orleans Parish, Louisiana, United States"
+  }
 }
