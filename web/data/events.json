@@ -57,6 +57,33 @@
     "source_url": "https://www.coastalmississippi.com/holiday/events/"
   },
   {
+    "id": "abita-springs-opry-november-concert-2026-11-21-0deb723",
+    "name": "Abita Springs Opry November Concert",
+    "dates": [
+      "2026-11-21"
+    ],
+    "start": "2026-11-21T00:00:00-06:00",
+    "end": "2026-11-21T00:00:00-06:00",
+    "all_day": true,
+    "latitude": 30.478553,
+    "longitude": -90.035622,
+    "venue": "Abita Springs Town Hall",
+    "address": "22161 Level St., Abita Springs, LA 70420",
+    "city": "Abita Springs",
+    "state": "LA",
+    "parish_county": "",
+    "idss_area": "Northshore",
+    "category": "festival",
+    "outdoor_status": "outdoor",
+    "origin": "automated",
+    "importance": "moderate",
+    "location_confidence": 0.96,
+    "outdoor_confidence": 0.78,
+    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
+    "source_name": "Louisiana Northshore",
+    "source_url": "https://www.visitthenorthshore.com/event/abita-springs-opry-november-concert/9066/"
+  },
+  {
     "id": "celebration-in-the-oaks-jingle-bells-beer-2026-11-21-194125a",
     "name": "Celebration in the Oaks Jingle Bells & Beer",
     "dates": [
