@@ -84,6 +84,61 @@
     "source_url": "https://www.visitthenorthshore.com/event/harry-potter-%26-the-sorcerers-stone-movie-celebration/11496/"
   },
   {
+    "id": "childrens-museum-of-st-tammany-stem-quest-innovation-days-2026-11-23-767f668",
+    "name": "Children's Museum of St. Tammany STEM Quest Innovation Days",
+    "dates": [
+      "2026-11-23",
+      "2026-11-24"
+    ],
+    "start": "2026-11-23T00:00:00-06:00",
+    "end": "2026-11-24T00:00:00-06:00",
+    "all_day": true,
+    "latitude": 30.353504,
+    "longitude": -90.0234,
+    "venue": "Pelican Park - Brown Pelican Gym",
+    "address": "63350 Pelican Drive, Mandeville, LA 70448",
+    "city": "Mandeville",
+    "state": "LA",
+    "parish_county": "St. Tammany Parish",
+    "idss_area": "Northshore",
+    "category": "other",
+    "outdoor_status": "partial",
+    "origin": "automated",
+    "importance": "major",
+    "location_confidence": 0.96,
+    "outdoor_confidence": 0.72,
+    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
+    "source_name": "Louisiana Northshore",
+    "source_url": "https://www.visitthenorthshore.com/event/childrens-museum-of-st-tammany-stem-quest-innovation-days/9593/"
+  },
+  {
+    "id": "otter-trotter-5k-2026-11-25-b62b93c",
+    "name": "Otter Trotter 5K",
+    "dates": [
+      "2026-11-25"
+    ],
+    "start": "2026-11-25T17:00:00-06:00",
+    "end": "2026-11-25T20:00:00-06:00",
+    "all_day": false,
+    "latitude": 30.36742,
+    "longitude": -89.09282,
+    "venue": "Location not listed",
+    "address": "Gulfport, MS",
+    "city": "Gulfport",
+    "state": "MS",
+    "parish_county": "Harrison County",
+    "idss_area": "Mississippi Coast",
+    "category": "race_parade",
+    "outdoor_status": "outdoor",
+    "origin": "automated",
+    "importance": "moderate",
+    "location_confidence": 0.96,
+    "outdoor_confidence": 0.78,
+    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
+    "source_name": "Sun Herald Events",
+    "source_url": "https://www.sunherald.com/events/#/details/otter-trotter-5k/20505893/2026-11-25T17"
+  },
+  {
     "id": "tammany-turkey-trot-2026-11-26-abc383d",
     "name": "Tammany Turkey Trot",
     "dates": [

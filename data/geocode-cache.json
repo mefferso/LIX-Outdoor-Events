@@ -463,5 +463,10 @@
     "longitude": -90.0629493,
     "display_name": "New Orleans, Orleans Parish, Louisiana, United States"
   },
-  "346 civic center dr., houma, la 70360": null
+  "346 civic center dr., houma, la 70360": null,
+  "122 blaize ave bay st. louis, mississippi 39520": {
+    "latitude": 30.3078338,
+    "longitude": -89.3340616,
+    "display_name": "122, Blaize Avenue, Bay St. Louis, Hancock County, Mississippi, 39520, United States"
+  }
 }
