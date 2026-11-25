@@ -57,13 +57,13 @@
     "source_url": "https://www.coastalmississippi.com/holiday/events/"
   },
   {
-    "id": "arrowhead-jazz-band-with-tim-brown-ii-simon-lott-doyle-cooper-2026-11-24-419675d",
-    "name": "Arrowhead Jazz Band with Tim Brown II, Simon Lott & Doyle Cooper",
+    "id": "adam-rogers-2026-11-25-5e786d2",
+    "name": "Adam Rogers",
     "dates": [
-      "2026-11-24"
+      "2026-11-25"
     ],
-    "start": "2026-11-24T00:00:00-06:00",
-    "end": "2026-11-24T00:00:00-06:00",
+    "start": "2026-11-25T00:00:00-06:00",
+    "end": "2026-11-25T00:00:00-06:00",
     "all_day": true,
     "latitude": 29.956142,
     "longitude": -90.073393,
@@ -81,34 +81,7 @@
     "outdoor_confidence": 0.78,
     "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
     "source_name": "NewOrleans.com",
-    "source_url": "https://www.neworleans.com/event/arrowhead-jazz-band-with-tim-brown-ii-simon-lott-%26-doyle-cooper/207111/"
-  },
-  {
-    "id": "tim-brown-ii-2026-11-24-5d995dc",
-    "name": "Tim Brown, II",
-    "dates": [
-      "2026-11-24"
-    ],
-    "start": "2026-11-24T00:00:00-06:00",
-    "end": "2026-11-24T00:00:00-06:00",
-    "all_day": true,
-    "latitude": 29.956142,
-    "longitude": -90.073393,
-    "venue": "The New Orleans Jazz National Historical Park",
-    "address": "New Orleans",
-    "city": "New Orleans",
-    "state": "",
-    "parish_county": "Orleans Parish",
-    "idss_area": "New Orleans Metro",
-    "category": "other",
-    "outdoor_status": "outdoor",
-    "origin": "automated",
-    "importance": "major",
-    "location_confidence": 0.78,
-    "outdoor_confidence": 0.78,
-    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
-    "source_name": "NewOrleans.com",
-    "source_url": "https://www.neworleans.com/event/tim-brown-ii/207110/"
+    "source_url": "https://www.neworleans.com/event/adam-rogers/207114/"
   },
   {
     "id": "otter-trotter-5k-2026-11-25-b62b93c",
