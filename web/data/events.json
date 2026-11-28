@@ -114,13 +114,13 @@
     "source_url": "https://www.neworleans.com/event/celebration-in-the-oaks/3721/"
   },
   {
-    "id": "zoë-de-priester-duo-2026-11-27-939d108",
-    "name": "Zoë de Priester Duo",
+    "id": "drum-circle-with-tim-brown-ii-2026-11-28-60b6bcd",
+    "name": "Drum Circle with Tim Brown, II",
     "dates": [
-      "2026-11-27"
+      "2026-11-28"
     ],
-    "start": "2026-11-27T00:00:00-06:00",
-    "end": "2026-11-27T00:00:00-06:00",
+    "start": "2026-11-28T00:00:00-06:00",
+    "end": "2026-11-28T00:00:00-06:00",
     "all_day": true,
     "latitude": 29.956142,
     "longitude": -90.073393,
@@ -138,7 +138,7 @@
     "outdoor_confidence": 0.78,
     "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
     "source_name": "NewOrleans.com",
-    "source_url": "https://www.neworleans.com/event/zo%c3%ab-de-priester-duo/207117/"
+    "source_url": "https://www.neworleans.com/event/drum-circle-with-tim-brown-ii/207120/"
   },
   {
     "id": "old-algiers-holiday-market-shop-small-saturday-2026-11-28-db6b53a",
@@ -220,5 +220,113 @@
     "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
     "source_name": "LSU Athletics",
     "source_url": "https://lsusports.net/sports/fb/schedule"
+  },
+  {
+    "id": "manning-family-childrens-holiday-parade-2026-12-05-f3aca13",
+    "name": "Manning Family Children's Holiday Parade",
+    "dates": [
+      "2026-12-05"
+    ],
+    "start": "2026-12-05T00:00:00-06:00",
+    "end": "2026-12-05T00:00:00-06:00",
+    "all_day": true,
+    "latitude": 29.956142,
+    "longitude": -90.073393,
+    "venue": "French Quarter and downtown",
+    "address": "New Orleans",
+    "city": "New Orleans",
+    "state": "",
+    "parish_county": "Orleans Parish",
+    "idss_area": "New Orleans Metro",
+    "category": "race_parade",
+    "outdoor_status": "outdoor",
+    "origin": "automated",
+    "importance": "moderate",
+    "location_confidence": 0.78,
+    "outdoor_confidence": 0.78,
+    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
+    "source_name": "NewOrleans.com",
+    "source_url": "https://www.neworleans.com/event/manning-family-childrens-holiday-parade/91620/"
+  },
+  {
+    "id": "winter-on-the-water-parade-festival-2026-12-05-7eb20c4",
+    "name": "Winter on the Water Parade & Festival",
+    "dates": [
+      "2026-12-05"
+    ],
+    "start": "2026-12-05T00:00:00-06:00",
+    "end": "2026-12-05T00:00:00-06:00",
+    "all_day": true,
+    "latitude": 30.361325,
+    "longitude": -90.064641,
+    "venue": "Mandeville Trailhead Amphitheater",
+    "address": "675 Lafitte St., Mandeville, LA 70448",
+    "city": "Mandeville",
+    "state": "LA",
+    "parish_county": "St. Tammany Parish",
+    "idss_area": "Northshore",
+    "category": "festival",
+    "outdoor_status": "outdoor",
+    "origin": "automated",
+    "importance": "moderate",
+    "location_confidence": 0.96,
+    "outdoor_confidence": 0.78,
+    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
+    "source_name": "Louisiana Northshore",
+    "source_url": "https://www.visitthenorthshore.com/event/winter-on-the-water-parade-%26-festival/6360/"
+  },
+  {
+    "id": "baton-rouge-arts-market-2026-12-05-7cd867b",
+    "name": "Baton Rouge Arts Market",
+    "dates": [
+      "2026-12-05"
+    ],
+    "start": "2026-12-05T08:00:00-06:00",
+    "end": null,
+    "all_day": false,
+    "latitude": 30.449928,
+    "longitude": -91.167616,
+    "venue": "Red Stick Farmers Market, North 5th Street, Baton Rouge, LA, USA",
+    "address": "Florida St. Baton Rouge, LA",
+    "city": "Florida St. Baton Rouge",
+    "state": "LA",
+    "parish_county": "",
+    "idss_area": "Baton Rouge Metro",
+    "category": "festival",
+    "outdoor_status": "outdoor",
+    "origin": "automated",
+    "importance": "moderate",
+    "location_confidence": 0.78,
+    "outdoor_confidence": 0.78,
+    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
+    "source_name": "Downtown Baton Rouge",
+    "source_url": "https://downtownbatonrouge.org/discover-downtown/events/baton-rouge-arts-market-7-1-1-1-1-1-1-1-1-1-1-1"
+  },
+  {
+    "id": "festival-of-lights-2026-2026-12-05-16a97e2",
+    "name": "Festival of Lights 2026",
+    "dates": [
+      "2026-12-05"
+    ],
+    "start": "2026-12-05T12:00:00-06:00",
+    "end": null,
+    "all_day": false,
+    "latitude": 30.449928,
+    "longitude": -91.167616,
+    "venue": "North Boulevard Town Square, North Boulevard, Baton Rouge, LA, USA",
+    "address": "Florida St. Baton Rouge, LA",
+    "city": "Florida St. Baton Rouge",
+    "state": "LA",
+    "parish_county": "",
+    "idss_area": "Baton Rouge Metro",
+    "category": "festival",
+    "outdoor_status": "outdoor",
+    "origin": "automated",
+    "importance": "moderate",
+    "location_confidence": 0.78,
+    "outdoor_confidence": 0.78,
+    "weather_exposure_notes": "Outdoor or partially outdoor event retained for weather-sensitive operational awareness.",
+    "source_name": "Downtown Baton Rouge",
+    "source_url": "https://downtownbatonrouge.org/discover-downtown/events/festival-of-lights-2026"
   }
 ]
